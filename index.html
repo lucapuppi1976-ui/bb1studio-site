@@ -11,20 +11,29 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://bb1studio.com/" />
   <link rel="canonical" href="https://bb1studio.com/" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="alternate" hreflang="en" href="https://bb1studio.com/" />
+  <link rel="alternate" hreflang="it" href="https://bb1studio.com/it/" />
+  <link rel="alternate" hreflang="es" href="https://bb1studio.com/es/" />
+  <link rel="alternate" hreflang="x-default" href="https://bb1studio.com/" />
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
 
   <header class="site-header">
     <div class="wrap nav">
-      <a class="brand" href="/index.html" aria-label="BB1 Studio home">BB1 Studio</a>
+      <a class="brand" href="/" aria-label="BB1 Studio home">BB1 Studio</a>
       <nav class="site-nav" aria-label="Primary">
-        <a href="/index.html#products">Products</a>
-        <a href="/index.html#release">Current release</a>
-        <a href="/index.html#access">Access</a>
-        <a href="/index.html#company">Company</a>
+        <a href="/#products">Products</a>
+        <a href="/#release">Current release</a>
+        <a href="/#access">Access</a>
+        <a href="/#company">Company</a>
       </nav>
-      <a class="btn btn-small" href="/bys/">Open BYS</a>
+      <div class="nav-right">
+        <div class="lang-switch" aria-label="Languages">
+          <a class="lang-link active" href="/" lang="en" hreflang="en">English</a><a class="lang-link" href="/it/" lang="it" hreflang="it">Italiano</a><a class="lang-link" href="/es/" lang="es" hreflang="es">Español</a>
+        </div>
+        <a class="btn btn-small" href="/bys/">Open BYS</a>
+      </div>
     </div>
   </header>
 
@@ -33,11 +42,7 @@
       <div class="hero-copy">
         <p class="eyebrow">BB1 Studio</p>
         <h1>Focused digital products, built carefully.</h1>
-        <p class="lead">
-          BB1 Studio is the umbrella structure for a compact portfolio of digital products.
-          The studio is meant to stay selective: narrow tools, calm interfaces, and product surfaces that do one job clearly.
-          <strong>Before You Send</strong> is the first live release now available from the studio.
-        </p>
+        <p class="lead">BB1 Studio is the umbrella structure for a compact portfolio of digital products. The studio is meant to stay selective: narrow tools, calm interfaces, and product surfaces that do one job clearly. Before You Send is the first live release now available from the studio.</p>
         <div class="hero-actions">
           <a class="btn" href="/bys/">Open Before You Send</a>
           <a class="btn btn-secondary" href="/before-you-send/">View product page</a>
@@ -46,7 +51,7 @@
         <div class="status-row" aria-label="Studio status">
           <span class="status-pill">Studio live</span>
           <span class="status-pill">1 product online</span>
-          <span class="status-pill">Commercial layer staged</span>
+          <span class="status-pill">English · Italian · Spanish</span>
         </div>
       </div>
 
@@ -56,9 +61,7 @@
           <p class="panel-label">Featured release</p>
         </div>
         <h2>Before You Send</h2>
-        <p class="lead compact">
-          A communication tool built to help people interpret incoming messages and check how their own words may land before pressing send.
-        </p>
+        <p class="lead compact">A communication tool built to help people interpret incoming messages and check how their own words may land before pressing send.</p>
         <ul class="panel-list">
           <li>Decode text, screenshots, and voice notes</li>
           <li>Check tone before sending</li>
@@ -66,7 +69,7 @@
         </ul>
         <div class="hero-actions">
           <a class="btn" href="/bys/">Open app</a>
-          <a class="btn btn-secondary" href="/before-you-send/">Product page</a>
+          <a class="btn btn-secondary" href="/before-you-send/">View product page</a>
         </div>
       </aside>
     </section>
@@ -75,17 +78,13 @@
       <div class="section-head">
         <p class="eyebrow">Products</p>
         <h2>A compact structure designed to hold multiple releases over time.</h2>
-        <p class="section-note">
-          The studio root stays stable while each product can evolve on its own surface. The first release is already live. The next slots stay intentionally reserved.
-        </p>
+        <p class="section-note">The studio root stays stable while each product can evolve on its own surface. The first release is already live. The next slots stay intentionally reserved.</p>
       </div>
       <div class="grid grid-3">
         <article class="card card-featured">
           <span class="pill">Live</span>
           <h3>Before You Send</h3>
-          <p>
-            A focused communication product for reading ambiguity better and improving outgoing messages before they leave the screen.
-          </p>
+          <p>A focused communication product for reading ambiguity better and improving outgoing messages before they leave the screen.</p>
           <div class="meta-row">
             <span>Decode</span>
             <span>SendScore</span>
@@ -100,17 +99,13 @@
         <article class="card">
           <span class="pill pill-muted">Reserved</span>
           <h3>Product 02</h3>
-          <p>
-            Reserved slot for the next focused tool inside BB1 Studio. The idea is to add products slowly without turning the root into a noisy catalog.
-          </p>
+          <p>Reserved slot for the next focused tool inside BB1 Studio. The idea is to add products slowly without turning the root into a noisy catalog.</p>
         </article>
 
         <article class="card">
           <span class="pill pill-muted">Reserved</span>
           <h3>Product 03</h3>
-          <p>
-            Another future slot inside the studio. The long-term structure is meant to be durable, selective, and easy to navigate.
-          </p>
+          <p>Another future slot inside the studio. The long-term structure is meant to be durable, selective, and easy to navigate.</p>
         </article>
       </div>
     </section>
@@ -128,26 +123,9 @@
       </div>
 
       <div class="grid grid-3">
-        <article class="card">
-          <h3>Decode ambiguity</h3>
-          <p>
-            Understand what an incoming message may actually mean with support for text, screenshots, and voice notes.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Check your tone</h3>
-          <p>
-            Preview how a draft message may land before sending, so communication stays clearer and more intentional.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Keep it fast</h3>
-          <p>
-            Mobile-oriented flows, quick access, and a narrow scope designed to reduce friction when a conversation already feels loaded.
-          </p>
-        </article>
+        <article class="card"><h3>Decode ambiguity</h3><p>Understand what an incoming message may actually mean with support for text, screenshots, and voice notes.</p></article>
+        <article class="card"><h3>Check your tone</h3><p>Preview how a draft message may land before sending, so communication stays clearer and more intentional.</p></article>
+        <article class="card"><h3>Keep it fast</h3><p>Mobile-oriented flows, quick access, and a narrow scope designed to reduce friction when a conversation already feels loaded.</p></article>
       </div>
     </section>
 
@@ -155,44 +133,20 @@
       <div class="section-head">
         <p class="eyebrow">Access path</p>
         <h2>A simple path from studio root to live product.</h2>
-        <p class="section-note">
-          The app is already online. The commercial layer can now be activated separately, which keeps the live product stable while pricing, checkout, and customer handling are defined cleanly.
-        </p>
+        <p class="section-note">The app is already online. The commercial layer can now be activated separately, which keeps the live product stable while pricing, checkout, and customer handling are defined cleanly.</p>
       </div>
 
       <div class="grid grid-3">
-        <article class="card card-step">
-          <span class="step-number">01</span>
-          <h3>Studio root</h3>
-          <p>
-            The root site introduces the studio, the active releases, and the structure around each product.
-          </p>
-        </article>
-
-        <article class="card card-step">
-          <span class="step-number">02</span>
-          <h3>Product page</h3>
-          <p>
-            The product page positions Before You Send clearly and keeps the sales layer separate from the live application itself.
-          </p>
-        </article>
-
-        <article class="card card-step">
-          <span class="step-number">03</span>
-          <h3>Live app</h3>
-          <p>
-            The product continues to run on its own subdomain, with the shortcut <span class="inline-code">bb1studio.com/bys</span> for quick access.
-          </p>
-        </article>
+        <article class="card card-step"><span class="step-number">01</span><h3>Studio root</h3><p>The root site introduces the studio, the active releases, and the structure around each product.</p></article>
+        <article class="card card-step"><span class="step-number">02</span><h3>Product page</h3><p>The product page positions Before You Send clearly and keeps the sales layer separate from the live application itself.</p></article>
+        <article class="card card-step"><span class="step-number">03</span><h3>Live app</h3><p>The product continues to run on its own subdomain, with the shortcut bb1studio.com/bys for quick access.</p></article>
       </div>
 
       <div class="band compact-band">
         <div>
           <p class="eyebrow">Shortcut</p>
-          <h2>Use <span class="inline-code">bb1studio.com/bys</span> for direct access.</h2>
-          <p class="lead compact">
-            The root site stays brand-first. The app keeps its own deployment surface. That split is cleaner for maintenance, scaling, and future products.
-          </p>
+          <h2>Use bb1studio.com/bys for direct access.</h2>
+          <p class="lead compact">The root site stays brand-first. The app keeps its own deployment surface. That split is cleaner for maintenance, scaling, and future products.</p>
         </div>
         <div class="band-actions">
           <a class="btn" href="/bys/">Open shortcut</a>
@@ -207,18 +161,9 @@
         <h2>The studio is designed to grow slowly and stay coherent.</h2>
       </div>
       <div class="grid grid-3">
-        <article class="card">
-          <h3>Focused scope</h3>
-          <p>Each product is expected to solve a narrow problem well instead of becoming a broad, overloaded platform.</p>
-        </article>
-        <article class="card">
-          <h3>Calm interfaces</h3>
-          <p>Design should lower friction, reduce noise, and make repeated use feel lightweight rather than demanding.</p>
-        </article>
-        <article class="card">
-          <h3>Selective releases</h3>
-          <p>The portfolio should stay curated. New products enter only when the structure around them is clear enough to last.</p>
-        </article>
+        <article class="card"><h3>Focused scope</h3><p>Each product is expected to solve a narrow problem well instead of becoming a broad, overloaded platform.</p></article>
+        <article class="card"><h3>Calm interfaces</h3><p>Design should lower friction, reduce noise, and make repeated use feel lightweight rather than demanding.</p></article>
+        <article class="card"><h3>Selective releases</h3><p>The portfolio should stay curated. New products enter only when the structure around them is clear enough to last.</p></article>
       </div>
     </section>
 
@@ -248,7 +193,7 @@
         <p>Focused digital products, built carefully. Before You Send is the first live release inside the studio.</p>
       </div>
       <div class="footer-links">
-        <a href="/index.html">Studio</a>
+        <a href="/">Studio</a>
         <a href="/before-you-send/">Before You Send</a>
         <a href="/before-you-send/access/">Access</a>
         <a href="/before-you-send/faq/">FAQ</a>
