@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Setup accesso</title>
-  <meta name="description" content="Questa pagina crea un ponte pulito tra scoperta del prodotto e accesso commerciale.">
+  <title>Struttura prezzi</title>
+  <meta name="description" content="Il sito è pronto per il lancio commerciale. Prezzi e link checkout possono essere controllati da un solo file di configurazione.">
   <link rel="stylesheet" href="../../../styles.css">
   <script defer src="../../../site-config.js"></script>
   <script defer src="../../../site.js"></script>
@@ -18,7 +18,7 @@
       <span>BB1 Studio</span>
     </a>
     <nav class="nav-links">
-      <a href="/it/before-you-send/">Prodotti</a><a href="/it/before-you-send/pricing/">Prezzi</a><a href="/it/before-you-send/access/" class="active">Accesso</a><a href="/it/before-you-send/faq/">FAQ</a>
+      <a href="/it/before-you-send/">Prodotti</a><a href="/it/before-you-send/pricing/" class="active">Prezzi</a><a href="/it/before-you-send/access/">Accesso</a><a href="/it/before-you-send/faq/">FAQ</a>
     </nav>
     <div class="lang-switch">
       <a href="/">EN</a><a href="/it/" class="current">IT</a><a href="/es/">ES</a>
@@ -29,18 +29,9 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumbs">Home / Before You Send / Setup accesso</div>
-      <h1>Setup accesso</h1>
-      <p class="lead">Questa pagina crea un ponte pulito tra scoperta del prodotto e accesso commerciale.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="/it/bys/" data-bys-link>Apri l’app live</a>
-        <a class="btn ghost" href="/it/before-you-send/pricing/">Struttura prezzi</a>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container grid two">
-      <article class="card"><h3>App live</h3><p>Il prodotto gira già sul suo dominio canonico.</p></article><article class="card"><h3>Modalità commerciale</h3><p>Quando incolli i link Stripe in site-config.js, i pulsanti diventano live senza cambiare ogni pagina.</p></article><article class="card"><h3>Fallback manuale</h3><p>Se il checkout non è ancora live, tieni questa pagina come punto di ingresso controllato.</p></article>
+      <div class="breadcrumbs">Home / Before You Send / Struttura prezzi</div>
+      <h1>Struttura prezzi</h1>
+      <p class="lead">Il sito è pronto per il lancio commerciale. Prezzi e link checkout possono essere controllati da un solo file di configurazione.</p>
     </div>
   </section>
   <section class="section">
@@ -49,21 +40,33 @@
         <span class="badge">Accesso mensile</span>
         <div class="price" data-price-monthly>Prezzo su richiesta</div>
         <small>Ideale per utenti early access che vogliono flessibilità.</small>
+        <ul class="list">
+          <li>Before You Send</li>
+          <li>Decode + SendScore</li>
+          <li>Multilingual app flow</li>
+        </ul>
         <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/it/before-you-send/pricing/" data-plan="monthly">Attiva mensile</a>
+          <a class="btn primary" href="/it/before-you-send/access/" data-plan="monthly">Attiva mensile</a>
+          <a class="btn ghost" href="/it/bys/" data-bys-link>Apri l’app live</a>
         </div>
       </article>
-      <article class="plan">
+      <article class="plan featured">
         <span class="badge">Accesso annuale</span>
         <div class="price" data-price-annual>Prezzo su richiesta</div>
         <small>Più adatto per team o uso continuativo quando il prezzo annuale è confermato.</small>
+        <ul class="list">
+          <li>Before You Send</li>
+          <li>Decode + SendScore</li>
+          <li>Commercial rollout ready</li>
+        </ul>
         <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/it/before-you-send/pricing/" data-plan="annual">Attiva annuale</a>
+          <a class="btn primary" href="/it/before-you-send/access/" data-plan="annual">Attiva annuale</a>
+          <a class="btn ghost" href="/it/before-you-send/access/">Setup accesso</a>
         </div>
       </article>
     </div>
     <div class="container" style="margin-top:20px">
-      <div class="notice" data-contact-required>Se il checkout non è ancora pronto, usa un’email di contatto o mantieni questa pagina come unico handoff di accesso.</div>
+      <div class="notice">Se i link Stripe sono ancora vuoti, i pulsanti continueranno a mandare gli utenti alla pagina di accesso invece di un checkout live.</div>
     </div>
   </section>
 </main>

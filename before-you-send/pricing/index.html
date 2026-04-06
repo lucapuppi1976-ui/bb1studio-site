@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Access setup</title>
-  <meta name="description" content="This page gives you a clean bridge between product discovery and commercial access.">
+  <title>Pricing structure</title>
+  <meta name="description" content="The site is ready for commercial rollout. Prices and checkout links can be controlled from one config file.">
   <link rel="stylesheet" href="../../styles.css">
   <script defer src="../../site-config.js"></script>
   <script defer src="../../site.js"></script>
@@ -18,7 +18,7 @@
       <span>BB1 Studio</span>
     </a>
     <nav class="nav-links">
-      <a href="/before-you-send/">Products</a><a href="/before-you-send/pricing/">Pricing</a><a href="/before-you-send/access/" class="active">Access</a><a href="/before-you-send/faq/">FAQ</a>
+      <a href="/before-you-send/">Products</a><a href="/before-you-send/pricing/" class="active">Pricing</a><a href="/before-you-send/access/">Access</a><a href="/before-you-send/faq/">FAQ</a>
     </nav>
     <div class="lang-switch">
       <a href="/" class="current">EN</a><a href="/it/">IT</a><a href="/es/">ES</a>
@@ -29,18 +29,9 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumbs">Home / Before You Send / Access setup</div>
-      <h1>Access setup</h1>
-      <p class="lead">This page gives you a clean bridge between product discovery and commercial access.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="/bys/" data-bys-link>Open the live app</a>
-        <a class="btn ghost" href="/before-you-send/pricing/">Pricing structure</a>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container grid two">
-      <article class="card"><h3>Live app</h3><p>The product already runs at its own canonical domain.</p></article><article class="card"><h3>Commercial mode</h3><p>When you paste Stripe links into site-config.js, the buttons become live without changing every page.</p></article><article class="card"><h3>Manual fallback</h3><p>If checkout is not live yet, keep this page as the controlled entry point.</p></article>
+      <div class="breadcrumbs">Home / Before You Send / Pricing structure</div>
+      <h1>Pricing structure</h1>
+      <p class="lead">The site is ready for commercial rollout. Prices and checkout links can be controlled from one config file.</p>
     </div>
   </section>
   <section class="section">
@@ -49,21 +40,33 @@
         <span class="badge">Monthly access</span>
         <div class="price" data-price-monthly>Pricing on request</div>
         <small>Ideal for early users who want flexibility.</small>
+        <ul class="list">
+          <li>Before You Send</li>
+          <li>Decode + SendScore</li>
+          <li>Multilingual app flow</li>
+        </ul>
         <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/before-you-send/pricing/" data-plan="monthly">Start monthly</a>
+          <a class="btn primary" href="/before-you-send/access/" data-plan="monthly">Start monthly</a>
+          <a class="btn ghost" href="/bys/" data-bys-link>Open the live app</a>
         </div>
       </article>
-      <article class="plan">
+      <article class="plan featured">
         <span class="badge">Annual access</span>
         <div class="price" data-price-annual>Pricing on request</div>
         <small>Best for teams or steady use once annual pricing is confirmed.</small>
+        <ul class="list">
+          <li>Before You Send</li>
+          <li>Decode + SendScore</li>
+          <li>Commercial rollout ready</li>
+        </ul>
         <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/before-you-send/pricing/" data-plan="annual">Start annual</a>
+          <a class="btn primary" href="/before-you-send/access/" data-plan="annual">Start annual</a>
+          <a class="btn ghost" href="/before-you-send/access/">Access setup</a>
         </div>
       </article>
     </div>
     <div class="container" style="margin-top:20px">
-      <div class="notice" data-contact-required>If checkout is not ready yet, use a contact email or keep this page as the single access handoff.</div>
+      <div class="notice">If Stripe checkout links are still empty, the buttons will keep sending visitors to the access page instead of a live checkout.</div>
     </div>
   </section>
 </main>
