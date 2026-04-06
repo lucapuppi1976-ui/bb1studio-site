@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://bb1studio.com/</loc></url>
-  <url><loc>https://bb1studio.com/it/</loc></url>
-  <url><loc>https://bb1studio.com/es/</loc></url>
   <url><loc>https://bb1studio.com/before-you-send/</loc></url>
-  <url><loc>https://bb1studio.com/it/before-you-send/</loc></url>
-  <url><loc>https://bb1studio.com/es/before-you-send/</loc></url>
   <url><loc>https://bb1studio.com/before-you-send/access/</loc></url>
-  <url><loc>https://bb1studio.com/it/before-you-send/access/</loc></url>
-  <url><loc>https://bb1studio.com/es/before-you-send/access/</loc></url>
   <url><loc>https://bb1studio.com/before-you-send/faq/</loc></url>
-  <url><loc>https://bb1studio.com/it/before-you-send/faq/</loc></url>
-  <url><loc>https://bb1studio.com/es/before-you-send/faq/</loc></url>
+  <url><loc>https://bb1studio.com/before-you-send/pricing/</loc></url>
   <url><loc>https://bb1studio.com/privacy.html</loc></url>
-  <url><loc>https://bb1studio.com/it/privacy.html</loc></url>
-  <url><loc>https://bb1studio.com/es/privacy.html</loc></url>
   <url><loc>https://bb1studio.com/terms.html</loc></url>
+  <url><loc>https://bb1studio.com/it/</loc></url>
+  <url><loc>https://bb1studio.com/it/before-you-send/</loc></url>
+  <url><loc>https://bb1studio.com/it/before-you-send/access/</loc></url>
+  <url><loc>https://bb1studio.com/it/before-you-send/faq/</loc></url>
+  <url><loc>https://bb1studio.com/it/before-you-send/pricing/</loc></url>
+  <url><loc>https://bb1studio.com/it/privacy.html</loc></url>
   <url><loc>https://bb1studio.com/it/terms.html</loc></url>
+  <url><loc>https://bb1studio.com/es/</loc></url>
+  <url><loc>https://bb1studio.com/es/before-you-send/</loc></url>
+  <url><loc>https://bb1studio.com/es/before-you-send/access/</loc></url>
+  <url><loc>https://bb1studio.com/es/before-you-send/faq/</loc></url>
+  <url><loc>https://bb1studio.com/es/before-you-send/pricing/</loc></url>
+  <url><loc>https://bb1studio.com/es/privacy.html</loc></url>
   <url><loc>https://bb1studio.com/es/terms.html</loc></url>
 </urlset>

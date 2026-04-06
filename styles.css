@@ -485,3 +485,15 @@ h3 {
     flex-wrap: wrap;
   }
 }
+
+
+/* v7 additions */
+.hero-copy .lead + .hero-actions { margin-top: 24px; }
+.card .meta-row { margin-top: 12px; }
+@media (max-width: 780px) {
+  .hero-actions .btn,
+  .band-actions .btn,
+  .card-actions .btn {
+    width: 100%;
+  }
+}
