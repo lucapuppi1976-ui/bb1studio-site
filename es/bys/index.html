@@ -2,22 +2,84 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=https://bys.bb1studio.com">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Redirecting</title>
-  <link rel="stylesheet" href="../../styles.css">
-  <script defer src="../../site-config.js"></script>
+  <title>Abriendo BYS — BB1 Studio</title>
+  <meta name="description" content="Redirigiendo a la app en vivo de BYS.">
+  <meta name="theme-color" content="#0f1115">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/site-config.js"></script>
   <script>
-    window.location.replace("https://bys.bb1studio.com");
+    (function(){
+      var target = (window.BB1StudioConfig && window.BB1StudioConfig.links && window.BB1StudioConfig.links.bysApp) || "https://bys.bb1studio.com";
+      window.location.replace(target);
+    })();
   </script>
 </head>
 <body>
-  <main class="page-hero">
-    <div class="container center">
-      <p class="eyebrow">BYS</p>
-      <h1>Redirigiendo a la app en vivo…</h1>
-      <p class="muted"><a href="https://bys.bb1studio.com">https://bys.bb1studio.com</a></p>
+  
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="/es/">
+      <span class="brand-mark">BB1</span>
+      <span>BB1 Studio</span>
+    </a>
+
+    <nav class="main-menu" aria-label="Main">
+      <a href="/es/#products" class="">Productos</a>
+      <a href="/es/before-you-send/" class="active">Lanzamiento actual</a>
+      <a href="/es/before-you-send/access/" class="">Acceso</a>
+      <a href="/es/company/" class="">Empresa</a>
+    </nav>
+
+    <div class="menu-side">
+      <div class="lang-group" aria-label="Languages">
+        <a class="lang-pill lang-en" href="/before-you-send/" hreflang="en" lang="en"><span class="lang-dot"></span>English</a><a class="lang-pill lang-it" href="/it/before-you-send/" hreflang="it" lang="it"><span class="lang-dot"></span>Italiano</a><a class="lang-pill lang-es current" href="/es/before-you-send/" hreflang="es" lang="es"><span class="lang-dot"></span>Español</a>
+      </div>
+      <a class="btn btn-small btn-primary app-link app-launch" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Abrir BYS</a>
     </div>
+  </div>
+</header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container narrow center">
+        <span class="eyebrow">BYS</span>
+        <h1>Abriendo Before You Send…</h1>
+        <p class="lead">Si la app en vivo no se abre automáticamente, usa el botón de abajo.</p>
+        <div class="hero-actions center-actions">
+          <a class="btn btn-primary app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer">Abrir BYS</a>
+          <a class="btn btn-ghost" href="/es/">BB1 Studio</a>
+        </div>
+      </div>
+    </section>
   </main>
-</body>
-</html>
+  
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="brand footer-brand">
+        <span class="brand-mark">BB1</span>
+        <span>BB1 Studio</span>
+      </div>
+      <p class="footer-meta">BB1 Studio es la marca paraguas. Before You Send es el lanzamiento actual en vivo.</p>
+      <p class="footer-meta"><strong data-company-name>Guanabomalu SL</strong><br>
+      CIF: <span data-company-cif>B38413647</span><br>
+      <span data-company-address-1>Camino las Higueras, 7 - Arona</span><br>
+      <span data-company-address-2>Tenerife - Canarias - Spain</span></p>
+    </div>
+    <div>
+      <div class="footer-links">
+        <a href="/es/">BB1 Studio</a>
+        <a href="/es/before-you-send/">Before You Send</a>
+        <a href="/es/before-you-send/pricing/">Ver precios</a>
+        <a href="/es/before-you-send/faq/">FAQ</a>
+        <a href="/es/privacy.html">Privacidad</a>
+        <a href="/es/terms.html">Términos</a>
+      </div>
+      <div class="divider"></div>
+      <p class="footer-meta">Los enlaces a las apps se abren en una nueva ventana.</p>
+    </div>
+  </div>
+</footer>
+
+</body></html>

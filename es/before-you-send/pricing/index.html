@@ -3,70 +3,97 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Estructura de precios</title>
-  <meta name="description" content="El sitio está listo para el lanzamiento comercial. Los precios y enlaces de checkout pueden controlarse desde un único archivo de configuración.">
-  <link rel="stylesheet" href="../../../styles.css">
-  <script defer src="../../../site-config.js"></script>
-  <script defer src="../../../site.js"></script>
+  <title>Precios — Before You Send — BB1 Studio</title>
+  <meta name="description" content="Precios de lanzamiento para Before You Send en BB1 Studio.">
+  <meta name="theme-color" content="#0f1115">
+  <link rel="canonical" href="https://bb1studio.com/es/before-you-send/pricing/">
+  <link rel="alternate" hreflang="en" href="https://bb1studio.com/before-you-send/pricing/">
+  <link rel="alternate" hreflang="it" href="https://bb1studio.com/it/before-you-send/pricing/">
+  <link rel="alternate" hreflang="es" href="https://bb1studio.com/es/before-you-send/pricing/">
+  <link rel="alternate" hreflang="x-default" href="https://bb1studio.com/before-you-send/pricing/">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/site-config.js"></script>
+  <script defer src="/site.js"></script>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container nav">
+  <div class="container header-bar">
     <a class="brand" href="/es/">
       <span class="brand-mark">BB1</span>
       <span>BB1 Studio</span>
     </a>
-    <nav class="nav-links">
-      <a href="/es/before-you-send/">Productos</a><a href="/es/before-you-send/pricing/" class="active">Precios</a><a href="/es/before-you-send/access/">Acceso</a><a href="/es/before-you-send/faq/">FAQ</a>
+
+    <nav class="main-menu" aria-label="Main">
+      <a href="/es/#products" class="">Productos</a>
+      <a href="/es/before-you-send/" class="active">Lanzamiento actual</a>
+      <a href="/es/before-you-send/access/" class="">Acceso</a>
+      <a href="/es/company/" class="">Empresa</a>
     </nav>
-    <div class="lang-switch">
-      <a href="/">EN</a><a href="/it/">IT</a><a href="/es/" class="current">ES</a>
+
+    <div class="menu-side">
+      <div class="lang-group" aria-label="Languages">
+        <a class="lang-pill lang-en" href="/before-you-send/pricing/" hreflang="en" lang="en"><span class="lang-dot"></span>English</a><a class="lang-pill lang-it" href="/it/before-you-send/pricing/" hreflang="it" lang="it"><span class="lang-dot"></span>Italiano</a><a class="lang-pill lang-es current" href="/es/before-you-send/pricing/" hreflang="es" lang="es"><span class="lang-dot"></span>Español</a>
+      </div>
+      <a class="btn btn-small btn-primary app-link app-launch" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Abrir BYS</a>
     </div>
   </div>
 </header>
 
 <main>
   <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumbs">Inicio / Before You Send / Estructura de precios</div>
-      <h1>Estructura de precios</h1>
-      <p class="lead">El sitio está listo para el lanzamiento comercial. Los precios y enlaces de checkout pueden controlarse desde un único archivo de configuración.</p>
+    <div class="container narrow">
+      <div class="breadcrumbs"><a href="/es/">BB1 Studio</a> / <a href="/es/before-you-send/">Before You Send</a> / Precios</div>
+      <span class="eyebrow">Precio de lanzamiento</span>
+      <h1>Precios</h1>
+      <p class="lead">El precio de lanzamiento ya está definido. El acceso mensual y anual pueden activarse más adelante sin reconstruir la estructura del sitio.</p>
     </div>
   </section>
+
   <section class="section">
-    <div class="container plan-grid">
-      <article class="plan">
+    <div class="container pricing-grid">
+      <article class="plan-card" data-plan-card="monthly">
         <span class="badge">Acceso mensual</span>
-        <div class="price" data-price-monthly>Precio a consultar</div>
-        <small>Ideal para usuarios early access que quieren flexibilidad.</small>
+        <div class="price" data-price-monthly></div>
+        <small>Acceso flexible para uso individual o uso continuo más ligero.</small>
         <ul class="list">
-          <li>Before You Send</li>
+          <li>Acceso en vivo a Before You Send</li>
           <li>Decode + SendScore</li>
-          <li>Multilingual app flow</li>
+          <li>Experiencia en inglés, italiano y español</li>
         </ul>
-        <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/es/before-you-send/access/" data-plan="monthly">Empezar mensual</a>
-          <a class="btn ghost" href="/es/bys/" data-bys-link>Abrir la app en vivo</a>
+        <div class="hero-actions compact-actions">
+          <a class="btn btn-primary" href="/es/before-you-send/access/?plan=monthly" data-plan="monthly" data-plan-role="choose">Elegir mensual</a>
+          <a class="btn btn-ghost app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Abrir BYS</a>
         </div>
       </article>
-      <article class="plan featured">
+
+      <article class="plan-card featured" data-plan-card="annual">
         <span class="badge">Acceso anual</span>
-        <div class="price" data-price-annual>Precio a consultar</div>
-        <small>Más adecuado para equipos o uso continuo cuando el precio anual quede confirmado.</small>
+        <div class="price" data-price-annual></div>
+        <small>La mejor opción si esperas un uso estable durante el año.</small>
+        <p class="muted stat-line" data-effective-monthly></p>
+        <p class="muted stat-line" data-annual-savings></p>
         <ul class="list">
-          <li>Before You Send</li>
+          <li>Acceso en vivo a Before You Send</li>
           <li>Decode + SendScore</li>
-          <li>Commercial rollout ready</li>
+          <li>Experiencia en inglés, italiano y español</li>
         </ul>
-        <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/es/before-you-send/access/" data-plan="annual">Empezar anual</a>
-          <a class="btn ghost" href="/es/before-you-send/access/">Configuración de acceso</a>
+        <div class="hero-actions compact-actions">
+          <a class="btn btn-primary" href="/es/before-you-send/access/?plan=annual" data-plan="annual" data-plan-role="choose">Elegir anual</a>
+          <a class="btn btn-secondary" href="/es/before-you-send/access/">Ver acceso</a>
         </div>
       </article>
     </div>
-    <div class="container" style="margin-top:20px">
-      <div class="notice">Si los enlaces de Stripe siguen vacíos, los botones seguirán enviando al usuario a la página de acceso en lugar de a un checkout activo.</div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article class="feature-card">
+        <h3>Por qué este precio de lanzamiento</h3>
+        <p>Entrada de baja fricción, posicionamiento premium y una ventaja anual clara.</p>
+        <p class="muted">El plan anual crea un ahorro visible sin empujar demasiado abajo la opción mensual.</p>
+      </article>
+      <article class="notice" data-checkout-note></article>
     </div>
   </section>
 </main>
@@ -74,26 +101,29 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="brand" style="margin-bottom:12px">
+      <div class="brand footer-brand">
         <span class="brand-mark">BB1</span>
         <span>BB1 Studio</span>
       </div>
-      <p class="footer-meta">BB1 Studio es la marca paraguas. Before You Send es el primer producto en vivo.</p>
-      
-<p class="footer-meta">
-  <strong data-company-name>Guanabomalu SL</strong><br>
-  CIF: <span data-company-cif>B38413647</span><br>
-  <span data-company-address-1>Camino las Higueras, 7 - Arona</span><br>
-  <span data-company-address-2>Tenerife - Canarias - Spain</span>
-</p>
-
+      <p class="footer-meta">BB1 Studio es la marca paraguas. Before You Send es el lanzamiento actual en vivo.</p>
+      <p class="footer-meta"><strong data-company-name>Guanabomalu SL</strong><br>
+      CIF: <span data-company-cif>B38413647</span><br>
+      <span data-company-address-1>Camino las Higueras, 7 - Arona</span><br>
+      <span data-company-address-2>Tenerife - Canarias - Spain</span></p>
     </div>
     <div>
-      <div class="footer-links"><a href="/es/privacy.html">Privacidad</a> <a href="/es/terms.html">Términos</a> <a href="/es/before-you-send/">Before You Send</a> <a href="/es/before-you-send/pricing/">Precios</a></div>
+      <div class="footer-links">
+        <a href="/es/">BB1 Studio</a>
+        <a href="/es/before-you-send/">Before You Send</a>
+        <a href="/es/before-you-send/pricing/">Ver precios</a>
+        <a href="/es/before-you-send/faq/">FAQ</a>
+        <a href="/es/privacy.html">Privacidad</a>
+        <a href="/es/terms.html">Términos</a>
+      </div>
       <div class="divider"></div>
-      <p class="footer-meta">Email de contacto: <a data-contact-mail href="#">Configúralo en site-config.js</a></p>
-      <p class="footer-meta">Email de soporte: <a data-support-mail href="#">Configúralo en site-config.js</a></p>
+      <p class="footer-meta">Los enlaces a las apps se abren en una nueva ventana.</p>
     </div>
   </div>
 </footer>
+
 </body></html>

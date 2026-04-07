@@ -3,67 +3,104 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Setup accesso</title>
-  <meta name="description" content="Questa pagina crea un ponte pulito tra scoperta del prodotto e accesso commerciale.">
-  <link rel="stylesheet" href="../../../styles.css">
-  <script defer src="../../../site-config.js"></script>
-  <script defer src="../../../site.js"></script>
+  <title>Accesso — Before You Send — BB1 Studio</title>
+  <meta name="description" content="Percorso di accesso per il lancio attuale live dentro BB1 Studio.">
+  <meta name="theme-color" content="#0f1115">
+  <link rel="canonical" href="https://bb1studio.com/it/before-you-send/access/">
+  <link rel="alternate" hreflang="en" href="https://bb1studio.com/before-you-send/access/">
+  <link rel="alternate" hreflang="it" href="https://bb1studio.com/it/before-you-send/access/">
+  <link rel="alternate" hreflang="es" href="https://bb1studio.com/es/before-you-send/access/">
+  <link rel="alternate" hreflang="x-default" href="https://bb1studio.com/before-you-send/access/">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/site-config.js"></script>
+  <script defer src="/site.js"></script>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container nav">
+  <div class="container header-bar">
     <a class="brand" href="/it/">
       <span class="brand-mark">BB1</span>
       <span>BB1 Studio</span>
     </a>
-    <nav class="nav-links">
-      <a href="/it/before-you-send/">Prodotti</a><a href="/it/before-you-send/pricing/">Prezzi</a><a href="/it/before-you-send/access/" class="active">Accesso</a><a href="/it/before-you-send/faq/">FAQ</a>
+
+    <nav class="main-menu" aria-label="Main">
+      <a href="/it/#products" class="">Prodotti</a>
+      <a href="/it/before-you-send/" class="">Lancio attuale</a>
+      <a href="/it/before-you-send/access/" class="active">Accesso</a>
+      <a href="/it/company/" class="">Azienda</a>
     </nav>
-    <div class="lang-switch">
-      <a href="/">EN</a><a href="/it/" class="current">IT</a><a href="/es/">ES</a>
+
+    <div class="menu-side">
+      <div class="lang-group" aria-label="Languages">
+        <a class="lang-pill lang-en" href="/before-you-send/access/" hreflang="en" lang="en"><span class="lang-dot"></span>English</a><a class="lang-pill lang-it current" href="/it/before-you-send/access/" hreflang="it" lang="it"><span class="lang-dot"></span>Italiano</a><a class="lang-pill lang-es" href="/es/before-you-send/access/" hreflang="es" lang="es"><span class="lang-dot"></span>Español</a>
+      </div>
+      <a class="btn btn-small btn-primary app-link app-launch" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri BYS</a>
     </div>
   </div>
 </header>
 
 <main>
   <section class="page-hero">
-    <div class="container">
-      <div class="breadcrumbs">Home / Before You Send / Setup accesso</div>
-      <h1>Setup accesso</h1>
-      <p class="lead">Questa pagina crea un ponte pulito tra scoperta del prodotto e accesso commerciale.</p>
+    <div class="container narrow">
+      <div class="breadcrumbs"><a href="/it/">BB1 Studio</a> / <a href="/it/before-you-send/">Before You Send</a> / Accesso</div>
+      <span class="eyebrow">Percorso di accesso</span>
+      <h1>Accesso</h1>
+      <p class="lead">Usa questa pagina come ponte pulito tra il prezzo di lancio e l’app live.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="/it/bys/" data-bys-link>Apri l’app live</a>
-        <a class="btn ghost" href="/it/before-you-send/pricing/">Struttura prezzi</a>
+        <a class="btn btn-primary" href="/it/before-you-send/pricing/">Vedi prezzi</a>
+        <a class="btn btn-ghost app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri BYS</a>
       </div>
     </div>
   </section>
+
   <section class="section">
-    <div class="container grid two">
-      <article class="card"><h3>App live</h3><p>Il prodotto gira già sul suo dominio canonico.</p></article><article class="card"><h3>Modalità commerciale</h3><p>Quando incolli i link Stripe in site-config.js, i pulsanti diventano live senza cambiare ogni pagina.</p></article><article class="card"><h3>Fallback manuale</h3><p>Se il checkout non è ancora live, tieni questa pagina come punto di ingresso controllato.</p></article>
+    <div class="container plan-route">
+      <span class="badge">Piano selezionato</span>
+      <h2>Piano selezionato: <span data-selected-plan-label></span></h2>
+      <p class="lead plan-route-price" data-selected-plan-price></p>
+      <p class="muted" data-selected-plan-note></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#" data-access-checkout-btn style="display:none"></a>
+        <a class="btn btn-secondary app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri ora l’app live</a>
+        <a class="btn btn-ghost" href="/it/before-you-send/pricing/">Rivedi prezzi</a>
+      </div>
     </div>
   </section>
+
   <section class="section">
-    <div class="container plan-grid">
-      <article class="plan">
+    <div class="container grid grid-3">
+      <article class="feature-card"><h3>1. Capisci il prodotto</h3><p>Parti dalla pagina del lancio attuale e vedi cosa fa Before You Send.</p></article>
+      <article class="feature-card"><h3>2. Rivedi il prezzo di lancio</h3><p>Le opzioni mensile e annuale sono già definite per il lancio.</p></article>
+      <article class="feature-card"><h3>3. Apri l’app live</h3><p>Quando sei pronto, apri BYS in una nuova finestra e usa il prodotto.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid grid-2">
+      <article class="plan-card" data-plan-card="monthly">
         <span class="badge">Accesso mensile</span>
-        <div class="price" data-price-monthly>Prezzo su richiesta</div>
-        <small>Ideale per utenti early access che vogliono flessibilità.</small>
-        <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/it/before-you-send/pricing/" data-plan="monthly">Attiva mensile</a>
-        </div>
+        <div class="price-inline-strong" data-price-monthly></div>
+        <p class="muted">Accesso flessibile per uso individuale o uso continuativo più leggero.</p>
       </article>
-      <article class="plan">
+      <article class="plan-card featured" data-plan-card="annual">
         <span class="badge">Accesso annuale</span>
-        <div class="price" data-price-annual>Prezzo su richiesta</div>
-        <small>Più adatto per team o uso continuativo quando il prezzo annuale è confermato.</small>
-        <div class="hero-actions" style="margin-top:18px">
-          <a class="btn primary" href="/it/before-you-send/pricing/" data-plan="annual">Attiva annuale</a>
-        </div>
+        <div class="price-inline-strong" data-price-annual></div>
+        <p class="muted">La scelta migliore se prevedi un uso stabile durante l’anno.</p>
       </article>
     </div>
-    <div class="container" style="margin-top:20px">
-      <div class="notice" data-contact-required>Se il checkout non è ancora pronto, usa un’email di contatto o mantieni questa pagina come unico handoff di accesso.</div>
+  </section>
+
+  <section class="section">
+    <div class="container cta-band">
+      <div>
+        <h2>L’app è live ora. La fatturazione può essere collegata più avanti.</h2>
+        <p class="muted">Così BB1 Studio resta pulito: il sito studio fa da contenitore e il dominio app resta il runtime del prodotto.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri BYS</a>
+        <a class="btn btn-secondary" href="/it/before-you-send/pricing/">Vedi prezzi</a>
+      </div>
     </div>
   </section>
 </main>
@@ -71,26 +108,29 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="brand" style="margin-bottom:12px">
+      <div class="brand footer-brand">
         <span class="brand-mark">BB1</span>
         <span>BB1 Studio</span>
       </div>
-      <p class="footer-meta">BB1 Studio è il brand ombrello. Before You Send è il primo prodotto live.</p>
-      
-<p class="footer-meta">
-  <strong data-company-name>Guanabomalu SL</strong><br>
-  CIF: <span data-company-cif>B38413647</span><br>
-  <span data-company-address-1>Camino las Higueras, 7 - Arona</span><br>
-  <span data-company-address-2>Tenerife - Canarias - Spain</span>
-</p>
-
+      <p class="footer-meta">BB1 Studio è il brand ombrello. Before You Send è il lancio attuale live.</p>
+      <p class="footer-meta"><strong data-company-name>Guanabomalu SL</strong><br>
+      CIF: <span data-company-cif>B38413647</span><br>
+      <span data-company-address-1>Camino las Higueras, 7 - Arona</span><br>
+      <span data-company-address-2>Tenerife - Canarias - Spain</span></p>
     </div>
     <div>
-      <div class="footer-links"><a href="/it/privacy.html">Privacy</a> <a href="/it/terms.html">Termini</a> <a href="/it/before-you-send/">Before You Send</a> <a href="/it/before-you-send/pricing/">Prezzi</a></div>
+      <div class="footer-links">
+        <a href="/it/">BB1 Studio</a>
+        <a href="/it/before-you-send/">Before You Send</a>
+        <a href="/it/before-you-send/pricing/">Vedi prezzi</a>
+        <a href="/it/before-you-send/faq/">FAQ</a>
+        <a href="/it/privacy.html">Privacy</a>
+        <a href="/it/terms.html">Termini</a>
+      </div>
       <div class="divider"></div>
-      <p class="footer-meta">Email contatto: <a data-contact-mail href="#">Imposta in site-config.js</a></p>
-      <p class="footer-meta">Email supporto: <a data-support-mail href="#">Imposta in site-config.js</a></p>
+      <p class="footer-meta">I link alle app si aprono in una nuova finestra.</p>
     </div>
   </div>
 </footer>
+
 </body></html>

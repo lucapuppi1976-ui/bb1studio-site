@@ -4,24 +4,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BB1 Studio</title>
-  <meta name="description" content="BB1 Studio costruisce piccoli strumenti digitali premium. Before You Send è il primo prodotto live.">
-  <link rel="stylesheet" href="../styles.css">
-  <script defer src="../site-config.js"></script>
-  <script defer src="../site.js"></script>
+  <meta name="description" content="BB1 Studio crea prodotti digitali premium. Before You Send è il lancio attuale live.">
+  <meta name="theme-color" content="#0f1115">
+  <link rel="canonical" href="https://bb1studio.com/it/">
+  <link rel="alternate" hreflang="en" href="https://bb1studio.com/">
+  <link rel="alternate" hreflang="it" href="https://bb1studio.com/it/">
+  <link rel="alternate" hreflang="es" href="https://bb1studio.com/es/">
+  <link rel="alternate" hreflang="x-default" href="https://bb1studio.com/">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/site-config.js"></script>
+  <script defer src="/site.js"></script>
 </head>
 <body>
 
 <header class="site-header">
-  <div class="container nav">
+  <div class="container header-bar">
     <a class="brand" href="/it/">
       <span class="brand-mark">BB1</span>
       <span>BB1 Studio</span>
     </a>
-    <nav class="nav-links">
-      <a href="/it/before-you-send/">Prodotti</a><a href="/it/before-you-send/pricing/">Prezzi</a><a href="/it/before-you-send/access/">Accesso</a><a href="/it/before-you-send/faq/">FAQ</a>
+
+    <nav class="main-menu" aria-label="Main">
+      <a href="/it/#products" class="active">Prodotti</a>
+      <a href="/it/before-you-send/" class="">Lancio attuale</a>
+      <a href="/it/before-you-send/access/" class="">Accesso</a>
+      <a href="/it/company/" class="">Azienda</a>
     </nav>
-    <div class="lang-switch">
-      <a href="/">EN</a><a href="/it/" class="current">IT</a><a href="/es/">ES</a>
+
+    <div class="menu-side">
+      <div class="lang-group" aria-label="Languages">
+        <a class="lang-pill lang-en" href="/" hreflang="en" lang="en"><span class="lang-dot"></span>English</a><a class="lang-pill lang-it current" href="/it/" hreflang="it" lang="it"><span class="lang-dot"></span>Italiano</a><a class="lang-pill lang-es" href="/es/" hreflang="es" lang="es"><span class="lang-dot"></span>Español</a>
+      </div>
+      <a class="btn btn-small btn-primary app-link app-launch" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri BYS</a>
     </div>
   </div>
 </header>
@@ -31,71 +45,87 @@
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Prodotti digitali indipendenti</span>
-        <h1>Strumenti premium e piccoli per decisioni più chiare.</h1>
-        <p class="lead">BB1 Studio costruisce prodotti mirati con un’interfaccia calma e un’AI utile. Before You Send è la prima app live dello studio.</p>
+        <h1>Piccoli strumenti premium per decisioni più chiare.</h1>
+        <p class="lead">BB1 Studio crea prodotti digitali focalizzati con interfacce calme e AI utile. Before You Send è il lancio attuale live.</p>
+        
+<div class="language-ribbon" aria-label="Disponibile in">
+  <span class="ribbon-label">Disponibile in</span>
+  <span class="lang-chip lang-en"><span class="lang-dot"></span>English</span>
+  <span class="lang-chip lang-it"><span class="lang-dot"></span>Italiano</span>
+  <span class="lang-chip lang-es"><span class="lang-dot"></span>Español</span>
+</div>
+
         <div class="hero-actions">
-          <a class="btn primary" href="/it/before-you-send/">Esplora Before You Send</a>
-          <a class="btn ghost" href="/it/bys/" data-bys-link>Apri l’app live</a>
+          <a class="btn btn-primary" href="/it/before-you-send/">Vedi il lancio attuale</a>
+          <a class="btn btn-ghost app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri BYS</a>
         </div>
       </div>
-      <div class="hero-card">
+      <aside class="hero-card">
         <span class="badge">Live ora</span>
         <h3>Before You Send</h3>
-        <p>Before You Send aiuta a decodificare il tono e a controllare come arriva un messaggio prima di inviarlo.</p>
-        <div class="kpis">
-          <div class="kpi"><strong>01</strong><span>Prodotto live</span></div><div class="kpi"><strong>3</strong><span>Lingue sul sito studio</span></div><div class="kpi"><strong>1</strong><span>Percorso accesso pulito</span></div>
+        <p>Decodifica messaggi ambigui e controlla come può suonare una risposta prima di inviarla.</p>
+        <div class="price-pills">
+          <span class="price-pill"><strong data-price-monthly></strong></span>
+          <span class="price-pill"><strong data-price-annual></strong></span>
         </div>
-      </div>
+        <div class="kpis">
+          <div class="kpi"><strong>01</strong><span>Before You Send</span></div>
+          <div class="kpi"><strong>3</strong><span>Disponibile in</span></div>
+          <div class="kpi"><strong data-price-monthly-plain></strong><span>Prezzo lancio</span></div>
+        </div>
+      </aside>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="products">
     <div class="container">
       <div class="section-head">
         <h2>Prodotti</h2>
-        <p class="muted">Un prodotto live, altre app mirate in arrivo.</p>
+        <p class="muted">Un lancio live ora, più app focalizzate nel tempo.</p>
       </div>
-      <div class="grid products">
+      <div class="grid grid-3">
         <article class="card">
-          <span class="badge">Live</span>
+          <span class="badge">Live ora</span>
           <h3>Before You Send</h3>
-          <p>Decodifica messaggi ambigui. Controlla come suona una risposta. Progettato per la chiarezza, non per il rumore.</p>
-          <div class="hero-actions" style="margin-top:18px">
-            <a class="btn primary" href="/it/before-you-send/">Apri la pagina prodotto</a>
-            <a class="btn ghost" href="/it/bys/" data-bys-link>Apri l’app live</a>
+          <p>Uno strumento di comunicazione live per decodificare il tono e controllare le risposte prima dell’invio.</p>
+          <div class="hero-actions compact-actions">
+            <a class="btn btn-primary" href="/it/before-you-send/">Vedi il lancio attuale</a>
+            <a class="btn btn-ghost app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri BYS</a>
           </div>
         </article>
         <article class="card">
-          <span class="badge">Più avanti</span>
-          <h3>Prossima app</h3>
-          <p>Spazio riservato al prossimo prodotto BB1 Studio.</p>
+          <span class="badge">Prezzo lancio</span>
+          <h3>Prezzo lancio</h3>
+          <p>Prezzo mensile e annuale sono già strutturati e possono essere attivati più avanti senza ricostruire il sito.</p>
+          <div class="price-row-inline">
+            <span><strong data-price-monthly></strong></span>
+            <span><strong data-price-annual></strong></span>
+          </div>
+          <div class="hero-actions compact-actions">
+            <a class="btn btn-secondary" href="/it/before-you-send/pricing/">Vedi prezzi</a>
+          </div>
         </article>
         <article class="card">
-          <span class="badge">Struttura prezzi</span>
-          <h3>Accesso mensile</h3>
-          <p>Il sito è pronto per il lancio commerciale. Prezzi e link checkout possono essere controllati da un solo file di configurazione.</p>
-          <a class="btn ghost" href="/it/before-you-send/pricing/">Vedi la struttura prezzi</a>
+          <span class="badge">Azienda</span>
+          <h3>Studio e azienda</h3>
+          <p>Il brand dello studio e la struttura legale dell’azienda sono già pronti per il rollout commerciale.</p>
+          <div class="hero-actions compact-actions">
+            <a class="btn btn-secondary" href="/it/company/">Vedi azienda</a>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Come lavora lo studio</h2>
-        <p class="muted">Costruiamo software piccoli e intenzionali. Meno dashboard. Più segnale.</p>
+    <div class="container cta-band">
+      <div>
+        <h2>Uno studio, un lancio live e un percorso pulito verso app future.</h2>
+        <p class="muted">Usa BB1 Studio come contenitore. Apri ogni app in una finestra separata quando serve.</p>
       </div>
-      <div class="grid two">
-        <div class="feature"><h3>Ambito focalizzato</h3><p>Ogni prodotto risolve un problema ad alto valore senza diventare una suite gonfia.</p></div><div class="feature"><h3>Interfaccia calma</h3><p>Il design resta silenzioso, così il risultato resta centrale.</p></div><div class="feature"><h3>AI utile</h3><p>L’AI serve a ridurre attrito, non a creare spettacolo.</p></div>
-      </div>
-      <div class="cta-band">
-        <h3 style="margin-top:0">Apri il prodotto o prepara il lancio commerciale</h3>
-        <p class="muted">L’app pubblica vive già sul suo dominio. La struttura del sito è pronta per prezzi, accesso e prodotti futuri.</p>
-        <div class="hero-actions" style="margin-top:20px">
-          <a class="btn primary" href="/it/before-you-send/pricing/">Vedi la struttura prezzi</a>
-          <a class="btn ghost" href="/it/bys/" data-bys-link>Vai alla scorciatoia /bys</a>
-        </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/it/before-you-send/access/">Vedi accesso</a>
+        <a class="btn btn-ghost app-link" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer" data-app-link="bys">Apri BYS</a>
       </div>
     </div>
   </section>
@@ -104,26 +134,29 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
-      <div class="brand" style="margin-bottom:12px">
+      <div class="brand footer-brand">
         <span class="brand-mark">BB1</span>
         <span>BB1 Studio</span>
       </div>
-      <p class="footer-meta">BB1 Studio è il brand ombrello. Before You Send è il primo prodotto live.</p>
-      
-<p class="footer-meta">
-  <strong data-company-name>Guanabomalu SL</strong><br>
-  CIF: <span data-company-cif>B38413647</span><br>
-  <span data-company-address-1>Camino las Higueras, 7 - Arona</span><br>
-  <span data-company-address-2>Tenerife - Canarias - Spain</span>
-</p>
-
+      <p class="footer-meta">BB1 Studio è il brand ombrello. Before You Send è il lancio attuale live.</p>
+      <p class="footer-meta"><strong data-company-name>Guanabomalu SL</strong><br>
+      CIF: <span data-company-cif>B38413647</span><br>
+      <span data-company-address-1>Camino las Higueras, 7 - Arona</span><br>
+      <span data-company-address-2>Tenerife - Canarias - Spain</span></p>
     </div>
     <div>
-      <div class="footer-links"><a href="/it/privacy.html">Privacy</a> <a href="/it/terms.html">Termini</a> <a href="/it/before-you-send/">Before You Send</a> <a href="/it/before-you-send/pricing/">Prezzi</a></div>
+      <div class="footer-links">
+        <a href="/it/">BB1 Studio</a>
+        <a href="/it/before-you-send/">Before You Send</a>
+        <a href="/it/before-you-send/pricing/">Vedi prezzi</a>
+        <a href="/it/before-you-send/faq/">FAQ</a>
+        <a href="/it/privacy.html">Privacy</a>
+        <a href="/it/terms.html">Termini</a>
+      </div>
       <div class="divider"></div>
-      <p class="footer-meta">Email contatto: <a data-contact-mail href="#">Imposta in site-config.js</a></p>
-      <p class="footer-meta">Email supporto: <a data-support-mail href="#">Imposta in site-config.js</a></p>
+      <p class="footer-meta">I link alle app si aprono in una nuova finestra.</p>
     </div>
   </div>
 </footer>
+
 </body></html>
