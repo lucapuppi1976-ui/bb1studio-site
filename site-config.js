@@ -8,8 +8,9 @@ window.BB1StudioConfig = {
   links: {
     studioHome: "https://bb1studio.com",
     bysApp: "https://bys.bb1studio.com",
-    monthlyCheckout: "",
-    annualCheckout: ""
+    monthlyCheckout: "https://buy.stripe.com/test_8x26oG9hXc5I3XE8Zt2wU00",
+    annualCheckout: "https://buy.stripe.com/test_8x228q3XD4Dg79Q0sX2wU01",
+    customerPortal: ""
   },
   pricing: {
     currencySymbol: "€",
@@ -17,5 +18,8 @@ window.BB1StudioConfig = {
     annualAmount: 96,
     status: "launch_priced",
     defaultPlan: "annual"
+  },
+  billing: {
+    mode: "test"
   }
 };
