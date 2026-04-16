@@ -115,17 +115,13 @@
     });
   }
 
-  function setAmonestacionDemoLinks() {
-    const products = cfg.products || {};
-    const am = products.amonestacionAuditada || {};
-    const demoUrl = typeof am.demoFormUrl === "string" ? am.demoFormUrl.trim() : "";
-    const demoTarget = typeof am.demoFormTarget === "string" ? am.demoFormTarget.trim() : "_blank";
-
-    document.querySelectorAll("[data-am-demo-link]").forEach((el) => {
-      const fallback = el.getAttribute("data-fallback-href") || "#demo-form";
-      if (demoUrl) {
-        el.setAttribute("href", demoUrl);
-        if (demoTarget === "_blank") {
+  function applyConfiguredLink(selector, url, targetDefault) {
+    document.querySelectorAll(selector).forEach((el) => {
+      const fallback = el.getAttribute("data-fallback-href") || "#";
+      const linkTarget = el.getAttribute("data-link-target") || targetDefault || "_self";
+      if (url) {
+        el.setAttribute("href", url);
+        if (linkTarget === "_blank") {
           el.setAttribute("target", "_blank");
           el.setAttribute("rel", "noopener noreferrer");
         } else {
@@ -138,6 +134,21 @@
         el.removeAttribute("rel");
       }
     });
+  }
+
+  function setAmonestacionProductLinks() {
+    const products = cfg.products || {};
+    const am = products.amonestacionAuditada || {};
+    const demoUrl = typeof am.demoFormUrl === "string" ? am.demoFormUrl.trim() : "";
+    const accessUrl = typeof am.accessRequestUrl === "string" ? am.accessRequestUrl.trim() : "";
+    const contactUrl = typeof am.contactUrl === "string" ? am.contactUrl.trim() : "";
+    const demoTarget = typeof am.demoFormTarget === "string" ? am.demoFormTarget.trim() : "_self";
+    const accessTarget = typeof am.accessRequestTarget === "string" ? am.accessRequestTarget.trim() : "_self";
+    const contactTarget = typeof am.contactTarget === "string" ? am.contactTarget.trim() : "_self";
+
+    applyConfiguredLink("[data-am-demo-link]", demoUrl, demoTarget);
+    applyConfiguredLink("[data-am-access-link]", accessUrl, accessTarget);
+    applyConfiguredLink("[data-am-contact-link]", contactUrl, contactTarget);
   }
 
   function setPrices() {
@@ -218,7 +229,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     setAppLinks();
     setPlanLinks();
-    setAmonestacionDemoLinks();
+    setAmonestacionProductLinks();
     setPrices();
     setCheckoutNote();
     setAccessRoute();
