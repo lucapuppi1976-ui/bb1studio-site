@@ -21,6 +21,10 @@ window.BB1StudioConfig = {
   },
   products: {
     amonestacionAuditada: {
+      // Pega aquí SOLO el enlace público/responder de Google Forms.
+      // Ejemplo correcto: https://docs.google.com/forms/d/e/.../viewform
+      // Si lo dejas vacío, los botones "Solicitar demo" seguirán apuntando
+      // al bloque #demo-form de la página, sin romper la navegación.
       demoFormUrl: "",
       demoFormTarget: "_blank"
     }
