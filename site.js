@@ -115,13 +115,17 @@
     });
   }
 
-  function applyConfiguredLink(selector, url, targetDefault) {
-    document.querySelectorAll(selector).forEach((el) => {
-      const fallback = el.getAttribute("data-fallback-href") || "#";
-      const linkTarget = el.getAttribute("data-link-target") || targetDefault || "_self";
-      if (url) {
-        el.setAttribute("href", url);
-        if (linkTarget === "_blank") {
+  function setAmonestacionDemoLinks() {
+    const products = cfg.products || {};
+    const am = products.amonestacionAuditada || {};
+    const demoUrl = typeof am.demoFormUrl === "string" ? am.demoFormUrl.trim() : "";
+    const demoTarget = typeof am.demoFormTarget === "string" ? am.demoFormTarget.trim() : "_blank";
+
+    document.querySelectorAll("[data-am-demo-link]").forEach((el) => {
+      const fallback = el.getAttribute("data-fallback-href") || "#demo-form";
+      if (demoUrl) {
+        el.setAttribute("href", demoUrl);
+        if (demoTarget === "_blank") {
           el.setAttribute("target", "_blank");
           el.setAttribute("rel", "noopener noreferrer");
         } else {
@@ -136,19 +140,64 @@
     });
   }
 
-  function setAmonestacionProductLinks() {
+
+
+  function setAmonestacionAccessRequestLinks() {
     const products = cfg.products || {};
     const am = products.amonestacionAuditada || {};
-    const demoUrl = typeof am.demoFormUrl === "string" ? am.demoFormUrl.trim() : "";
-    const accessUrl = typeof am.accessRequestUrl === "string" ? am.accessRequestUrl.trim() : "";
+    const accessUrl = typeof am.accessRequestFormUrl === "string" ? am.accessRequestFormUrl.trim() : "";
+    const accessTarget = typeof am.accessRequestFormTarget === "string" ? am.accessRequestFormTarget.trim() : "_blank";
+
+    document.querySelectorAll("[data-am-access-request-link]").forEach((el) => {
+      const fallback = el.getAttribute("data-fallback-href") || "#campos";
+      if (accessUrl) {
+        el.setAttribute("href", accessUrl);
+        if (accessTarget === "_blank") {
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener noreferrer");
+        } else {
+          el.removeAttribute("target");
+          el.removeAttribute("rel");
+        }
+      } else {
+        el.setAttribute("href", fallback);
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+      }
+    });
+  }
+
+  function setAmonestacionAccessPageLinks() {
+    const products = cfg.products || {};
+    const am = products.amonestacionAuditada || {};
+    const pageUrl = typeof am.accessRequestPageUrl === "string" ? am.accessRequestPageUrl.trim() : "";
+
+    document.querySelectorAll("[data-am-access-page-link]").forEach((el) => {
+      const fallback = el.getAttribute("data-fallback-href") || "/amonestacion-auditada-hosteleria-canarias/acceso/";
+      el.setAttribute("href", pageUrl || fallback);
+      el.removeAttribute("target");
+      el.removeAttribute("rel");
+    });
+  }
+
+  function setAmonestacionContactLinks() {
+    const products = cfg.products || {};
+    const am = products.amonestacionAuditada || {};
     const contactUrl = typeof am.contactUrl === "string" ? am.contactUrl.trim() : "";
-    const demoTarget = typeof am.demoFormTarget === "string" ? am.demoFormTarget.trim() : "_self";
-    const accessTarget = typeof am.accessRequestTarget === "string" ? am.accessRequestTarget.trim() : "_self";
     const contactTarget = typeof am.contactTarget === "string" ? am.contactTarget.trim() : "_self";
 
-    applyConfiguredLink("[data-am-demo-link]", demoUrl, demoTarget);
-    applyConfiguredLink("[data-am-access-link]", accessUrl, accessTarget);
-    applyConfiguredLink("[data-am-contact-link]", contactUrl, contactTarget);
+    document.querySelectorAll("[data-am-contact-link]").forEach((el) => {
+      const fallback = el.getAttribute("data-fallback-href") || "/es/company/";
+      const href = contactUrl || fallback;
+      el.setAttribute("href", href);
+      if (contactTarget === "_blank") {
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener noreferrer");
+      } else {
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+      }
+    });
   }
 
   function setPrices() {
@@ -229,7 +278,10 @@
   document.addEventListener("DOMContentLoaded", function () {
     setAppLinks();
     setPlanLinks();
-    setAmonestacionProductLinks();
+    setAmonestacionDemoLinks();
+  setAmonestacionAccessPageLinks();
+    setAmonestacionAccessRequestLinks();
+    setAmonestacionContactLinks();
     setPrices();
     setCheckoutNote();
     setAccessRoute();

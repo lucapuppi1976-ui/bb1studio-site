@@ -22,7 +22,13 @@ window.BB1StudioConfig = {
   products: {
     amonestacionAuditada: {
       demoFormUrl: "/amonestacion-auditada-hosteleria-canarias/demo/",
-      demoFormTarget: "_self"
+      demoFormTarget: "_self",
+      accessRequestPageUrl: "/amonestacion-auditada-hosteleria-canarias/acceso/",
+      accessRequestFormUrl: "",
+      accessRequestFormTarget: "_blank",
+      accessRequestThankYouUrl: "/amonestacion-auditada-hosteleria-canarias/acceso/gracias/",
+      contactUrl: "/es/company/",
+      contactTarget: "_self"
     }
   },
   billing: {
