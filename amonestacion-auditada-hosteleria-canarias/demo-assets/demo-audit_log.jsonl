@@ -1,0 +1,4 @@
+{"created_at": "2026-04-16T11:58:00", "event": "create_case", "case_id": "DEMO_CASE_20260416_000001", "policy_pack_id": "HOSTELERIA_LP", "policy_pack_version": "v1.0.0", "pack_status": "VERIFIED"}
+{"created_at": "2026-04-16T11:59:00", "event": "render", "case_id": "DEMO_CASE_20260416_000001", "policy_pack_id": "HOSTELERIA_LP", "policy_pack_version": "v1.0.0", "pack_status": "VERIFIED", "snapshot_used": false}
+{"created_at": "2026-04-16T12:00:00", "event": "freeze", "case_id": "DEMO_CASE_20260416_000001", "policy_pack_id": "HOSTELERIA_LP", "policy_pack_version": "v1.0.0", "pack_status": "VERIFIED", "snapshot_used": true}
+{"created_at": "2026-04-16T12:01:00", "event": "export_zip", "case_id": "DEMO_CASE_20260416_000001", "policy_pack_id": "HOSTELERIA_LP", "policy_pack_version": "v1.0.0", "pack_status": "VERIFIED", "snapshot_used": true}

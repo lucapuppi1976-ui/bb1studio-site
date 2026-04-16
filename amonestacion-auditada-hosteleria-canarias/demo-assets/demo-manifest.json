@@ -1,0 +1,117 @@
+{
+  "manifest_version": "1.1",
+  "audit_pack_version": "1.1",
+  "exported_at": "2026-04-16T12:01:00",
+  "exported_by": "BB1 Studio demo",
+  "zip_name": "demo-amonestacion-auditada-pack.zip",
+  "app_env": "DEMO",
+  "case_id": "DEMO_CASE_20260416_000001",
+  "company_id": "DEMO_C002",
+  "employee_id": "DEMO_E002",
+  "severity": "GRAVE",
+  "provincia": "Las Palmas",
+  "sector": "HOSTELERIA",
+  "convenio_id": "CONV_HOST_LP_001",
+  "convenio_nombre": "Convenio de hostelería de Las Palmas",
+  "policy_pack_id": "HOSTELERIA_LP",
+  "policy_pack_version": "v1.0.0",
+  "pack_status": "VERIFIED",
+  "runtime_pack_status": "VERIFIED",
+  "snapshot_pack_status": "VERIFIED",
+  "case": {
+    "case_id": "DEMO_CASE_20260416_000001",
+    "company_id": "DEMO_C002",
+    "employee_id": "DEMO_E002",
+    "severity": "GRAVE",
+    "provincia": "Las Palmas",
+    "sector": "HOSTELERIA",
+    "convenio_id": "CONV_HOST_LP_001",
+    "convenio_nombre": "Convenio de hostelería de Las Palmas",
+    "policy_pack_id": "HOSTELERIA_LP",
+    "policy_pack_version": "v1.0.0",
+    "pack_status": "VERIFIED",
+    "runtime_pack_status": "VERIFIED",
+    "snapshot_pack_status": "VERIFIED"
+  },
+  "snapshot": {
+    "file_id": "",
+    "file_url": "https://bb1studio.com/amonestacion-auditada-hosteleria-canarias/demo-assets/demo-snapshot.json",
+    "source_name": "demo-snapshot.json",
+    "zip_path": "02_audit/snapshot.json",
+    "sha256": "851c11c8ca7af662f2a5b637e8dc1d3539ecc70ea5b0ed6871330facfc24641a",
+    "size_bytes": 1159,
+    "snapshot_at": "2026-04-16T12:00:00"
+  },
+  "document": {
+    "doc_id": "",
+    "doc_url": "",
+    "pdf_id": "",
+    "pdf_url": "https://bb1studio.com/amonestacion-auditada-hosteleria-canarias/demo-assets/demo-amonestacion-auditada.pdf",
+    "file_name": "demo-amonestacion-auditada.pdf",
+    "zip_path": "01_documento/demo-amonestacion-auditada.pdf",
+    "sha256": "253b18851b3c7fe2068c7e86c68d29efae7f189c3438890215f6b32265f715f8",
+    "size_bytes": 24847,
+    "snapshot_used": true
+  },
+  "audit": {
+    "zip_path": "02_audit/audit_log.jsonl",
+    "sha256": "84d4a0e608062e9f1265fe6d574efbcf2859fd6c54ff4bac332e089a9fff54bd",
+    "size_bytes": 847,
+    "event_count": 4
+  },
+  "policy_pack": {
+    "policy_pack_id": "HOSTELERIA_LP",
+    "policy_pack_version": "v1.0.0",
+    "pack_status": "VERIFIED",
+    "runtime_pack_status": "VERIFIED",
+    "snapshot_pack_status": "VERIFIED",
+    "base_pack_id": "ES_BASE",
+    "base_pack_version": "v1.0.0",
+    "effective_pack_chain": "ES_BASE v1.0.0 + HOSTELERIA_LP v1.0.0",
+    "sources_count": 2,
+    "rules_count": 0,
+    "disclaimers_count": 1
+  },
+  "files": [
+    {
+      "path": "01_documento/demo-amonestacion-auditada.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 24847,
+      "sha256": "253b18851b3c7fe2068c7e86c68d29efae7f189c3438890215f6b32265f715f8",
+      "file_id": "",
+      "file_url": "https://bb1studio.com/amonestacion-auditada-hosteleria-canarias/demo-assets/demo-amonestacion-auditada.pdf"
+    },
+    {
+      "path": "02_audit/snapshot.json",
+      "mime_type": "application/json",
+      "size_bytes": 1159,
+      "sha256": "851c11c8ca7af662f2a5b637e8dc1d3539ecc70ea5b0ed6871330facfc24641a",
+      "file_id": "",
+      "file_url": "https://bb1studio.com/amonestacion-auditada-hosteleria-canarias/demo-assets/demo-snapshot.json"
+    },
+    {
+      "path": "02_audit/audit_log.jsonl",
+      "mime_type": "application/x-ndjson",
+      "size_bytes": 847,
+      "sha256": "84d4a0e608062e9f1265fe6d574efbcf2859fd6c54ff4bac332e089a9fff54bd",
+      "file_id": "",
+      "file_url": "https://bb1studio.com/amonestacion-auditada-hosteleria-canarias/demo-assets/demo-audit_log.jsonl"
+    },
+    {
+      "path": "02_audit/manifest.json",
+      "mime_type": "application/json",
+      "size_bytes": 4340,
+      "sha256": "4f98b17959c43cc01da810a932a3e78b3f251a9cad265b7b28542aabf031e840",
+      "file_id": "",
+      "file_url": "https://bb1studio.com/amonestacion-auditada-hosteleria-canarias/demo-assets/demo-manifest.json"
+    },
+    {
+      "path": "02_audit/hashes.sha256",
+      "mime_type": "text/plain",
+      "size_bytes": 379,
+      "sha256": "2a5eb99cc563f5a0910f49b9ce91eb4d477c596a5d5f5651fceb131487b223c6",
+      "file_id": "",
+      "file_url": "https://bb1studio.com/amonestacion-auditada-hosteleria-canarias/demo-assets/demo-hashes.sha256"
+    }
+  ]
+}
