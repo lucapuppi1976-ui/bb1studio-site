@@ -19,6 +19,12 @@ window.BB1StudioConfig = {
     status: "launch_priced",
     defaultPlan: "annual"
   },
+  products: {
+    amonestacionAuditada: {
+      demoFormUrl: "",
+      demoFormTarget: "_blank"
+    }
+  },
   billing: {
     mode: "test"
   }

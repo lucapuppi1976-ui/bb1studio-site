@@ -115,6 +115,31 @@
     });
   }
 
+  function setAmonestacionDemoLinks() {
+    const products = cfg.products || {};
+    const am = products.amonestacionAuditada || {};
+    const demoUrl = typeof am.demoFormUrl === "string" ? am.demoFormUrl.trim() : "";
+    const demoTarget = typeof am.demoFormTarget === "string" ? am.demoFormTarget.trim() : "_blank";
+
+    document.querySelectorAll("[data-am-demo-link]").forEach((el) => {
+      const fallback = el.getAttribute("data-fallback-href") || "#demo-form";
+      if (demoUrl) {
+        el.setAttribute("href", demoUrl);
+        if (demoTarget === "_blank") {
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener noreferrer");
+        } else {
+          el.removeAttribute("target");
+          el.removeAttribute("rel");
+        }
+      } else {
+        el.setAttribute("href", fallback);
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+      }
+    });
+  }
+
   function setPrices() {
     if (monthlyAmount > 0) {
       text("[data-price-monthly]", fullPrice(monthlyAmount, t.monthSuffix));
@@ -193,6 +218,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     setAppLinks();
     setPlanLinks();
+    setAmonestacionDemoLinks();
     setPrices();
     setCheckoutNote();
     setAccessRoute();
