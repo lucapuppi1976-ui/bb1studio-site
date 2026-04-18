@@ -24,7 +24,7 @@ window.BB1StudioConfig = {
       demoFormUrl: "/amonestacion-auditada-hosteleria-canarias/demo/",
       demoFormTarget: "_self",
       accessRequestPageUrl: "/amonestacion-auditada-hosteleria-canarias/acceso/",
-      accessRequestFormUrl: "",
+      accessRequestFormUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdz2kxqhWbhTJ6iMSKwrnOh4_nwtfpgCwPE_JwJ05xqs4XUwg/viewform",
       accessRequestFormTarget: "_blank",
       accessRequestThankYouUrl: "/amonestacion-auditada-hosteleria-canarias/acceso/gracias/",
       contactUrl: "/es/company/",
