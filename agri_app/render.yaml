@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: agri-app
+    runtime: node
+    plan: free
+    region: frankfurt
+    autoDeploy: true
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /agri_app/api/health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NEXTAUTH_URL
+        sync: false
+      - key: NEXTAUTH_SECRET
+        sync: false
+      - key: AUTH_SECRET
+        sync: false
+      - key: NEXT_PUBLIC_APP_ORIGIN
+        sync: false
+      - key: NEXT_PUBLIC_APP_BASE_PATH
+        value: /agri_app
+      - key: NEXT_PUBLIC_APP_ASSET_PREFIX
+        value: /agri_app-static
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CRON_SECRET
+        sync: false

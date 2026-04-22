@@ -1,0 +1,242 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  SUPER_ADMIN
+  OPERATOR
+}
+
+enum PlantType {
+  PLANT
+  TREE
+}
+
+enum EnvironmentType {
+  INDOOR
+  OUTDOOR
+}
+
+enum PlantStatus {
+  ACTIVE
+  ARCHIVED
+  REMOVED
+}
+
+enum InterventionType {
+  IRRIGATION
+  PRUNING
+  FERTILIZATION
+  PHYTOSANITARY
+  MEASUREMENT
+  TRANSPLANT
+  HARVEST
+  OTHER
+}
+
+enum TaskPriority {
+  MANDATORY
+  RECOMMENDED
+}
+
+enum TaskStatus {
+  SCHEDULED
+  NOTIFIED
+  DONE
+  SKIPPED
+  EXPIRED
+}
+
+enum ProposalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum NotificationType {
+  INFO
+  TASK
+  APPROVAL
+  SYSTEM
+}
+
+model User {
+  id                String            @id @default(cuid())
+  name              String?
+  email             String            @unique
+  emailVerified     DateTime?
+  passwordHash      String?
+  image             String?
+  role              UserRole          @default(OPERATOR)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  accounts          Account[]
+  sessions          Session[]
+
+  assignedTasks     Task[]            @relation("AssignedTasks")
+  createdTasks      Task[]            @relation("CreatedTasks")
+  proposedTasks     TaskProposal[]    @relation("ProposedTasks")
+  reviewedProposals TaskProposal[]    @relation("ReviewedProposals")
+  notifications     AppNotification[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Plant {
+  id                String         @id @default(cuid())
+  code              String         @unique
+  name              String?
+  type              PlantType
+  environment       EnvironmentType
+  species           String
+  variety           String?
+  sowingDate        DateTime?
+  germinationDate   DateTime?
+  transplantDate    DateTime?
+  potSizeLiters     Float?
+  substrate         String?
+  heightCm          Float?
+  diameterMm        Float?
+  zoneName          String?
+  latitude          Float?
+  longitude         Float?
+  notes             String?
+  status            PlantStatus    @default(ACTIVE)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  interventions     Intervention[]
+  tasks             Task[]
+  proposals         TaskProposal[]
+}
+
+model Intervention {
+  id                String           @id @default(cuid())
+  clientRequestId   String?          @unique
+  plantId           String
+  type              InterventionType
+  title             String
+  description       String?
+  scheduledDate     DateTime?
+  completedAt       DateTime?
+  operatorName      String?
+  beforeImageUrl    String?
+  afterImageUrl     String?
+  waterLiters       Float?
+  productName       String?
+  dosage            String?
+  heightCm          Float?
+  notes             String?
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  plant             Plant            @relation(fields: [plantId], references: [id], onDelete: Cascade)
+
+  @@index([plantId])
+}
+
+model Task {
+  id                String         @id @default(cuid())
+  plantId           String
+  title             String
+  description       String?
+  dueDate           DateTime
+  priority          TaskPriority   @default(RECOMMENDED)
+  status            TaskStatus     @default(SCHEDULED)
+  completedAt       DateTime?
+  notes             String?
+
+  assignedToUserId  String?
+  createdByUserId   String?
+
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  plant             Plant          @relation(fields: [plantId], references: [id], onDelete: Cascade)
+  assignedTo        User?          @relation("AssignedTasks", fields: [assignedToUserId], references: [id])
+  createdBy         User?          @relation("CreatedTasks", fields: [createdByUserId], references: [id])
+
+  proposals         TaskProposal[]
+
+  @@index([plantId])
+  @@index([dueDate])
+}
+
+model TaskProposal {
+  id                String           @id @default(cuid())
+  taskId            String
+  plantId           String
+  proposedByUserId  String
+  reviewedByUserId  String?
+  title             String
+  type              InterventionType
+  scheduledFor      DateTime
+  notes             String?
+  status            ProposalStatus   @default(PENDING)
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  task              Task             @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  plant             Plant            @relation(fields: [plantId], references: [id], onDelete: Cascade)
+  proposedBy        User             @relation("ProposedTasks", fields: [proposedByUserId], references: [id])
+  reviewedBy        User?            @relation("ReviewedProposals", fields: [reviewedByUserId], references: [id])
+
+  @@index([taskId])
+  @@index([status])
+}
+
+model AppNotification {
+  id                String            @id @default(cuid())
+  userId            String
+  type              NotificationType  @default(INFO)
+  title             String
+  message           String
+  href              String?
+  readAt            DateTime?
+  createdAt         DateTime          @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([readAt])
+}
