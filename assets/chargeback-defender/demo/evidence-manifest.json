@@ -1,0 +1,12 @@
+{
+  "bundle_version": 1,
+  "dispute_id": "dp_demo_0042",
+  "files": [
+    "dispute-summary.json",
+    "evidence-manifest.json",
+    "audit-log.jsonl",
+    "hashes.sha256"
+  ],
+  "generated_by": "Chargeback Defender public demo",
+  "note": "Demo data only. No live merchant or customer data."
+}

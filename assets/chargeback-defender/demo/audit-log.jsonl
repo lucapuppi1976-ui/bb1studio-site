@@ -1,0 +1,5 @@
+{"ts": "2026-04-18T08:02:14Z", "event": "dispute.imported", "actor": "system"}
+{"ts": "2026-04-18T08:02:29Z", "event": "order.matched", "actor": "system", "confidence": 0.98}
+{"ts": "2026-04-18T08:03:01Z", "event": "evidence.bundle.created", "actor": "operator.demo"}
+{"ts": "2026-04-18T08:03:44Z", "event": "policy.snapshot.attached", "actor": "system"}
+{"ts": "2026-04-18T08:04:11Z", "event": "submission.staged", "actor": "operator.demo"}

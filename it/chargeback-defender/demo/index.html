@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chargeback Defender Demo — BB1 Studio</title>
+  <meta name="description" content="Esplora un pacchetto disputa fittizio, un manifest visibile e un piccolo audit trail. Nessun dato di produzione, nessuna chiamata commerciale.">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/chargeback-defender/favicon.svg">
+  <link rel="stylesheet" href="../../../assets/chargeback-defender/styles.css">
+</head>
+<body class="demo-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-copy"><small>BB1</small><strong>BB1 Studio</strong></span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="/">Prodotti</a>
+        <a href="/before-you-send/">Lancio attuale</a>
+        <a href="/it/chargeback-defender/" class="active">Chargeback Defender</a>
+        <a href="/">Azienda</a>
+      </nav>
+      <div class="header-stack">
+        <div class="lang-switch" aria-label="Languages">
+          <a href="/chargeback-defender/demo/" class="">English</a>
+          <a href="/it/chargeback-defender/demo/" class="active">Italiano</a>
+          <a href="/es/chargeback-defender/demo/" class="">Español</a>
+        </div>
+        <div class="header-actions">
+          <a class="button-secondary" href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer">Apri BYS</a>
+        </div>
+      </div>
+      <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-mobile-toggle>☰</button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" data-mobile-menu data-open="false">
+      <a href="/">Prodotti</a>
+      <a href="/before-you-send/">Lancio attuale</a>
+      <a href="/it/chargeback-defender/">Chargeback Defender</a>
+      <a href="/">Azienda</a>
+      <a href="/chargeback-defender/demo/">English</a>
+      <a href="/it/chargeback-defender/demo/">Italiano</a>
+      <a href="/es/chargeback-defender/demo/">Español</a>
+      <a href="https://bys.bb1studio.com" target="_blank" rel="noopener noreferrer">Apri BYS</a>
+    </div>
+  </header>
+
+  <main class="site-shell">
+    <div class="container">
+      
+    <section class="page-hero">
+      <article class="hero-card page-card">
+        <span class="eyebrow">BB1 Studio / Proposta prodotto / Demo</span>
+        <span class="section-kicker">Demo</span>
+        <h1 class="page-title">Demo pubblica disponibile</h1>
+        <p class="page-lead">Esplora un pacchetto disputa fittizio, un manifest visibile e un piccolo audit trail. Nessun dato di produzione, nessuna chiamata commerciale.</p>
+        <div class="hero-actions">
+          <a class="button-secondary" href="../../../assets/chargeback-defender/demo/dispute-summary.json" download>dispute-summary.json</a>
+          <a class="button-secondary" href="../../../assets/chargeback-defender/demo/demo-export.zip" download>demo-export.zip</a>
+          <a class="button" href="../access/">Vedi accesso</a>
+        </div>
+        <div class="subnav"><a href="../" class="">Prodotto</a><a href="../demo/index.html" class="active">Demo</a><a href="../access/index.html" class="">Accesso</a><a href="../faq/index.html" class="">FAQ</a></div>
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="grid-3"><article class="card"><h3>1. Caso già preparato</h3><p>La demo usa una disputa Shopify fittizia per mostrare il flusso senza esporre dati reali del negozio.</p></article><article class="card"><h3>2. File ispezionabili</h3><p>Apri file JSON, controlla l’audit trail e scarica un piccolo export zip preparato per la visualizzazione pubblica.</p></article><article class="card"><h3>3. Passo successivo pulito</h3><p>Se la demo ha senso, la pagina accesso diventa il ponte verso il lancio o verso la runtime più avanti.</p></article></div>
+    </section>
+
+    <section class="section">
+      <div class="split-surface">
+        <article class="surface media-block">
+          <img src="../../../assets/chargeback-defender/demo-preview.svg" alt="Demo file pack preview">
+        </article>
+        <article class="surface copy-block">
+          <span class="section-kicker">Cosa non fa la demo</span>
+          <ul><li>Non crea dispute reali.</li><li>Non si collega a dati Shopify o Stripe di produzione.</li><li>Non invia prove ai circuiti carta.</li><li>Non sostituisce revisione legale.</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-kicker">File inclusi nel pacchetto</span>
+        <h2>Usa questi file come livello di prova autoguidato sotto la pagina prodotto.</h2>
+      </div>
+      <div class="demo-files"><article class="demo-file"><h3>dispute-summary.json</h3><p>Un riepilogo fittizio compatto con scadenza, motivo della disputa e copertura delle prove.</p><code>dispute-summary.json</code><div class="stacked-actions"><a class="button-secondary" href="../../../assets/chargeback-defender/demo/dispute-summary.json" download>Download</a></div></article><article class="demo-file"><h3>evidence-manifest.json</h3><p>Un elenco visibile di ciò che appartiene al bundle demo.</p><code>evidence-manifest.json</code><div class="stacked-actions"><a class="button-secondary" href="../../../assets/chargeback-defender/demo/evidence-manifest.json" download>Download</a></div></article><article class="demo-file"><h3>audit-log.jsonl</h3><p>Un piccolo audit trail riga per riga che mostra come il caso passa allo stato pronto per la revisione.</p><code>audit-log.jsonl</code><div class="stacked-actions"><a class="button-secondary" href="../../../assets/chargeback-defender/demo/audit-log.jsonl" download>Download</a></div></article><article class="demo-file"><h3>hashes.sha256</h3><p>Hash semplici per verificare l’integrità dei file demo.</p><code>hashes.sha256</code><div class="stacked-actions"><a class="button-secondary" href="../../../assets/chargeback-defender/demo/hashes.sha256" download>Download</a></div></article><article class="demo-file"><h3>demo-export.zip</h3><p>Un pacchetto zip con i file JSON e gli hash.</p><code>demo-export.zip</code><div class="stacked-actions"><a class="button-secondary" href="../../../assets/chargeback-defender/demo/demo-export.zip" download>Download</a></div></article></div>
+    </section>
+
+    <section class="section">
+      <div class="hero-card cta-band">
+        <div>
+          <small class="section-kicker">Next step</small>
+          <h2>Percorso di accesso</h2>
+          <p>Usa questa pagina come ponte pulito tra demo pubblica, messaggio di lancio e app live quando sarà aperta.</p>
+        </div>
+        <div class="stacked-actions"><a class="button" href="../access/">Vedi accesso</a><a class="button-secondary" href="../faq/">FAQ</a></div>
+      </div>
+    </section>
+    
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-copy">
+        <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span class="brand-copy"><small>BB1</small><strong>BB1 Studio</strong></span></div>
+        <p>BB1 Studio è il brand ombrello. Before You Send è il lancio attuale live. Chargeback Defender è una proposta focalizzata per rendere più chiari i flussi dispute Shopify.</p>
+        <p>Guanabomalu SL<br>CIF: B38413647<br>Camino las Higueras, 7 - Arona<br>Tenerife - Canarias - Spain</p>
+      </div>
+      <div class="footer-links">
+        <a href="/it/chargeback-defender/">Chargeback Defender</a>
+        <a href="/it/chargeback-defender/demo/">Demo</a>
+        <a href="/it/chargeback-defender/access/">Vedi accesso</a>
+        <a href="/it/chargeback-defender/faq/">FAQ</a>
+        <a href="/it/privacy.html">Privacy</a>
+        <a href="/it/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../../assets/chargeback-defender/site.js"></script>
+</body>
+</html>

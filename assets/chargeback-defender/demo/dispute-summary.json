@@ -1,0 +1,18 @@
+{
+  "case_id": "demo_cb_2026_0042",
+  "platform": "Shopify",
+  "dispute_reason": "product_not_received",
+  "currency": "EUR",
+  "amount": 14900,
+  "due_by": "2026-05-08T16:00:00Z",
+  "matched_order": "#1042",
+  "customer_country": "DE",
+  "coverage": {
+    "tracking": true,
+    "shipping_policy_snapshot": true,
+    "refund_history": true,
+    "customer_messages": true,
+    "internal_notes": false
+  },
+  "status": "review_ready"
+}
