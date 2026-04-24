@@ -1,6 +1,6 @@
 # Agri App — pacchetto completo per `bb1studio.com/agri_app`
 
-Questo è il pacchetto unico completo dell'app agricola, già preparato per essere pubblicata come:
+Questo pacchetto è stato rivisto e consolidato per essere caricato su GitHub e usato come base per il deploy su Render dietro il path pubblico:
 
 `bb1studio.com/agri_app`
 
@@ -19,6 +19,12 @@ Questo è il pacchetto unico completo dell'app agricola, già preparato per esse
 - `admin@bb1studio.local` / `Admin123!`
 - `operator@bb1studio.local` / `Operator123!`
 
+## Cosa ho corretto in questa revisione
+- rimosso `assetPrefix` custom, perché per un'app servita sotto un sottopath condiviso `basePath` è la scelta più lineare e stabile in Next.js; `assetPrefix` è più adatto a scenari CDN o zone che non condividono un prefisso comune.
+- aggiornato `render.yaml` a `autoDeployTrigger: commit`, che sostituisce il vecchio `autoDeploy` nel Blueprint spec di Render.
+- semplificata la configurazione env pubblica.
+- aggiunte note chiare sui limiti dell'upload via browser su GitHub.
+
 ## 1. Configurazione locale
 Copia `.env.example` in `.env` e compila i valori.
 
@@ -28,7 +34,6 @@ Variabili importanti:
 - `NEXTAUTH_SECRET`
 - `NEXT_PUBLIC_APP_ORIGIN`
 - `NEXT_PUBLIC_APP_BASE_PATH=/agri_app`
-- `NEXT_PUBLIC_APP_ASSET_PREFIX=/agri_app-static`
 - `CLOUDINARY_*`
 - `CRON_SECRET`
 
@@ -95,10 +100,13 @@ Poi configura tutte le environment variables nel dashboard Render.
 Per l'app deployata dietro `bb1studio.com/agri_app`, imposta:
 - `NEXT_PUBLIC_APP_ORIGIN=https://bb1studio.com`
 - `NEXT_PUBLIC_APP_BASE_PATH=/agri_app`
-- `NEXT_PUBLIC_APP_ASSET_PREFIX=/agri_app-static`
 - `NEXTAUTH_URL=https://bb1studio.com/agri_app/api/auth`
 
-## 7. Primo test da fare
+## 7. GitHub upload
+Per un repo GitHub è corretto caricare **il sorgente**, non file compilati come `.next` o `node_modules`.
+Se vuoi usare l'interfaccia web di GitHub, fallo in più blocchi se necessario: il web uploader ha limiti pratici (25 MiB per file, 100 file per upload).
+
+## 8. Primo test da fare
 Dopo l'avvio:
 1. login admin
 2. controlla `/dashboard`

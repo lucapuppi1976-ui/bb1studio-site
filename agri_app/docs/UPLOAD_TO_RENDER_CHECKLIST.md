@@ -4,6 +4,7 @@
 1. Crea repo GitHub privato
 2. Carica tutto il pacchetto
 3. Verifica che `.env` NON sia nel repo
+4. Se carichi dal browser, ricorda che GitHub Web ha limiti pratici: massimo 25 MiB per file e massimo 100 file per singolo upload.
 
 ## Render service
 - Runtime: Node
@@ -17,7 +18,6 @@
 - `NEXTAUTH_SECRET=...`
 - `NEXT_PUBLIC_APP_ORIGIN=https://bb1studio.com`
 - `NEXT_PUBLIC_APP_BASE_PATH=/agri_app`
-- `NEXT_PUBLIC_APP_ASSET_PREFIX=/agri_app-static`
 - `CLOUDINARY_CLOUD_NAME=...`
 - `CLOUDINARY_API_KEY=...`
 - `CLOUDINARY_API_SECRET=...`

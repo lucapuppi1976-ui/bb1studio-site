@@ -13,10 +13,6 @@ const nextConfig: NextConfig = {
         source: "/agri_app/:path*",
         destination: `${AGRI_APP_SERVICE}/agri_app/:path*`,
       },
-      {
-        source: "/agri_app-static/:path*",
-        destination: `${AGRI_APP_SERVICE}/agri_app-static/:path*`,
-      },
     ];
   },
 };
