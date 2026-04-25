@@ -2,19 +2,27 @@
 
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { requireUser } from "@/lib/authz";
 
 export async function markNotificationRead(notificationId: string) {
-  await prisma.appNotification.update({
-    where: { id: notificationId },
+  const session = await requireUser();
+
+  await prisma.appNotification.updateMany({
+    where: {
+      id: notificationId,
+      userId: session.user.id,
+    },
     data: { readAt: new Date() },
   });
 
   revalidatePath("/notifications");
 }
 
-export async function markAllNotificationsRead(userId: string) {
+export async function markAllNotificationsRead() {
+  const session = await requireUser();
+
   await prisma.appNotification.updateMany({
-    where: { userId, readAt: null },
+    where: { userId: session.user.id, readAt: null },
     data: { readAt: new Date() },
   });
 

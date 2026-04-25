@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { UserRole } from "@prisma/client";
 
 export async function getTasks() {
   return prisma.task.findMany({
@@ -31,7 +32,7 @@ export async function getTaskById(id: string) {
   });
 }
 
-export async function getTodayTasks() {
+export async function getTodayTasksForUser(userId: string, role: UserRole) {
   const start = new Date();
   start.setHours(0, 0, 0, 0);
   const end = new Date(start);
@@ -43,6 +44,7 @@ export async function getTodayTasks() {
         gte: start,
         lt: end,
       },
+      ...(role === UserRole.SUPER_ADMIN ? {} : { assignedToUserId: userId }),
     },
     include: {
       plant: true,

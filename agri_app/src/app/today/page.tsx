@@ -1,20 +1,38 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
-import { getTodayTasks } from "@/lib/data/tasks";
+import { getTodayTasksForUser } from "@/lib/data/tasks";
+import { getUnreadNotificationsCount } from "@/lib/data/notifications";
 import { requireUser } from "@/lib/authz";
 
 export default async function TodayPage() {
-  await requireUser();
-  const tasks = await getTodayTasks();
+  const session = await requireUser();
+  const [tasks, unreadCount] = await Promise.all([
+    getTodayTasksForUser(session.user.id, session.user.role),
+    getUnreadNotificationsCount(session.user.id),
+  ]);
 
   return (
-    <AppShell title="Oggi" eyebrow="Agenda giornaliera">
+    <AppShell
+      title="Oggi"
+      eyebrow="Agenda giornaliera"
+      actions={
+        <Link href="/notifications?filter=unread" className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-white/70">
+          Notifiche non lette: {unreadCount}
+        </Link>
+      }
+    >
       {tasks.length === 0 ? (
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-white/60">Nessun task per oggi.</div>
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-white/60">
+          Nessun task per oggi.
+        </div>
       ) : (
         <div className="grid gap-4">
           {tasks.map((task) => (
-            <Link key={task.id} href={`/tasks/${task.id}`} className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10">
+            <Link
+              key={task.id}
+              href={`/tasks/${task.id}`}
+              className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10"
+            >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-wide text-white/40">{task.status}</p>

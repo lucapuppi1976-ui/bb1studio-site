@@ -66,24 +66,25 @@ enum NotificationType {
 }
 
 model User {
-  id                String            @id @default(cuid())
-  name              String?
-  email             String            @unique
-  emailVerified     DateTime?
-  passwordHash      String?
-  image             String?
-  role              UserRole          @default(OPERATOR)
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  id                     String                  @id @default(cuid())
+  name                   String?
+  email                  String                  @unique
+  emailVerified          DateTime?
+  passwordHash           String?
+  image                  String?
+  role                   UserRole                @default(OPERATOR)
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
 
-  accounts          Account[]
-  sessions          Session[]
+  accounts               Account[]
+  sessions               Session[]
 
-  assignedTasks     Task[]            @relation("AssignedTasks")
-  createdTasks      Task[]            @relation("CreatedTasks")
-  proposedTasks     TaskProposal[]    @relation("ProposedTasks")
-  reviewedProposals TaskProposal[]    @relation("ReviewedProposals")
-  notifications     AppNotification[]
+  assignedTasks          Task[]                  @relation("AssignedTasks")
+  createdTasks           Task[]                  @relation("CreatedTasks")
+  proposedTasks          TaskProposal[]          @relation("ProposedTasks")
+  reviewedProposals      TaskProposal[]          @relation("ReviewedProposals")
+  notifications          AppNotification[]
+  notificationPreference NotificationPreference?
 }
 
 model Account {
@@ -232,6 +233,7 @@ model AppNotification {
   title             String
   message           String
   href              String?
+  dedupeKey         String?           @unique
   readAt            DateTime?
   createdAt         DateTime          @default(now())
 
@@ -239,4 +241,22 @@ model AppNotification {
 
   @@index([userId])
   @@index([readAt])
+}
+
+model NotificationPreference {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  inAppEnabled       Boolean  @default(true)
+  emailEnabled       Boolean  @default(false)
+  taskDueToday       Boolean  @default(true)
+  taskDueTomorrow    Boolean  @default(true)
+  overdueTasks       Boolean  @default(true)
+  proposalUpdates    Boolean  @default(true)
+  systemMessages     Boolean  @default(true)
+  dailyDigestHour    Int      @default(7)
+  timezone           String   @default("Europe/Madrid")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

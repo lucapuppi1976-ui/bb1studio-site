@@ -38,6 +38,15 @@ export function MainNav({ session }: Props) {
             </Link>
           ))}
 
+          {session?.user ? (
+            <Link
+              href={routes.notificationSettings}
+              className="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/5 hover:text-white"
+            >
+              Preferenze
+            </Link>
+          ) : null}
+
           {session?.user?.role === "SUPER_ADMIN" ? (
             <>
               <Link
