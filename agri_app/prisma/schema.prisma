@@ -65,6 +65,10 @@ enum NotificationType {
   SYSTEM
 }
 
+enum NotificationEmailKind {
+  DAILY_DIGEST
+}
+
 model User {
   id                String            @id @default(cuid())
   name              String?
@@ -83,8 +87,9 @@ model User {
   createdTasks      Task[]            @relation("CreatedTasks")
   proposedTasks     TaskProposal[]    @relation("ProposedTasks")
   reviewedProposals TaskProposal[]    @relation("ReviewedProposals")
-  notifications     AppNotification[]
+  notifications          AppNotification[]
   notificationPreference NotificationPreference?
+  notificationEmailLogs  NotificationEmailLog[]
 }
 
 model Account {
@@ -259,4 +264,20 @@ model NotificationPreference {
   updatedAt       DateTime @updatedAt
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+
+model NotificationEmailLog {
+  id                String                @id @default(cuid())
+  userId            String
+  dateKey           String
+  kind              NotificationEmailKind @default(DAILY_DIGEST)
+  provider          String                @default("resend")
+  providerMessageId String?
+  createdAt         DateTime              @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, dateKey, kind])
+  @@index([userId, createdAt])
 }
