@@ -3,6 +3,7 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/authz";
+import { routes } from "@/lib/app-routes";
 
 export async function markNotificationRead(notificationId: string) {
   const session = await requireUser();
@@ -15,7 +16,8 @@ export async function markNotificationRead(notificationId: string) {
     data: { readAt: new Date() },
   });
 
-  revalidatePath("/notifications");
+  revalidatePath(routes.notifications);
+  revalidatePath(routes.today);
 }
 
 export async function markAllNotificationsRead() {
@@ -26,5 +28,6 @@ export async function markAllNotificationsRead() {
     data: { readAt: new Date() },
   });
 
-  revalidatePath("/notifications");
+  revalidatePath(routes.notifications);
+  revalidatePath(routes.today);
 }

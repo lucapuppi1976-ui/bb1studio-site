@@ -9,7 +9,7 @@ export const routes = {
   today: "/today",
   approvals: "/approvals",
   notifications: "/notifications",
-  notificationSettings: "/settings/notifications",
+  settingsNotifications: "/settings/notifications",
   reports: "/reports",
   offline: "/offline",
   install: "/install",

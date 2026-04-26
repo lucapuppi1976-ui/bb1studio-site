@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { runDailyNotificationsJob } from "@/lib/notifications/daily";
+import { createDailyOperationalNotifications } from "@/lib/notifications/daily";
 
 export async function POST(request: Request) {
   const url = new URL(request.url);
@@ -9,6 +9,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const result = await runDailyNotificationsJob();
-  return NextResponse.json(result);
+  const result = await createDailyOperationalNotifications();
+
+  return NextResponse.json({
+    ok: true,
+    ...result,
+  });
 }

@@ -1,182 +1,197 @@
 import { prisma } from "@/lib/prisma";
+import { TaskStatus, UserRole } from "@prisma/client";
 
-function startOfDay(date: Date) {
-  const d = new Date(date);
-  d.setHours(0, 0, 0, 0);
-  return d;
+function getTimeWindows() {
+  const startToday = new Date();
+  startToday.setHours(0, 0, 0, 0);
+
+  const endToday = new Date(startToday);
+  endToday.setDate(endToday.getDate() + 1);
+
+  const startTomorrow = new Date(endToday);
+  const endTomorrow = new Date(startTomorrow);
+  endTomorrow.setDate(endTomorrow.getDate() + 1);
+
+  return { startToday, endToday, startTomorrow, endTomorrow };
 }
 
-function addDays(date: Date, days: number) {
-  const d = new Date(date);
-  d.setDate(d.getDate() + days);
-  return d;
+function getTaskBucket(dueDate: Date, startToday: Date, endToday: Date, startTomorrow: Date, endTomorrow: Date) {
+  if (dueDate < startToday) return "overdue";
+  if (dueDate >= startToday && dueDate < endToday) return "today";
+  if (dueDate >= startTomorrow && dueDate < endTomorrow) return "tomorrow";
+  return null;
 }
 
-async function createUniqueNotification(params: {
-  userId: string;
-  type: "TASK" | "APPROVAL" | "INFO" | "SYSTEM";
-  title: string;
-  message: string;
-  href?: string;
-  dedupeKey: string;
-}) {
-  const existing = await prisma.appNotification.findUnique({
-    where: { dedupeKey: params.dedupeKey },
+function isEnabledForBucket(pref: any, bucket: "today" | "tomorrow" | "overdue") {
+  if (!pref || pref.inAppEnabled !== false) {
+    if (!pref) return true;
+  }
+
+  if (pref && pref.inAppEnabled === false) return false;
+
+  if (bucket === "today") return pref?.taskDueToday !== false;
+  if (bucket === "tomorrow") return pref?.taskDueTomorrow !== false;
+  return pref?.overdueTasks !== false;
+}
+
+function buildTaskNotificationCopy(task: any, bucket: "today" | "tomorrow" | "overdue") {
+  const plantLabel = task.plant?.name || task.plant?.species || "Pianta";
+  const href = `/tasks/${task.id}`;
+
+  if (bucket === "today") {
+    return {
+      title: `Task di oggi: ${task.title}`,
+      message: `${plantLabel} • scadenza oggi`,
+      href,
+    };
+  }
+
+  if (bucket === "tomorrow") {
+    return {
+      title: `Task di domani: ${task.title}`,
+      message: `${plantLabel} • scadenza domani`,
+      href,
+    };
+  }
+
+  return {
+    title: `Task scaduto: ${task.title}`,
+    message: `${plantLabel} • task non completato`,
+    href,
+  };
+}
+
+async function notificationExistsToday(userId: string, type: "TASK" | "APPROVAL", title: string, href: string, startToday: Date) {
+  const existing = await prisma.appNotification.findFirst({
+    where: {
+      userId,
+      type,
+      title,
+      href,
+      createdAt: {
+        gte: startToday,
+      },
+    },
+    select: { id: true },
   });
 
-  if (existing) return false;
-
-  await prisma.appNotification.create({
-    data: params,
-  });
-
-  return true;
+  return Boolean(existing);
 }
 
-export async function runDailyNotificationsJob() {
-  const now = new Date();
-  const todayStart = startOfDay(now);
-  const tomorrowStart = addDays(todayStart, 1);
-  const dayAfterTomorrowStart = addDays(todayStart, 2);
-  const dateKey = todayStart.toISOString().slice(0, 10);
+export async function createDailyOperationalNotifications() {
+  const { startToday, endToday, startTomorrow, endTomorrow } = getTimeWindows();
 
-  let created = 0;
-
-  const usersWithPrefs = await prisma.user.findMany({
+  const tasks = await prisma.task.findMany({
+    where: {
+      assignedToUserId: { not: null },
+      status: { in: [TaskStatus.SCHEDULED, TaskStatus.NOTIFIED] },
+      OR: [
+        { dueDate: { lt: startToday } },
+        { dueDate: { gte: startToday, lt: endToday } },
+        { dueDate: { gte: startTomorrow, lt: endTomorrow } },
+      ],
+    },
     include: {
-      notificationPreference: true,
+      plant: true,
+      assignedTo: {
+        include: {
+          notificationPreference: true,
+        },
+      },
     },
   });
 
-  for (const user of usersWithPrefs) {
-    const prefs = user.notificationPreference ?? {
-      inAppEnabled: true,
-      emailEnabled: false,
-      taskDueToday: true,
-      taskDueTomorrow: true,
-      overdueTasks: true,
-      proposalUpdates: true,
-      systemMessages: true,
-      dailyDigestHour: 7,
-      timezone: "Europe/Madrid",
-    };
+  let created = 0;
+  let skipped = 0;
 
-    if (!prefs.inAppEnabled) continue;
-
-    if (prefs.taskDueToday) {
-      const tasks = await prisma.task.findMany({
-        where: {
-          assignedToUserId: user.id,
-          dueDate: {
-            gte: todayStart,
-            lt: tomorrowStart,
-          },
-          status: {
-            in: ["SCHEDULED", "NOTIFIED"],
-          },
-        },
-        include: { plant: true },
-        orderBy: { dueDate: "asc" },
-      });
-
-      for (const task of tasks) {
-        const inserted = await createUniqueNotification({
-          userId: user.id,
-          type: "TASK",
-          title: `Task di oggi: ${task.title}`,
-          message: `${task.plant.name || task.plant.species} • scadenza oggi`,
-          href: `/tasks/${task.id}`,
-          dedupeKey: `task:${task.id}:today:${dateKey}`,
-        });
-
-        if (inserted) created += 1;
-      }
+  for (const task of tasks) {
+    const assignedUser = task.assignedTo;
+    if (!assignedUser) {
+      skipped += 1;
+      continue;
     }
 
-    if (prefs.taskDueTomorrow) {
-      const tasks = await prisma.task.findMany({
-        where: {
-          assignedToUserId: user.id,
-          dueDate: {
-            gte: tomorrowStart,
-            lt: dayAfterTomorrowStart,
-          },
-          status: {
-            in: ["SCHEDULED", "NOTIFIED"],
-          },
-        },
-        include: { plant: true },
-        orderBy: { dueDate: "asc" },
-      });
-
-      for (const task of tasks) {
-        const inserted = await createUniqueNotification({
-          userId: user.id,
-          type: "TASK",
-          title: `Task di domani: ${task.title}`,
-          message: `${task.plant.name || task.plant.species} • scadenza domani`,
-          href: `/tasks/${task.id}`,
-          dedupeKey: `task:${task.id}:tomorrow:${dateKey}`,
-        });
-
-        if (inserted) created += 1;
-      }
+    const bucket = getTaskBucket(task.dueDate, startToday, endToday, startTomorrow, endTomorrow);
+    if (!bucket) {
+      skipped += 1;
+      continue;
     }
 
-    if (prefs.overdueTasks) {
-      const tasks = await prisma.task.findMany({
-        where: {
-          assignedToUserId: user.id,
-          dueDate: {
-            lt: todayStart,
-          },
-          status: {
-            in: ["SCHEDULED", "NOTIFIED", "EXPIRED"],
-          },
-        },
-        include: { plant: true },
-        orderBy: { dueDate: "asc" },
-      });
-
-      for (const task of tasks) {
-        const inserted = await createUniqueNotification({
-          userId: user.id,
-          type: "TASK",
-          title: `Task scaduto: ${task.title}`,
-          message: `${task.plant.name || task.plant.species} • attività scaduta non completata`,
-          href: `/tasks/${task.id}`,
-          dedupeKey: `task:${task.id}:overdue:${dateKey}`,
-        });
-
-        if (inserted) created += 1;
-      }
+    if (!isEnabledForBucket(assignedUser.notificationPreference, bucket)) {
+      skipped += 1;
+      continue;
     }
-  }
 
-  const superAdmins = usersWithPrefs.filter((u) => u.role === "SUPER_ADMIN" && (u.notificationPreference?.inAppEnabled ?? true) && (u.notificationPreference?.proposalUpdates ?? true));
+    const copy = buildTaskNotificationCopy(task, bucket);
+    const exists = await notificationExistsToday(
+      assignedUser.id,
+      "TASK",
+      copy.title,
+      copy.href,
+      startToday,
+    );
 
-  if (superAdmins.length > 0) {
-    const proposals = await prisma.taskProposal.findMany({
-      where: { status: "PENDING" },
-      include: { plant: true, proposedBy: true },
-      orderBy: { createdAt: "asc" },
+    if (exists) {
+      skipped += 1;
+      continue;
+    }
+
+    await prisma.appNotification.create({
+      data: {
+        userId: assignedUser.id,
+        type: "TASK",
+        title: copy.title,
+        message: copy.message,
+        href: copy.href,
+      },
     });
 
-    for (const admin of superAdmins) {
-      for (const proposal of proposals) {
-        const inserted = await createUniqueNotification({
+    await prisma.task.update({
+      where: { id: task.id },
+      data: { status: TaskStatus.NOTIFIED },
+    });
+
+    created += 1;
+  }
+
+  const pendingProposalCount = await prisma.taskProposal.count({
+    where: { status: "PENDING" },
+  });
+
+  if (pendingProposalCount > 0) {
+    const admins = await prisma.user.findMany({
+      where: { role: UserRole.SUPER_ADMIN },
+      include: {
+        notificationPreference: true,
+      },
+    });
+
+    for (const admin of admins) {
+      if (admin.notificationPreference?.inAppEnabled === false) continue;
+      if (admin.notificationPreference?.proposalUpdates === false) continue;
+
+      const title = "Proposte in attesa di approvazione";
+      const href = "/approvals";
+
+      const exists = await notificationExistsToday(admin.id, "APPROVAL", title, href, startToday);
+      if (exists) {
+        skipped += 1;
+        continue;
+      }
+
+      await prisma.appNotification.create({
+        data: {
           userId: admin.id,
           type: "APPROVAL",
-          title: `Proposta da approvare: ${proposal.title}`,
-          message: `${proposal.plant.name || proposal.plant.species} • proposta di ${proposal.proposedBy.name || proposal.proposedBy.email}`,
-          href: `/approvals`,
-          dedupeKey: `proposal:${proposal.id}:pending:${dateKey}:admin:${admin.id}`,
-        });
+          title,
+          message: `Hai ${pendingProposalCount} proposta/e da controllare.`,
+          href,
+        },
+      });
 
-        if (inserted) created += 1;
-      }
+      created += 1;
     }
   }
 
-  return { ok: true, created };
+  return { created, skipped };
 }
