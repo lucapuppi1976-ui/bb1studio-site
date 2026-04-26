@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { TaskStatus } from "@prisma/client";
 
 export async function getTasks() {
   return prisma.task.findMany({
@@ -49,6 +50,46 @@ export async function getTodayTasks() {
       assignedTo: true,
     },
     orderBy: [{ status: "asc" }, { dueDate: "asc" }],
+  });
+}
+
+export async function getTodayAgendaForUser(userId: string, role?: string | null) {
+  const start = new Date();
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date(start);
+  end.setDate(end.getDate() + 1);
+
+  const where: any = {
+    status: {
+      in: [TaskStatus.SCHEDULED, TaskStatus.NOTIFIED],
+    },
+    OR: [
+      {
+        dueDate: {
+          gte: start,
+          lt: end,
+        },
+      },
+      {
+        dueDate: {
+          lt: start,
+        },
+      },
+    ],
+  };
+
+  if (role !== "SUPER_ADMIN") {
+    where.assignedToUserId = userId;
+  }
+
+  return prisma.task.findMany({
+    where,
+    include: {
+      plant: true,
+      assignedTo: true,
+    },
+    orderBy: [{ dueDate: "asc" }, { createdAt: "desc" }],
   });
 }
 
