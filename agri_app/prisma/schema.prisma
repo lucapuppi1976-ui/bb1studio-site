@@ -75,7 +75,7 @@ model User {
   role              UserRole          @default(OPERATOR)
   createdAt         DateTime          @default(now())
   updatedAt         DateTime          @updatedAt
-
+notificationPreference NotificationPreference?
   accounts          Account[]
   sessions          Session[]
 
@@ -239,4 +239,21 @@ model AppNotification {
 
   @@index([userId])
   @@index([readAt])
+}
+model NotificationPreference {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  inAppEnabled    Boolean  @default(true)
+  emailEnabled    Boolean  @default(false)
+  taskDueToday    Boolean  @default(true)
+  taskDueTomorrow Boolean  @default(true)
+  overdueTasks    Boolean  @default(true)
+  proposalUpdates Boolean  @default(true)
+  systemMessages  Boolean  @default(true)
+  dailyDigestHour Int      @default(7)
+  timezone        String   @default("Europe/Madrid")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
