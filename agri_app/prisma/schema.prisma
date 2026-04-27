@@ -52,6 +52,12 @@ enum TaskStatus {
   EXPIRED
 }
 
+enum TaskRecurrenceType {
+  DAILY
+  WEEKLY
+  EVERY_X_DAYS
+}
+
 enum ProposalStatus {
   PENDING
   APPROVED
@@ -70,26 +76,28 @@ enum NotificationEmailKind {
 }
 
 model User {
-  id                String            @id @default(cuid())
-  name              String?
-  email             String            @unique
-  emailVerified     DateTime?
-  passwordHash      String?
-  image             String?
-  role              UserRole          @default(OPERATOR)
-  createdAt         DateTime          @default(now())
-  updatedAt         DateTime          @updatedAt
+  id                          String                 @id @default(cuid())
+  name                        String?
+  email                       String                 @unique
+  emailVerified               DateTime?
+  passwordHash                String?
+  image                       String?
+  role                        UserRole               @default(OPERATOR)
+  createdAt                   DateTime               @default(now())
+  updatedAt                   DateTime               @updatedAt
 
-  accounts          Account[]
-  sessions          Session[]
+  accounts                    Account[]
+  sessions                    Session[]
 
-  assignedTasks     Task[]            @relation("AssignedTasks")
-  createdTasks      Task[]            @relation("CreatedTasks")
-  proposedTasks     TaskProposal[]    @relation("ProposedTasks")
-  reviewedProposals TaskProposal[]    @relation("ReviewedProposals")
-  notifications          AppNotification[]
-  notificationPreference NotificationPreference?
-  notificationEmailLogs  NotificationEmailLog[]
+  assignedTasks               Task[]                 @relation("AssignedTasks")
+  createdTasks                Task[]                 @relation("CreatedTasks")
+  proposedTasks               TaskProposal[]         @relation("ProposedTasks")
+  reviewedProposals           TaskProposal[]         @relation("ReviewedProposals")
+  notifications               AppNotification[]
+  notificationPreference      NotificationPreference?
+  notificationEmailLogs       NotificationEmailLog[]
+  assignedRecurringTemplates  TaskRecurrenceTemplate[] @relation("AssignedRecurringTemplates")
+  createdRecurringTemplates   TaskRecurrenceTemplate[] @relation("CreatedRecurringTemplates")
 }
 
 model Account {
@@ -129,8 +137,8 @@ model VerificationToken {
 }
 
 model Plant {
-  id                String         @id @default(cuid())
-  code              String         @unique
+  id                String               @id @default(cuid())
+  code              String               @unique
   name              String?
   type              PlantType
   environment       EnvironmentType
@@ -147,13 +155,14 @@ model Plant {
   latitude          Float?
   longitude         Float?
   notes             String?
-  status            PlantStatus    @default(ACTIVE)
-  createdAt         DateTime       @default(now())
-  updatedAt         DateTime       @updatedAt
+  status            PlantStatus          @default(ACTIVE)
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
 
   interventions     Intervention[]
   tasks             Task[]
   proposals         TaskProposal[]
+  recurringTemplates TaskRecurrenceTemplate[]
 }
 
 model Intervention {
@@ -182,30 +191,64 @@ model Intervention {
 }
 
 model Task {
-  id                String         @id @default(cuid())
+  id                   String                 @id @default(cuid())
+  plantId              String
+  title                String
+  description          String?
+  dueDate              DateTime
+  priority             TaskPriority           @default(RECOMMENDED)
+  status               TaskStatus             @default(SCHEDULED)
+  completedAt          DateTime?
+  notes                String?
+
+  assignedToUserId     String?
+  createdByUserId      String?
+  recurrenceTemplateId String?
+  recurrenceSourceDate DateTime?
+
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+
+  plant                Plant                  @relation(fields: [plantId], references: [id], onDelete: Cascade)
+  assignedTo           User?                  @relation("AssignedTasks", fields: [assignedToUserId], references: [id])
+  createdBy            User?                  @relation("CreatedTasks", fields: [createdByUserId], references: [id])
+  recurrenceTemplate   TaskRecurrenceTemplate? @relation(fields: [recurrenceTemplateId], references: [id], onDelete: SetNull)
+
+  proposals            TaskProposal[]
+
+  @@index([plantId])
+  @@index([dueDate])
+  @@index([recurrenceTemplateId])
+  @@index([recurrenceSourceDate])
+}
+
+model TaskRecurrenceTemplate {
+  id                String               @id @default(cuid())
   plantId           String
   title             String
   description       String?
-  dueDate           DateTime
-  priority          TaskPriority   @default(RECOMMENDED)
-  status            TaskStatus     @default(SCHEDULED)
-  completedAt       DateTime?
+  priority          TaskPriority         @default(RECOMMENDED)
   notes             String?
+  recurrenceType    TaskRecurrenceType
+  intervalDays      Int?
+  nextDueDate       DateTime
+  active            Boolean              @default(true)
+  lastGeneratedAt   DateTime?
 
   assignedToUserId  String?
   createdByUserId   String?
 
-  createdAt         DateTime       @default(now())
-  updatedAt         DateTime       @updatedAt
+  createdAt         DateTime             @default(now())
+  updatedAt         DateTime             @updatedAt
 
-  plant             Plant          @relation(fields: [plantId], references: [id], onDelete: Cascade)
-  assignedTo        User?          @relation("AssignedTasks", fields: [assignedToUserId], references: [id])
-  createdBy         User?          @relation("CreatedTasks", fields: [createdByUserId], references: [id])
-
-  proposals         TaskProposal[]
+  plant             Plant                @relation(fields: [plantId], references: [id], onDelete: Cascade)
+  assignedTo        User?                @relation("AssignedRecurringTemplates", fields: [assignedToUserId], references: [id])
+  createdBy         User?                @relation("CreatedRecurringTemplates", fields: [createdByUserId], references: [id])
+  tasks             Task[]
 
   @@index([plantId])
-  @@index([dueDate])
+  @@index([nextDueDate])
+  @@index([active])
 }
 
 model TaskProposal {
@@ -247,7 +290,6 @@ model AppNotification {
   @@index([readAt])
 }
 
-
 model NotificationPreference {
   id              String   @id @default(cuid())
   userId          String   @unique
@@ -265,7 +307,6 @@ model NotificationPreference {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
 
 model NotificationEmailLog {
   id                String                @id @default(cuid())

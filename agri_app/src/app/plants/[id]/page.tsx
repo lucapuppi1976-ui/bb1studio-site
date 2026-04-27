@@ -4,10 +4,15 @@ import { AppShell } from "@/components/app-shell";
 import { getPlantById } from "@/lib/data/plants";
 import { requireUser, isSuperAdmin } from "@/lib/authz";
 import { buildPlantPublicUrlByCode } from "@/lib/qr/build-plant-url";
+import { routes } from "@/lib/app-routes";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
+
+function formatDate(value: Date) {
+  return new Date(value).toLocaleDateString("it-IT");
+}
 
 export default async function PlantDetailPage({ params }: Props) {
   const session = await requireUser();
@@ -33,6 +38,11 @@ export default async function PlantDetailPage({ params }: Props) {
           <Link href={`/plants/${plant.id}/tasks/new`} className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-white/70">
             Nuovo task
           </Link>
+          {isSuperAdmin(session.user.role) ? (
+            <Link href={`/plants/${plant.id}/recurring-tasks/new`} className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-white/70">
+              Task ricorrente
+            </Link>
+          ) : null}
           <Link href={`/plants/${plant.id}/qr`} className="rounded-2xl border border-white/10 px-4 py-2 text-sm text-white/70">
             QR
           </Link>
@@ -68,7 +78,7 @@ export default async function PlantDetailPage({ params }: Props) {
         <section className="rounded-2xl border border-white/10 bg-white/5 p-5 md:col-span-2">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-lg font-semibold">Interventi</h2>
-            <Link href="/interventions" className="text-sm text-white/60">Vedi tutti</Link>
+            <Link href={routes.interventions} className="text-sm text-white/60">Vedi tutti</Link>
           </div>
           {plant.interventions.length === 0 ? (
             <p className="text-sm text-white/50">Nessun intervento registrato.</p>
@@ -87,7 +97,7 @@ export default async function PlantDetailPage({ params }: Props) {
         <section className="rounded-2xl border border-white/10 bg-white/5 p-5 md:col-span-2">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-lg font-semibold">Task</h2>
-            <Link href="/tasks" className="text-sm text-white/60">Vedi tutti</Link>
+            <Link href={routes.tasks} className="text-sm text-white/60">Vedi tutti</Link>
           </div>
           {plant.tasks.length === 0 ? (
             <p className="text-sm text-white/50">Nessun task per questa pianta.</p>
@@ -97,6 +107,41 @@ export default async function PlantDetailPage({ params }: Props) {
                 <Link key={task.id} href={`/tasks/${task.id}`} className="rounded-xl border border-white/10 p-4 transition hover:bg-white/5">
                   <p className="text-xs uppercase tracking-wide text-white/40">{task.status}</p>
                   <p className="mt-1 font-semibold">{task.title}</p>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+
+        <section className="rounded-2xl border border-white/10 bg-white/5 p-5 md:col-span-2">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="text-lg font-semibold">Task ricorrenti</h2>
+            {isSuperAdmin(session.user.role) ? (
+              <Link href={`/plants/${plant.id}/recurring-tasks/new`} className="text-sm text-white/60">
+                Nuovo template
+              </Link>
+            ) : null}
+          </div>
+          {plant.recurringTemplates.length === 0 ? (
+            <p className="text-sm text-white/50">Nessun template ricorrente per questa pianta.</p>
+          ) : (
+            <div className="grid gap-3">
+              {plant.recurringTemplates.map((template) => (
+                <Link key={template.id} href={routes.recurringTasks} className="rounded-xl border border-white/10 p-4 transition hover:bg-white/5">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-wide text-white/40">
+                        {template.active ? "ATTIVO" : "PAUSA"} • {template.recurrenceType}
+                      </p>
+                      <p className="mt-1 font-semibold">{template.title}</p>
+                      <p className="mt-1 text-sm text-white/60">
+                        Prossima data: {formatDate(template.nextDueDate)}
+                      </p>
+                    </div>
+                    <div className="text-sm text-white/50">
+                      {template.assignedTo?.name || template.assignedTo?.email || "Non assegnato"}
+                    </div>
+                  </div>
                 </Link>
               ))}
             </div>
