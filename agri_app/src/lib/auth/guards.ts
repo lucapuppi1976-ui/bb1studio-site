@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
+import { routes } from "@/lib/app-routes";
 
 export type AppUserRole = "SUPER_ADMIN" | "OPERATOR";
 
@@ -8,7 +9,7 @@ export async function requireAuth() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user) {
-    redirect("/login");
+    redirect(routes.login);
   }
 
   return session;
@@ -19,7 +20,7 @@ export async function requireRole(...allowedRoles: AppUserRole[]) {
   const role = session.user.role as AppUserRole | undefined;
 
   if (!role || !allowedRoles.includes(role)) {
-    redirect("/forbidden");
+    redirect(routes.forbidden);
   }
 
   return session;

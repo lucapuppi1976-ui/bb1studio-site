@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { requireSuperAdmin } from "@/lib/authz";
+import { requireSuperAdmin } from "@/lib/auth/guards";
 
 type Props = {
   children: ReactNode;
