@@ -6,6 +6,7 @@ export const routes = {
   plants: "/plants",
   interventions: "/interventions",
   tasks: "/tasks",
+  recurringTasks: "/recurring-tasks",
   today: "/today",
   approvals: "/approvals",
   notifications: "/notifications",

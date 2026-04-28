@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { generateRecurringTasks } from "@/lib/recurring-tasks/generate";
-import { createDailyOperationalNotifications } from "@/lib/notifications/daily";
 
 export async function POST(request: Request) {
   const url = new URL(request.url);
@@ -10,12 +9,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const recurring = await generateRecurringTasks(new Date());
-  const notifications = await createDailyOperationalNotifications();
+  const result = await generateRecurringTasks(new Date());
 
   return NextResponse.json({
     ok: true,
-    recurring,
-    notifications,
+    ...result,
   });
 }

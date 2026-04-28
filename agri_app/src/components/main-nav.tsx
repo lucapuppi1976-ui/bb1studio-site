@@ -41,6 +41,12 @@ export function MainNav({ session }: Props) {
           {session?.user?.role === "SUPER_ADMIN" ? (
             <>
               <Link
+                href={routes.recurringTasks}
+                className="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/5 hover:text-white"
+              >
+                Ricorrenti
+              </Link>
+              <Link
                 href={routes.approvals}
                 className="rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/5 hover:text-white"
               >
