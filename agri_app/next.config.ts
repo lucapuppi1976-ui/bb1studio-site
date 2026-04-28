@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: [
     "*.app.github.dev",
     "glorious-engine-5gwqwxrwgvxq24g44-3000.app.github.dev",
+    "glorious-engine-5gwqwxrwgvxq24g44-3001.app.github.dev",
   ],
 
   images: {
@@ -24,8 +25,11 @@ const nextConfig: NextConfig = {
       allowedOrigins: [
         "localhost:3000",
         "127.0.0.1:3000",
+        "localhost:3001",
+        "127.0.0.1:3001",
         "*.app.github.dev",
         "glorious-engine-5gwqwxrwgvxq24g44-3000.app.github.dev",
+        "glorious-engine-5gwqwxrwgvxq24g44-3001.app.github.dev",
         "bb1studio.com",
         "www.bb1studio.com",
         "agri-app-main-2.onrender.com",
