@@ -3,6 +3,9 @@ import { AppShell } from "@/components/app-shell";
 import { createRecurringTaskTemplate } from "@/lib/actions/recurring-tasks";
 import { getOperators, getPlantForRecurringTemplate } from "@/lib/data/recurring-tasks";
 import { requireSuperAdmin } from "@/lib/authz";
+import { getTranslations } from "@/lib/i18n/server";
+import { formatRecurrenceType, formatTaskPriority } from "@/lib/i18n/labels";
+import { getOperationalText, PRIORITY_OPTIONS, RECURRENCE_OPTIONS } from "@/lib/i18n/operational";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -10,6 +13,8 @@ type Props = {
 
 export default async function NewRecurringTaskTemplatePage({ params }: Props) {
   await requireSuperAdmin();
+  const { locale } = await getTranslations();
+  const op = getOperationalText(locale);
   const { id } = await params;
 
   const [plant, operators] = await Promise.all([
@@ -20,124 +25,76 @@ export default async function NewRecurringTaskTemplatePage({ params }: Props) {
   if (!plant) notFound();
 
   return (
-    <AppShell title="Nuovo task ricorrente" eyebrow={plant.name || plant.species}>
+    <AppShell title={op.pages.newSchedule} eyebrow={plant.name || plant.species}>
       <form action={createRecurringTaskTemplate} className="grid gap-6">
         <input type="hidden" name="plantId" value={plant.id} />
 
-        <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h2 className="text-xl font-semibold text-white">Dati base</h2>
-
+        <section className="agri-card">
+          <h2 className="text-xl font-semibold text-stone-950">{op.sections.baseData}</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <label className="grid gap-2">
-              <span className="text-sm text-white/70">Titolo</span>
-              <input
-                name="title"
-                required
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              />
+              <span className="text-sm font-medium text-stone-700">{op.fields.title}</span>
+              <input name="title" required className="agri-input" />
             </label>
 
             <label className="grid gap-2">
-              <span className="text-sm text-white/70">Priorità</span>
-              <select
-                name="priority"
-                defaultValue="RECOMMENDED"
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              >
-                <option value="RECOMMENDED">RECOMMENDED</option>
-                <option value="MANDATORY">MANDATORY</option>
+              <span className="text-sm font-medium text-stone-700">{op.fields.priority}</span>
+              <select name="priority" defaultValue="RECOMMENDED" className="agri-input">
+                {PRIORITY_OPTIONS.map((priority) => <option key={priority} value={priority}>{formatTaskPriority(priority, locale)}</option>)}
               </select>
             </label>
 
             <label className="grid gap-2 md:col-span-2">
-              <span className="text-sm text-white/70">Descrizione</span>
-              <textarea
-                name="description"
-                rows={4}
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              />
+              <span className="text-sm font-medium text-stone-700">{op.fields.description}</span>
+              <textarea name="description" rows={4} className="agri-input" />
             </label>
 
             <label className="grid gap-2 md:col-span-2">
-              <span className="text-sm text-white/70">Note</span>
-              <textarea
-                name="notes"
-                rows={3}
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              />
+              <span className="text-sm font-medium text-stone-700">{op.fields.notes}</span>
+              <textarea name="notes" rows={3} className="agri-input" />
             </label>
           </div>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h2 className="text-xl font-semibold text-white">Ricorrenza</h2>
-
+        <section className="agri-card">
+          <h2 className="text-xl font-semibold text-stone-950">{op.sections.recurrence}</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <label className="grid gap-2">
-              <span className="text-sm text-white/70">Tipo ricorrenza</span>
-              <select
-                name="recurrenceType"
-                defaultValue="WEEKLY"
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              >
-                <option value="DAILY">DAILY</option>
-                <option value="WEEKLY">WEEKLY</option>
-                <option value="EVERY_X_DAYS">EVERY_X_DAYS</option>
+              <span className="text-sm font-medium text-stone-700">{op.fields.recurrenceType}</span>
+              <select name="recurrenceType" defaultValue="WEEKLY" className="agri-input">
+                {RECURRENCE_OPTIONS.map((type) => <option key={type} value={type}>{formatRecurrenceType(type, locale, 1)}</option>)}
               </select>
             </label>
 
             <label className="grid gap-2">
-              <span className="text-sm text-white/70">Ogni X giorni</span>
-              <input
-                type="number"
-                min={1}
-                name="intervalDays"
-                placeholder="Usato solo per EVERY_X_DAYS"
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              />
+              <span className="text-sm font-medium text-stone-700">{op.fields.everyXDays}</span>
+              <input type="number" min={1} name="intervalDays" placeholder={op.messages.everyXDaysHelp} className="agri-input" />
             </label>
 
             <label className="grid gap-2">
-              <span className="text-sm text-white/70">Prima data</span>
-              <input
-                type="date"
-                name="nextDueDate"
-                required
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              />
+              <span className="text-sm font-medium text-stone-700">{op.fields.firstDate}</span>
+              <input type="date" name="nextDueDate" required className="agri-input" />
             </label>
           </div>
         </section>
 
-        <section className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <h2 className="text-xl font-semibold text-white">Assegnazione</h2>
-
+        <section className="agri-card">
+          <h2 className="text-xl font-semibold text-stone-950">{op.sections.assignment}</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <label className="grid gap-2">
-              <span className="text-sm text-white/70">Operatore</span>
-              <select
-                name="assignedToUserId"
-                defaultValue=""
-                className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-              >
-                <option value="">Non assegnato</option>
+              <span className="text-sm font-medium text-stone-700">{op.fields.operator}</span>
+              <select name="assignedToUserId" defaultValue="" className="agri-input">
+                <option value="">{op.messages.notAssigned}</option>
                 {operators.map((operator) => (
-                  <option key={operator.id} value={operator.id}>
-                    {operator.name || operator.email}
-                  </option>
+                  <option key={operator.id} value={operator.id}>{operator.name || operator.email}</option>
                 ))}
               </select>
             </label>
           </div>
         </section>
 
-        <div className="flex gap-3">
-          <button
-            type="submit"
-            className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 transition hover:opacity-90"
-          >
-            Crea template
-          </button>
+        <div className="grid gap-3 sm:flex">
+          <button type="submit" className="agri-button-primary">{op.actions.createSchedule}</button>
         </div>
       </form>
     </AppShell>
