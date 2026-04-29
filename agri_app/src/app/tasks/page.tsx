@@ -2,30 +2,33 @@ import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
 import { getTasks } from "@/lib/data/tasks";
 import { requireUser } from "@/lib/authz";
+import { getTranslations } from "@/lib/i18n/server";
+import { toDateLocale } from "@/lib/i18n/config";
+import { formatTaskPriority, formatTaskStatus } from "@/lib/i18n/labels";
 
 export default async function TasksPage() {
   await requireUser();
+  const { locale, t } = await getTranslations();
+  const dateLocale = toDateLocale(locale);
   const tasks = await getTasks();
 
   return (
-    <AppShell title="Task" eyebrow="Agenda completa">
+    <AppShell title={t.tasksPage.title} eyebrow={t.tasksPage.eyebrow}>
       {tasks.length === 0 ? (
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-white/60">Nessun task presente.</div>
+        <div className="agri-card text-stone-600">{t.tasksPage.empty}</div>
       ) : (
         <div className="grid gap-4">
           {tasks.map((task) => (
-            <Link key={task.id} href={`/tasks/${task.id}`} className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10">
+            <Link key={task.id} href={`/tasks/${task.id}`} className="agri-card transition hover:bg-white">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-wide text-white/40">{task.priority}</p>
-                  <h2 className="mt-1 text-xl font-semibold">{task.title}</h2>
-                  <p className="mt-1 text-sm text-white/60">
-                    {task.plant.name || task.plant.species} • {task.plant.code}
-                  </p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-800/70">{formatTaskPriority(task.priority, locale)}</p>
+                  <h2 className="mt-1 text-xl font-semibold text-stone-950">{task.title}</h2>
+                  <p className="mt-1 text-sm text-stone-600">{task.plant.name || task.plant.species} · {task.plant.code}</p>
                 </div>
-                <div className="text-sm text-white/50">
-                  <p>{new Date(task.dueDate).toLocaleDateString("it-IT")}</p>
-                  <p>{task.status}</p>
+                <div className="text-sm text-stone-500">
+                  <p>{new Date(task.dueDate).toLocaleDateString(dateLocale)}</p>
+                  <p>{formatTaskStatus(task.status, locale)}</p>
                 </div>
               </div>
             </Link>

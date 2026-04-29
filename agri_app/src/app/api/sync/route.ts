@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { getTranslations } from "@/lib/i18n/server";
 
 type SyncItem = {
   id: string;
@@ -31,14 +32,18 @@ function parseDate(value?: string | null) {
 }
 
 export async function POST(request: Request) {
-  const session = await getServerSession(authOptions);
+  const [{ t }, session] = await Promise.all([
+    getTranslations(),
+    getServerSession(authOptions),
+  ]);
+
   if (!session?.user) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return new NextResponse(t.backend.loginRequired, { status: 401 });
   }
 
   const body = await request.json().catch(() => null);
   if (!body || !Array.isArray(body.items)) {
-    return NextResponse.json({ error: "Payload non valido" }, { status: 400 });
+    return NextResponse.json({ error: t.backend.invalidPayload }, { status: 400 });
   }
 
   const results: Array<Record<string, unknown>> = [];
@@ -46,14 +51,11 @@ export async function POST(request: Request) {
   for (const item of body.items as SyncItem[]) {
     try {
       if (item.kind !== "CREATE_INTERVENTION") {
-        results.push({ queueId: item.id, ok: false, error: "Operazione non supportata" });
+        results.push({ queueId: item.id, ok: false, error: t.backend.unsupportedOperation });
         continue;
       }
 
-      const existing = await prisma.intervention.findUnique({
-        where: { clientRequestId: item.id },
-      });
-
+      const existing = await prisma.intervention.findUnique({ where: { clientRequestId: item.id } });
       if (existing) {
         results.push({ queueId: item.id, ok: true, deduplicated: true, interventionId: existing.id });
         continue;
@@ -80,12 +82,8 @@ export async function POST(request: Request) {
       });
 
       results.push({ queueId: item.id, ok: true, interventionId: created.id });
-    } catch (error) {
-      results.push({
-        queueId: item.id,
-        ok: false,
-        error: error instanceof Error ? error.message : "Errore sconosciuto",
-      });
+    } catch {
+      results.push({ queueId: item.id, ok: false, error: t.backend.unknownError });
     }
   }
 

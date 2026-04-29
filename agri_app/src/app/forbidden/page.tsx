@@ -1,29 +1,19 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
+import { getTranslations } from "@/lib/i18n/server";
+import { routes } from "@/lib/app-routes";
 
-export default function ForbiddenPage() {
+export default async function ForbiddenPage() {
+  const { t } = await getTranslations();
+
   return (
-    <AppShell title="Accesso negato" eyebrow="Permessi insufficienti">
-      <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/5 p-6 text-white">
-        <h2 className="text-2xl font-semibold">Non hai i permessi per entrare qui.</h2>
-        <p className="mt-3 text-white/70">
-          Se pensi che sia un errore, contatta il super admin.
-        </p>
-
+    <AppShell title={t.auth.forbiddenTitle} eyebrow={t.auth.forbiddenEyebrow}>
+      <div className="mx-auto max-w-xl agri-card">
+        <h2 className="text-2xl font-semibold text-stone-950">{t.auth.forbiddenHeading}</h2>
+        <p className="mt-3 leading-6 text-stone-600">{t.auth.forbiddenBody}</p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link
-            href="/dashboard"
-            className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950"
-          >
-            Torna alla dashboard
-          </Link>
-
-          <Link
-            href="/login"
-            className="rounded-2xl border border-white/10 px-5 py-3 text-sm text-white/70"
-          >
-            Vai al login
-          </Link>
+          <Link href={routes.dashboard} className="agri-button-primary px-5 py-3">{t.auth.backToSummary}</Link>
+          <Link href={routes.login} className="agri-button-secondary px-5 py-3">{t.auth.goToLogin}</Link>
         </div>
       </div>
     </AppShell>

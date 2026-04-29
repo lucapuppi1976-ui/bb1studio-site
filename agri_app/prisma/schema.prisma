@@ -302,6 +302,7 @@ model NotificationPreference {
   systemMessages  Boolean  @default(true)
   dailyDigestHour Int      @default(7)
   timezone        String   @default("Europe/Madrid")
+  locale          String   @default("it")
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
