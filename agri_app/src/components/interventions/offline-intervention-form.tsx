@@ -3,6 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { enqueueCreateIntervention, flushOfflineQueue } from "@/lib/offline/queue";
+import type { Locale } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
+import { formatInterventionType } from "@/lib/i18n/labels";
+import { getOperationalText, INTERVENTION_TYPE_OPTIONS } from "@/lib/i18n/operational";
 
 type Props = {
   plant: {
@@ -11,6 +15,7 @@ type Props = {
     name: string | null;
     species: string;
   };
+  locale?: Locale;
 };
 
 function parseNumber(value: FormDataEntryValue | null) {
@@ -19,7 +24,8 @@ function parseNumber(value: FormDataEntryValue | null) {
   return Number.isNaN(parsed) ? null : parsed;
 }
 
-export function OfflineInterventionForm({ plant }: Props) {
+export function OfflineInterventionForm({ plant, locale = DEFAULT_LOCALE }: Props) {
+  const op = getOperationalText(locale);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -51,15 +57,15 @@ export function OfflineInterventionForm({ plant }: Props) {
 
       if (navigator.onLine) {
         await flushOfflineQueue();
-        setMessage("Intervento sincronizzato correttamente.");
+        setMessage(op.messages.offlineSynced);
       } else {
-        setMessage("Intervento salvato offline. Verrà sincronizzato appena torna la rete.");
+        setMessage(op.messages.offlineSaved);
       }
 
-      (event.currentTarget).reset();
+      event.currentTarget.reset();
       router.refresh();
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Errore durante il salvataggio.");
+      setMessage(error instanceof Error ? error.message : op.messages.saveError);
     } finally {
       setLoading(false);
     }
@@ -67,47 +73,47 @@ export function OfflineInterventionForm({ plant }: Props) {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-6">
-      <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-white/70">
-        <p className="text-xs uppercase tracking-wide text-white/40">{plant.code}</p>
-        <p className="mt-1 text-lg font-semibold text-white">{plant.name || plant.species}</p>
-        <p className="text-white/60">{plant.species}</p>
+      <div className="agri-card">
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-800/70">{plant.code}</p>
+        <p className="mt-1 text-lg font-semibold text-stone-950">{plant.name || plant.species}</p>
+        <p className="text-sm text-stone-600">{plant.species}</p>
       </div>
 
-      {message ? <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">{message}</div> : null}
+      {message ? <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950">{message}</div> : null}
 
       <div className="grid gap-4 md:grid-cols-2">
         <label className="grid gap-2">
-          <span className="text-sm text-white/70">Titolo</span>
-          <input name="title" required className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none" />
+          <span className="text-sm font-medium text-stone-700">{op.fields.title}</span>
+          <input name="title" required className="agri-input" />
         </label>
         <label className="grid gap-2">
-          <span className="text-sm text-white/70">Tipo</span>
-          <select name="type" defaultValue="OTHER" className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none">
-            {["IRRIGATION","PRUNING","FERTILIZATION","PHYTOSANITARY","MEASUREMENT","TRANSPLANT","HARVEST","OTHER"].map((type) => (
-              <option key={type} value={type}>{type}</option>
+          <span className="text-sm font-medium text-stone-700">{op.fields.type}</span>
+          <select name="type" defaultValue="OTHER" className="agri-input">
+            {INTERVENTION_TYPE_OPTIONS.map((type) => (
+              <option key={type} value={type}>{formatInterventionType(type, locale)}</option>
             ))}
           </select>
         </label>
         <label className="grid gap-2">
-          <span className="text-sm text-white/70">Data pianificata</span>
-          <input type="date" name="scheduledDate" className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none" />
+          <span className="text-sm font-medium text-stone-700">{op.fields.scheduledDate}</span>
+          <input type="date" name="scheduledDate" className="agri-input" />
         </label>
         <label className="grid gap-2">
-          <span className="text-sm text-white/70">Operatore</span>
-          <input name="operatorName" className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none" />
+          <span className="text-sm font-medium text-stone-700">{op.fields.operator}</span>
+          <input name="operatorName" className="agri-input" />
         </label>
         <label className="grid gap-2 md:col-span-2">
-          <span className="text-sm text-white/70">Descrizione</span>
-          <textarea name="description" rows={4} className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none" />
+          <span className="text-sm font-medium text-stone-700">{op.fields.description}</span>
+          <textarea name="description" rows={4} className="agri-input" />
         </label>
         <label className="grid gap-2 md:col-span-2">
-          <span className="text-sm text-white/70">Note</span>
-          <textarea name="notes" rows={4} className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none" />
+          <span className="text-sm font-medium text-stone-700">{op.fields.notes}</span>
+          <textarea name="notes" rows={4} className="agri-input" />
         </label>
       </div>
 
-      <button type="submit" disabled={loading} className="w-fit rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 disabled:opacity-50">
-        {loading ? "Salvataggio..." : "Salva in coda offline"}
+      <button type="submit" disabled={loading} className="w-full sm:w-fit agri-button-primary">
+        {loading ? op.actions.saving : op.actions.saveOffline}
       </button>
     </form>
   );

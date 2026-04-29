@@ -18,12 +18,12 @@ export function LanguageSwitcher({ currentLocale, label }: Props) {
   }
 
   return (
-    <label className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70">
+    <label className="flex min-h-11 min-w-0 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-2 text-sm text-white/75 sm:px-3">
       <span className="sr-only">{label}</span>
       <select
         value={currentLocale}
         onChange={onChange}
-        className="bg-transparent text-sm font-medium text-white outline-none [&_option]:bg-stone-950 [&_option]:text-white"
+        className="max-w-[7.5rem] truncate bg-transparent text-sm font-medium text-white outline-none sm:max-w-[11rem] [&_option]:bg-stone-950 [&_option]:text-white"
         aria-label={label}
       >
         {LOCALES.map((locale) => (

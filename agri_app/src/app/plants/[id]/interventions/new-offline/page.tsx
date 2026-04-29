@@ -3,6 +3,8 @@ import { AppShell } from "@/components/app-shell";
 import { OfflineInterventionForm } from "@/components/interventions/offline-intervention-form";
 import { getPlantForIntervention } from "@/lib/data/interventions";
 import { requireUser } from "@/lib/authz";
+import { getTranslations } from "@/lib/i18n/server";
+import { getOperationalText } from "@/lib/i18n/operational";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -10,14 +12,16 @@ type Props = {
 
 export default async function NewOfflineInterventionPage({ params }: Props) {
   await requireUser();
+  const { locale } = await getTranslations();
+  const op = getOperationalText(locale);
   const { id } = await params;
   const plant = await getPlantForIntervention(id);
 
   if (!plant) notFound();
 
   return (
-    <AppShell title="Nuovo intervento offline" eyebrow={plant.code}>
-      <OfflineInterventionForm plant={plant} />
+    <AppShell title={op.pages.newOfflineIntervention} eyebrow={plant.code}>
+      <OfflineInterventionForm plant={plant} locale={locale} />
     </AppShell>
   );
 }

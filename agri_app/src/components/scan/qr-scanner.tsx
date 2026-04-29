@@ -19,7 +19,8 @@ export function QRScanner() {
           regionId,
           {
             fps: 10,
-            qrbox: 250,
+            qrbox: { width: 240, height: 240 },
+            aspectRatio: 1,
           },
           false
         );
@@ -53,8 +54,12 @@ export function QRScanner() {
 
   return (
     <div className="grid gap-4">
-      <div id={regionId} className="overflow-hidden rounded-2xl border border-white/10 bg-white p-2" />
-      <p className="text-sm text-white/60">{message}</p>
+      <div className="agri-card overflow-hidden p-3 sm:p-4">
+        <div id={regionId} className="mx-auto max-w-md overflow-hidden rounded-2xl bg-white" />
+      </div>
+      <p className="rounded-2xl border border-white/70 bg-white/80 p-4 text-sm text-stone-700 shadow-sm">
+        {message}
+      </p>
     </div>
   );
 }
