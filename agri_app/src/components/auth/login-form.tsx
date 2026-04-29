@@ -4,11 +4,20 @@ import { signIn } from "next-auth/react";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  callbackUrl?: string;
+type LoginLabels = {
+  email: string;
+  password: string;
+  invalidCredentials: string;
+  signingIn: string;
+  signIn: string;
 };
 
-export function LoginForm({ callbackUrl = "/dashboard" }: Props) {
+type Props = {
+  callbackUrl?: string;
+  labels: LoginLabels;
+};
+
+export function LoginForm({ callbackUrl = "/dashboard", labels }: Props) {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -35,7 +44,7 @@ export function LoginForm({ callbackUrl = "/dashboard" }: Props) {
     });
 
     if (result?.error) {
-      setError("Credenziali non valide.");
+      setError(labels.invalidCredentials);
       setLoading(false);
       return;
     }
@@ -45,41 +54,25 @@ export function LoginForm({ callbackUrl = "/dashboard" }: Props) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4 rounded-2xl border border-white/10 bg-white/5 p-6">
+    <form onSubmit={onSubmit} className="agri-card grid gap-4">
       <label className="grid gap-2">
-        <span className="text-sm text-white/70">Email</span>
-        <input
-          type="email"
-          name="email"
-          required
-          className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-          placeholder="admin@bb1studio.local"
-        />
+        <span className="text-sm font-medium text-stone-700">{labels.email}</span>
+        <input type="email" name="email" required className="agri-input" placeholder="admin@bb1studio.local" />
       </label>
 
       <label className="grid gap-2">
-        <span className="text-sm text-white/70">Password</span>
-        <input
-          type="password"
-          name="password"
-          required
-          className="rounded-xl border border-white/10 bg-neutral-900 px-4 py-3 text-white outline-none"
-          placeholder="••••••••"
-        />
+        <span className="text-sm font-medium text-stone-700">{labels.password}</span>
+        <input type="password" name="password" required className="agri-input" placeholder="••••••••" />
       </label>
 
       {error ? (
-        <div className="rounded-xl border border-rose-500/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
+        <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-900">
           {error}
         </div>
       ) : null}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-neutral-950 disabled:cursor-not-allowed disabled:opacity-50"
-      >
-        {loading ? "Accesso..." : "Entra"}
+      <button type="submit" disabled={loading} className="agri-button-primary px-5 py-3">
+        {loading ? labels.signingIn : labels.signIn}
       </button>
     </form>
   );

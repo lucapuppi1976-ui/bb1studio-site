@@ -3,11 +3,16 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { toCsv } from "@/lib/csv";
+import { getTranslations } from "@/lib/i18n/server";
 
 export async function GET() {
-  const session = await getServerSession(authOptions);
+  const [{ t }, session] = await Promise.all([
+    getTranslations(),
+    getServerSession(authOptions),
+  ]);
+
   if (!session?.user || session.user.role !== "SUPER_ADMIN") {
-    return new NextResponse("Forbidden", { status: 403 });
+    return new NextResponse(t.backend.noPermission, { status: 403 });
   }
 
 

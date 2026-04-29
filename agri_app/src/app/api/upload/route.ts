@@ -2,18 +2,23 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { uploadBufferToCloudinary } from "@/lib/cloudinary";
+import { getTranslations } from "@/lib/i18n/server";
 
 export async function POST(request: Request) {
-  const session = await getServerSession(authOptions);
+  const [{ t }, session] = await Promise.all([
+    getTranslations(),
+    getServerSession(authOptions),
+  ]);
+
   if (!session?.user) {
-    return new NextResponse("Unauthorized", { status: 401 });
+    return new NextResponse(t.backend.loginRequired, { status: 401 });
   }
 
   const formData = await request.formData();
   const file = formData.get("file");
 
   if (!(file instanceof File)) {
-    return new NextResponse("File mancante", { status: 400 });
+    return new NextResponse(t.backend.missingFile, { status: 400 });
   }
 
   const arrayBuffer = await file.arrayBuffer();

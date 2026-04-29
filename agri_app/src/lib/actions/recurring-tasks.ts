@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { requireSuperAdmin } from "@/lib/authz";
 import { routes } from "@/lib/app-routes";
 import { generateRecurringTasks } from "@/lib/recurring-tasks/generate";
+import { getTranslations } from "@/lib/i18n/server";
 
 function parsePriority(value: FormDataEntryValue | null): TaskPriority {
   return value === "MANDATORY" ? TaskPriority.MANDATORY : TaskPriority.RECOMMENDED;
@@ -25,25 +26,21 @@ function parseIntervalDays(value: FormDataEntryValue | null) {
   return raw;
 }
 
-function parseNextDueDate(value: FormDataEntryValue | null) {
-  if (typeof value !== "string" || !value.trim()) {
-    throw new Error("Data iniziale mancante");
-  }
-
+function parseNextDueDate(value: FormDataEntryValue | null, message: string) {
+  if (typeof value !== "string" || !value.trim()) throw new Error(message);
   return new Date(`${value}T07:00:00.000Z`);
 }
 
 export async function createRecurringTaskTemplate(formData: FormData) {
-  const session = await requireSuperAdmin();
-
+  const [session, { t }] = await Promise.all([requireSuperAdmin(), getTranslations()]);
   const plantId = String(formData.get("plantId") || "").trim();
   const title = String(formData.get("title") || "").trim();
   const recurrenceType = parseRecurrenceType(formData.get("recurrenceType"));
   const intervalDays = parseIntervalDays(formData.get("intervalDays"));
-  const nextDueDate = parseNextDueDate(formData.get("nextDueDate"));
+  const nextDueDate = parseNextDueDate(formData.get("nextDueDate"), t.backend.chooseStartDate);
 
-  if (!plantId) throw new Error("Plant ID mancante");
-  if (!title) throw new Error("Titolo mancante");
+  if (!plantId) throw new Error(t.backend.choosePlant);
+  if (!title) throw new Error(t.backend.enterTitle);
 
   await prisma.taskRecurrenceTemplate.create({
     data: {
@@ -67,27 +64,15 @@ export async function createRecurringTaskTemplate(formData: FormData) {
 
 export async function toggleRecurringTaskTemplate(templateId: string) {
   await requireSuperAdmin();
-
-  const template = await prisma.taskRecurrenceTemplate.findUnique({
-    where: { id: templateId },
-    select: { id: true, active: true },
-  });
-
+  const template = await prisma.taskRecurrenceTemplate.findUnique({ where: { id: templateId }, select: { id: true, active: true } });
   if (!template) return;
-
-  await prisma.taskRecurrenceTemplate.update({
-    where: { id: templateId },
-    data: { active: !template.active },
-  });
-
+  await prisma.taskRecurrenceTemplate.update({ where: { id: templateId }, data: { active: !template.active } });
   revalidatePath(routes.recurringTasks);
 }
 
 export async function generateRecurringTasksNow() {
   await requireSuperAdmin();
-
   const result = await generateRecurringTasks(new Date());
-
   revalidatePath(routes.recurringTasks);
   revalidatePath(routes.tasks);
   revalidatePath(routes.today);
