@@ -115,3 +115,32 @@ export async function getOperators() {
     orderBy: { name: "asc" },
   });
 }
+
+export async function getApprovalProposalCounts() {
+  const [pending, approved, rejected] = await Promise.all([
+    prisma.taskProposal.count({ where: { status: "PENDING" } }),
+    prisma.taskProposal.count({ where: { status: "APPROVED" } }),
+    prisma.taskProposal.count({ where: { status: "REJECTED" } }),
+  ]);
+
+  return {
+    total: pending + approved + rejected,
+    pending,
+    approved,
+    rejected,
+  };
+}
+
+export async function getApprovalProposals(status?: "PENDING" | "APPROVED" | "REJECTED") {
+  return prisma.taskProposal.findMany({
+    where: status ? { status } : undefined,
+    include: {
+      plant: true,
+      task: true,
+      proposedBy: true,
+      reviewedBy: true,
+    },
+    orderBy: [{ createdAt: "desc" }],
+    take: 100,
+  });
+}
