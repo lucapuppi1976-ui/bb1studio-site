@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { UserRole } from "@prisma/client";
 import { authOptions } from "@/lib/auth";
-import { buildControlledEmailTestPreview, getEmailRuntimeStatus, sendControlledTestEmail } from "@/lib/notifications/email-control";
+import { buildControlledEmailTestPreview, getEmailRuntimeStatus, getEmailTestSafety, sendControlledTestEmail } from "@/lib/notifications/email-control";
 
 type AuthorizedRequest =
   | { ok: true; via: "session" | "secret"; email?: string | null }
@@ -25,17 +25,19 @@ export async function GET(request: Request) {
   if (!auth.ok) return NextResponse.json({ ok: false, error: "Accesso non consentito." }, { status: 403 });
 
   const to = auth.email || "admin@example.com";
+  const email = getEmailRuntimeStatus();
 
   return NextResponse.json({
     ok: true,
     authorizedBy: auth.via,
-    email: getEmailRuntimeStatus(),
+    email,
+    testSafety: getEmailTestSafety(email),
     preview: buildControlledEmailTestPreview(to),
     sendInstructions: {
       method: "POST",
       requiredQuery: "confirm=send-test-email",
       optionalQuery: "to=destinatario@example.com",
-      note: "L'invio reale resta bloccato se ENABLE_EMAIL_NOTIFICATIONS=false o se Resend non è configurato.",
+      note: "L'invio reale resta bloccato se ENABLE_EMAIL_NOTIFICATIONS=false, se Resend non è configurato o se il blocco live test è attivo.",
     },
   });
 }

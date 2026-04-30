@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { UserRole } from "@prisma/client";
 import { authOptions } from "@/lib/auth";
-import { getEmailRuntimeStatus } from "@/lib/notifications/email-control";
+import { getEmailRuntimeStatus, getEmailTestSafety } from "@/lib/notifications/email-control";
 
 async function isAuthorized(request: Request) {
   const url = new URL(request.url);
@@ -19,9 +19,12 @@ export async function GET(request: Request) {
     return NextResponse.json({ ok: false, error: "Accesso non consentito." }, { status: 403 });
   }
 
+  const email = getEmailRuntimeStatus();
+
   return NextResponse.json({
     ok: true,
-    email: getEmailRuntimeStatus(),
-    note: "L'invio reale resta bloccato finché ENABLE_EMAIL_NOTIFICATIONS=false.",
+    email,
+    testSafety: getEmailTestSafety(email),
+    note: "L'invio reale resta bloccato finché ENABLE_EMAIL_NOTIFICATIONS=false. Il test email reale è pensato per DEV.",
   });
 }
