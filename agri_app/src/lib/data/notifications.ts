@@ -32,11 +32,14 @@ export async function getNotificationsCreatedTodayCount(userId: string) {
 }
 
 export async function getNotificationCenterData(userId: string) {
-  const [notifications, unreadCount, todayCount] = await prisma.$transaction([
+  const [notifications, totalCount, unreadCount, todayCount, taskCount, approvalCount] = await prisma.$transaction([
     prisma.appNotification.findMany({
       where: { userId },
       orderBy: [{ readAt: "asc" }, { createdAt: "desc" }],
-      take: 50,
+      take: 100,
+    }),
+    prisma.appNotification.count({
+      where: { userId },
     }),
     prisma.appNotification.count({
       where: { userId, readAt: null },
@@ -49,11 +52,20 @@ export async function getNotificationCenterData(userId: string) {
         },
       },
     }),
+    prisma.appNotification.count({
+      where: { userId, type: "TASK" },
+    }),
+    prisma.appNotification.count({
+      where: { userId, type: "APPROVAL" },
+    }),
   ]);
 
   return {
     notifications,
+    totalCount,
     unreadCount,
     todayCount,
+    taskCount,
+    approvalCount,
   };
 }
