@@ -35,7 +35,17 @@ function buildHref(scope: string, q: string) {
 export default async function RecurringTasksPage({ searchParams }: PageProps) {
   await requireSuperAdmin();
   const params = (await searchParams) ?? {};
-  const { t, locale, dateLocale } = await getTranslations();
+  const { t, locale } = await getTranslations();
+  const dateLocale = {
+    it: "it-IT",
+    es: "es-ES",
+    en: "en-US",
+    sk: "sk-SK",
+    fr: "fr-FR",
+    de: "de-DE",
+    ru: "ru-RU",
+    hu: "hu-HU",
+  }[locale];
   const rw = getRecurringWorkflowText(locale);
   const templates = await getRecurringTemplates();
   const now = new Date();
