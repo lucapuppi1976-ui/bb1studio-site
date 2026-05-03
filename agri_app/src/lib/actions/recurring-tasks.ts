@@ -70,8 +70,13 @@ export async function toggleRecurringTaskTemplate(templateId: string) {
   revalidatePath(routes.recurringTasks);
 }
 
-export async function generateRecurringTasksNow() {
+export async function generateRecurringTasksNow(formData: FormData) {
   await requireSuperAdmin();
+
+  if (String(formData.get("confirmGenerate") || "") !== "yes") {
+    redirect(`${routes.recurringTasks}?manual=confirm-required`);
+  }
+
   const result = await generateRecurringTasks(new Date());
   revalidatePath(routes.recurringTasks);
   revalidatePath(routes.tasks);

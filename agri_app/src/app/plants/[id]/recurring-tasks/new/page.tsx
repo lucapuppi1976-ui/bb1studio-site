@@ -6,6 +6,7 @@ import { requireSuperAdmin } from "@/lib/authz";
 import { getTranslations } from "@/lib/i18n/server";
 import { formatRecurrenceType, formatTaskPriority } from "@/lib/i18n/labels";
 import { getOperationalText, PRIORITY_OPTIONS, RECURRENCE_OPTIONS } from "@/lib/i18n/operational";
+import { getRecurringWorkflowText } from "@/lib/i18n/recurring-workflow";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -15,6 +16,7 @@ export default async function NewRecurringTaskTemplatePage({ params }: Props) {
   await requireSuperAdmin();
   const { locale } = await getTranslations();
   const op = getOperationalText(locale);
+  const rw = getRecurringWorkflowText(locale);
   const { id } = await params;
 
   const [plant, operators] = await Promise.all([
@@ -26,6 +28,11 @@ export default async function NewRecurringTaskTemplatePage({ params }: Props) {
 
   return (
     <AppShell title={op.pages.newSchedule} eyebrow={plant.name || plant.species}>
+      <div className="mb-6 rounded-[1.75rem] border border-emerald-200 bg-emerald-50/90 p-5 shadow-sm">
+        <h2 className="text-lg font-semibold text-emerald-950">{rw.newSchedule.introTitle}</h2>
+        <p className="mt-2 text-sm leading-6 text-emerald-900/80">{rw.newSchedule.introBody}</p>
+      </div>
+
       <form action={createRecurringTaskTemplate} className="grid gap-6">
         <input type="hidden" name="plantId" value={plant.id} />
 
@@ -64,22 +71,26 @@ export default async function NewRecurringTaskTemplatePage({ params }: Props) {
               <select name="recurrenceType" defaultValue="WEEKLY" className="agri-input">
                 {RECURRENCE_OPTIONS.map((type) => <option key={type} value={type}>{formatRecurrenceType(type, locale, 1)}</option>)}
               </select>
+              <span className="text-xs leading-5 text-stone-500">{rw.newSchedule.frequencyHelp}</span>
             </label>
 
             <label className="grid gap-2">
               <span className="text-sm font-medium text-stone-700">{op.fields.everyXDays}</span>
               <input type="number" min={1} name="intervalDays" placeholder={op.messages.everyXDaysHelp} className="agri-input" />
+              <span className="text-xs leading-5 text-stone-500">{rw.newSchedule.everyXDaysHelp}</span>
             </label>
 
             <label className="grid gap-2">
               <span className="text-sm font-medium text-stone-700">{op.fields.firstDate}</span>
               <input type="date" name="nextDueDate" required className="agri-input" />
+              <span className="text-xs leading-5 text-stone-500">{rw.newSchedule.firstDateHelp}</span>
             </label>
           </div>
         </section>
 
         <section className="agri-card">
           <h2 className="text-xl font-semibold text-stone-950">{op.sections.assignment}</h2>
+          <p className="mt-2 text-sm leading-6 text-stone-600">{rw.newSchedule.assignmentHelp}</p>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             <label className="grid gap-2">
               <span className="text-sm font-medium text-stone-700">{op.fields.operator}</span>
