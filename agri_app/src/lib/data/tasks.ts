@@ -7,6 +7,7 @@ export async function getTasks() {
     include: {
       plant: true,
       assignedTo: true,
+      recurrenceTemplate: true,
       proposals: {
         orderBy: { createdAt: "desc" },
       },
@@ -21,6 +22,11 @@ export async function getTaskById(id: string) {
       plant: true,
       assignedTo: true,
       createdBy: true,
+      recurrenceTemplate: {
+        include: {
+          plant: true,
+        },
+      },
       proposals: {
         include: {
           proposedBy: true,

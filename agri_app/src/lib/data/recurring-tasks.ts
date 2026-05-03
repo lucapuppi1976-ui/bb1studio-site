@@ -9,7 +9,7 @@ export async function getRecurringTemplates() {
       createdBy: true,
       tasks: {
         orderBy: { dueDate: "desc" },
-        take: 3,
+        take: 5,
       },
     },
     orderBy: [{ active: "desc" }, { nextDueDate: "asc" }],
@@ -21,6 +21,10 @@ export async function getRecurringTemplatesForPlant(plantId: string) {
     where: { plantId },
     include: {
       assignedTo: true,
+      tasks: {
+        orderBy: { dueDate: "desc" },
+        take: 3,
+      },
     },
     orderBy: [{ active: "desc" }, { nextDueDate: "asc" }],
   });
