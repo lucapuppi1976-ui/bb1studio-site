@@ -9,10 +9,18 @@ export async function getPlants() {
         take: 5,
       },
       tasks: {
+        include: { recurrenceTemplate: true },
         orderBy: { dueDate: "asc" },
         take: 5,
       },
       recurringTemplates: {
+        include: {
+          assignedTo: true,
+          tasks: {
+            orderBy: { dueDate: "desc" },
+            take: 3,
+          },
+        },
         orderBy: { nextDueDate: "asc" },
         take: 5,
       },
@@ -25,9 +33,18 @@ export async function getPlantById(id: string) {
     where: { id },
     include: {
       interventions: { orderBy: { createdAt: "desc" } },
-      tasks: { orderBy: { dueDate: "asc" } },
+      tasks: {
+        include: { recurrenceTemplate: true },
+        orderBy: { dueDate: "asc" },
+      },
       recurringTemplates: {
-        include: { assignedTo: true },
+        include: {
+          assignedTo: true,
+          tasks: {
+            orderBy: { dueDate: "desc" },
+            take: 5,
+          },
+        },
         orderBy: { nextDueDate: "asc" },
       },
     },

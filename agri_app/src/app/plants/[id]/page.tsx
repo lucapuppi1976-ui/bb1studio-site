@@ -9,6 +9,7 @@ import { getTranslations } from "@/lib/i18n/server";
 import { toDateLocale } from "@/lib/i18n/config";
 import { formatEnvironment, formatInterventionType, formatPlantStatus, formatPlantType, formatRecurrenceType, formatTaskStatus } from "@/lib/i18n/labels";
 import { getOperationalText } from "@/lib/i18n/operational";
+import { getRecurringHistoryText } from "@/lib/i18n/recurring-history";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -18,6 +19,7 @@ export default async function PlantDetailPage({ params }: Props) {
   const session = await requireUser();
   const { locale, t } = await getTranslations();
   const op = getOperationalText(locale);
+  const rh = getRecurringHistoryText(locale);
   const dateLocale = toDateLocale(locale);
   const { id } = await params;
   const plant = await getPlantById(id);
@@ -96,8 +98,14 @@ export default async function PlantDetailPage({ params }: Props) {
             <div className="grid gap-3">
               {plant.tasks.map((task) => (
                 <Link key={task.id} href={`/tasks/${task.id}`} className="rounded-2xl border border-stone-200 bg-white p-4 transition hover:bg-emerald-50/40">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-800/70">{formatTaskStatus(task.status, locale)}</p>
-                  <p className="mt-1 font-semibold text-stone-950">{task.title}</p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-800">{formatTaskStatus(task.status, locale)}</span>
+                    {task.recurrenceTemplateId ? <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-sky-800">{rh.badges.generated}</span> : null}
+                  </div>
+                  <p className="mt-2 font-semibold text-stone-950">{task.title}</p>
+                  {task.recurrenceTemplateId ? (
+                    <p className="mt-1 text-sm text-stone-600">{rh.plant.generatedFrom}: {task.recurrenceTemplate?.title || rh.badges.generated}</p>
+                  ) : null}
                 </Link>
               ))}
             </div>
@@ -124,6 +132,16 @@ export default async function PlantDetailPage({ params }: Props) {
                       </p>
                       <p className="mt-1 font-semibold text-stone-950">{template.title}</p>
                       <p className="mt-1 text-sm text-stone-600">{new Date(template.nextDueDate).toLocaleDateString(dateLocale)}</p>
+                      {template.tasks.length > 0 ? (
+                        <div className="mt-3 rounded-xl border border-stone-200 bg-stone-50 p-3">
+                          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-stone-500">{rh.plant.generatedTasks}</p>
+                          <div className="mt-2 grid gap-1 text-sm text-stone-600">
+                            {template.tasks.slice(0, 3).map((task) => (
+                              <p key={task.id}>{new Date(task.dueDate).toLocaleDateString(dateLocale)} · {task.title}</p>
+                            ))}
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                     <div className="text-sm text-stone-500">
                       {template.assignedTo?.name || template.assignedTo?.email || op.messages.notAssigned}

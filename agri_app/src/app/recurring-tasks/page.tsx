@@ -5,8 +5,10 @@ import { generateRecurringTasksNow, toggleRecurringTaskTemplate } from "@/lib/ac
 import { requireSuperAdmin } from "@/lib/authz";
 import { routes } from "@/lib/app-routes";
 import { getTranslations } from "@/lib/i18n/server";
+import { toDateLocale } from "@/lib/i18n/config";
 import { formatRecurrenceType } from "@/lib/i18n/labels";
 import { getRecurringWorkflowText, normalizeRecurringScope, RECURRING_SCOPES } from "@/lib/i18n/recurring-workflow";
+import { getRecurringHistoryText } from "@/lib/i18n/recurring-history";
 
 type PageProps = {
   searchParams?: Promise<Record<string, string | string[] | undefined>>;
@@ -36,17 +38,9 @@ export default async function RecurringTasksPage({ searchParams }: PageProps) {
   await requireSuperAdmin();
   const params = (await searchParams) ?? {};
   const { t, locale } = await getTranslations();
-  const dateLocale = {
-    it: "it-IT",
-    es: "es-ES",
-    en: "en-US",
-    sk: "sk-SK",
-    fr: "fr-FR",
-    de: "de-DE",
-    ru: "ru-RU",
-    hu: "hu-HU",
-  }[locale];
+  const dateLocale = toDateLocale(locale);
   const rw = getRecurringWorkflowText(locale);
+  const rh = getRecurringHistoryText(locale);
   const templates = await getRecurringTemplates();
   const now = new Date();
   const scope = normalizeRecurringScope(params.scope);
@@ -198,7 +192,10 @@ export default async function RecurringTasksPage({ searchParams }: PageProps) {
                           <p className="text-sm font-semibold text-stone-900">{rw.fields.recentGenerated}</p>
                           <div className="mt-2 grid gap-1 text-sm text-stone-600">
                             {template.tasks.map((task) => (
-                              <p key={task.id}>{formatDate(task.dueDate, dateLocale)} · {task.title}</p>
+                              <Link key={task.id} href={`/tasks/${task.id}`} className="rounded-xl border border-stone-200 bg-white px-3 py-2 transition hover:bg-emerald-50/50">
+                                <span className="font-medium text-stone-900">{task.title}</span>
+                                <span className="block text-xs text-stone-500">{formatDate(task.dueDate, dateLocale)}{task.recurrenceSourceDate ? ` · ${rh.recurring.sourceDate}: ${formatDate(task.recurrenceSourceDate, dateLocale)}` : ""}</span>
+                              </Link>
                             ))}
                           </div>
                         </div>

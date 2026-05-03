@@ -7,6 +7,7 @@ import { getTranslations } from "@/lib/i18n/server";
 import { toDateLocale } from "@/lib/i18n/config";
 import { formatTaskPriority, formatTaskStatus } from "@/lib/i18n/labels";
 import { getTasksWorkflowText } from "@/lib/i18n/tasks-workflow";
+import { getRecurringHistoryText } from "@/lib/i18n/recurring-history";
 
 type PageProps = {
   searchParams?: Promise<{
@@ -15,9 +16,9 @@ type PageProps = {
   }>;
 };
 
-type TaskScope = "all" | "open" | "today" | "overdue" | "completed";
+type TaskScope = "all" | "open" | "today" | "overdue" | "completed" | "generated";
 
-const SCOPES: TaskScope[] = ["all", "open", "today", "overdue", "completed"];
+const SCOPES: TaskScope[] = ["all", "open", "today", "overdue", "completed", "generated"];
 
 function one(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
@@ -62,6 +63,7 @@ export default async function TasksPage({ searchParams }: PageProps) {
   await requireUser();
   const { locale, t } = await getTranslations();
   const wf = getTasksWorkflowText(locale);
+  const rh = getRecurringHistoryText(locale);
   const dateLocale = toDateLocale(locale);
   const params = searchParams ? await searchParams : undefined;
   const rawScope = one(params?.scope) as TaskScope | undefined;
@@ -80,6 +82,7 @@ export default async function TasksPage({ searchParams }: PageProps) {
   }).length;
   const overdueCount = tasks.filter((task) => !isCompleted(task.status) && new Date(task.dueDate) < todayStart).length;
   const completedCount = tasks.filter((task) => isCompleted(task.status)).length;
+  const generatedCount = tasks.filter((task) => task.recurrenceTemplateId).length;
 
   const normalizedQuery = normalize(query);
   const filteredTasks = tasks.filter((task) => {
@@ -89,7 +92,8 @@ export default async function TasksPage({ searchParams }: PageProps) {
       (scope === "open" && !isCompleted(task.status)) ||
       (scope === "today" && !isCompleted(task.status) && due >= todayStart && due < tomorrowStart) ||
       (scope === "overdue" && !isCompleted(task.status) && due < todayStart) ||
-      (scope === "completed" && isCompleted(task.status));
+      (scope === "completed" && isCompleted(task.status)) ||
+      (scope === "generated" && Boolean(task.recurrenceTemplateId));
 
     if (!matchesScope) {
       return false;
@@ -108,6 +112,7 @@ export default async function TasksPage({ searchParams }: PageProps) {
       task.plant.code,
       task.assignedTo?.name,
       task.assignedTo?.email,
+      task.recurrenceTemplate?.title,
     ]
       .filter(Boolean)
       .join(" ")
@@ -122,6 +127,7 @@ export default async function TasksPage({ searchParams }: PageProps) {
     { label: wf.stats.today, value: todayCount, href: buildHref("today", query), active: scope === "today" },
     { label: wf.stats.overdue, value: overdueCount, href: buildHref("overdue", query), active: scope === "overdue" },
     { label: wf.stats.completed, value: completedCount, href: buildHref("completed", query), active: scope === "completed" },
+    { label: rh.filters.generated, value: generatedCount, href: buildHref("generated", query), active: scope === "generated" },
   ];
 
   const scopeLabels: Record<TaskScope, string> = {
@@ -130,11 +136,12 @@ export default async function TasksPage({ searchParams }: PageProps) {
     today: wf.filters.today,
     overdue: wf.filters.overdue,
     completed: wf.filters.completed,
+    generated: rh.filters.generated,
   };
 
   return (
     <AppShell title={t.tasksPage.title} eyebrow={t.tasksPage.eyebrow}>
-      <div className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
         {stats.map((item) => (
           <Link
             key={item.label}
@@ -197,6 +204,7 @@ export default async function TasksPage({ searchParams }: PageProps) {
                       <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-xs font-semibold text-stone-700">{formatTaskStatus(task.status, locale)}</span>
                       {taskIsToday ? <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-900">{wf.card.dueToday}</span> : null}
                       {taskIsOverdue ? <span className="rounded-full bg-amber-200 px-3 py-1 text-xs font-semibold text-amber-950">{wf.card.overdue}</span> : null}
+                      {task.recurrenceTemplateId ? <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-900">{rh.badges.generated}</span> : null}
                     </div>
 
                     <h2 className="mt-3 text-xl font-semibold leading-tight text-stone-950">{task.title}</h2>
@@ -206,6 +214,12 @@ export default async function TasksPage({ searchParams }: PageProps) {
                       <p><span className="font-semibold text-stone-800">{wf.card.due}:</span> {due.toLocaleDateString(dateLocale)}</p>
                       <p><span className="font-semibold text-stone-800">{wf.card.responsible}:</span> {task.assignedTo?.name || task.assignedTo?.email || t.common.notAssigned}</p>
                       <p><span className="font-semibold text-stone-800">{wf.card.proposals}:</span> {task.proposals.length}</p>
+                      {task.recurrenceTemplateId ? (
+                        <p><span className="font-semibold text-stone-800">{rh.task.schedule}:</span> {task.recurrenceTemplate?.title || rh.badges.generated}</p>
+                      ) : null}
+                      {task.recurrenceSourceDate ? (
+                        <p><span className="font-semibold text-stone-800">{rh.task.sourceDate}:</span> {new Date(task.recurrenceSourceDate).toLocaleDateString(dateLocale)}</p>
+                      ) : null}
                     </div>
                   </div>
 

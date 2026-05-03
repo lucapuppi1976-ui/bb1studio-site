@@ -9,6 +9,7 @@ import { toDateLocale } from "@/lib/i18n/config";
 import { formatInterventionType, formatTaskPriority, formatTaskStatus } from "@/lib/i18n/labels";
 import { getOperationalText, lookupText } from "@/lib/i18n/operational";
 import { getTasksWorkflowText } from "@/lib/i18n/tasks-workflow";
+import { getRecurringHistoryText } from "@/lib/i18n/recurring-history";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -23,6 +24,7 @@ export default async function TaskDetailPage({ params }: Props) {
   const { locale, t } = await getTranslations();
   const op = getOperationalText(locale);
   const wf = getTasksWorkflowText(locale);
+  const rh = getRecurringHistoryText(locale);
   const dateLocale = toDateLocale(locale);
   const { id } = await params;
   const task = await getTaskById(id);
@@ -61,6 +63,7 @@ export default async function TaskDetailPage({ params }: Props) {
             <div className="flex flex-wrap gap-2">
               <span className="rounded-full bg-emerald-950 px-3 py-1 text-xs font-semibold text-white">{formatTaskPriority(task.priority, locale)}</span>
               <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-xs font-semibold text-stone-700">{formatTaskStatus(task.status, locale)}</span>
+              {task.recurrenceTemplateId ? <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-900">{rh.badges.generated}</span> : null}
             </div>
           </div>
         </section>
@@ -77,6 +80,24 @@ export default async function TaskDetailPage({ params }: Props) {
             <p><span className="font-semibold">{wf.detail.completedAt}:</span> {task.completedAt ? new Date(task.completedAt).toLocaleString(dateLocale) : op.messages.none}</p>
           </div>
         </section>
+
+
+
+        {task.recurrenceTemplateId ? (
+          <section className="agri-card lg:col-span-2">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h2 className="text-lg font-semibold text-stone-950">{rh.task.originTitle}</h2>
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-stone-600">{rh.task.originDescription}</p>
+                <div className="mt-4 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
+                  <p><span className="font-semibold text-stone-900">{rh.task.schedule}:</span> {task.recurrenceTemplate?.title || rh.badges.generated}</p>
+                  <p><span className="font-semibold text-stone-900">{rh.task.sourceDate}:</span> {task.recurrenceSourceDate ? new Date(task.recurrenceSourceDate).toLocaleDateString(dateLocale) : op.messages.none}</p>
+                </div>
+              </div>
+              <Link href="/recurring-tasks" className="agri-button-secondary">{rh.task.openSchedules}</Link>
+            </div>
+          </section>
+        ) : null}
 
         <section className="agri-card">
           <h2 className="text-lg font-semibold text-stone-950">{wf.detail.descriptionTitle}</h2>
