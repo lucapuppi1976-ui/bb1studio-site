@@ -15,15 +15,26 @@ Questo pacchetto è stato rivisto e consolidato per essere caricato su GitHub e 
 - QR code
 - Offline queue per interventi
 
-## Credenziali seed sviluppo
-- `admin@bb1studio.local` / `Admin123!`
-- `operator@bb1studio.local` / `Operator123!`
+## Utenti seed sviluppo
+
+Il seed non espone più credenziali statiche nel repository. Per creare utenti di sviluppo imposta esplicitamente le variabili:
+
+```bash
+SEED_ADMIN_EMAIL=dev-admin@example.invalid \
+SEED_ADMIN_PASSWORD='<password-forte>' \
+SEED_OPERATOR_EMAIL=dev-operator@example.invalid \
+SEED_OPERATOR_PASSWORD='<password-forte>' \
+npx prisma db seed
+```
+
+Usa solo credenziali temporanee in ambiente DEV. Non usare il seed per creare utenti live senza una procedura controllata.
 
 ## Cosa ho corretto in questa revisione
 - rimosso `assetPrefix` custom, perché per un'app servita sotto un sottopath condiviso `basePath` è la scelta più lineare e stabile in Next.js; `assetPrefix` è più adatto a scenari CDN o zone che non condividono un prefisso comune.
 - aggiornato `render.yaml` a `autoDeployTrigger: commit`, che sostituisce il vecchio `autoDeploy` nel Blueprint spec di Render.
 - semplificata la configurazione env pubblica.
 - aggiunte note chiare sui limiti dell'upload via browser su GitHub.
+- rimosse le credenziali demo visibili dalla pagina di login.
 
 ## 1. Configurazione locale
 Copia `.env.example` in `.env` e compila i valori.
@@ -36,6 +47,7 @@ Variabili importanti:
 - `NEXT_PUBLIC_APP_BASE_PATH=/agri_app`
 - `CLOUDINARY_*`
 - `CRON_SECRET`
+- `ENABLE_EMAIL_NOTIFICATIONS=false` salvo test espliciti
 
 ## 2. Installazione
 ```bash
@@ -45,6 +57,8 @@ npx prisma migrate dev --name init
 npx prisma db seed
 npm run dev
 ```
+
+Per usare `npx prisma db seed`, imposta prima `SEED_ADMIN_PASSWORD` e `SEED_OPERATOR_PASSWORD`.
 
 ## 3. Rotte principali
 - `/agri_app/`
@@ -67,7 +81,7 @@ L'app è configurata per vivere sotto path:
 
 Questa app **non** va esposta direttamente come custom path su Render, perché Render gestisce i custom domain a livello host.
 Il modello giusto è:
-- servizio app su Render (es. `agri-app.onrender.com`)
+- servizio app su Render
 - portale principale su `bb1studio.com`
 - rewrite/proxy dal portale principale verso il servizio app
 
@@ -82,6 +96,7 @@ Trovi un esempio in:
 - Le immagini vengono caricate su Cloudinary tramite `/api/upload`
 - Gli export CSV stanno sotto `/api/export/*`
 - Il cron giornaliero sta sotto `/api/cron/daily-notifications`
+- Le email live restano disattivate finché `ENABLE_EMAIL_NOTIFICATIONS=false`
 
 ## 6. Deploy su Render
 Per il servizio app:
@@ -101,14 +116,16 @@ Per l'app deployata dietro `bb1studio.com/agri_app`, imposta:
 - `NEXT_PUBLIC_APP_ORIGIN=https://bb1studio.com`
 - `NEXT_PUBLIC_APP_BASE_PATH=/agri_app`
 - `NEXTAUTH_URL=https://bb1studio.com/agri_app/api/auth`
+- `EMAIL_FROM=Agri App <notifiche@bb1studio.com>`
+- `ENABLE_EMAIL_NOTIFICATIONS=false`
 
 ## 7. GitHub upload
 Per un repo GitHub è corretto caricare **il sorgente**, non file compilati come `.next` o `node_modules`.
-Se vuoi usare l'interfaccia web di GitHub, fallo in più blocchi se necessario: il web uploader ha limiti pratici (25 MiB per file, 100 file per upload).
+Se vuoi usare l'interfaccia web di GitHub, fallo in più blocchi se necessario: il web uploader ha limiti pratici.
 
 ## 8. Primo test da fare
 Dopo l'avvio:
-1. login admin
+1. login con un utente creato dall'amministratore
 2. controlla `/dashboard`
 3. crea una pianta
 4. crea un intervento

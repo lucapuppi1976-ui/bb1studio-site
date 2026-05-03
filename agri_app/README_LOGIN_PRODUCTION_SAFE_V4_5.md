@@ -2,33 +2,24 @@
 
 ## Esito
 
-- Credenziali demo rimosse dalla pagina pubblica di login.
+- Credenziali demo rimosse dalla pagina login pubblica.
 - Placeholder email reso neutro.
-- Testi login resi production-safe e multilingua.
-- Security check esteso per segnalare credenziali demo residue in file versionabili.
+- Copy login aggiornato per indicare l'uso di credenziali fornite dall'amministratore.
+- Callback URL mantenuto.
+- NextAuth invariato.
 - DB schema invariato.
 - Prisma schema invariato.
-- Email live disattivate.
-- `ENABLE_EMAIL_NOTIFICATIONS=false` resta la configurazione live attesa.
+- Email live ancora disattivate.
 
-## Note operative
+## Nota sicurezza
 
-La pagina `/login` non deve mostrare email o password demo in produzione.
+Il repository non deve contenere credenziali statiche utilizzabili. Gli utenti DEV possono essere creati con script dedicati e password temporanee fornite da variabili o dal terminale, mai committate.
 
-Eventuali credenziali DEV devono restare in documentazione privata o in flussi locali non pubblici, mai in pagine pubbliche e mai in file `.env` tracciati da Git.
-
-## Controllo consigliato
+## Controlli consigliati
 
 ```bash
-grep -RIn \
-  --include="*.tsx" \
-  --include="*.ts" \
-  --include="*.md" \
-  -e "Admin123" \
-  -e "Operator123" \
-  -e "admin@bb1studio.local" \
-  -e "operator@bb1studio.local" \
-  agri_app/src agri_app/*.md
+node scripts/security-check.mjs
+node scripts/security-check.mjs --strict
 ```
 
-Le eventuali occorrenze residue in documentazione storica vanno valutate e, se ancora utili, mantenute solo come note DEV non pubbliche.
+Il controllo strict deve rimanere utile per individuare segreti reali o credenziali demo non consentite nei file versionabili.

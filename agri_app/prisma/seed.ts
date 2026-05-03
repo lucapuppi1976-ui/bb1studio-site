@@ -3,12 +3,26 @@ import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
-async function main() {
-  const adminEmail = "admin@bb1studio.local";
-  const operatorEmail = "operator@bb1studio.local";
+function requiredEnv(name: string) {
+  const value = process.env[name]?.trim();
+  if (!value) {
+    throw new Error(`${name} mancante. Impostala esplicitamente prima di eseguire il seed.`);
+  }
+  return value;
+}
 
-  const adminPasswordHash = await bcrypt.hash("Admin123!", 10);
-  const operatorPasswordHash = await bcrypt.hash("Operator123!", 10);
+function optionalEnv(name: string, fallback: string) {
+  return process.env[name]?.trim() || fallback;
+}
+
+async function main() {
+  const adminEmail = optionalEnv("SEED_ADMIN_EMAIL", "dev-admin@example.invalid");
+  const operatorEmail = optionalEnv("SEED_OPERATOR_EMAIL", "dev-operator@example.invalid");
+  const adminPassword = requiredEnv("SEED_ADMIN_PASSWORD");
+  const operatorPassword = requiredEnv("SEED_OPERATOR_PASSWORD");
+
+  const adminPasswordHash = await bcrypt.hash(adminPassword, 10);
+  const operatorPasswordHash = await bcrypt.hash(operatorPassword, 10);
 
   const admin = await prisma.user.upsert({
     where: { email: adminEmail },
@@ -172,6 +186,8 @@ async function main() {
   }
 
   console.log("Seed completato.");
+  console.log(`Utente admin seed: ${adminEmail}`);
+  console.log(`Utente operator seed: ${operatorEmail}`);
 }
 
 main()

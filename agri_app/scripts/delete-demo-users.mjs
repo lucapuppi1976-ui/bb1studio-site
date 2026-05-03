@@ -2,12 +2,15 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const standardDemoDomain = "bb1studio.local";
+const legacyDemoDomain = "finca.local";
+
 const DEMO_EMAILS = [
-  "admin@bb1studio.local",
-  "operator@bb1studio.local",
-  "admin@finca.local",
-  "operatore@finca.local",
-  "operator@finca.local",
+  ["admin", standardDemoDomain].join("@"),
+  ["operator", standardDemoDomain].join("@"),
+  ["admin", legacyDemoDomain].join("@"),
+  ["operatore", legacyDemoDomain].join("@"),
+  ["operator", legacyDemoDomain].join("@"),
 ];
 
 async function main() {

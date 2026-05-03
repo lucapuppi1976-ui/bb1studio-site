@@ -41,14 +41,16 @@ npx prisma generate
 DATABASE_URL=$(grep '^DATABASE_URL=' .env.local | cut -d= -f2- | tr -d '"') npx prisma db push
 ```
 
-### 5. Crea utenti demo DEV (opzionale)
+### 5. Crea utenti DEV opzionali
+Usa email e password temporanee scelte al momento, senza committarle nel repository:
+
 ```bash
-node --env-file=.env.local scripts/create-user.mjs dev-admin@bb1studio.local 'DevAdmin123!' SUPER_ADMIN 'Dev Admin'
-node --env-file=.env.local scripts/create-user.mjs dev-operator@bb1studio.local 'DevOperator123!' OPERATOR 'Dev Operator'
+node --env-file=.env.local scripts/create-user.mjs dev-admin@example.invalid '<password-forte>' SUPER_ADMIN 'Dev Admin'
+node --env-file=.env.local scripts/create-user.mjs dev-operator@example.invalid '<password-forte>' OPERATOR 'Dev Operator'
 ```
 
 ## Regola operativa
-- **Codespaces / test** -> usa sempre `.env.local` con DB dev
+- **Codespaces / test** -> usa sempre `.env.local` o `.env` con DB dev
 - **Render live** -> usa sempre le env del servizio live con DB live
 - mai usare la `EXTERNAL DATABASE URL` live per i test del branch
 
