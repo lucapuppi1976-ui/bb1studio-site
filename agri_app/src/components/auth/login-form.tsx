@@ -10,6 +10,8 @@ type LoginLabels = {
   invalidCredentials: string;
   signingIn: string;
   signIn: string;
+  emailPlaceholder: string;
+  passwordPlaceholder: string;
 };
 
 type Props = {
@@ -57,12 +59,12 @@ export function LoginForm({ callbackUrl = "/dashboard", labels }: Props) {
     <form onSubmit={onSubmit} className="agri-card grid gap-4">
       <label className="grid gap-2">
         <span className="text-sm font-medium text-stone-700">{labels.email}</span>
-        <input type="email" name="email" required className="agri-input" placeholder="admin@bb1studio.local" />
+        <input type="email" name="email" required autoComplete="email" className="agri-input" placeholder={labels.emailPlaceholder} />
       </label>
 
       <label className="grid gap-2">
         <span className="text-sm font-medium text-stone-700">{labels.password}</span>
-        <input type="password" name="password" required className="agri-input" placeholder="••••••••" />
+        <input type="password" name="password" required autoComplete="current-password" className="agri-input" placeholder={labels.passwordPlaceholder} />
       </label>
 
       {error ? (

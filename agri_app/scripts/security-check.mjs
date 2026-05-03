@@ -11,7 +11,7 @@ const strict = args.has("--strict");
 function run(command, options = {}) {
   try {
     return execSync(command, { encoding: "utf8", stdio: ["ignore", "pipe", "pipe"], ...options }).trim();
-  } catch (error) {
+  } catch {
     return "";
   }
 }
@@ -100,15 +100,19 @@ function scanForSecrets() {
     { name: "CRON_SECRET assignment", re: /\bCRON_SECRET\s*=\s*['\"]?[A-Za-z0-9_-]{16,}/ },
     { name: "NEXTAUTH_SECRET assignment", re: /\bNEXTAUTH_SECRET\s*=\s*['\"]?[^\s'\"]{16,}/ },
     { name: "RESEND_API_KEY assignment", re: /\bRESEND_API_KEY\s*=\s*['\"]?re_[A-Za-z0-9_-]{20,}/ },
+    { name: "Demo admin email", re: /\badmin@bb1studio\.local\b/i },
+    { name: "Demo operator email", re: /\boperator@bb1studio\.local\b/i },
+    { name: "Demo admin password", re: /\bAdmin123!\b/ },
+    { name: "Demo operator password", re: /\bOperator123!\b/ },
   ];
 
-  const findings = [];
-  const dirs = [appDir];
   const rootDocs = ["README.md", "README_CHECKPOINT.txt", "CHECKPOINT_CURRENT.md", "MAIN_CHAT1_SUMMARY.md", "NEXT_STEPS.md"]
     .map((name) => path.join(repoRoot, name))
     .filter((file) => fs.existsSync(file));
 
   const files = [...walk(appDir), ...rootDocs];
+  const findings = [];
+
   for (const file of files) {
     let text = "";
     try {
@@ -120,9 +124,7 @@ function scanForSecrets() {
     const rel = path.relative(repoRoot, file).replaceAll(path.sep, "/");
     for (const { name, re } of patterns) {
       const match = re.exec(text);
-      if (match) {
-        findings.push({ file: rel, type: name });
-      }
+      if (match) findings.push({ file: rel, type: name });
     }
   }
 
@@ -148,17 +150,13 @@ console.log(`DB classificazione: ${db.classification}`);
 if (db.host) console.log(`DB host: ${db.host}`);
 if (db.database) console.log(`DB name: ${db.database}`);
 
-if (db.classification === "LIVE" && !allowLiveDb) {
-  failures.push("Il .env del Codespace punta al DB LIVE. Usare --allow-live-db solo se intenzionale.");
-}
+if (db.classification === "LIVE" && !allowLiveDb) failures.push("Il .env del Codespace punta al DB LIVE. Usare --allow-live-db solo se intenzionale.");
 if (db.classification === "UNKNOWN") warnings.push("DATABASE_URL presente ma non riconosciuta come DEV o LIVE standard.");
 if (db.classification === "INVALID") failures.push("DATABASE_URL non valida.");
 
 const emailEnabled = env.get("ENABLE_EMAIL_NOTIFICATIONS") || "";
 console.log(`ENABLE_EMAIL_NOTIFICATIONS: ${emailEnabled || "(mancante)"}`);
-if (emailEnabled.toLowerCase() === "true" && !allowEmailEnabled) {
-  failures.push("ENABLE_EMAIL_NOTIFICATIONS=true in .env locale. Ripristinare false dopo i test.");
-}
+if (emailEnabled.toLowerCase() === "true" && !allowEmailEnabled) failures.push("ENABLE_EMAIL_NOTIFICATIONS=true in .env locale. Ripristinare false dopo i test.");
 
 const resend = env.get("RESEND_API_KEY") || "";
 console.log(`RESEND_API_KEY presente: ${Boolean(resend)}`);
@@ -179,14 +177,14 @@ console.log(status || "(pulito)");
 
 const findings = scanForSecrets();
 console.log("");
-console.log(`Possibili segreti trovati nei file versionabili: ${findings.length}`);
-for (const finding of findings.slice(0, 30)) {
+console.log(`Possibili segreti o credenziali demo trovati nei file versionabili: ${findings.length}`);
+for (const finding of findings.slice(0, 40)) {
   console.log(`- ${finding.file}: ${finding.type}`);
 }
-if (findings.length > 30) console.log(`... altri ${findings.length - 30} risultati`);
+if (findings.length > 40) console.log(`... altri ${findings.length - 40} risultati`);
 
 if (findings.length > 0) {
-  const message = "Possibili segreti trovati in file versionabili. Verificare ed eventualmente ruotare.";
+  const message = "Possibili segreti o credenziali demo trovati in file versionabili. Verificare ed eventualmente ruotare/rimuovere.";
   if (strict) failures.push(message);
   else warnings.push(message);
 }
