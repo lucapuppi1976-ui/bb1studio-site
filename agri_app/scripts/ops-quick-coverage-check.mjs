@@ -23,6 +23,7 @@ const requiredQuickCheckParts = [
   "scripts/release-status.mjs",
   "scripts/ops-log-redaction-check.mjs",
   "scripts/ops-runbook-check.mjs",
+  "scripts/ops-admin-dynamic-check.mjs",
   "Protected email status live",
 ];
 
@@ -30,6 +31,7 @@ const requiredAliases = [
   "ops:quick-check",
   "ops:quick-coverage-check",
   "ops:runbook-check",
+  "ops:admin-dynamic-check",
   "ops:banner-check",
   "ops:labels-check",
   "ops:log-redaction-check",
