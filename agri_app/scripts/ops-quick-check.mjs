@@ -216,6 +216,10 @@ runStep("Ops runbook check", process.execPath, [
   "scripts/ops-runbook-check.mjs",
 ]);
 
+runStep("Admin operations dynamic check", process.execPath, [
+  "scripts/ops-admin-dynamic-check.mjs",
+]);
+
 if (includeProtected) {
   await protectedEmailStatusCheck();
 }

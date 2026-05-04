@@ -174,3 +174,18 @@ La pagina operativa admin è disponibile a:
     /admin/operations
 
 Questa pagina riassume quick check, release gate secret-safe, gestione CRON_SECRET, build sicura, rollback e tag checkpoint.
+
+
+## Preflight admin dinamico
+
+La pagina `/admin/operations` include un pannello dinamico che legge:
+
+- `/api/health`
+- `/api/ready`
+- `/api/ops/preflight`
+
+Il preflight viene chiamato tramite sessione admin e non richiede input CRON_SECRET nella UI.
+
+Controllo automatico:
+
+    npm run ops:admin-dynamic-check

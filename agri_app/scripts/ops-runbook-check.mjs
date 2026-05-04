@@ -13,6 +13,7 @@ const requiredFiles = [
   "agri_app/scripts/ops-runbook-check.mjs",
   "agri_app/scripts/ops-quick-check.mjs",
   "agri_app/scripts/ops-admin-page-check.mjs",
+  "agri_app/scripts/ops-admin-dynamic-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
   "agri_app/scripts/release-gate-live-safe.mjs",
   "agri_app/scripts/ops-log-redaction-check.mjs",
@@ -28,6 +29,7 @@ const requiredFiles = [
 const requiredScripts = [
   "ops:quick-check",
   "ops:admin-page-check",
+  "ops:admin-dynamic-check",
   "ops:quick-coverage-check",
   "ops:release-gate:live",
   "ops:log-redaction-check",
@@ -45,6 +47,7 @@ const requiredRunbookText = [
   "ENABLE_EMAIL_NOTIFICATIONS=false",
   "CRON_SECRET_VALUE",
   "npm run ops:quick-check",
+  "npm run ops:admin-dynamic-check",
   "npm run ops:quick-coverage-check",
   "npm run ops:banner-check",
   "npm run ops:release-gate:live",
