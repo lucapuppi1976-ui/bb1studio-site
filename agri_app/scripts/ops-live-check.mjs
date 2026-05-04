@@ -1,5 +1,59 @@
 #!/usr/bin/env node
 
+// V4.11: redazione difensiva dei secret nei log operativi.
+// Protegge URL con ?secret=..., argomenti --secret e valori letti da env.
+const __OPS_LOG_REDACTION_VALUES = (() => {
+  const values = new Set();
+
+  for (let index = 0; index < process.argv.length; index += 1) {
+    const arg = process.argv[index] || "";
+
+    if (arg === "--secret" && process.argv[index + 1]) {
+      values.add(process.argv[index + 1]);
+    }
+
+    if (arg.startsWith("--secret=")) {
+      values.add(arg.slice("--secret=".length));
+    }
+  }
+
+  if (process.env.CRON_SECRET_VALUE) {
+    values.add(process.env.CRON_SECRET_VALUE);
+  }
+
+  if (process.env.CRON_SECRET) {
+    values.add(process.env.CRON_SECRET);
+  }
+
+  return [...values].filter((value) => typeof value === "string" && value.length > 0);
+})();
+
+function __redactOpsLogValue(value) {
+  let output = String(value);
+
+  for (const secretValue of __OPS_LOG_REDACTION_VALUES) {
+    output = output.split(secretValue).join("[REDACTED]");
+  }
+
+  output = output.replace(/([?&]secret=)[^&\s'"]+/g, "$1[REDACTED]");
+  output = output.replace(/(--secret(?:=|\s+))[^&\s'"]+/g, "$1[REDACTED]");
+
+  return output;
+}
+
+for (const methodName of ["log", "error", "warn"]) {
+  const originalMethod = console[methodName].bind(console);
+
+  console[methodName] = (...values) => {
+    originalMethod(
+      ...values.map((value) =>
+        typeof value === "string" ? __redactOpsLogValue(value) : value,
+      ),
+    );
+  };
+}
+
+
 const args = process.argv.slice(2);
 
 function argValue(name, fallback = "") {
