@@ -1,0 +1,122 @@
+#!/usr/bin/env node
+
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const scriptFile = fileURLToPath(import.meta.url);
+const appDir = resolve(dirname(scriptFile), "..");
+const repoRoot = resolve(appDir, "..");
+
+const requiredFiles = [
+  "agri_app/OPERATIONS_RUNBOOK_V4_14.md",
+  "agri_app/scripts/ops-runbook-check.mjs",
+  "agri_app/scripts/ops-quick-check.mjs",
+  "agri_app/scripts/release-gate-live-safe.mjs",
+  "agri_app/scripts/ops-log-redaction-check.mjs",
+  "agri_app/scripts/ops-labels-check.mjs",
+  "agri_app/scripts/release-gate.mjs",
+  "agri_app/scripts/release-status.mjs",
+  "agri_app/scripts/db-safety-check.mjs",
+  "agri_app/scripts/security-check.mjs",
+  "agri_app/scripts/recurring-quality-check.mjs",
+];
+
+const requiredScripts = [
+  "ops:quick-check",
+  "ops:release-gate:live",
+  "ops:log-redaction-check",
+  "ops:labels-check",
+  "ops:runbook-check",
+  "ops:release-status:live",
+  "ops:db-safety",
+  "ops:security",
+  "ops:recurring-quality",
+];
+
+const requiredRunbookText = [
+  "NON fare prisma db push",
+  "ENABLE_EMAIL_NOTIFICATIONS=false",
+  "CRON_SECRET_VALUE",
+  "npm run ops:quick-check",
+  "npm run ops:release-gate:live",
+  "secret=[REDACTED]",
+  "checkpoint/live-stable",
+  "Render Web Service Agri App",
+  "Render Cron Job",
+];
+
+const failures = [];
+
+console.log("Agri App ops runbook check V4.14");
+console.log(`Repo root: ${repoRoot}`);
+console.log("");
+
+console.log("--- File richiesti ---");
+for (const file of requiredFiles) {
+  const ok = existsSync(resolve(repoRoot, file));
+  console.log(`${ok ? "✓" : "✗"} ${file}`);
+
+  if (!ok) {
+    failures.push(`File mancante: ${file}`);
+  }
+}
+
+console.log("");
+console.log("--- Alias npm richiesti ---");
+
+const packagePath = resolve(appDir, "package.json");
+let packageJson = null;
+
+try {
+  packageJson = JSON.parse(readFileSync(packagePath, "utf8"));
+} catch (error) {
+  failures.push(`package.json non leggibile: ${error.message}`);
+}
+
+for (const scriptName of requiredScripts) {
+  const ok = Boolean(packageJson?.scripts?.[scriptName]);
+  console.log(`${ok ? "✓" : "✗"} ${scriptName}`);
+
+  if (!ok) {
+    failures.push(`Alias npm mancante: ${scriptName}`);
+  }
+}
+
+console.log("");
+console.log("--- Contenuto runbook ---");
+
+const runbookPath = resolve(repoRoot, "agri_app/OPERATIONS_RUNBOOK_V4_14.md");
+let runbookText = "";
+
+try {
+  runbookText = readFileSync(runbookPath, "utf8");
+} catch (error) {
+  failures.push(`Runbook non leggibile: ${error.message}`);
+}
+
+for (const requiredText of requiredRunbookText) {
+  const ok = runbookText.includes(requiredText);
+  console.log(`${ok ? "✓" : "✗"} ${requiredText}`);
+
+  if (!ok) {
+    failures.push(`Testo richiesto mancante nel runbook: ${requiredText}`);
+  }
+}
+
+console.log("");
+console.log("--- Runbook check summary ---");
+
+if (failures.length) {
+  console.log(`Failures: ${failures.length}`);
+
+  for (const failure of failures) {
+    console.log(`- ${failure}`);
+  }
+
+  process.exit(1);
+}
+
+console.log("Failures: 0");
+console.log("");
+console.log("Ops runbook check completato con successo.");
