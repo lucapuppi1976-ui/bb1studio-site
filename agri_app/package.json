@@ -9,7 +9,13 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
-    "db:seed": "prisma db seed"
+    "db:seed": "prisma db seed",
+    "ops:db-safety": "node scripts/db-safety-check.mjs --expect=dev",
+    "ops:security": "node scripts/security-check.mjs --strict",
+    "ops:recurring-quality": "node scripts/recurring-quality-check.mjs --expect=dev",
+    "ops:release-status": "node scripts/release-status.mjs --strict",
+    "ops:release-status:live": "node scripts/release-status.mjs --strict --base https://bb1studio.com/agri_app",
+    "ops:release-gate": "node scripts/release-gate.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
