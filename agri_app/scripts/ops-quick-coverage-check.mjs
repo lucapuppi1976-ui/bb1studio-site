@@ -1,0 +1,83 @@
+#!/usr/bin/env node
+
+import { readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const scriptFile = fileURLToPath(import.meta.url);
+const appDir = resolve(dirname(scriptFile), "..");
+const repoRoot = resolve(appDir, "..");
+
+const quickCheckPath = resolve(repoRoot, "agri_app/scripts/ops-quick-check.mjs");
+const packagePath = resolve(appDir, "package.json");
+
+const quickCheckText = readFileSync(quickCheckPath, "utf8");
+const packageJson = JSON.parse(readFileSync(packagePath, "utf8"));
+
+const requiredQuickCheckParts = [
+  "scripts/db-safety-check.mjs",
+  "scripts/security-check.mjs",
+  "scripts/recurring-quality-check.mjs",
+  "scripts/ops-labels-check.mjs",
+  "scripts/ops-banner-check.mjs",
+  "scripts/release-status.mjs",
+  "scripts/ops-log-redaction-check.mjs",
+  "scripts/ops-runbook-check.mjs",
+  "Protected email status live",
+];
+
+const requiredAliases = [
+  "ops:quick-check",
+  "ops:quick-coverage-check",
+  "ops:runbook-check",
+  "ops:banner-check",
+  "ops:labels-check",
+  "ops:log-redaction-check",
+  "ops:release-gate:live",
+];
+
+const failures = [];
+
+console.log("Agri App ops quick coverage check V4.16");
+console.log(`Repo root: ${repoRoot}`);
+console.log("");
+
+console.log("--- Copertura ops-quick-check ---");
+
+for (const required of requiredQuickCheckParts) {
+  const ok = quickCheckText.includes(required);
+  console.log(`${ok ? "✓" : "✗"} ${required}`);
+
+  if (!ok) {
+    failures.push(`ops-quick-check non include: ${required}`);
+  }
+}
+
+console.log("");
+console.log("--- Alias npm richiesti ---");
+
+for (const scriptName of requiredAliases) {
+  const ok = Boolean(packageJson.scripts?.[scriptName]);
+  console.log(`${ok ? "✓" : "✗"} ${scriptName}`);
+
+  if (!ok) {
+    failures.push(`Alias npm mancante: ${scriptName}`);
+  }
+}
+
+console.log("");
+console.log("--- Quick coverage summary ---");
+
+if (failures.length) {
+  console.log(`Failures: ${failures.length}`);
+
+  for (const failure of failures) {
+    console.log(`- ${failure}`);
+  }
+
+  process.exit(1);
+}
+
+console.log("Failures: 0");
+console.log("");
+console.log("Ops quick coverage check completato con successo.");
