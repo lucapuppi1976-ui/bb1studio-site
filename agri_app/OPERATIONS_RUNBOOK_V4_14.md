@@ -190,6 +190,8 @@ Controllo automatico:
 
     npm run ops:admin-dynamic-check
     npm run ops:admin-navigation-check
+    npm run ops:admin-live-routes-check
+    npm run ops:admin-route-monitoring-check
 
 
 ## Admin navigation
@@ -204,3 +206,19 @@ La navigazione admin include:
 Controllo automatico:
 
     npm run ops:admin-navigation-check
+
+
+## Admin live route monitoring
+
+Le route admin monitorate dagli script operativi sono:
+
+- `/admin`
+- `/admin/operations`
+- `/admin/system`
+
+Controlli automatici:
+
+    npm run ops:admin-live-routes-check
+    npm run ops:admin-route-monitoring-check
+
+Le route possono rispondere 200 oppure redirect 302/307/308 in base alla sessione.

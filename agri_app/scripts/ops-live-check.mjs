@@ -67,6 +67,9 @@ const secret = argValue("--secret", process.env.CRON_SECRET || "");
 const includeCronDryRun = args.includes("--include-cron-dry-run");
 
 const pageChecks = [
+  "/admin",
+  "/admin/operations",
+  "/admin/system",
   "/login",
   "/dashboard",
   "/notifications",
