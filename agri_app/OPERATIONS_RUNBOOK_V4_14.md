@@ -191,6 +191,7 @@ Controllo automatico:
     npm run ops:admin-dynamic-check
     npm run ops:admin-navigation-check
     npm run ops:admin-ux-check
+    npm run ops:admin-command-palette-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -238,3 +239,19 @@ La pagina `/admin/operations` include una sezione UX con:
 Controllo automatico:
 
     npm run ops:admin-ux-check
+
+
+## Operations command palette
+
+La pagina `/admin/operations` include una command palette copiabile con:
+
+- controlli standard;
+- controlli protetti;
+- build sicura;
+- route admin;
+- rollback branch;
+- tag checkpoint.
+
+Controllo automatico:
+
+    npm run ops:admin-command-palette-check
