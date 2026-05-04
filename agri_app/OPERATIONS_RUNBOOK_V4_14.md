@@ -113,6 +113,7 @@ Da agri_app:
     npm run ops:security
     npm run ops:recurring-quality
     npm run ops:labels-check
+    npm run ops:banner-check
     npm run ops:log-redaction-check
     npm run ops:release-status:live
     npm run ops:release-gate
