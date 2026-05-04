@@ -1,0 +1,231 @@
+#!/usr/bin/env node
+
+import { spawnSync } from "node:child_process";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const scriptFile = fileURLToPath(import.meta.url);
+const appDir = resolve(dirname(scriptFile), "..");
+const repoRoot = resolve(appDir, "..");
+const args = process.argv.slice(2);
+
+function readArg(name, fallback = "") {
+  const index = args.indexOf(name);
+
+  if (index >= 0) {
+    return args[index + 1] ?? "";
+  }
+
+  const prefix = `${name}=`;
+  const inline = args.find((arg) => arg.startsWith(prefix));
+
+  return inline ? inline.slice(prefix.length) : fallback;
+}
+
+function hasFlag(name) {
+  return args.includes(name);
+}
+
+const baseUrl = readArg("--base", "https://bb1studio.com/agri_app").replace(/\/+$/, "");
+const expectBranch = readArg("--expect-branch", "");
+const includeProtected = hasFlag("--include-protected");
+const secret = process.env.CRON_SECRET_VALUE || process.env.CRON_SECRET || "";
+
+const redactionValues = [secret].filter((value) => typeof value === "string" && value.length > 0);
+
+function redact(value) {
+  let output = String(value);
+
+  for (const secretValue of redactionValues) {
+    output = output.split(secretValue).join("[REDACTED]");
+  }
+
+  output = output.replace(/([?&]secret=)[^&\s'"]+/g, "$1[REDACTED]");
+  output = output.replace(/(--secret(?:=|\s+))[^&\s'"]+/g, "$1[REDACTED]");
+
+  return output;
+}
+
+function print(value = "") {
+  process.stdout.write(`${redact(value)}\n`);
+}
+
+function section(title) {
+  print("");
+  print(`--- ${title} ---`);
+}
+
+const results = [];
+
+function runStep(label, command, commandArgs, options = {}) {
+  section(label);
+
+  const result = spawnSync(command, commandArgs, {
+    cwd: options.cwd || appDir,
+    encoding: "utf8",
+    env: {
+      ...process.env,
+    },
+    maxBuffer: 1024 * 1024 * 20,
+  });
+
+  if (result.stdout) {
+    process.stdout.write(redact(result.stdout));
+  }
+
+  if (result.stderr) {
+    process.stderr.write(redact(result.stderr));
+  }
+
+  const status = typeof result.status === "number" ? result.status : 1;
+  const ok = status === 0;
+
+  results.push({
+    label,
+    ok,
+    status,
+  });
+
+  return ok;
+}
+
+async function protectedEmailStatusCheck() {
+  section("Protected email status live");
+
+  if (!secret) {
+    print("ERRORE: per --include-protected impostare CRON_SECRET_VALUE oppure CRON_SECRET.");
+    results.push({
+      label: "Protected email status live",
+      ok: false,
+      status: 2,
+    });
+    return;
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+
+  try {
+    const url = new URL(`${baseUrl}/api/ops/email-status`);
+    url.searchParams.set("secret", secret);
+
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    const text = await response.text();
+
+    let data = null;
+
+    try {
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      data = {
+        raw: text,
+      };
+    }
+
+    print(`HTTP status: ${response.status}`);
+
+    const serialized = JSON.stringify(data, null, 2);
+    print(serialized);
+
+    const email = data?.email || data || {};
+    const testSafety = data?.testSafety || {};
+    const ok =
+      response.ok &&
+      data?.ok === true &&
+      email.enabled === false &&
+      (testSafety.canSendTestEmail === false || testSafety.canSendTestEmail === undefined);
+
+    results.push({
+      label: "Protected email status live",
+      ok,
+      status: ok ? 0 : response.status,
+    });
+
+    if (!ok) {
+      print("ERRORE: protected email status live non conforme.");
+    }
+  } catch (error) {
+    print(`ERRORE: protected email status live fallito: ${error.message}`);
+    results.push({
+      label: "Protected email status live",
+      ok: false,
+      status: 1,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+print("Agri App ops quick check V4.13");
+print(`Repo root: ${repoRoot}`);
+print(`App dir: ${appDir}`);
+print(`Base URL: ${baseUrl}`);
+print(`Expected branch: ${expectBranch || "(non impostato)"}`);
+print(`Protected checks: ${includeProtected ? "yes" : "no"}`);
+print(`Secret configured: ${secret ? "yes" : "no"}`);
+
+runStep("DB safety DEV", process.execPath, [
+  "scripts/db-safety-check.mjs",
+  "--expect=dev",
+]);
+
+runStep("Security strict", process.execPath, [
+  "scripts/security-check.mjs",
+  "--strict",
+]);
+
+runStep("Recurring quality DEV", process.execPath, [
+  "scripts/recurring-quality-check.mjs",
+  "--expect=dev",
+]);
+
+runStep("Ops labels check", process.execPath, [
+  "scripts/ops-labels-check.mjs",
+]);
+
+const releaseStatusArgs = [
+  "scripts/release-status.mjs",
+  "--strict",
+  "--base",
+  baseUrl,
+];
+
+if (expectBranch) {
+  releaseStatusArgs.push("--expect-branch", expectBranch);
+}
+
+runStep("Release status live", process.execPath, releaseStatusArgs);
+
+runStep("Ops log redaction check", process.execPath, [
+  "scripts/ops-log-redaction-check.mjs",
+  "--base",
+  baseUrl,
+]);
+
+if (includeProtected) {
+  await protectedEmailStatusCheck();
+}
+
+print("");
+print("--- Ops quick check summary ---");
+
+for (const result of results) {
+  print(`${result.ok ? "✓" : "✗"} ${result.label} (${result.status})`);
+}
+
+const failures = results.filter((result) => !result.ok);
+
+if (failures.length) {
+  print("");
+  print(`Ops quick check fallito: ${failures.length} problemi.`);
+  process.exit(1);
+}
+
+print("");
+print("Ops quick check completato con successo.");
