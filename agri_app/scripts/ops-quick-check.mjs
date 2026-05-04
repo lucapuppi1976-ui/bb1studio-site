@@ -220,6 +220,10 @@ runStep("Admin operations dynamic check", process.execPath, [
   "scripts/ops-admin-dynamic-check.mjs",
 ]);
 
+runStep("Admin operations navigation check", process.execPath, [
+  "scripts/ops-admin-navigation-check.mjs",
+]);
+
 if (includeProtected) {
   await protectedEmailStatusCheck();
 }

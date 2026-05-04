@@ -162,6 +162,9 @@ export default function AdminOperationsPage() {
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
+          <Link className="rounded-xl border p-4 hover:bg-muted" href="/admin">
+            Admin Hub
+          </Link>
           <Link className="rounded-xl border p-4 hover:bg-muted" href="/admin/system">
             Admin System Cockpit
           </Link>

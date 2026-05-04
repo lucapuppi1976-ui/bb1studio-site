@@ -189,3 +189,18 @@ Il preflight viene chiamato tramite sessione admin e non richiede input CRON_SEC
 Controllo automatico:
 
     npm run ops:admin-dynamic-check
+    npm run ops:admin-navigation-check
+
+
+## Admin navigation
+
+La navigazione admin include:
+
+- `/admin`
+- `/admin/operations`
+- `/admin/system`
+- `/admin/users`
+
+Controllo automatico:
+
+    npm run ops:admin-navigation-check
