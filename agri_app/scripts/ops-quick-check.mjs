@@ -224,6 +224,16 @@ runStep("Admin operations navigation check", process.execPath, [
   "scripts/ops-admin-navigation-check.mjs",
 ]);
 
+runStep("Admin live routes check", process.execPath, [
+  "scripts/ops-admin-live-routes-check.mjs",
+  "--base",
+  baseUrl,
+]);
+
+runStep("Admin route monitoring check", process.execPath, [
+  "scripts/ops-admin-route-monitoring-check.mjs",
+]);
+
 if (includeProtected) {
   await protectedEmailStatusCheck();
 }
