@@ -88,7 +88,7 @@ const latestTag = run(["git", "describe", "--tags", "--abbrev=0"]);
 const origin = run(["git", "remote", "get-url", "origin"]);
 const status = run(["git", "status", "--short"]);
 
-console.log("Agri App release status V4.8");
+console.log("Agri App release status operativo");
 console.log(`Repo root: ${repoRoot}`);
 console.log(`App dir: ${appDir}`);
 console.log(`Strict mode: ${strict ? "yes" : "no"}`);

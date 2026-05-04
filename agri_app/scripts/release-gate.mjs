@@ -109,14 +109,14 @@ if (includeLive) {
   });
 }
 
-console.log("Agri App release gate V4.7");
+console.log("Agri App release gate operativo");
 console.log(`Repo root: ${repoRoot}`);
 console.log(`App dir: ${appDir}`);
 console.log(`Build included: ${skipBuild ? "no" : "yes"}`);
 console.log(`Live checks included: ${includeLive ? "yes" : "no"}`);
 if (includeLive) {
   console.log(`Live base: ${baseUrl}`);
-  console.log(`Secret length: ${secret.length}`);
+  console.log(`Secret configured: ${secret ? "yes" : "no"}`);
   console.log(`Cron dry-run included: ${includeCronDryRun ? "yes" : "no"}`);
 }
 
