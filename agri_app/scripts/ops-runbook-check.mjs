@@ -15,6 +15,7 @@ const requiredFiles = [
   "agri_app/scripts/release-gate-live-safe.mjs",
   "agri_app/scripts/ops-log-redaction-check.mjs",
   "agri_app/scripts/ops-labels-check.mjs",
+  "agri_app/scripts/ops-banner-check.mjs",
   "agri_app/scripts/release-gate.mjs",
   "agri_app/scripts/release-status.mjs",
   "agri_app/scripts/db-safety-check.mjs",
@@ -27,6 +28,7 @@ const requiredScripts = [
   "ops:release-gate:live",
   "ops:log-redaction-check",
   "ops:labels-check",
+  "ops:banner-check",
   "ops:runbook-check",
   "ops:release-status:live",
   "ops:db-safety",
@@ -39,6 +41,7 @@ const requiredRunbookText = [
   "ENABLE_EMAIL_NOTIFICATIONS=false",
   "CRON_SECRET_VALUE",
   "npm run ops:quick-check",
+  "npm run ops:banner-check",
   "npm run ops:release-gate:live",
   "secret=[REDACTED]",
   "checkpoint/live-stable",
@@ -48,7 +51,7 @@ const requiredRunbookText = [
 
 const failures = [];
 
-console.log("Agri App ops runbook check V4.14");
+console.log("Agri App ops runbook check operativo");
 console.log(`Repo root: ${repoRoot}`);
 console.log("");
 

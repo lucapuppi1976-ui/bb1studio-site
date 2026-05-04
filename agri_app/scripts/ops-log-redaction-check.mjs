@@ -24,7 +24,7 @@ function readArg(name, fallback = "") {
 const baseUrl = readArg("--base", "https://bb1studio.com/agri_app").replace(/\/+$/, "");
 const fakeSecret = `v411-redaction-check-${Date.now()}-not-sensitive`;
 
-console.log("Agri App ops log redaction check V4.11");
+console.log("Agri App ops log redaction check operativo");
 console.log(`Base URL: ${baseUrl}`);
 console.log("Fake secret configured: yes");
 

@@ -162,7 +162,7 @@ async function protectedEmailStatusCheck() {
   }
 }
 
-print("Agri App ops quick check V4.13");
+print("Agri App ops quick check operativo");
 print(`Repo root: ${repoRoot}`);
 print(`App dir: ${appDir}`);
 print(`Base URL: ${baseUrl}`);

@@ -33,7 +33,7 @@ const checks = [
 
 const failures = [];
 
-console.log("Agri App ops labels check V4.12");
+console.log("Agri App ops labels check operativo");
 console.log(`Repo root: ${repoRoot}`);
 console.log("");
 
