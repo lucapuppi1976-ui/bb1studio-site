@@ -189,6 +189,10 @@ runStep("Ops labels check", process.execPath, [
   "scripts/ops-labels-check.mjs",
 ]);
 
+runStep("Ops banner check", process.execPath, [
+  "scripts/ops-banner-check.mjs",
+]);
+
 const releaseStatusArgs = [
   "scripts/release-status.mjs",
   "--strict",
@@ -206,6 +210,10 @@ runStep("Ops log redaction check", process.execPath, [
   "scripts/ops-log-redaction-check.mjs",
   "--base",
   baseUrl,
+]);
+
+runStep("Ops runbook check", process.execPath, [
+  "scripts/ops-runbook-check.mjs",
 ]);
 
 if (includeProtected) {

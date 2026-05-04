@@ -156,3 +156,12 @@ Dopo push live e verifiche:
 - cron reale in-app attivo
 - DB schema invariato
 - Prisma schema invariato
+
+
+## Quick check coverage
+
+Il controllo automatico della copertura della checklist rapida è:
+
+    npm run ops:quick-coverage-check
+
+Deve confermare che ops:quick-check includa DB safety, security, qualità ricorrenze, labels, banner, release status, log redaction, runbook e controllo protetto opzionale.
