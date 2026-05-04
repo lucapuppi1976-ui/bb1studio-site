@@ -19,7 +19,8 @@
     "ops:release-gate:live": "node scripts/release-gate-live-safe.mjs --base https://bb1studio.com/agri_app",
     "ops:log-redaction-check": "node scripts/ops-log-redaction-check.mjs --base https://bb1studio.com/agri_app",
     "ops:labels-check": "node scripts/ops-labels-check.mjs",
-    "ops:quick-check": "node scripts/ops-quick-check.mjs --base https://bb1studio.com/agri_app"
+    "ops:quick-check": "node scripts/ops-quick-check.mjs --base https://bb1studio.com/agri_app",
+    "ops:runbook-check": "node scripts/ops-runbook-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

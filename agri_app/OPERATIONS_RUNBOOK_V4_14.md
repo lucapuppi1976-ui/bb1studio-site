@@ -1,0 +1,157 @@
+# Agri App — Runbook operativo unico V4.14
+
+## Stato operativo corrente
+
+- Live pubblico: https://bb1studio.com/agri_app
+- Branch live stabile: checkpoint/live-stable
+- Email live: disattivate
+- ENABLE_EMAIL_NOTIFICATIONS=false
+- Cron reale in-app: attivo su Render
+- DB schema: invariato
+- Prisma schema: invariato
+
+## Regole fondamentali
+
+- NON fare prisma db push salvo istruzione esplicita.
+- NON usare il DB live nei test locali.
+- Prima di ogni build locale usare:
+  - unset DATABASE_URL LIVE_DATABASE_URL
+  - npx prisma generate
+  - npm run build
+- ENABLE_EMAIL_NOTIFICATIONS deve restare false in DEV e live, salvo test DEV esplicitamente controllati.
+- Il CRON_SECRET del Web Service Render e del Render Cron Job devono essere identici.
+- Non passare secret tramite npm run con argomenti --secret.
+- Usare il wrapper secret-safe per i controlli live protetti.
+
+## Quick check standard
+
+Da agri_app:
+
+    npm run ops:quick-check -- --expect-branch checkpoint/live-stable
+
+Questo controllo non richiede secret e include:
+
+- DB safety DEV
+- Security strict
+- Recurring quality DEV
+- Ops labels check
+- Release status live
+- Ops log redaction check
+
+## Quick check protetto
+
+Da agri_app:
+
+    read -s -r -p "Incolla CRON_SECRET live e premi Invio: " CRON_SECRET_VALUE
+    echo
+    export CRON_SECRET_VALUE
+
+    npm run ops:quick-check -- --include-protected --expect-branch checkpoint/live-stable
+
+    unset CRON_SECRET_VALUE
+
+Il secret non deve essere stampato nei log.
+
+## Release gate live secret-safe
+
+Da agri_app:
+
+    read -s -r -p "Incolla CRON_SECRET live e premi Invio: " CRON_SECRET_VALUE
+    echo
+    export CRON_SECRET_VALUE
+
+    npm run ops:release-gate:live
+
+    unset CRON_SECRET_VALUE
+
+Il comando usa agri_app/scripts/release-gate-live-safe.mjs.
+
+## Gestione CRON_SECRET Render
+
+Il CRON_SECRET deve essere impostato nello stesso identico valore in:
+
+- Render Web Service Agri App
+- Render Cron Job
+
+Nel Web Service, dopo modifica usare Save and deploy oppure Save, rebuild, and deploy.
+Non usare solo Save only se serve applicare subito il valore.
+
+Il Render Cron Job deve mantenere questo comando:
+
+    curl -fsS -X POST -G "https://bb1studio.com/agri_app/api/cron/daily-notifications" --data-urlencode "secret=$CRON_SECRET"
+
+Non testare questo comando nel terminale locale se CRON_SECRET non è valorizzato localmente.
+
+## Verifica email status protetta
+
+La verifica sicura è inclusa in:
+
+    npm run ops:quick-check -- --include-protected --expect-branch checkpoint/live-stable
+
+Atteso:
+
+- ok=true
+- email.enabled=false
+- testSafety.canSendTestEmail=false
+- from=Agri App <notifiche@bb1studio.com>
+
+## Build sicura
+
+Da agri_app:
+
+    unset DATABASE_URL LIVE_DATABASE_URL
+    npx prisma generate
+    npm run build
+
+Non eseguire prisma db push.
+
+## Controlli singoli
+
+Da agri_app:
+
+    npm run ops:db-safety
+    npm run ops:security
+    npm run ops:recurring-quality
+    npm run ops:labels-check
+    npm run ops:log-redaction-check
+    npm run ops:release-status:live
+    npm run ops:release-gate
+    npm run ops:runbook-check
+
+## Redazione log
+
+ops-live-check.mjs deve redigere URL e argomenti sensibili:
+
+- secret=[REDACTED]
+- --secret [REDACTED]
+
+Il controllo automatico è:
+
+    npm run ops:log-redaction-check
+
+Il 403 nel log redaction check è voluto perché usa un fake secret.
+
+## Rollback branch prima del merge live
+
+Prima del merge su checkpoint/live-stable creare sempre un rollback branch:
+
+    ROLLBACK_BRANCH="checkpoint/live-rollback-pre-NOME-VERSIONE-$(date +%Y%m%d-%H%M%S)"
+    git branch "$ROLLBACK_BRANCH" HEAD
+    git push origin "$ROLLBACK_BRANCH"
+
+## Tag finale
+
+Dopo push live e verifiche:
+
+    TAG_NAME="checkpoint/live-NOME-VERSIONE-$(date +%Y%m%d-%H%M%S)"
+    git tag -a "$TAG_NAME" -m "Live checkpoint NOME VERSIONE"
+    git push origin "$TAG_NAME"
+
+## Stato atteso live
+
+- /api/health: ok=true, service=agri-app
+- /api/ready: ok=true
+- email live disabled
+- cron reale in-app attivo
+- DB schema invariato
+- Prisma schema invariato
