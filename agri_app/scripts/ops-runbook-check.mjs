@@ -12,6 +12,7 @@ const requiredFiles = [
   "agri_app/OPERATIONS_RUNBOOK_V4_14.md",
   "agri_app/scripts/ops-runbook-check.mjs",
   "agri_app/scripts/ops-quick-check.mjs",
+  "agri_app/scripts/ops-admin-page-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
   "agri_app/scripts/release-gate-live-safe.mjs",
   "agri_app/scripts/ops-log-redaction-check.mjs",
@@ -26,6 +27,7 @@ const requiredFiles = [
 
 const requiredScripts = [
   "ops:quick-check",
+  "ops:admin-page-check",
   "ops:quick-coverage-check",
   "ops:release-gate:live",
   "ops:log-redaction-check",
@@ -48,6 +50,7 @@ const requiredRunbookText = [
   "npm run ops:release-gate:live",
   "secret=[REDACTED]",
   "checkpoint/live-stable",
+  "/admin/operations",
   "Render Web Service Agri App",
   "Render Cron Job",
 ];

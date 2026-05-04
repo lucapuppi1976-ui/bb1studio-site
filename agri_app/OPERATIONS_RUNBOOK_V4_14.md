@@ -165,3 +165,12 @@ Il controllo automatico della copertura della checklist rapida è:
     npm run ops:quick-coverage-check
 
 Deve confermare che ops:quick-check includa DB safety, security, qualità ricorrenze, labels, banner, release status, log redaction, runbook e controllo protetto opzionale.
+
+
+## Admin Operations Center
+
+La pagina operativa admin è disponibile a:
+
+    /admin/operations
+
+Questa pagina riassume quick check, release gate secret-safe, gestione CRON_SECRET, build sicura, rollback e tag checkpoint.
