@@ -1,5 +1,6 @@
 import Link from "next/link";
 import OperationsDynamicPanel from "./OperationsDynamicPanel";
+import OperationsUxPolish from "./OperationsUxPolish";
 
 const sections = [
   {
@@ -158,6 +159,8 @@ export default function AdminOperationsPage() {
       </section>
 
       <OperationsDynamicPanel />
+
+      <OperationsUxPolish />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

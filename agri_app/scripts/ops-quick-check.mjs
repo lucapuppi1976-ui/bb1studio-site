@@ -224,6 +224,10 @@ runStep("Admin operations navigation check", process.execPath, [
   "scripts/ops-admin-navigation-check.mjs",
 ]);
 
+runStep("Admin operations UX check", process.execPath, [
+  "scripts/ops-admin-ux-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

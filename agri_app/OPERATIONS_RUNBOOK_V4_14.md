@@ -190,6 +190,7 @@ Controllo automatico:
 
     npm run ops:admin-dynamic-check
     npm run ops:admin-navigation-check
+    npm run ops:admin-ux-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -222,3 +223,18 @@ Controlli automatici:
     npm run ops:admin-route-monitoring-check
 
 Le route possono rispondere 200 oppure redirect 302/307/308 in base alla sessione.
+
+
+## Operations UX polish
+
+La pagina `/admin/operations` include una sezione UX con:
+
+- percorso operativo consigliato;
+- route admin monitorate;
+- comandi essenziali;
+- note sicurezza;
+- spiegazione degli HTTP 307 sulle route protette.
+
+Controllo automatico:
+
+    npm run ops:admin-ux-check
