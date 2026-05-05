@@ -44,6 +44,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-evidence-bundle-check.mjs",
   "agri_app/AI_PROVIDER_REQUEST_PREVIEW_V6_8.md",
   "agri_app/scripts/ops-ai-provider-request-check.mjs",
+  "agri_app/AI_DIAGNOSIS_ORCHESTRATOR_DRY_RUN_V7_0.md",
+  "agri_app/scripts/ops-ai-orchestrator-dry-run-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -78,6 +80,7 @@ const requiredScripts = [
   "ops:ai-photo-quality-gate-check",
   "ops:ai-evidence-bundle-check",
   "ops:ai-provider-request-check",
+  "ops:ai-orchestrator-dry-run-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -114,6 +117,7 @@ const requiredRunbookText = [
   "npm run ops:ai-photo-quality-gate-check",
   "npm run ops:ai-evidence-bundle-check",
   "npm run ops:ai-provider-request-check",
+  "npm run ops:ai-orchestrator-dry-run-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -140,6 +144,7 @@ const requiredRunbookText = [
   "AI photo quality gate",
   "AI photo evidence bundle",
   "AI provider request preview",
+  "AI diagnosis orchestrator dry-run",
 ];
 
 const failures = [];
