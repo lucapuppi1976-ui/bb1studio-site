@@ -210,6 +210,7 @@ Controllo automatico:
     npm run ops:ai-photo-annotation-check
     npm run ops:ai-differential-diagnosis-check
     npm run ops:ai-solution-playbook-check
+    npm run ops:ai-case-report-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -719,6 +720,37 @@ Controllo live protetto:
 Regole:
 
 - playbook locale di soluzioni;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessuna persistenza DB;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- nessuna creazione automatica di attività o interventi;
+- allowedToExecute=false;
+- revisione umana obbligatoria.
+
+
+## AI case report builder
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-case-report-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-case-report-check
+
+Controllo live protetto:
+
+    npm run ops:ai-case-report-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- report locale esportabile;
+- executive summary;
+- evidence digest;
+- audit trail;
+- export testuale e JSON;
 - nessuna chiamata AI live;
 - nessuna chiave AI;
 - nessuna persistenza DB;
