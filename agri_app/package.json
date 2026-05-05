@@ -45,7 +45,8 @@
     "ops:ai-provider-request-check": "node scripts/ops-ai-provider-request-check.mjs",
     "ops:ai-orchestrator-dry-run-check": "node scripts/ops-ai-orchestrator-dry-run-check.mjs",
     "ops:ai-case-file-check": "node scripts/ops-ai-case-file-check.mjs",
-    "ops:ai-photo-annotation-check": "node scripts/ops-ai-photo-annotation-check.mjs"
+    "ops:ai-photo-annotation-check": "node scripts/ops-ai-photo-annotation-check.mjs",
+    "ops:ai-differential-diagnosis-check": "node scripts/ops-ai-differential-diagnosis-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

@@ -208,6 +208,7 @@ Controllo automatico:
     npm run ops:ai-orchestrator-dry-run-check
     npm run ops:ai-case-file-check
     npm run ops:ai-photo-annotation-check
+    npm run ops:ai-differential-diagnosis-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -664,6 +665,34 @@ Regole:
 - mappa sintomi fotografica dry-run;
 - regioni normalizzate x/y/w/h;
 - evidence map pronta per provider futuro;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi;
+- allowedToExecute=false;
+- revisione umana obbligatoria.
+
+
+## AI differential diagnosis matrix
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-differential-diagnosis-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-differential-diagnosis-check
+
+Controllo live protetto:
+
+    npm run ops:ai-differential-diagnosis-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- matrice locale di diagnosi differenziale;
+- ranking ipotesi;
+- evidenceFor, evidenceAgainst, evidenceMissing;
+- confidenceBand e riskBand;
 - nessuna chiamata AI live;
 - nessuna chiave AI;
 - nessun salvataggio automatico;
