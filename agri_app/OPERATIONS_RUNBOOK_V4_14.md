@@ -195,6 +195,7 @@ Controllo automatico:
     npm run ops:ai-readiness-check
     npm run ops:ai-photo-intake-check
     npm run ops:ai-diagnosis-draft-check
+    npm run ops:ai-action-plan-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -326,3 +327,28 @@ Regole:
 - nessun endpoint AI live;
 - nessuna chiave provider;
 - nessuna persistenza DB.
+
+
+## AI photo action plan
+
+La pagina `/ai/photo-diagnosis` include un motore locale di piano d’azione:
+
+- priorità operativa;
+- attività proposte;
+- interventi consigliati;
+- monitoraggio;
+- escalation;
+- materiali e verifiche;
+- note di revisione umana.
+
+Controllo automatico:
+
+    npm run ops:ai-action-plan-check
+
+Regole:
+
+- nessuna chiamata AI live;
+- nessun endpoint AI live;
+- nessuna chiave provider;
+- nessuna persistenza DB;
+- nessuna creazione automatica di attività o interventi.
