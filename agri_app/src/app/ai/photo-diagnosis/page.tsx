@@ -5,6 +5,7 @@ import PhotoQualityGatePanel from "./PhotoQualityGatePanel";
 import PhotoEvidenceBundleBuilder from "./PhotoEvidenceBundleBuilder";
 import AiProviderRequestPreviewPanel from "./AiProviderRequestPreviewPanel";
 import DiagnosisOrchestratorDryRunPanel from "./DiagnosisOrchestratorDryRunPanel";
+import DiagnosisCaseFilePanel from "./DiagnosisCaseFilePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -33,6 +34,7 @@ export default function AiPhotoDiagnosisPage() {
       <PhotoEvidenceBundleBuilder />
       <AiProviderRequestPreviewPanel />
       <DiagnosisOrchestratorDryRunPanel />
+      <DiagnosisCaseFilePanel />
     </main>
   );
 }
