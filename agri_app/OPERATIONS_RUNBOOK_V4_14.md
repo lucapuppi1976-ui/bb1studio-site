@@ -204,6 +204,7 @@ Controllo automatico:
     npm run ops:ai-pipeline-dry-run-check
     npm run ops:ai-photo-quality-gate-check
     npm run ops:ai-evidence-bundle-check
+    npm run ops:ai-provider-request-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -557,6 +558,31 @@ Regole:
 
 - acceptedForAiPipeline deve dipendere da qualità e completezza delle evidenze;
 - providerReadyPayload deve restare dry-run;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi;
+- revisione umana obbligatoria.
+
+
+## AI provider request preview
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-provider-request-preview
+
+Controllo automatico:
+
+    npm run ops:ai-provider-request-check
+
+Controllo live protetto:
+
+    npm run ops:ai-provider-request-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- providerPayload deve restare dry-run;
+- expectedJsonSchema deve essere presente;
 - nessuna chiamata AI live;
 - nessuna chiave AI;
 - nessun salvataggio automatico;
