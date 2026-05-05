@@ -205,6 +205,7 @@ Controllo automatico:
     npm run ops:ai-photo-quality-gate-check
     npm run ops:ai-evidence-bundle-check
     npm run ops:ai-provider-request-check
+    npm run ops:ai-orchestrator-dry-run-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -587,4 +588,30 @@ Regole:
 - nessuna chiave AI;
 - nessun salvataggio automatico;
 - nessuna creazione automatica di attività o interventi;
+- revisione umana obbligatoria.
+
+
+## AI diagnosis orchestrator dry-run
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-diagnosis-orchestrator-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-orchestrator-dry-run-check
+
+Controllo live protetto:
+
+    npm run ops:ai-orchestrator-dry-run-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- orchestratore completo ma dry-run;
+- syntheticProviderResponse locale;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi;
+- allowedToExecute=false;
 - revisione umana obbligatoria.

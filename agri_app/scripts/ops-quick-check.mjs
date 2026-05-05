@@ -284,6 +284,10 @@ runStep("AI provider request preview check", process.execPath, [
   "scripts/ops-ai-provider-request-check.mjs",
 ]);
 
+runStep("AI diagnosis orchestrator dry-run check", process.execPath, [
+  "scripts/ops-ai-orchestrator-dry-run-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
