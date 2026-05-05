@@ -8,6 +8,7 @@ import {
   type DiagnosisActionPlan,
 } from "./diagnosisActionPlan";
 import DiagnosisReviewWorkflow from "./DiagnosisReviewWorkflow";
+import ProviderSafetyPanel from "./ProviderSafetyPanel";
 import {
   createLocalDiagnosisDraft,
   formatDiagnosisDraft,
@@ -624,6 +625,8 @@ export default function PhotoDiagnosisIntake() {
         )}
       </article>
     
+      <ProviderSafetyPanel />
+
       <DiagnosisReviewWorkflow
         enabled={actionPlanReady}
         input={draftInput}
