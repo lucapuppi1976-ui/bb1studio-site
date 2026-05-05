@@ -197,6 +197,7 @@ Controllo automatico:
     npm run ops:ai-diagnosis-draft-check
     npm run ops:ai-action-plan-check
     npm run ops:ai-review-workflow-check
+    npm run ops:ai-provider-safety-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -368,6 +369,30 @@ La pagina `/ai/photo-diagnosis` include un workflow locale di revisione umana:
 Controllo automatico:
 
     npm run ops:ai-review-workflow-check
+
+Regole:
+
+- nessuna chiamata AI live;
+- nessun endpoint AI live;
+- nessuna chiave provider;
+- nessuna persistenza DB;
+- nessuna creazione automatica di attività o interventi.
+
+
+## AI provider safety harness
+
+La pagina `/ai/photo-diagnosis` include un provider safety harness locale:
+
+- provider contract;
+- output atteso;
+- output vietato;
+- requisiti backend;
+- rollout controllato;
+- human review obbligatoria.
+
+Controllo automatico:
+
+    npm run ops:ai-provider-safety-check
 
 Regole:
 

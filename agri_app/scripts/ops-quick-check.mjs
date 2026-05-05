@@ -252,6 +252,10 @@ runStep("AI human review workflow check", process.execPath, [
   "scripts/ops-ai-review-workflow-check.mjs",
 ]);
 
+runStep("AI provider safety check", process.execPath, [
+  "scripts/ops-ai-provider-safety-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
