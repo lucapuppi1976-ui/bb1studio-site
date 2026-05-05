@@ -41,7 +41,8 @@
     "ops:ai-provider-response-check": "node scripts/ops-ai-provider-response-check.mjs",
     "ops:ai-pipeline-dry-run-check": "node scripts/ops-ai-pipeline-dry-run-check.mjs",
     "ops:ai-photo-quality-gate-check": "node scripts/ops-ai-photo-quality-gate-check.mjs",
-    "ops:ai-evidence-bundle-check": "node scripts/ops-ai-evidence-bundle-check.mjs"
+    "ops:ai-evidence-bundle-check": "node scripts/ops-ai-evidence-bundle-check.mjs",
+    "ops:ai-provider-request-check": "node scripts/ops-ai-provider-request-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

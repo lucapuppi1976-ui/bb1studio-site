@@ -280,6 +280,10 @@ runStep("AI photo evidence bundle check", process.execPath, [
   "scripts/ops-ai-evidence-bundle-check.mjs",
 ]);
 
+runStep("AI provider request preview check", process.execPath, [
+  "scripts/ops-ai-provider-request-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

@@ -3,6 +3,7 @@ import Link from "next/link";
 import PhotoDiagnosisIntake from "./PhotoDiagnosisIntake";
 import PhotoQualityGatePanel from "./PhotoQualityGatePanel";
 import PhotoEvidenceBundleBuilder from "./PhotoEvidenceBundleBuilder";
+import AiProviderRequestPreviewPanel from "./AiProviderRequestPreviewPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -29,6 +30,7 @@ export default function AiPhotoDiagnosisPage() {
       <PhotoDiagnosisIntake />
       <PhotoQualityGatePanel />
       <PhotoEvidenceBundleBuilder />
+      <AiProviderRequestPreviewPanel />
     </main>
   );
 }
