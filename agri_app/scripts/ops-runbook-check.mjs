@@ -38,6 +38,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-provider-response-check.mjs",
   "agri_app/AI_DIAGNOSIS_PIPELINE_DRY_RUN_V6_5.md",
   "agri_app/scripts/ops-ai-pipeline-dry-run-check.mjs",
+  "agri_app/AI_PHOTO_QUALITY_GATE_V6_6.md",
+  "agri_app/scripts/ops-ai-photo-quality-gate-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -69,6 +71,7 @@ const requiredScripts = [
   "ops:ai-provider-dry-run-check",
   "ops:ai-provider-response-check",
   "ops:ai-pipeline-dry-run-check",
+  "ops:ai-photo-quality-gate-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -102,6 +105,7 @@ const requiredRunbookText = [
   "npm run ops:ai-provider-dry-run-check",
   "npm run ops:ai-provider-response-check",
   "npm run ops:ai-pipeline-dry-run-check",
+  "npm run ops:ai-photo-quality-gate-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -125,6 +129,7 @@ const requiredRunbookText = [
   "AI provider dry-run adapter",
   "AI provider response contract",
   "AI diagnosis pipeline dry-run",
+  "AI photo quality gate",
 ];
 
 const failures = [];
