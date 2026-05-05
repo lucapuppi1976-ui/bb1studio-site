@@ -276,6 +276,10 @@ runStep("AI photo quality gate check", process.execPath, [
   "scripts/ops-ai-photo-quality-gate-check.mjs",
 ]);
 
+runStep("AI photo evidence bundle check", process.execPath, [
+  "scripts/ops-ai-evidence-bundle-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

@@ -203,6 +203,7 @@ Controllo automatico:
     npm run ops:ai-provider-response-check
     npm run ops:ai-pipeline-dry-run-check
     npm run ops:ai-photo-quality-gate-check
+    npm run ops:ai-evidence-bundle-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -531,6 +532,31 @@ Controllo live protetto:
 Regole:
 
 - acceptedForAiPipeline deve bloccare materiale insufficiente;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi;
+- revisione umana obbligatoria.
+
+
+## AI photo evidence bundle
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-photo-evidence-bundle
+
+Controllo automatico:
+
+    npm run ops:ai-evidence-bundle-check
+
+Controllo live protetto:
+
+    npm run ops:ai-evidence-bundle-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- acceptedForAiPipeline deve dipendere da qualità e completezza delle evidenze;
+- providerReadyPayload deve restare dry-run;
 - nessuna chiamata AI live;
 - nessuna chiave AI;
 - nessun salvataggio automatico;
