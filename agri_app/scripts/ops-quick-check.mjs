@@ -304,6 +304,10 @@ runStep("AI solution playbook check", process.execPath, [
   "scripts/ops-ai-solution-playbook-check.mjs",
 ]);
 
+runStep("AI case report check", process.execPath, [
+  "scripts/ops-ai-case-report-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
