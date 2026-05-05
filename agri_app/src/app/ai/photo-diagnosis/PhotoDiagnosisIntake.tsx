@@ -2,6 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 
+import {
+  createLocalDiagnosisDraft,
+  formatDiagnosisDraft,
+  type DiagnosisDraft,
+} from "./diagnosisDraftEngine";
+
 const maxImageSizeMb = 8;
 const maxImageSizeBytes = maxImageSizeMb * 1024 * 1024;
 
@@ -46,7 +52,9 @@ export default function PhotoDiagnosisIntake() {
   const [severity, setSeverity] = useState("Media");
   const [notes, setNotes] = useState("");
   const [briefReady, setBriefReady] = useState(false);
+  const [draftReady, setDraftReady] = useState(false);
   const [copyStatus, setCopyStatus] = useState("");
+  const [draftCopyStatus, setDraftCopyStatus] = useState("");
 
   useEffect(() => {
     return () => {
@@ -55,6 +63,30 @@ export default function PhotoDiagnosisIntake() {
       }
     };
   }, [previewUrl]);
+
+  const draftInput = useMemo(
+    () => ({
+      plantName,
+      location,
+      symptoms: selectedSymptoms,
+      severity,
+      notes,
+      fileName,
+      fileType,
+      fileSizeLabel: fileSize ? formatBytes(fileSize) : "",
+    }),
+    [fileName, fileSize, fileType, location, notes, plantName, selectedSymptoms, severity],
+  );
+
+  const diagnosisDraft: DiagnosisDraft = useMemo(
+    () => createLocalDiagnosisDraft(draftInput),
+    [draftInput],
+  );
+
+  const diagnosisDraftText = useMemo(
+    () => formatDiagnosisDraft(draftInput, diagnosisDraft),
+    [diagnosisDraft, draftInput],
+  );
 
   const diagnosisBrief = useMemo(() => {
     return [
@@ -93,7 +125,9 @@ export default function PhotoDiagnosisIntake() {
 
     setError("");
     setBriefReady(false);
+    setDraftReady(false);
     setCopyStatus("");
+    setDraftCopyStatus("");
 
     if (!file) {
       setPreviewUrl("");
@@ -144,12 +178,32 @@ export default function PhotoDiagnosisIntake() {
     setCopyStatus("");
   }
 
+  function prepareDraft() {
+    if (!fileName) {
+      setError("Seleziona prima una foto valida.");
+      return;
+    }
+
+    setError("");
+    setDraftReady(true);
+    setDraftCopyStatus("");
+  }
+
   async function copyBrief() {
     try {
       await navigator.clipboard.writeText(diagnosisBrief);
       setCopyStatus("Brief copiato negli appunti.");
     } catch {
       setCopyStatus("Copia non riuscita. Copia manualmente il testo.");
+    }
+  }
+
+  async function copyDraft() {
+    try {
+      await navigator.clipboard.writeText(diagnosisDraftText);
+      setDraftCopyStatus("Bozza diagnosi copiata negli appunti.");
+    } catch {
+      setDraftCopyStatus("Copia non riuscita. Copia manualmente il testo.");
     }
   }
 
@@ -279,13 +333,22 @@ export default function PhotoDiagnosisIntake() {
                 />
               </label>
 
-              <button
-                className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
-                type="button"
-                onClick={prepareBrief}
-              >
-                Prepara richiesta AI
-              </button>
+              <div className="grid gap-2 sm:grid-cols-2">
+                <button
+                  className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
+                  type="button"
+                  onClick={prepareBrief}
+                >
+                  Prepara richiesta AI
+                </button>
+                <button
+                  className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
+                  type="button"
+                  onClick={prepareDraft}
+                >
+                  Genera bozza diagnosi
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -316,6 +379,91 @@ export default function PhotoDiagnosisIntake() {
         <pre className="mt-4 max-h-96 overflow-auto rounded-xl border bg-black p-4 text-xs text-white">
           <code>{briefReady ? diagnosisBrief : "Prepara il brief dopo aver selezionato una foto valida."}</code>
         </pre>
+      </article>
+
+      <article className="rounded-2xl border p-5 shadow-sm" data-ai-diagnosis-draft-engine="true">
+        <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              AI Diagnosis Draft Engine
+            </p>
+            <h2 className="text-xl font-semibold">Bozza diagnosi strutturata</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Motore locale euristico: produce ipotesi e azioni da revisionare. Non usa riconoscimento
+              visivo reale e non chiama provider AI.
+            </p>
+          </div>
+          <button
+            className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
+            disabled={!draftReady}
+            type="button"
+            onClick={copyDraft}
+          >
+            Copia bozza
+          </button>
+        </div>
+
+        {draftCopyStatus ? (
+          <p className="mt-3 rounded-xl border p-3 text-sm text-muted-foreground">{draftCopyStatus}</p>
+        ) : null}
+
+        {draftReady ? (
+          <div className="mt-4 grid gap-4">
+            <div className="grid gap-3 md:grid-cols-3">
+              <div className="rounded-xl border p-4">
+                <p className="text-sm text-muted-foreground">Rischio operativo</p>
+                <p className="mt-1 text-lg font-semibold">{diagnosisDraft.riskLevel}</p>
+              </div>
+              <div className="rounded-xl border p-4 md:col-span-2">
+                <p className="text-sm text-muted-foreground">Confidenza</p>
+                <p className="mt-1 text-sm font-medium">{diagnosisDraft.confidence}</p>
+              </div>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Ipotesi problema</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {diagnosisDraft.likelyProblems.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Azioni immediate</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {diagnosisDraft.immediateActions.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Controlli aggiuntivi</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {diagnosisDraft.additionalChecks.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Limiti</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {diagnosisDraft.limitations.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <pre className="max-h-96 overflow-auto rounded-xl border bg-black p-4 text-xs text-white">
+              <code>{diagnosisDraftText}</code>
+            </pre>
+          </div>
+        ) : (
+          <p className="mt-4 rounded-xl border p-4 text-sm text-muted-foreground">
+            Genera la bozza dopo aver selezionato una foto valida.
+          </p>
+        )}
       </article>
     </section>
   );

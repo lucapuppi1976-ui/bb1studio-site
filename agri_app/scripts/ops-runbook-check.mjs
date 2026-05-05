@@ -22,6 +22,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-readiness-check.mjs",
   "agri_app/AI_PHOTO_DIAGNOSIS_INTAKE_V5_7.md",
   "agri_app/scripts/ops-ai-photo-intake-check.mjs",
+  "agri_app/AI_PHOTO_DIAGNOSIS_DRAFT_ENGINE_V5_8.md",
+  "agri_app/scripts/ops-ai-diagnosis-draft-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -45,6 +47,7 @@ const requiredScripts = [
   "ops:admin-command-palette-check",
   "ops:ai-readiness-check",
   "ops:ai-photo-intake-check",
+  "ops:ai-diagnosis-draft-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -70,6 +73,7 @@ const requiredRunbookText = [
   "npm run ops:admin-command-palette-check",
   "npm run ops:ai-readiness-check",
   "npm run ops:ai-photo-intake-check",
+  "npm run ops:ai-diagnosis-draft-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -85,6 +89,7 @@ const requiredRunbookText = [
   "Render Cron Job",
   "AI premium readiness checkpoint",
   "AI photo diagnosis intake",
+  "AI diagnosis draft engine",
 ];
 
 const failures = [];

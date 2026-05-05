@@ -194,6 +194,7 @@ Controllo automatico:
     npm run ops:admin-command-palette-check
     npm run ops:ai-readiness-check
     npm run ops:ai-photo-intake-check
+    npm run ops:ai-diagnosis-draft-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -294,6 +295,30 @@ La pagina `/ai/photo-diagnosis` introduce il primo intake controllato per la dia
 Controllo automatico:
 
     npm run ops:ai-photo-intake-check
+
+Regole:
+
+- nessuna chiamata AI live;
+- nessun endpoint AI live;
+- nessuna chiave provider;
+- nessuna persistenza DB.
+
+
+## AI diagnosis draft engine
+
+La pagina `/ai/photo-diagnosis` include un motore locale di bozza diagnosi:
+
+- rischio operativo;
+- confidenza;
+- ipotesi problema;
+- azioni immediate;
+- controlli aggiuntivi;
+- follow-up;
+- limiti.
+
+Controllo automatico:
+
+    npm run ops:ai-diagnosis-draft-check
 
 Regole:
 
