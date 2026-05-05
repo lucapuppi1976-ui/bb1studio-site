@@ -11,6 +11,7 @@ import OperationsAiPhotoQualityGate from "./OperationsAiPhotoQualityGate";
 import OperationsAiEvidenceBundle from "./OperationsAiEvidenceBundle";
 import OperationsAiProviderRequestPreview from "./OperationsAiProviderRequestPreview";
 import OperationsAiOrchestratorDryRun from "./OperationsAiOrchestratorDryRun";
+import OperationsAiCaseFile from "./OperationsAiCaseFile";
 
 const sections = [
   {
@@ -183,6 +184,7 @@ export default function AdminOperationsPage() {
       <OperationsAiEvidenceBundle />
       <OperationsAiProviderRequestPreview />
       <OperationsAiOrchestratorDryRun />
+      <OperationsAiCaseFile />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

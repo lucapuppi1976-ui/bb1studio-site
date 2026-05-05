@@ -288,6 +288,10 @@ runStep("AI diagnosis orchestrator dry-run check", process.execPath, [
   "scripts/ops-ai-orchestrator-dry-run-check.mjs",
 ]);
 
+runStep("AI diagnosis case file check", process.execPath, [
+  "scripts/ops-ai-case-file-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
