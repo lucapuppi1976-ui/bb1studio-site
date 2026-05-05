@@ -296,6 +296,10 @@ runStep("AI photo symptom annotation check", process.execPath, [
   "scripts/ops-ai-photo-annotation-check.mjs",
 ]);
 
+runStep("AI differential diagnosis check", process.execPath, [
+  "scripts/ops-ai-differential-diagnosis-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

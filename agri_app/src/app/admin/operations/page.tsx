@@ -13,6 +13,7 @@ import OperationsAiProviderRequestPreview from "./OperationsAiProviderRequestPre
 import OperationsAiOrchestratorDryRun from "./OperationsAiOrchestratorDryRun";
 import OperationsAiCaseFile from "./OperationsAiCaseFile";
 import OperationsAiPhotoAnnotation from "./OperationsAiPhotoAnnotation";
+import OperationsAiDifferentialDiagnosis from "./OperationsAiDifferentialDiagnosis";
 
 const sections = [
   {
@@ -187,6 +188,7 @@ export default function AdminOperationsPage() {
       <OperationsAiOrchestratorDryRun />
       <OperationsAiCaseFile />
       <OperationsAiPhotoAnnotation />
+      <OperationsAiDifferentialDiagnosis />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
