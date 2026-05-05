@@ -52,6 +52,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-photo-annotation-check.mjs",
   "agri_app/AI_DIFFERENTIAL_DIAGNOSIS_MATRIX_V7_3.md",
   "agri_app/scripts/ops-ai-differential-diagnosis-check.mjs",
+  "agri_app/AI_SOLUTION_PLAYBOOK_V7_4.md",
+  "agri_app/scripts/ops-ai-solution-playbook-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -90,6 +92,7 @@ const requiredScripts = [
   "ops:ai-case-file-check",
   "ops:ai-photo-annotation-check",
   "ops:ai-differential-diagnosis-check",
+  "ops:ai-solution-playbook-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -130,6 +133,7 @@ const requiredRunbookText = [
   "npm run ops:ai-case-file-check",
   "npm run ops:ai-photo-annotation-check",
   "npm run ops:ai-differential-diagnosis-check",
+  "npm run ops:ai-solution-playbook-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -160,6 +164,7 @@ const requiredRunbookText = [
   "AI diagnosis case file",
   "AI photo symptom annotation",
   "AI differential diagnosis matrix",
+  "AI solution playbook",
 ];
 
 const failures = [];

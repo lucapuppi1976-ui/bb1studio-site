@@ -300,6 +300,10 @@ runStep("AI differential diagnosis check", process.execPath, [
   "scripts/ops-ai-differential-diagnosis-check.mjs",
 ]);
 
+runStep("AI solution playbook check", process.execPath, [
+  "scripts/ops-ai-solution-playbook-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
