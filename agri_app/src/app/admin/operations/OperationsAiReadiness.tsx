@@ -118,6 +118,24 @@ export default function OperationsAiReadiness() {
           ))}
         </div>
       </article>
-    </section>
+    
+      <article className="rounded-2xl border p-5 shadow-sm">
+        <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h2 className="text-xl font-semibold">Intake diagnosi foto</h2>
+            <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
+              Primo flusso controllato per caricare una foto, raccogliere contesto e preparare
+              il brief che alimenterà la futura analisi AI premium.
+            </p>
+          </div>
+          <Link
+            className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
+            href="/ai/photo-diagnosis"
+          >
+            Apri intake diagnosi foto
+          </Link>
+        </div>
+      </article>
+</section>
   );
 }
