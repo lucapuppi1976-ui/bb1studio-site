@@ -8,6 +8,7 @@ import OperationsAiProviderDryRun from "./OperationsAiProviderDryRun";
 import OperationsAiProviderResponse from "./OperationsAiProviderResponse";
 import OperationsAiPipelineDryRun from "./OperationsAiPipelineDryRun";
 import OperationsAiPhotoQualityGate from "./OperationsAiPhotoQualityGate";
+import OperationsAiEvidenceBundle from "./OperationsAiEvidenceBundle";
 
 const sections = [
   {
@@ -177,6 +178,7 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderResponse />
       <OperationsAiPipelineDryRun />
       <OperationsAiPhotoQualityGate />
+      <OperationsAiEvidenceBundle />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
