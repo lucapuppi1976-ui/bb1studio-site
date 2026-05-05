@@ -193,6 +193,7 @@ Controllo automatico:
     npm run ops:admin-ux-check
     npm run ops:admin-command-palette-check
     npm run ops:ai-readiness-check
+    npm run ops:ai-photo-intake-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -277,3 +278,26 @@ Regole:
 - nessun endpoint AI live prima della release dedicata;
 - nessun valore sensibile in UI;
 - nessuna modifica DB/Prisma in questa fase.
+
+
+## AI photo diagnosis intake
+
+La pagina `/ai/photo-diagnosis` introduce il primo intake controllato per la diagnosi fotografica:
+
+- upload locale;
+- preview;
+- raccolta sintomi;
+- gravità;
+- note operatore;
+- brief locale copiabile.
+
+Controllo automatico:
+
+    npm run ops:ai-photo-intake-check
+
+Regole:
+
+- nessuna chiamata AI live;
+- nessun endpoint AI live;
+- nessuna chiave provider;
+- nessuna persistenza DB.
