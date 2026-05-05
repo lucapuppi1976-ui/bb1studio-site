@@ -207,6 +207,7 @@ Controllo automatico:
     npm run ops:ai-provider-request-check
     npm run ops:ai-orchestrator-dry-run-check
     npm run ops:ai-case-file-check
+    npm run ops:ai-photo-annotation-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -636,6 +637,33 @@ Regole:
 
 - case file dry-run esportabile;
 - audit trail completo;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi;
+- allowedToExecute=false;
+- revisione umana obbligatoria.
+
+
+## AI photo symptom annotation
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-photo-annotation-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-photo-annotation-check
+
+Controllo live protetto:
+
+    npm run ops:ai-photo-annotation-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- mappa sintomi fotografica dry-run;
+- regioni normalizzate x/y/w/h;
+- evidence map pronta per provider futuro;
 - nessuna chiamata AI live;
 - nessuna chiave AI;
 - nessun salvataggio automatico;
