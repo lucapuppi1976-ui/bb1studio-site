@@ -3,6 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 
 import {
+  createLocalActionPlan,
+  formatActionPlan,
+  type DiagnosisActionPlan,
+} from "./diagnosisActionPlan";
+import {
   createLocalDiagnosisDraft,
   formatDiagnosisDraft,
   type DiagnosisDraft,
@@ -53,8 +58,10 @@ export default function PhotoDiagnosisIntake() {
   const [notes, setNotes] = useState("");
   const [briefReady, setBriefReady] = useState(false);
   const [draftReady, setDraftReady] = useState(false);
+  const [actionPlanReady, setActionPlanReady] = useState(false);
   const [copyStatus, setCopyStatus] = useState("");
   const [draftCopyStatus, setDraftCopyStatus] = useState("");
+  const [actionPlanCopyStatus, setActionPlanCopyStatus] = useState("");
 
   useEffect(() => {
     return () => {
@@ -83,9 +90,19 @@ export default function PhotoDiagnosisIntake() {
     [draftInput],
   );
 
+  const actionPlan: DiagnosisActionPlan = useMemo(
+    () => createLocalActionPlan(draftInput, diagnosisDraft),
+    [diagnosisDraft, draftInput],
+  );
+
   const diagnosisDraftText = useMemo(
     () => formatDiagnosisDraft(draftInput, diagnosisDraft),
     [diagnosisDraft, draftInput],
+  );
+
+  const actionPlanText = useMemo(
+    () => formatActionPlan(actionPlan),
+    [actionPlan],
   );
 
   const diagnosisBrief = useMemo(() => {
@@ -112,22 +129,30 @@ export default function PhotoDiagnosisIntake() {
     ].join("\n");
   }, [fileName, fileSize, fileType, location, notes, plantName, selectedSymptoms, severity]);
 
+  function resetGeneratedOutputs() {
+    setBriefReady(false);
+    setDraftReady(false);
+    setActionPlanReady(false);
+    setCopyStatus("");
+    setDraftCopyStatus("");
+    setActionPlanCopyStatus("");
+  }
+
   function toggleSymptom(symptom: string) {
     setSelectedSymptoms((current) =>
       current.includes(symptom)
         ? current.filter((item) => item !== symptom)
         : [...current, symptom],
     );
+
+    resetGeneratedOutputs();
   }
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
 
     setError("");
-    setBriefReady(false);
-    setDraftReady(false);
-    setCopyStatus("");
-    setDraftCopyStatus("");
+    resetGeneratedOutputs();
 
     if (!file) {
       setPreviewUrl("");
@@ -167,26 +192,42 @@ export default function PhotoDiagnosisIntake() {
     setFileType(file.type);
   }
 
-  function prepareBrief() {
+  function requireValidPhoto() {
     if (!fileName) {
       setError("Seleziona prima una foto valida.");
-      return;
+      return false;
     }
 
     setError("");
+    return true;
+  }
+
+  function prepareBrief() {
+    if (!requireValidPhoto()) {
+      return;
+    }
+
     setBriefReady(true);
     setCopyStatus("");
   }
 
   function prepareDraft() {
-    if (!fileName) {
-      setError("Seleziona prima una foto valida.");
+    if (!requireValidPhoto()) {
       return;
     }
 
-    setError("");
     setDraftReady(true);
     setDraftCopyStatus("");
+  }
+
+  function prepareActionPlan() {
+    if (!requireValidPhoto()) {
+      return;
+    }
+
+    setDraftReady(true);
+    setActionPlanReady(true);
+    setActionPlanCopyStatus("");
   }
 
   async function copyBrief() {
@@ -204,6 +245,15 @@ export default function PhotoDiagnosisIntake() {
       setDraftCopyStatus("Bozza diagnosi copiata negli appunti.");
     } catch {
       setDraftCopyStatus("Copia non riuscita. Copia manualmente il testo.");
+    }
+  }
+
+  async function copyActionPlan() {
+    try {
+      await navigator.clipboard.writeText(actionPlanText);
+      setActionPlanCopyStatus("Piano d’azione copiato negli appunti.");
+    } catch {
+      setActionPlanCopyStatus("Copia non riuscita. Copia manualmente il testo.");
     }
   }
 
@@ -280,7 +330,10 @@ export default function PhotoDiagnosisIntake() {
                   className="mt-2 w-full rounded-xl border bg-background px-4 py-2 text-sm"
                   placeholder="Esempio: vite, pomodoro, olivo…"
                   value={plantName}
-                  onChange={(event) => setPlantName(event.target.value)}
+                  onChange={(event) => {
+                    setPlantName(event.target.value);
+                    resetGeneratedOutputs();
+                  }}
                 />
               </label>
 
@@ -290,7 +343,10 @@ export default function PhotoDiagnosisIntake() {
                   className="mt-2 w-full rounded-xl border bg-background px-4 py-2 text-sm"
                   placeholder="Serra nord, filare 3, vaso balcone…"
                   value={location}
-                  onChange={(event) => setLocation(event.target.value)}
+                  onChange={(event) => {
+                    setLocation(event.target.value);
+                    resetGeneratedOutputs();
+                  }}
                 />
               </label>
 
@@ -315,7 +371,10 @@ export default function PhotoDiagnosisIntake() {
                 <select
                   className="mt-2 w-full rounded-xl border bg-background px-4 py-2 text-sm"
                   value={severity}
-                  onChange={(event) => setSeverity(event.target.value)}
+                  onChange={(event) => {
+                    setSeverity(event.target.value);
+                    resetGeneratedOutputs();
+                  }}
                 >
                   {severityOptions.map((option) => (
                     <option key={option}>{option}</option>
@@ -329,11 +388,14 @@ export default function PhotoDiagnosisIntake() {
                   className="mt-2 min-h-28 w-full rounded-xl border bg-background px-4 py-2 text-sm"
                   placeholder="Quando è comparso il problema? Irrigazione? Trattamenti recenti? Meteo?"
                   value={notes}
-                  onChange={(event) => setNotes(event.target.value)}
+                  onChange={(event) => {
+                    setNotes(event.target.value);
+                    resetGeneratedOutputs();
+                  }}
                 />
               </label>
 
-              <div className="grid gap-2 sm:grid-cols-2">
+              <div className="grid gap-2 sm:grid-cols-3">
                 <button
                   className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
                   type="button"
@@ -347,6 +409,13 @@ export default function PhotoDiagnosisIntake() {
                   onClick={prepareDraft}
                 >
                   Genera bozza diagnosi
+                </button>
+                <button
+                  className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
+                  type="button"
+                  onClick={prepareActionPlan}
+                >
+                  Genera piano d’azione
                 </button>
               </div>
             </div>
@@ -462,6 +531,94 @@ export default function PhotoDiagnosisIntake() {
         ) : (
           <p className="mt-4 rounded-xl border p-4 text-sm text-muted-foreground">
             Genera la bozza dopo aver selezionato una foto valida.
+          </p>
+        )}
+      </article>
+
+      <article className="rounded-2xl border p-5 shadow-sm" data-ai-action-plan-builder="true">
+        <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+              AI Action Plan Builder
+            </p>
+            <h2 className="text-xl font-semibold">Piano d’azione operativo</h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Motore locale che trasforma la bozza diagnosi in attività proposte, interventi,
+              monitoraggio ed escalation. Non crea dati nel database.
+            </p>
+          </div>
+          <button
+            className="rounded-xl border px-4 py-2 text-sm font-medium hover:bg-muted"
+            disabled={!actionPlanReady}
+            type="button"
+            onClick={copyActionPlan}
+          >
+            Copia piano
+          </button>
+        </div>
+
+        {actionPlanCopyStatus ? (
+          <p className="mt-3 rounded-xl border p-3 text-sm text-muted-foreground">
+            {actionPlanCopyStatus}
+          </p>
+        ) : null}
+
+        {actionPlanReady ? (
+          <div className="mt-4 grid gap-4">
+            <div className="rounded-xl border p-4">
+              <p className="text-sm text-muted-foreground">Priorità</p>
+              <p className="mt-1 text-lg font-semibold">{actionPlan.priority}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{actionPlan.operatorSummary}</p>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Attività proposte</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {actionPlan.proposedTasks.map((item) => (
+                    <li key={item.title}>
+                      <strong>{item.title}</strong> — {item.timing}: {item.detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Interventi consigliati</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {actionPlan.suggestedInterventions.map((item) => (
+                    <li key={item.title}>
+                      <strong>{item.title}</strong> — {item.timing}: {item.detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Monitoraggio</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {actionPlan.monitoringPlan.map((item) => (
+                    <li key={item.title}>
+                      <strong>{item.title}</strong> — {item.timing}: {item.detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-4">
+                <h3 className="font-semibold">Escalation e revisione umana</h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                  {actionPlan.escalationRules.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <pre className="max-h-96 overflow-auto rounded-xl border bg-black p-4 text-xs text-white">
+              <code>{actionPlanText}</code>
+            </pre>
+          </div>
+        ) : (
+          <p className="mt-4 rounded-xl border p-4 text-sm text-muted-foreground">
+            Genera il piano dopo aver selezionato una foto valida.
           </p>
         )}
       </article>

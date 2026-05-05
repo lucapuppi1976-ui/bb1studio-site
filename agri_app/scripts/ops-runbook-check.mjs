@@ -24,6 +24,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-photo-intake-check.mjs",
   "agri_app/AI_PHOTO_DIAGNOSIS_DRAFT_ENGINE_V5_8.md",
   "agri_app/scripts/ops-ai-diagnosis-draft-check.mjs",
+  "agri_app/AI_PHOTO_ACTION_PLAN_V5_9.md",
+  "agri_app/scripts/ops-ai-action-plan-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -48,6 +50,7 @@ const requiredScripts = [
   "ops:ai-readiness-check",
   "ops:ai-photo-intake-check",
   "ops:ai-diagnosis-draft-check",
+  "ops:ai-action-plan-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -74,6 +77,7 @@ const requiredRunbookText = [
   "npm run ops:ai-readiness-check",
   "npm run ops:ai-photo-intake-check",
   "npm run ops:ai-diagnosis-draft-check",
+  "npm run ops:ai-action-plan-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -90,6 +94,7 @@ const requiredRunbookText = [
   "AI premium readiness checkpoint",
   "AI photo diagnosis intake",
   "AI diagnosis draft engine",
+  "AI photo action plan",
 ];
 
 const failures = [];

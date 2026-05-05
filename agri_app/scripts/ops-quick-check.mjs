@@ -244,6 +244,10 @@ runStep("AI diagnosis draft check", process.execPath, [
   "scripts/ops-ai-diagnosis-draft-check.mjs",
 ]);
 
+runStep("AI action plan check", process.execPath, [
+  "scripts/ops-ai-action-plan-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
