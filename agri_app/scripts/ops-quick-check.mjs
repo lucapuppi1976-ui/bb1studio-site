@@ -256,6 +256,10 @@ runStep("AI provider safety check", process.execPath, [
   "scripts/ops-ai-provider-safety-check.mjs",
 ]);
 
+runStep("AI provider ops status check", process.execPath, [
+  "scripts/ops-ai-provider-status-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

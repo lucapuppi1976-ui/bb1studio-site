@@ -3,6 +3,7 @@ import OperationsDynamicPanel from "./OperationsDynamicPanel";
 import OperationsUxPolish from "./OperationsUxPolish";
 import OperationsCommandPalette from "./OperationsCommandPalette";
 import OperationsAiReadiness from "./OperationsAiReadiness";
+import OperationsAiProviderStatus from "./OperationsAiProviderStatus";
 
 const sections = [
   {
@@ -167,6 +168,7 @@ export default function AdminOperationsPage() {
       <OperationsCommandPalette />
 
       <OperationsAiReadiness />
+      <OperationsAiProviderStatus />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

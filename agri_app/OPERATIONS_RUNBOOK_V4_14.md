@@ -198,6 +198,7 @@ Controllo automatico:
     npm run ops:ai-action-plan-check
     npm run ops:ai-review-workflow-check
     npm run ops:ai-provider-safety-check
+    npm run ops:ai-provider-status-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -401,3 +402,29 @@ Regole:
 - nessuna chiave provider;
 - nessuna persistenza DB;
 - nessuna creazione automatica di attività o interventi.
+
+
+## AI provider ops status
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-provider-status
+
+Controllo automatico:
+
+    npm run ops:ai-provider-status-check
+
+Controllo live protetto:
+
+    npm run ops:ai-provider-status-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- providerCallsEnabled=false;
+- clientProviderCallsAllowed=false;
+- persistenceAllowed=false;
+- automaticTaskCreationAllowed=false;
+- humanReviewRequired=true;
+- nessuna chiamata AI live;
+- nessuna chiave AI esposta;
+- nessun salvataggio automatico.
