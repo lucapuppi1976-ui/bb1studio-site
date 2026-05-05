@@ -248,6 +248,10 @@ runStep("AI action plan check", process.execPath, [
   "scripts/ops-ai-action-plan-check.mjs",
 ]);
 
+runStep("AI human review workflow check", process.execPath, [
+  "scripts/ops-ai-review-workflow-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

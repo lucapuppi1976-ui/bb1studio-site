@@ -7,6 +7,7 @@ import {
   formatActionPlan,
   type DiagnosisActionPlan,
 } from "./diagnosisActionPlan";
+import DiagnosisReviewWorkflow from "./DiagnosisReviewWorkflow";
 import {
   createLocalDiagnosisDraft,
   formatDiagnosisDraft,
@@ -622,6 +623,13 @@ export default function PhotoDiagnosisIntake() {
           </p>
         )}
       </article>
-    </section>
+    
+      <DiagnosisReviewWorkflow
+        enabled={actionPlanReady}
+        input={draftInput}
+        draft={diagnosisDraft}
+        actionPlan={actionPlan}
+      />
+</section>
   );
 }

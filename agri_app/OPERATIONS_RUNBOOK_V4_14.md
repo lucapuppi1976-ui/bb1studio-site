@@ -196,6 +196,7 @@ Controllo automatico:
     npm run ops:ai-photo-intake-check
     npm run ops:ai-diagnosis-draft-check
     npm run ops:ai-action-plan-check
+    npm run ops:ai-review-workflow-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -344,6 +345,29 @@ La pagina `/ai/photo-diagnosis` include un motore locale di piano d’azione:
 Controllo automatico:
 
     npm run ops:ai-action-plan-check
+
+Regole:
+
+- nessuna chiamata AI live;
+- nessun endpoint AI live;
+- nessuna chiave provider;
+- nessuna persistenza DB;
+- nessuna creazione automatica di attività o interventi.
+
+
+## AI human review workflow
+
+La pagina `/ai/photo-diagnosis` include un workflow locale di revisione umana:
+
+- decisione revisore;
+- note revisore;
+- checklist revisione;
+- pacchetto revisione copiabile;
+- export JSON locale.
+
+Controllo automatico:
+
+    npm run ops:ai-review-workflow-check
 
 Regole:
 
