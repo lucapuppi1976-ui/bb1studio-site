@@ -38,7 +38,8 @@
     "ops:ai-provider-safety-check": "node scripts/ops-ai-provider-safety-check.mjs",
     "ops:ai-provider-status-check": "node scripts/ops-ai-provider-status-check.mjs",
     "ops:ai-provider-dry-run-check": "node scripts/ops-ai-provider-dry-run-check.mjs",
-    "ops:ai-provider-response-check": "node scripts/ops-ai-provider-response-check.mjs"
+    "ops:ai-provider-response-check": "node scripts/ops-ai-provider-response-check.mjs",
+    "ops:ai-pipeline-dry-run-check": "node scripts/ops-ai-pipeline-dry-run-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

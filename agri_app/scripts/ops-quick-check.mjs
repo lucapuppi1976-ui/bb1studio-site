@@ -268,6 +268,10 @@ runStep("AI provider response contract check", process.execPath, [
   "scripts/ops-ai-provider-response-check.mjs",
 ]);
 
+runStep("AI diagnosis pipeline dry-run check", process.execPath, [
+  "scripts/ops-ai-pipeline-dry-run-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
