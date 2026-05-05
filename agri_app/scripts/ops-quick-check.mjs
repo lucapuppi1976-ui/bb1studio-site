@@ -272,6 +272,10 @@ runStep("AI diagnosis pipeline dry-run check", process.execPath, [
   "scripts/ops-ai-pipeline-dry-run-check.mjs",
 ]);
 
+runStep("AI photo quality gate check", process.execPath, [
+  "scripts/ops-ai-photo-quality-gate-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

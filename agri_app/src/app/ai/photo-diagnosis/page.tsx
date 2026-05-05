@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import PhotoDiagnosisIntake from "./PhotoDiagnosisIntake";
+import PhotoQualityGatePanel from "./PhotoQualityGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -25,6 +26,7 @@ export default function AiPhotoDiagnosisPage() {
       </header>
 
       <PhotoDiagnosisIntake />
+      <PhotoQualityGatePanel />
     </main>
   );
 }

@@ -202,6 +202,7 @@ Controllo automatico:
     npm run ops:ai-provider-dry-run-check
     npm run ops:ai-provider-response-check
     npm run ops:ai-pipeline-dry-run-check
+    npm run ops:ai-photo-quality-gate-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -511,3 +512,27 @@ Regole:
 - nessuna chiave AI;
 - nessun salvataggio automatico;
 - nessuna creazione automatica di attività o interventi.
+
+
+## AI photo quality gate
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-photo-quality-gate
+
+Controllo automatico:
+
+    npm run ops:ai-photo-quality-gate-check
+
+Controllo live protetto:
+
+    npm run ops:ai-photo-quality-gate-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- acceptedForAiPipeline deve bloccare materiale insufficiente;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi;
+- revisione umana obbligatoria.
