@@ -209,6 +209,7 @@ Controllo automatico:
     npm run ops:ai-case-file-check
     npm run ops:ai-photo-annotation-check
     npm run ops:ai-differential-diagnosis-check
+    npm run ops:ai-solution-playbook-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -696,6 +697,33 @@ Regole:
 - nessuna chiamata AI live;
 - nessuna chiave AI;
 - nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi;
+- allowedToExecute=false;
+- revisione umana obbligatoria.
+
+
+## AI solution playbook
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-solution-playbook-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-solution-playbook-check
+
+Controllo live protetto:
+
+    npm run ops:ai-solution-playbook-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- playbook locale di soluzioni;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessuna persistenza DB;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
 - nessuna creazione automatica di attività o interventi;
 - allowedToExecute=false;
 - revisione umana obbligatoria.
