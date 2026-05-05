@@ -200,6 +200,7 @@ Controllo automatico:
     npm run ops:ai-provider-safety-check
     npm run ops:ai-provider-status-check
     npm run ops:ai-provider-dry-run-check
+    npm run ops:ai-provider-response-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -455,4 +456,29 @@ Regole:
 - nessuna chiamata AI live;
 - nessuna chiave AI;
 - nessun salvataggio automatico;
+- nessuna creazione automatica di attività o interventi.
+
+
+## AI provider response contract
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-provider-response-validate
+
+Controllo automatico:
+
+    npm run ops:ai-provider-response-check
+
+Controllo live protetto:
+
+    npm run ops:ai-provider-response-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- schema agri-ai-diagnosis-response.v1;
+- humanReviewRequired=true;
+- automaticTaskCreationAllowed=false;
+- persistenceAllowed=false;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
 - nessuna creazione automatica di attività o interventi.
