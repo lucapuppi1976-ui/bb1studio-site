@@ -32,6 +32,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-provider-safety-check.mjs",
   "agri_app/AI_PROVIDER_OPS_STATUS_V6_2.md",
   "agri_app/scripts/ops-ai-provider-status-check.mjs",
+  "agri_app/AI_PROVIDER_DRY_RUN_ADAPTER_V6_3.md",
+  "agri_app/scripts/ops-ai-provider-dry-run-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -60,6 +62,7 @@ const requiredScripts = [
   "ops:ai-review-workflow-check",
   "ops:ai-provider-safety-check",
   "ops:ai-provider-status-check",
+  "ops:ai-provider-dry-run-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -90,6 +93,7 @@ const requiredRunbookText = [
   "npm run ops:ai-review-workflow-check",
   "npm run ops:ai-provider-safety-check",
   "npm run ops:ai-provider-status-check",
+  "npm run ops:ai-provider-dry-run-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -110,6 +114,7 @@ const requiredRunbookText = [
   "AI human review workflow",
   "AI provider safety harness",
   "AI provider ops status",
+  "AI provider dry-run adapter",
 ];
 
 const failures = [];
