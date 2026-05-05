@@ -201,6 +201,7 @@ Controllo automatico:
     npm run ops:ai-provider-status-check
     npm run ops:ai-provider-dry-run-check
     npm run ops:ai-provider-response-check
+    npm run ops:ai-pipeline-dry-run-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -481,4 +482,32 @@ Regole:
 - persistenceAllowed=false;
 - nessuna chiamata AI live;
 - nessuna chiave AI;
+- nessuna creazione automatica di attività o interventi.
+
+
+## AI diagnosis pipeline dry-run
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-diagnosis-pipeline-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-pipeline-dry-run-check
+
+Controllo live protetto:
+
+    npm run ops:ai-pipeline-dry-run-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- externalProviderCalled=false;
+- providerCallsEnabled=false;
+- persistenceAllowed=false;
+- automaticTaskCreationAllowed=false;
+- automaticInterventionCreationAllowed=false;
+- humanReviewRequired=true;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessun salvataggio automatico;
 - nessuna creazione automatica di attività o interventi.

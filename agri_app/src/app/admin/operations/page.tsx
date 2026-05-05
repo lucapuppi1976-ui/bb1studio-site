@@ -6,6 +6,7 @@ import OperationsAiReadiness from "./OperationsAiReadiness";
 import OperationsAiProviderStatus from "./OperationsAiProviderStatus";
 import OperationsAiProviderDryRun from "./OperationsAiProviderDryRun";
 import OperationsAiProviderResponse from "./OperationsAiProviderResponse";
+import OperationsAiPipelineDryRun from "./OperationsAiPipelineDryRun";
 
 const sections = [
   {
@@ -173,6 +174,7 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderStatus />
       <OperationsAiProviderDryRun />
       <OperationsAiProviderResponse />
+      <OperationsAiPipelineDryRun />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
