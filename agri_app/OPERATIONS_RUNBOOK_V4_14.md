@@ -192,6 +192,7 @@ Controllo automatico:
     npm run ops:admin-navigation-check
     npm run ops:admin-ux-check
     npm run ops:admin-command-palette-check
+    npm run ops:ai-readiness-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -255,3 +256,24 @@ La pagina `/admin/operations` include una command palette copiabile con:
 Controllo automatico:
 
     npm run ops:admin-command-palette-check
+
+
+## AI premium readiness checkpoint
+
+Prima di introdurre riconoscimento foto, diagnosi AI e proposte operative automatiche, il live deve restare in stato sicuro.
+
+Documenti:
+
+- `AI_PREMIUM_READINESS_V5_6.md`
+- `AI_IMAGE_DIAGNOSIS_STRATEGY_V5_6.md`
+
+Controllo automatico:
+
+    npm run ops:ai-readiness-check
+
+Regole:
+
+- nessuna chiave AI nel repository;
+- nessun endpoint AI live prima della release dedicata;
+- nessun valore sensibile in UI;
+- nessuna modifica DB/Prisma in questa fase.
