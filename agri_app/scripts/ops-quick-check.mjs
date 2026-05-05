@@ -232,6 +232,10 @@ runStep("Admin command palette check", process.execPath, [
   "scripts/ops-admin-command-palette-check.mjs",
 ]);
 
+runStep("AI readiness check", process.execPath, [
+  "scripts/ops-ai-readiness-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

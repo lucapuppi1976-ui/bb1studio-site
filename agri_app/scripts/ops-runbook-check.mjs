@@ -17,6 +17,9 @@ const requiredFiles = [
   "agri_app/scripts/ops-admin-navigation-check.mjs",
   "agri_app/scripts/ops-admin-ux-check.mjs",
   "agri_app/scripts/ops-admin-command-palette-check.mjs",
+  "agri_app/AI_IMAGE_DIAGNOSIS_STRATEGY_V5_6.md",
+  "agri_app/AI_PREMIUM_READINESS_V5_6.md",
+  "agri_app/scripts/ops-ai-readiness-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -38,6 +41,7 @@ const requiredScripts = [
   "ops:admin-navigation-check",
   "ops:admin-ux-check",
   "ops:admin-command-palette-check",
+  "ops:ai-readiness-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -61,6 +65,7 @@ const requiredRunbookText = [
   "npm run ops:admin-navigation-check",
   "npm run ops:admin-ux-check",
   "npm run ops:admin-command-palette-check",
+  "npm run ops:ai-readiness-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -73,6 +78,7 @@ const requiredRunbookText = [
   "/admin/system",
   "Render Web Service Agri App",
   "Render Cron Job",
+  "AI premium readiness checkpoint",
 ];
 
 const failures = [];

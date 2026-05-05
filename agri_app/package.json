@@ -29,7 +29,8 @@
     "ops:admin-live-routes-check": "node scripts/ops-admin-live-routes-check.mjs --base https://bb1studio.com/agri_app",
     "ops:admin-route-monitoring-check": "node scripts/ops-admin-route-monitoring-check.mjs",
     "ops:admin-ux-check": "node scripts/ops-admin-ux-check.mjs",
-    "ops:admin-command-palette-check": "node scripts/ops-admin-command-palette-check.mjs"
+    "ops:admin-command-palette-check": "node scripts/ops-admin-command-palette-check.mjs",
+    "ops:ai-readiness-check": "node scripts/ops-ai-readiness-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
