@@ -68,6 +68,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-case-export-bundle-check.mjs",
   "agri_app/AI_CASE_EXPORT_ARCHIVE_V8_1.md",
   "agri_app/scripts/ops-ai-case-export-archive-check.mjs",
+  "agri_app/AI_FIELD_INTELLIGENCE_V8_3.md",
+  "agri_app/scripts/ops-ai-field-intelligence-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -114,6 +116,7 @@ const requiredScripts = [
   "ops:ai-manual-conversion-audit-check",
   "ops:ai-case-export-bundle-check",
   "ops:ai-case-export-archive-check",
+  "ops:ai-field-intelligence-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -162,6 +165,7 @@ const requiredRunbookText = [
   "npm run ops:ai-manual-conversion-audit-check",
   "npm run ops:ai-case-export-bundle-check",
   "npm run ops:ai-case-export-archive-check",
+  "npm run ops:ai-field-intelligence-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -200,6 +204,7 @@ const requiredRunbookText = [
   "AI manual conversion audit",
   "AI case export bundle",
   "AI case export archive",
+  "AI field intelligence",
 ];
 
 const failures = [];
