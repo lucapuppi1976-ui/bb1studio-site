@@ -514,7 +514,7 @@ if (includeLive) {
               },
               {
                 photoId: "live-photo-context",
-                photoRole: "plant-context",
+                photoRole: "whole-plant",
                 fileName: "live-context.webp",
                 plantContext: "pianta intera",
                 locationHint: "settore test",

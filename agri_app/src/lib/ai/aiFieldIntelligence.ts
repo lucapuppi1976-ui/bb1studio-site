@@ -154,7 +154,7 @@ export function createFieldIntelligenceFixture(): FieldIntelligenceCaseInput {
   const second: PhotoSymptomAnnotationInput = {
     ...first,
     photoId: "field-intelligence-photo-context",
-    photoRole: "plant-context",
+    photoRole: "whole-plant",
     fileName: "field-intelligence-context.webp",
     observedAtLabel: "follow-up-context",
     locationHint: "settore nord — fila 4",
