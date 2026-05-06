@@ -360,6 +360,10 @@ runStep("AI intervention protocol check", process.execPath, [
   "scripts/ops-ai-intervention-protocol-check.mjs",
 ]);
 
+runStep("AI farm command board check", process.execPath, [
+  "scripts/ops-ai-farm-command-board-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
