@@ -943,6 +943,7 @@ Regole:
     npm run ops:ai-field-intelligence-check
     npm run ops:ai-temporal-trend-check
     npm run ops:ai-field-scouting-plan-check
+    npm run ops:ai-field-risk-heatmap-check
 
 
 ## AI field intelligence
@@ -1020,6 +1021,36 @@ Regole:
 - scouting plan solo dry-run;
 - sampling grid locale;
 - route scouting locale;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI field risk heatmap
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-field-risk-heatmap-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-field-risk-heatmap-check
+
+Controllo live protetto:
+
+    npm run ops:ai-field-risk-heatmap-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- risk heatmap solo dry-run;
+- scoring zone locale;
+- spread model locale non diagnostico definitivo;
+- work queue solo manuale;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;
