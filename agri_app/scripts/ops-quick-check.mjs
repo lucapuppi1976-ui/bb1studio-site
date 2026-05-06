@@ -320,6 +320,10 @@ runStep("AI work order execution gate check", process.execPath, [
   "scripts/ops-ai-work-order-execution-gate-check.mjs",
 ]);
 
+runStep("AI manual conversion audit check", process.execPath, [
+  "scripts/ops-ai-manual-conversion-audit-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

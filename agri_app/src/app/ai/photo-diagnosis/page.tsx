@@ -13,6 +13,7 @@ import CaseReportPanel from "./CaseReportPanel";
 import DecisionDossierPanel from "./DecisionDossierPanel";
 import WorkOrderPreviewPanel from "./WorkOrderPreviewPanel";
 import WorkOrderExecutionGatePanel from "./WorkOrderExecutionGatePanel";
+import ManualConversionAuditPanel from "./ManualConversionAuditPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -49,6 +50,7 @@ export default function AiPhotoDiagnosisPage() {
       <DecisionDossierPanel />
       <WorkOrderPreviewPanel />
       <WorkOrderExecutionGatePanel />
+      <ManualConversionAuditPanel />
     </main>
   );
 }

@@ -62,6 +62,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-work-order-preview-check.mjs",
   "agri_app/AI_WORK_ORDER_EXECUTION_GATE_V7_8.md",
   "agri_app/scripts/ops-ai-work-order-execution-gate-check.mjs",
+  "agri_app/AI_MANUAL_CONVERSION_AUDIT_V7_9.md",
+  "agri_app/scripts/ops-ai-manual-conversion-audit-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -105,6 +107,7 @@ const requiredScripts = [
   "ops:ai-decision-dossier-check",
   "ops:ai-work-order-preview-check",
   "ops:ai-work-order-execution-gate-check",
+  "ops:ai-manual-conversion-audit-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -150,6 +153,7 @@ const requiredRunbookText = [
   "npm run ops:ai-decision-dossier-check",
   "npm run ops:ai-work-order-preview-check",
   "npm run ops:ai-work-order-execution-gate-check",
+  "npm run ops:ai-manual-conversion-audit-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -185,6 +189,7 @@ const requiredRunbookText = [
   "AI decision dossier",
   "AI work order preview",
   "AI work order execution gate",
+  "AI manual conversion audit",
 ];
 
 const failures = [];
