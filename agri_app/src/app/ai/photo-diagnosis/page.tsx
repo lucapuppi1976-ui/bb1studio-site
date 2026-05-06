@@ -18,6 +18,7 @@ import CaseExportBundlePanel from "./CaseExportBundlePanel";
 import CaseExportArchivePanel from "./CaseExportArchivePanel";
 import FieldIntelligencePanel from "./FieldIntelligencePanel";
 import TemporalTrendPanel from "./TemporalTrendPanel";
+import FieldScoutingPlanPanel from "./FieldScoutingPlanPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -59,6 +60,7 @@ export default function AiPhotoDiagnosisPage() {
       <CaseExportArchivePanel />
       <FieldIntelligencePanel />
       <TemporalTrendPanel />
+      <FieldScoutingPlanPanel />
     </main>
   );
 }

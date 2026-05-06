@@ -72,6 +72,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-field-intelligence-check.mjs",
   "agri_app/AI_TEMPORAL_FIELD_TREND_V8_4.md",
   "agri_app/scripts/ops-ai-temporal-trend-check.mjs",
+  "agri_app/AI_FIELD_SCOUTING_PLAN_V8_5.md",
+  "agri_app/scripts/ops-ai-field-scouting-plan-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -120,6 +122,7 @@ const requiredScripts = [
   "ops:ai-case-export-archive-check",
   "ops:ai-field-intelligence-check",
   "ops:ai-temporal-trend-check",
+  "ops:ai-field-scouting-plan-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -170,6 +173,7 @@ const requiredRunbookText = [
   "npm run ops:ai-case-export-archive-check",
   "npm run ops:ai-field-intelligence-check",
   "npm run ops:ai-temporal-trend-check",
+  "npm run ops:ai-field-scouting-plan-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -210,6 +214,7 @@ const requiredRunbookText = [
   "AI case export archive",
   "AI field intelligence",
   "AI temporal trend",
+  "AI field scouting plan",
 ];
 
 const failures = [];
