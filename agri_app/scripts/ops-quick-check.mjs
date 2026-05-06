@@ -356,6 +356,10 @@ runStep("AI intervention readiness check", process.execPath, [
   "scripts/ops-ai-intervention-readiness-check.mjs",
 ]);
 
+runStep("AI intervention protocol check", process.execPath, [
+  "scripts/ops-ai-intervention-protocol-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
