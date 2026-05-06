@@ -942,6 +942,7 @@ Regole:
 
     npm run ops:ai-field-intelligence-check
     npm run ops:ai-temporal-trend-check
+    npm run ops:ai-field-scouting-plan-check
 
 
 ## AI field intelligence
@@ -990,6 +991,35 @@ Regole:
 
 - trend temporale solo dry-run;
 - confronto baseline/follow-up locale;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI field scouting plan
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-field-scouting-plan-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-field-scouting-plan-check
+
+Controllo live protetto:
+
+    npm run ops:ai-field-scouting-plan-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- scouting plan solo dry-run;
+- sampling grid locale;
+- route scouting locale;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;
