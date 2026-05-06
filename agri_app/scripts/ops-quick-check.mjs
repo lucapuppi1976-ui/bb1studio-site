@@ -348,6 +348,10 @@ runStep("AI field risk heatmap check", process.execPath, [
   "scripts/ops-ai-field-risk-heatmap-check.mjs",
 ]);
 
+runStep("AI follow-up scheduler check", process.execPath, [
+  "scripts/ops-ai-follow-up-scheduler-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

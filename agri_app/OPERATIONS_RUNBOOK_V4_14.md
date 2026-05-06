@@ -944,6 +944,7 @@ Regole:
     npm run ops:ai-temporal-trend-check
     npm run ops:ai-field-scouting-plan-check
     npm run ops:ai-field-risk-heatmap-check
+    npm run ops:ai-follow-up-scheduler-check
 
 
 ## AI field intelligence
@@ -1051,6 +1052,36 @@ Regole:
 - scoring zone locale;
 - spread model locale non diagnostico definitivo;
 - work queue solo manuale;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI follow-up scheduler
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-follow-up-scheduler-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-follow-up-scheduler-check
+
+Controllo live protetto:
+
+    npm run ops:ai-follow-up-scheduler-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- follow-up scheduler solo dry-run;
+- cadence osservazioni locale;
+- finestre follow-up manuali;
+- bozze task non persistite;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;
