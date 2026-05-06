@@ -215,6 +215,7 @@ Controllo automatico:
     npm run ops:ai-work-order-preview-check
     npm run ops:ai-work-order-execution-gate-check
     npm run ops:ai-manual-conversion-audit-check
+    npm run ops:ai-case-export-bundle-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -879,6 +880,33 @@ Regole:
 - nessuna persistenza DB;
 - nessuna creazione automatica;
 - nessuna esecuzione automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI case export bundle
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-case-export-bundle-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-case-export-bundle-check
+
+Controllo live protetto:
+
+    npm run ops:ai-case-export-bundle-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- bundle esportabile solo dry-run;
+- nessuna chiamata AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
 - nessuna prescrizione prodotto;
 - nessun dosaggio;
 - human review obbligatoria.

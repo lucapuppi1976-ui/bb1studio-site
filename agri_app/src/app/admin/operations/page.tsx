@@ -20,6 +20,7 @@ import OperationsAiDecisionDossier from "./OperationsAiDecisionDossier";
 import OperationsAiWorkOrderPreview from "./OperationsAiWorkOrderPreview";
 import OperationsAiWorkOrderExecutionGate from "./OperationsAiWorkOrderExecutionGate";
 import OperationsAiManualConversionAudit from "./OperationsAiManualConversionAudit";
+import OperationsAiCaseExportBundle from "./OperationsAiCaseExportBundle";
 
 const sections = [
   {
@@ -201,6 +202,7 @@ export default function AdminOperationsPage() {
       <OperationsAiWorkOrderPreview />
       <OperationsAiWorkOrderExecutionGate />
       <OperationsAiManualConversionAudit />
+      <OperationsAiCaseExportBundle />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
