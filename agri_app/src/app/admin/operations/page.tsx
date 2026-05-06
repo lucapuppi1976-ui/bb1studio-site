@@ -25,6 +25,7 @@ import OperationsAiCaseExportArchive from "./OperationsAiCaseExportArchive";
 import OperationsAiFieldIntelligence from "./OperationsAiFieldIntelligence";
 import OperationsAiTemporalTrend from "./OperationsAiTemporalTrend";
 import OperationsAiFieldScoutingPlan from "./OperationsAiFieldScoutingPlan";
+import OperationsAiFieldRiskHeatmap from "./OperationsAiFieldRiskHeatmap";
 
 const sections = [
   {
@@ -211,6 +212,7 @@ export default function AdminOperationsPage() {
       <OperationsAiFieldIntelligence />
       <OperationsAiTemporalTrend />
       <OperationsAiFieldScoutingPlan />
+      <OperationsAiFieldRiskHeatmap />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
