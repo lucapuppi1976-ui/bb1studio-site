@@ -15,6 +15,7 @@ import WorkOrderPreviewPanel from "./WorkOrderPreviewPanel";
 import WorkOrderExecutionGatePanel from "./WorkOrderExecutionGatePanel";
 import ManualConversionAuditPanel from "./ManualConversionAuditPanel";
 import CaseExportBundlePanel from "./CaseExportBundlePanel";
+import CaseExportArchivePanel from "./CaseExportArchivePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -53,6 +54,7 @@ export default function AiPhotoDiagnosisPage() {
       <WorkOrderExecutionGatePanel />
       <ManualConversionAuditPanel />
       <CaseExportBundlePanel />
+      <CaseExportArchivePanel />
     </main>
   );
 }
