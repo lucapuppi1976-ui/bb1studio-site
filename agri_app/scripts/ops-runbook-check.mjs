@@ -56,6 +56,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-solution-playbook-check.mjs",
   "agri_app/AI_CASE_REPORT_BUILDER_V7_5.md",
   "agri_app/scripts/ops-ai-case-report-check.mjs",
+  "agri_app/AI_DECISION_DOSSIER_V7_6.md",
+  "agri_app/scripts/ops-ai-decision-dossier-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -96,6 +98,7 @@ const requiredScripts = [
   "ops:ai-differential-diagnosis-check",
   "ops:ai-solution-playbook-check",
   "ops:ai-case-report-check",
+  "ops:ai-decision-dossier-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -138,6 +141,7 @@ const requiredRunbookText = [
   "npm run ops:ai-differential-diagnosis-check",
   "npm run ops:ai-solution-playbook-check",
   "npm run ops:ai-case-report-check",
+  "npm run ops:ai-decision-dossier-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -170,6 +174,7 @@ const requiredRunbookText = [
   "AI differential diagnosis matrix",
   "AI solution playbook",
   "AI case report builder",
+  "AI decision dossier",
 ];
 
 const failures = [];

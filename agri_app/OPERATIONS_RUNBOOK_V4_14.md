@@ -211,6 +211,7 @@ Controllo automatico:
     npm run ops:ai-differential-diagnosis-check
     npm run ops:ai-solution-playbook-check
     npm run ops:ai-case-report-check
+    npm run ops:ai-decision-dossier-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -750,6 +751,37 @@ Regole:
 - executive summary;
 - evidence digest;
 - audit trail;
+- export testuale e JSON;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessuna persistenza DB;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- nessuna creazione automatica di attività o interventi;
+- allowedToExecute=false;
+- revisione umana obbligatoria.
+
+
+## AI decision dossier
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-decision-dossier-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-decision-dossier-check
+
+Controllo live protetto:
+
+    npm run ops:ai-decision-dossier-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- approval pack locale;
+- decision gates;
+- work package operativi;
+- safety sign-off;
 - export testuale e JSON;
 - nessuna chiamata AI live;
 - nessuna chiave AI;
