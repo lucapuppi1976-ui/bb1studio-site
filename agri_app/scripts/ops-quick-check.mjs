@@ -312,6 +312,10 @@ runStep("AI decision dossier check", process.execPath, [
   "scripts/ops-ai-decision-dossier-check.mjs",
 ]);
 
+runStep("AI work order preview check", process.execPath, [
+  "scripts/ops-ai-work-order-preview-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

@@ -49,7 +49,8 @@
     "ops:ai-differential-diagnosis-check": "node scripts/ops-ai-differential-diagnosis-check.mjs",
     "ops:ai-solution-playbook-check": "node scripts/ops-ai-solution-playbook-check.mjs",
     "ops:ai-case-report-check": "node scripts/ops-ai-case-report-check.mjs",
-    "ops:ai-decision-dossier-check": "node scripts/ops-ai-decision-dossier-check.mjs"
+    "ops:ai-decision-dossier-check": "node scripts/ops-ai-decision-dossier-check.mjs",
+    "ops:ai-work-order-preview-check": "node scripts/ops-ai-work-order-preview-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

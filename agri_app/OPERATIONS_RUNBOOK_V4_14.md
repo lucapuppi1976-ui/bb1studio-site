@@ -212,6 +212,7 @@ Controllo automatico:
     npm run ops:ai-solution-playbook-check
     npm run ops:ai-case-report-check
     npm run ops:ai-decision-dossier-check
+    npm run ops:ai-work-order-preview-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -789,5 +790,36 @@ Regole:
 - nessuna prescrizione prodotto;
 - nessun dosaggio;
 - nessuna creazione automatica di attività o interventi;
+- allowedToExecute=false;
+- revisione umana obbligatoria.
+
+
+## AI work order preview
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-work-order-preview-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-work-order-preview-check
+
+Controllo live protetto:
+
+    npm run ops:ai-work-order-preview-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- task draft;
+- intervention draft;
+- pacchetto reviewer;
+- nessuna chiamata AI live;
+- nessuna chiave AI;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- allowedToCreateTask=false;
+- allowedToCreateIntervention=false;
 - allowedToExecute=false;
 - revisione umana obbligatoria.
