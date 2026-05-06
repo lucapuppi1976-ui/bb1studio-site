@@ -17,6 +17,7 @@ import OperationsAiDifferentialDiagnosis from "./OperationsAiDifferentialDiagnos
 import OperationsAiSolutionPlaybook from "./OperationsAiSolutionPlaybook";
 import OperationsAiCaseReport from "./OperationsAiCaseReport";
 import OperationsAiDecisionDossier from "./OperationsAiDecisionDossier";
+import OperationsAiWorkOrderPreview from "./OperationsAiWorkOrderPreview";
 
 const sections = [
   {
@@ -195,6 +196,7 @@ export default function AdminOperationsPage() {
       <OperationsAiSolutionPlaybook />
       <OperationsAiCaseReport />
       <OperationsAiDecisionDossier />
+      <OperationsAiWorkOrderPreview />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

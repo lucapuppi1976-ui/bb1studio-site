@@ -11,6 +11,7 @@ import DifferentialDiagnosisPanel from "./DifferentialDiagnosisPanel";
 import SolutionPlaybookPanel from "./SolutionPlaybookPanel";
 import CaseReportPanel from "./CaseReportPanel";
 import DecisionDossierPanel from "./DecisionDossierPanel";
+import WorkOrderPreviewPanel from "./WorkOrderPreviewPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -45,6 +46,7 @@ export default function AiPhotoDiagnosisPage() {
       <SolutionPlaybookPanel />
       <CaseReportPanel />
       <DecisionDossierPanel />
+      <WorkOrderPreviewPanel />
     </main>
   );
 }
