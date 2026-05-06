@@ -213,6 +213,7 @@ Controllo automatico:
     npm run ops:ai-case-report-check
     npm run ops:ai-decision-dossier-check
     npm run ops:ai-work-order-preview-check
+    npm run ops:ai-work-order-execution-gate-check
     npm run ops:admin-live-routes-check
     npm run ops:admin-route-monitoring-check
 
@@ -823,3 +824,33 @@ Regole:
 - allowedToCreateIntervention=false;
 - allowedToExecute=false;
 - revisione umana obbligatoria.
+
+
+## AI work order execution gate
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-work-order-execution-gate-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-work-order-execution-gate-check
+
+Controllo live protetto:
+
+    npm run ops:ai-work-order-execution-gate-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- conversione manuale solo dopo review umana;
+- automaticTaskCreationAllowed=false;
+- automaticInterventionCreationAllowed=false;
+- automaticExecutionAllowed=false;
+- noAutomaticDbWrites=true;
+- noProviderCall=true;
+- nessuna chiamata AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio.
