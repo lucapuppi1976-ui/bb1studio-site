@@ -947,6 +947,7 @@ Regole:
     npm run ops:ai-follow-up-scheduler-check
     npm run ops:ai-intervention-readiness-check
     npm run ops:ai-intervention-protocol-check
+    npm run ops:ai-farm-command-board-check
 
 
 ## AI field intelligence
@@ -1142,6 +1143,34 @@ Regole:
 - intervention protocol solo dry-run;
 - manual dispatch bloccato;
 - compliance guard obbligatorio;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI farm command board
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-farm-command-board-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-farm-command-board-check
+
+Controllo live protetto:
+
+    npm run ops:ai-farm-command-board-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- Farm Command Board solo dry-run;
+- priorità multi-caso solo locali;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;

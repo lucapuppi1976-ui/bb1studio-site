@@ -23,6 +23,7 @@ import FieldRiskHeatmapPanel from "./FieldRiskHeatmapPanel";
 import FollowUpSchedulerPanel from "./FollowUpSchedulerPanel";
 import InterventionReadinessPanel from "./InterventionReadinessPanel";
 import InterventionProtocolPanel from "./InterventionProtocolPanel";
+import FarmCommandBoardPanel from "./FarmCommandBoardPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -69,6 +70,7 @@ export default function AiPhotoDiagnosisPage() {
       <FollowUpSchedulerPanel />
       <InterventionReadinessPanel />
       <InterventionProtocolPanel />
+      <FarmCommandBoardPanel />
     </main>
   );
 }

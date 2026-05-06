@@ -61,7 +61,8 @@
     "ops:ai-field-risk-heatmap-check": "node scripts/ops-ai-field-risk-heatmap-check.mjs",
     "ops:ai-follow-up-scheduler-check": "node scripts/ops-ai-follow-up-scheduler-check.mjs",
     "ops:ai-intervention-readiness-check": "node scripts/ops-ai-intervention-readiness-check.mjs",
-    "ops:ai-intervention-protocol-check": "node scripts/ops-ai-intervention-protocol-check.mjs"
+    "ops:ai-intervention-protocol-check": "node scripts/ops-ai-intervention-protocol-check.mjs",
+    "ops:ai-farm-command-board-check": "node scripts/ops-ai-farm-command-board-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
