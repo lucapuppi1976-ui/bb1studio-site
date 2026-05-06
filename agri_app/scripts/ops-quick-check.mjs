@@ -336,6 +336,10 @@ runStep("AI field intelligence check", process.execPath, [
   "scripts/ops-ai-field-intelligence-check.mjs",
 ]);
 
+runStep("AI temporal trend check", process.execPath, [
+  "scripts/ops-ai-temporal-trend-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

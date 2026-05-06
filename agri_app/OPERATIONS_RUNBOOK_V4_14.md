@@ -941,6 +941,7 @@ Regole:
 - human review obbligatoria.
 
     npm run ops:ai-field-intelligence-check
+    npm run ops:ai-temporal-trend-check
 
 
 ## AI field intelligence
@@ -961,6 +962,34 @@ Regole:
 
 - field intelligence solo dry-run;
 - correlazione multi-foto locale;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI temporal trend
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-temporal-trend-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-temporal-trend-check
+
+Controllo live protetto:
+
+    npm run ops:ai-temporal-trend-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- trend temporale solo dry-run;
+- confronto baseline/follow-up locale;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;

@@ -17,6 +17,7 @@ import ManualConversionAuditPanel from "./ManualConversionAuditPanel";
 import CaseExportBundlePanel from "./CaseExportBundlePanel";
 import CaseExportArchivePanel from "./CaseExportArchivePanel";
 import FieldIntelligencePanel from "./FieldIntelligencePanel";
+import TemporalTrendPanel from "./TemporalTrendPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -57,6 +58,7 @@ export default function AiPhotoDiagnosisPage() {
       <CaseExportBundlePanel />
       <CaseExportArchivePanel />
       <FieldIntelligencePanel />
+      <TemporalTrendPanel />
     </main>
   );
 }
