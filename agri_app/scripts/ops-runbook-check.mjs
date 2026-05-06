@@ -78,6 +78,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-field-risk-heatmap-check.mjs",
   "agri_app/AI_FOLLOW_UP_SCHEDULER_V8_7.md",
   "agri_app/scripts/ops-ai-follow-up-scheduler-check.mjs",
+  "agri_app/AI_INTERVENTION_READINESS_V8_8.md",
+  "agri_app/scripts/ops-ai-intervention-readiness-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -129,6 +131,7 @@ const requiredScripts = [
   "ops:ai-field-scouting-plan-check",
   "ops:ai-field-risk-heatmap-check",
   "ops:ai-follow-up-scheduler-check",
+  "ops:ai-intervention-readiness-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -182,6 +185,7 @@ const requiredRunbookText = [
   "npm run ops:ai-field-scouting-plan-check",
   "npm run ops:ai-field-risk-heatmap-check",
   "npm run ops:ai-follow-up-scheduler-check",
+  "npm run ops:ai-intervention-readiness-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -225,6 +229,7 @@ const requiredRunbookText = [
   "AI field scouting plan",
   "AI field risk heatmap",
   "AI follow-up scheduler",
+  "AI intervention readiness",
 ];
 
 const failures = [];
