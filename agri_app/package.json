@@ -58,7 +58,8 @@
     "ops:ai-field-intelligence-check": "node scripts/ops-ai-field-intelligence-check.mjs",
     "ops:ai-temporal-trend-check": "node scripts/ops-ai-temporal-trend-check.mjs",
     "ops:ai-field-scouting-plan-check": "node scripts/ops-ai-field-scouting-plan-check.mjs",
-    "ops:ai-field-risk-heatmap-check": "node scripts/ops-ai-field-risk-heatmap-check.mjs"
+    "ops:ai-field-risk-heatmap-check": "node scripts/ops-ai-field-risk-heatmap-check.mjs",
+    "ops:ai-follow-up-scheduler-check": "node scripts/ops-ai-follow-up-scheduler-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
