@@ -328,6 +328,10 @@ runStep("AI case export bundle check", process.execPath, [
   "scripts/ops-ai-case-export-bundle-check.mjs",
 ]);
 
+runStep("AI case export archive check", process.execPath, [
+  "scripts/ops-ai-case-export-archive-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

@@ -53,7 +53,8 @@
     "ops:ai-work-order-preview-check": "node scripts/ops-ai-work-order-preview-check.mjs",
     "ops:ai-work-order-execution-gate-check": "node scripts/ops-ai-work-order-execution-gate-check.mjs",
     "ops:ai-manual-conversion-audit-check": "node scripts/ops-ai-manual-conversion-audit-check.mjs",
-    "ops:ai-case-export-bundle-check": "node scripts/ops-ai-case-export-bundle-check.mjs"
+    "ops:ai-case-export-bundle-check": "node scripts/ops-ai-case-export-bundle-check.mjs",
+    "ops:ai-case-export-archive-check": "node scripts/ops-ai-case-export-archive-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
