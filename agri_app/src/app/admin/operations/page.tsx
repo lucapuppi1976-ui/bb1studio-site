@@ -27,6 +27,7 @@ import OperationsAiTemporalTrend from "./OperationsAiTemporalTrend";
 import OperationsAiFieldScoutingPlan from "./OperationsAiFieldScoutingPlan";
 import OperationsAiFieldRiskHeatmap from "./OperationsAiFieldRiskHeatmap";
 import OperationsAiFollowUpScheduler from "./OperationsAiFollowUpScheduler";
+import OperationsAiInterventionReadiness from "./OperationsAiInterventionReadiness";
 
 const sections = [
   {
@@ -215,6 +216,7 @@ export default function AdminOperationsPage() {
       <OperationsAiFieldScoutingPlan />
       <OperationsAiFieldRiskHeatmap />
       <OperationsAiFollowUpScheduler />
+      <OperationsAiInterventionReadiness />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

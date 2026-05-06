@@ -352,6 +352,10 @@ runStep("AI follow-up scheduler check", process.execPath, [
   "scripts/ops-ai-follow-up-scheduler-check.mjs",
 ]);
 
+runStep("AI intervention readiness check", process.execPath, [
+  "scripts/ops-ai-intervention-readiness-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

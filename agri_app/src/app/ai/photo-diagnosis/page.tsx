@@ -21,6 +21,7 @@ import TemporalTrendPanel from "./TemporalTrendPanel";
 import FieldScoutingPlanPanel from "./FieldScoutingPlanPanel";
 import FieldRiskHeatmapPanel from "./FieldRiskHeatmapPanel";
 import FollowUpSchedulerPanel from "./FollowUpSchedulerPanel";
+import InterventionReadinessPanel from "./InterventionReadinessPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -65,6 +66,7 @@ export default function AiPhotoDiagnosisPage() {
       <FieldScoutingPlanPanel />
       <FieldRiskHeatmapPanel />
       <FollowUpSchedulerPanel />
+      <InterventionReadinessPanel />
     </main>
   );
 }

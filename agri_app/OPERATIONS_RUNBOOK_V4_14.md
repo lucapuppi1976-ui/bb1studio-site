@@ -945,6 +945,7 @@ Regole:
     npm run ops:ai-field-scouting-plan-check
     npm run ops:ai-field-risk-heatmap-check
     npm run ops:ai-follow-up-scheduler-check
+    npm run ops:ai-intervention-readiness-check
 
 
 ## AI field intelligence
@@ -1082,6 +1083,35 @@ Regole:
 - cadence osservazioni locale;
 - finestre follow-up manuali;
 - bozze task non persistite;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI intervention readiness
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-intervention-readiness-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-intervention-readiness-check
+
+Controllo live protetto:
+
+    npm run ops:ai-intervention-readiness-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- intervention readiness solo dry-run;
+- approval board solo manuale;
+- pacchetti conversione non persistiti;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;
