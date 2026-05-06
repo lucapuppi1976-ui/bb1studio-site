@@ -16,6 +16,7 @@ import OperationsAiPhotoAnnotation from "./OperationsAiPhotoAnnotation";
 import OperationsAiDifferentialDiagnosis from "./OperationsAiDifferentialDiagnosis";
 import OperationsAiSolutionPlaybook from "./OperationsAiSolutionPlaybook";
 import OperationsAiCaseReport from "./OperationsAiCaseReport";
+import OperationsAiDecisionDossier from "./OperationsAiDecisionDossier";
 
 const sections = [
   {
@@ -193,6 +194,7 @@ export default function AdminOperationsPage() {
       <OperationsAiDifferentialDiagnosis />
       <OperationsAiSolutionPlaybook />
       <OperationsAiCaseReport />
+      <OperationsAiDecisionDossier />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

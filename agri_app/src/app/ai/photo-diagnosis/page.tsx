@@ -10,6 +10,7 @@ import PhotoSymptomAnnotationPanel from "./PhotoSymptomAnnotationPanel";
 import DifferentialDiagnosisPanel from "./DifferentialDiagnosisPanel";
 import SolutionPlaybookPanel from "./SolutionPlaybookPanel";
 import CaseReportPanel from "./CaseReportPanel";
+import DecisionDossierPanel from "./DecisionDossierPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -43,6 +44,7 @@ export default function AiPhotoDiagnosisPage() {
       <DifferentialDiagnosisPanel />
       <SolutionPlaybookPanel />
       <CaseReportPanel />
+      <DecisionDossierPanel />
     </main>
   );
 }
