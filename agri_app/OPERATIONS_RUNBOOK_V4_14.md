@@ -939,3 +939,33 @@ Regole:
 - nessuna prescrizione prodotto;
 - nessun dosaggio;
 - human review obbligatoria.
+
+    npm run ops:ai-field-intelligence-check
+
+
+## AI field intelligence
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-field-intelligence-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-field-intelligence-check
+
+Controllo live protetto:
+
+    npm run ops:ai-field-intelligence-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- field intelligence solo dry-run;
+- correlazione multi-foto locale;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
