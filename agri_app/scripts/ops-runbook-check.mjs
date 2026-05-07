@@ -98,6 +98,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-case-memory-retrieval-check.mjs",
   "agri_app/AI_CASE_OUTCOME_LEARNING_V9_7.md",
   "agri_app/scripts/ops-ai-case-outcome-learning-check.mjs",
+  "agri_app/AI_MEMORY_PROMOTION_GOVERNANCE_V9_8.md",
+  "agri_app/scripts/ops-ai-memory-promotion-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -159,6 +161,7 @@ const requiredScripts = [
   "ops:ai-case-memory-graph-check",
   "ops:ai-case-memory-retrieval-check",
   "ops:ai-case-outcome-learning-check",
+  "ops:ai-memory-promotion-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -222,6 +225,7 @@ const requiredRunbookText = [
   "npm run ops:ai-case-memory-graph-check",
   "npm run ops:ai-case-memory-retrieval-check",
   "npm run ops:ai-case-outcome-learning-check",
+  "npm run ops:ai-memory-promotion-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -275,6 +279,7 @@ const requiredRunbookText = [
   "AI case memory graph",
   "AI case memory retrieval",
   "AI case outcome learning",
+  "AI memory promotion governance",
 ];
 
 const failures = [];
