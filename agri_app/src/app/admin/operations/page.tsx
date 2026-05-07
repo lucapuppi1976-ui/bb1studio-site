@@ -38,6 +38,7 @@ import OperationsAiCaseMemoryGraph from "./OperationsAiCaseMemoryGraph";
 import OperationsAiCaseMemoryRetrieval from "./OperationsAiCaseMemoryRetrieval";
 import OperationsAiCaseOutcomeLearning from "./OperationsAiCaseOutcomeLearning";
 import OperationsAiMemoryPromotionGovernance from "./OperationsAiMemoryPromotionGovernance";
+import OperationsAiMemoryQualityGuard from "./OperationsAiMemoryQualityGuard";
 
 const sections = [
   {
@@ -237,6 +238,7 @@ export default function AdminOperationsPage() {
       <OperationsAiCaseMemoryRetrieval />
       <OperationsAiCaseOutcomeLearning />
       <OperationsAiMemoryPromotionGovernance />
+      <OperationsAiMemoryQualityGuard />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

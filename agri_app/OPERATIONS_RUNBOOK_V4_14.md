@@ -956,6 +956,7 @@ Regole:
     npm run ops:ai-case-memory-retrieval-check
     npm run ops:ai-case-outcome-learning-check
     npm run ops:ai-memory-promotion-check
+    npm run ops:ai-memory-quality-guard-check
 
 
 ## AI field intelligence
@@ -1404,6 +1405,37 @@ Regole:
 
 - memory promotion solo dry-run;
 - nessuna memoria persistente DB;
+- nessuna promozione memoria automatica;
+- nessun aggiornamento memoria automatico;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI memory quality guard
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-memory-quality-guard-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-memory-quality-guard-check
+
+Controllo live protetto:
+
+    npm run ops:ai-memory-quality-guard-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- memory quality guard solo dry-run;
+- nessuna memoria persistente DB;
+- nessuna scrittura qualità memoria;
 - nessuna promozione memoria automatica;
 - nessun aggiornamento memoria automatico;
 - nessuna chiamata provider AI live;
