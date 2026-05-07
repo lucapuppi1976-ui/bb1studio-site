@@ -33,6 +33,7 @@ import OperationsAiFarmCommandBoard from "./OperationsAiFarmCommandBoard";
 import OperationsAiScoutingMissionPlanner from "./OperationsAiScoutingMissionPlanner";
 import OperationsAiFarmRiskRadar from "./OperationsAiFarmRiskRadar";
 import OperationsAiInterventionImpactRoi from "./OperationsAiInterventionImpactRoi";
+import OperationsAiResponsePortfolioOptimizer from "./OperationsAiResponsePortfolioOptimizer";
 
 const sections = [
   {
@@ -227,6 +228,7 @@ export default function AdminOperationsPage() {
       <OperationsAiScoutingMissionPlanner />
       <OperationsAiFarmRiskRadar />
       <OperationsAiInterventionImpactRoi />
+      <OperationsAiResponsePortfolioOptimizer />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
