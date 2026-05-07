@@ -396,6 +396,10 @@ runStep("AI memory promotion governance check", process.execPath, [
   "scripts/ops-ai-memory-promotion-check.mjs",
 ]);
 
+runStep("AI memory quality guard check", process.execPath, [
+  "scripts/ops-ai-memory-quality-guard-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

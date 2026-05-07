@@ -70,7 +70,8 @@
     "ops:ai-case-memory-graph-check": "node scripts/ops-ai-case-memory-graph-check.mjs",
     "ops:ai-case-memory-retrieval-check": "node scripts/ops-ai-case-memory-retrieval-check.mjs",
     "ops:ai-case-outcome-learning-check": "node scripts/ops-ai-case-outcome-learning-check.mjs",
-    "ops:ai-memory-promotion-check": "node scripts/ops-ai-memory-promotion-check.mjs"
+    "ops:ai-memory-promotion-check": "node scripts/ops-ai-memory-promotion-check.mjs",
+    "ops:ai-memory-quality-guard-check": "node scripts/ops-ai-memory-quality-guard-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
