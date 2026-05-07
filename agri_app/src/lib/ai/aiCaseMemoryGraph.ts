@@ -765,7 +765,7 @@ function createKnowledgeGaps(input: CaseMemoryGraphInput): KnowledgeGapItem[] {
 
 function createMemoryRecommendations(input: CaseMemoryGraphInput, clusters: SimilarCaseCluster[]): MemoryRecommendationItem[] {
   return input.cases
-    .map((item) => {
+    .map((item): MemoryRecommendationItem => {
       const cluster = clusters.find((entry) => entry.caseIds.includes(item.caseId));
       const priorityScore = Math.round(
         Math.min(
@@ -779,20 +779,21 @@ function createMemoryRecommendations(input: CaseMemoryGraphInput, clusters: Simi
             item.openLimitations.length * 5,
         ),
       );
+      const decision: MemoryRecommendationItem["decision"] =
+        item.blocked
+          ? "block-until-review"
+          : !item.humanReviewed
+            ? "human-review"
+            : item.evidenceCount < 5
+              ? "collect-evidence"
+              : cluster && cluster.caseIds.length > 1
+                ? "link-case"
+                : "keep-monitoring";
 
       return {
         recommendationId: `memory-rec-${item.caseId}`,
         caseId: item.caseId,
-        decision:
-          item.blocked
-            ? "block-until-review"
-            : !item.humanReviewed
-              ? "human-review"
-              : item.evidenceCount < 5
-                ? "collect-evidence"
-                : cluster && cluster.caseIds.length > 1
-                  ? "link-case"
-                  : "keep-monitoring",
+        decision,
         priorityScore,
         reason: [
           `riskTier=${item.riskTier}`,
