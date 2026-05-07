@@ -24,6 +24,7 @@ import FollowUpSchedulerPanel from "./FollowUpSchedulerPanel";
 import InterventionReadinessPanel from "./InterventionReadinessPanel";
 import InterventionProtocolPanel from "./InterventionProtocolPanel";
 import FarmCommandBoardPanel from "./FarmCommandBoardPanel";
+import ScoutingMissionPlannerPanel from "./ScoutingMissionPlannerPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -71,6 +72,7 @@ export default function AiPhotoDiagnosisPage() {
       <InterventionReadinessPanel />
       <InterventionProtocolPanel />
       <FarmCommandBoardPanel />
+      <ScoutingMissionPlannerPanel />
     </main>
   );
 }
