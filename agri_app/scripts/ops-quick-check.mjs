@@ -388,6 +388,10 @@ runStep("AI case memory retrieval check", process.execPath, [
   "scripts/ops-ai-case-memory-retrieval-check.mjs",
 ]);
 
+runStep("AI case outcome learning check", process.execPath, [
+  "scripts/ops-ai-case-outcome-learning-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

@@ -30,6 +30,7 @@ import InterventionImpactRoiPanel from "./InterventionImpactRoiPanel";
 import ResponsePortfolioOptimizerPanel from "./ResponsePortfolioOptimizerPanel";
 import CaseMemoryGraphPanel from "./CaseMemoryGraphPanel";
 import CaseMemoryRetrievalPanel from "./CaseMemoryRetrievalPanel";
+import CaseOutcomeLearningPanel from "./CaseOutcomeLearningPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -83,6 +84,7 @@ export default function AiPhotoDiagnosisPage() {
       <ResponsePortfolioOptimizerPanel />
       <CaseMemoryGraphPanel />
       <CaseMemoryRetrievalPanel />
+      <CaseOutcomeLearningPanel />
     </main>
   );
 }
