@@ -31,6 +31,7 @@ import OperationsAiInterventionReadiness from "./OperationsAiInterventionReadine
 import OperationsAiInterventionProtocol from "./OperationsAiInterventionProtocol";
 import OperationsAiFarmCommandBoard from "./OperationsAiFarmCommandBoard";
 import OperationsAiScoutingMissionPlanner from "./OperationsAiScoutingMissionPlanner";
+import OperationsAiFarmRiskRadar from "./OperationsAiFarmRiskRadar";
 
 const sections = [
   {
@@ -223,6 +224,7 @@ export default function AdminOperationsPage() {
       <OperationsAiInterventionProtocol />
       <OperationsAiFarmCommandBoard />
       <OperationsAiScoutingMissionPlanner />
+      <OperationsAiFarmRiskRadar />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>
