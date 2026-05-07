@@ -35,6 +35,7 @@ import OperationsAiFarmRiskRadar from "./OperationsAiFarmRiskRadar";
 import OperationsAiInterventionImpactRoi from "./OperationsAiInterventionImpactRoi";
 import OperationsAiResponsePortfolioOptimizer from "./OperationsAiResponsePortfolioOptimizer";
 import OperationsAiCaseMemoryGraph from "./OperationsAiCaseMemoryGraph";
+import OperationsAiCaseMemoryRetrieval from "./OperationsAiCaseMemoryRetrieval";
 
 const sections = [
   {
@@ -231,6 +232,7 @@ export default function AdminOperationsPage() {
       <OperationsAiInterventionImpactRoi />
       <OperationsAiResponsePortfolioOptimizer />
       <OperationsAiCaseMemoryGraph />
+      <OperationsAiCaseMemoryRetrieval />
 
       <section className="rounded-2xl border p-5 shadow-sm">
         <h2 className="text-xl font-semibold">Link operativi</h2>

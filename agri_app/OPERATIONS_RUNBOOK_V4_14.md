@@ -953,6 +953,7 @@ Regole:
     npm run ops:ai-intervention-impact-check
     npm run ops:ai-response-portfolio-check
     npm run ops:ai-case-memory-graph-check
+    npm run ops:ai-case-memory-retrieval-check
 
 
 ## AI field intelligence
@@ -1315,6 +1316,34 @@ Controllo live protetto:
 Regole:
 
 - case memory graph solo dry-run;
+- nessuna memoria persistente DB;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI case memory retrieval
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-case-memory-retrieval-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-case-memory-retrieval-check
+
+Controllo live protetto:
+
+    npm run ops:ai-case-memory-retrieval-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- case memory retrieval solo dry-run;
 - nessuna memoria persistente DB;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
