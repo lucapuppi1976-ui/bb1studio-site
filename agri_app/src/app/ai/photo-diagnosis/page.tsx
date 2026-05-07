@@ -28,6 +28,7 @@ import ScoutingMissionPlannerPanel from "./ScoutingMissionPlannerPanel";
 import FarmRiskRadarPanel from "./FarmRiskRadarPanel";
 import InterventionImpactRoiPanel from "./InterventionImpactRoiPanel";
 import ResponsePortfolioOptimizerPanel from "./ResponsePortfolioOptimizerPanel";
+import CaseMemoryGraphPanel from "./CaseMemoryGraphPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -79,6 +80,7 @@ export default function AiPhotoDiagnosisPage() {
       <FarmRiskRadarPanel />
       <InterventionImpactRoiPanel />
       <ResponsePortfolioOptimizerPanel />
+      <CaseMemoryGraphPanel />
     </main>
   );
 }

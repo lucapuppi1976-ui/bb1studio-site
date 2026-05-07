@@ -380,6 +380,10 @@ runStep("AI response portfolio check", process.execPath, [
   "scripts/ops-ai-response-portfolio-check.mjs",
 ]);
 
+runStep("AI case memory graph check", process.execPath, [
+  "scripts/ops-ai-case-memory-graph-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",
