@@ -33,6 +33,7 @@ import CaseMemoryRetrievalPanel from "./CaseMemoryRetrievalPanel";
 import CaseOutcomeLearningPanel from "./CaseOutcomeLearningPanel";
 import MemoryPromotionGovernancePanel from "./MemoryPromotionGovernancePanel";
 import MemoryQualityGuardPanel from "./MemoryQualityGuardPanel";
+import KnowledgeVaultGovernancePanel from "./KnowledgeVaultGovernancePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -89,6 +90,8 @@ export default function AiPhotoDiagnosisPage() {
       <CaseOutcomeLearningPanel />
       <MemoryPromotionGovernancePanel />
       <MemoryQualityGuardPanel />
-    </main>
+
+      <KnowledgeVaultGovernancePanel />
+</main>
   );
 }
