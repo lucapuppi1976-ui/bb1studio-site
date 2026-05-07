@@ -372,6 +372,10 @@ runStep("AI farm risk radar check", process.execPath, [
   "scripts/ops-ai-farm-risk-radar-check.mjs",
 ]);
 
+runStep("AI intervention impact check", process.execPath, [
+  "scripts/ops-ai-intervention-impact-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

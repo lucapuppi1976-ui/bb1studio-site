@@ -950,6 +950,7 @@ Regole:
     npm run ops:ai-farm-command-board-check
     npm run ops:ai-scouting-mission-check
     npm run ops:ai-farm-risk-radar-check
+    npm run ops:ai-intervention-impact-check
 
 
 ## AI field intelligence
@@ -1229,6 +1230,34 @@ Regole:
 
 - Farm Risk Radar solo dry-run;
 - forecast e priorità solo locali;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI intervention impact ROI
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-intervention-impact-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-intervention-impact-check
+
+Controllo live protetto:
+
+    npm run ops:ai-intervention-impact-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- simulatore impatto solo dry-run;
+- ROI proxy non è dato finanziario reale;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;
