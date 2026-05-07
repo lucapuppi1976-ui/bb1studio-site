@@ -84,6 +84,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-intervention-protocol-check.mjs",
   "agri_app/AI_FARM_COMMAND_BOARD_V9_0.md",
   "agri_app/scripts/ops-ai-farm-command-board-check.mjs",
+  "agri_app/AI_SCOUTING_MISSION_PLANNER_V9_1.md",
+  "agri_app/scripts/ops-ai-scouting-mission-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -138,6 +140,7 @@ const requiredScripts = [
   "ops:ai-intervention-readiness-check",
   "ops:ai-intervention-protocol-check",
   "ops:ai-farm-command-board-check",
+  "ops:ai-scouting-mission-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -194,6 +197,7 @@ const requiredRunbookText = [
   "npm run ops:ai-intervention-readiness-check",
   "npm run ops:ai-intervention-protocol-check",
   "npm run ops:ai-farm-command-board-check",
+  "npm run ops:ai-scouting-mission-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -240,6 +244,7 @@ const requiredRunbookText = [
   "AI intervention readiness",
   "AI intervention protocol",
   "AI farm command board",
+  "AI scouting mission planner",
 ];
 
 const failures = [];
