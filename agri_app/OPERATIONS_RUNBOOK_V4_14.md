@@ -954,6 +954,7 @@ Regole:
     npm run ops:ai-response-portfolio-check
     npm run ops:ai-case-memory-graph-check
     npm run ops:ai-case-memory-retrieval-check
+    npm run ops:ai-case-outcome-learning-check
 
 
 ## AI field intelligence
@@ -1345,6 +1346,35 @@ Regole:
 
 - case memory retrieval solo dry-run;
 - nessuna memoria persistente DB;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI case outcome learning
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-case-outcome-learning-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-case-outcome-learning-check
+
+Controllo live protetto:
+
+    npm run ops:ai-case-outcome-learning-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- case outcome learning solo dry-run;
+- nessuna memoria persistente DB;
+- nessun aggiornamento memoria automatico;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;
