@@ -92,6 +92,8 @@ const requiredFiles = [
   "agri_app/scripts/ops-ai-intervention-impact-check.mjs",
   "agri_app/AI_RESPONSE_PORTFOLIO_OPTIMIZER_V9_4.md",
   "agri_app/scripts/ops-ai-response-portfolio-check.mjs",
+  "agri_app/AI_CASE_MEMORY_GRAPH_V9_5.md",
+  "agri_app/scripts/ops-ai-case-memory-graph-check.mjs",
   "agri_app/scripts/ops-admin-route-monitoring-check.mjs",
   "agri_app/scripts/ops-admin-live-routes-check.mjs",
   "agri_app/scripts/ops-quick-coverage-check.mjs",
@@ -150,6 +152,7 @@ const requiredScripts = [
   "ops:ai-farm-risk-radar-check",
   "ops:ai-intervention-impact-check",
   "ops:ai-response-portfolio-check",
+  "ops:ai-case-memory-graph-check",
   "ops:admin-route-monitoring-check",
   "ops:admin-live-routes-check",
   "ops:quick-coverage-check",
@@ -210,6 +213,7 @@ const requiredRunbookText = [
   "npm run ops:ai-farm-risk-radar-check",
   "npm run ops:ai-intervention-impact-check",
   "npm run ops:ai-response-portfolio-check",
+  "npm run ops:ai-case-memory-graph-check",
   "npm run ops:admin-route-monitoring-check",
   "npm run ops:admin-live-routes-check",
   "npm run ops:quick-coverage-check",
@@ -260,6 +264,7 @@ const requiredRunbookText = [
   "AI farm risk radar",
   "AI intervention impact ROI",
   "AI response portfolio optimizer",
+  "AI case memory graph",
 ];
 
 const failures = [];
