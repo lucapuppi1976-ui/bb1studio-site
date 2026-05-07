@@ -951,6 +951,7 @@ Regole:
     npm run ops:ai-scouting-mission-check
     npm run ops:ai-farm-risk-radar-check
     npm run ops:ai-intervention-impact-check
+    npm run ops:ai-response-portfolio-check
 
 
 ## AI field intelligence
@@ -1258,6 +1259,34 @@ Regole:
 
 - simulatore impatto solo dry-run;
 - ROI proxy non è dato finanziario reale;
+- nessuna chiamata provider AI live;
+- nessuna persistenza DB;
+- nessuna creazione automatica;
+- nessuna esecuzione automatica;
+- nessuna condivisione pubblica automatica;
+- nessuna prescrizione prodotto;
+- nessun dosaggio;
+- human review obbligatoria.
+
+
+## AI response portfolio optimizer
+
+Endpoint operativo protetto:
+
+    /api/ops/ai-response-portfolio-dry-run
+
+Controllo automatico:
+
+    npm run ops:ai-response-portfolio-check
+
+Controllo live protetto:
+
+    npm run ops:ai-response-portfolio-check -- --base https://bb1studio.com/agri_app --include-live
+
+Regole:
+
+- portfolio optimizer solo dry-run;
+- portfolio value proxy non è dato finanziario reale;
 - nessuna chiamata provider AI live;
 - nessuna persistenza DB;
 - nessuna creazione automatica;

@@ -376,6 +376,10 @@ runStep("AI intervention impact check", process.execPath, [
   "scripts/ops-ai-intervention-impact-check.mjs",
 ]);
 
+runStep("AI response portfolio check", process.execPath, [
+  "scripts/ops-ai-response-portfolio-check.mjs",
+]);
+
 runStep("Admin live routes check", process.execPath, [
   "scripts/ops-admin-live-routes-check.mjs",
   "--base",

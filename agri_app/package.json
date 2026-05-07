@@ -65,7 +65,8 @@
     "ops:ai-farm-command-board-check": "node scripts/ops-ai-farm-command-board-check.mjs",
     "ops:ai-scouting-mission-check": "node scripts/ops-ai-scouting-mission-check.mjs",
     "ops:ai-farm-risk-radar-check": "node scripts/ops-ai-farm-risk-radar-check.mjs",
-    "ops:ai-intervention-impact-check": "node scripts/ops-ai-intervention-impact-check.mjs"
+    "ops:ai-intervention-impact-check": "node scripts/ops-ai-intervention-impact-check.mjs",
+    "ops:ai-response-portfolio-check": "node scripts/ops-ai-response-portfolio-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
