@@ -43,6 +43,7 @@ import PestDiseaseOutbreakSentinelPanel from "./PestDiseaseOutbreakSentinelPanel
 import SoilNutrientStrategyPanel from "./SoilNutrientStrategyPanel";
 import PhenologyYieldRiskPanel from "./PhenologyYieldRiskPanel";
 import HarvestQualityReadinessPanel from "./HarvestQualityReadinessPanel";
+import AgronomicControlTowerPanel from "./AgronomicControlTowerPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -119,6 +120,8 @@ export default function AiPhotoDiagnosisPage() {
       <PhenologyYieldRiskPanel />
 
       <HarvestQualityReadinessPanel />
+
+      <AgronomicControlTowerPanel />
 </main>
   );
 }
