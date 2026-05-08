@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V11_5_AGRONOMIC_IMPROVEMENT_SCORECARD_CHECK: esegue il check V11.5 prima dei controlli operativi aggregati.
+const __agriImprovementScorecardRunV115 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-agronomic-improvement-scorecard-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriImprovementScorecardRunV115();
+
 // AGRI_V11_4_AGRONOMIC_SCENARIO_STRESS_TEST_CHECK: esegue il check V11.4 prima dei controlli operativi aggregati.
 const __agriScenarioStressRunV114 = async () => {
   const { spawnSync } = await import("node:child_process");

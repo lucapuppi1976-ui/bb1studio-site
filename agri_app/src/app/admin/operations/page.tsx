@@ -54,6 +54,7 @@ import OperationsAiAgronomicExplainabilityLedger from "./OperationsAiAgronomicEx
 import OperationsAiAgronomicCompliancePassport from "./OperationsAiAgronomicCompliancePassport";
 import OperationsAiAgronomicDecisionAssurance from "./OperationsAiAgronomicDecisionAssurance";
 import OperationsAiAgronomicScenarioStressTest from "./OperationsAiAgronomicScenarioStressTest";
+import OperationsAiAgronomicImprovementScorecard from "./OperationsAiAgronomicImprovementScorecard";
 
 const sections = [
   {
@@ -305,6 +306,8 @@ export default function AdminOperationsPage() {
       <OperationsAiAgronomicDecisionAssurance />
 
       <OperationsAiAgronomicScenarioStressTest />
+
+      <OperationsAiAgronomicImprovementScorecard />
 </main>
   );
 }
