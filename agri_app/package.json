@@ -85,7 +85,8 @@
     "ops:ai-agronomic-control-tower-check": "node scripts/ops-ai-agronomic-control-tower-check.mjs",
     "ops:ai-agronomic-explainability-ledger-check": "node scripts/ops-ai-agronomic-explainability-ledger-check.mjs",
     "ops:ai-agronomic-compliance-passport-check": "node scripts/ops-ai-agronomic-compliance-passport-check.mjs",
-    "ops:ai-agronomic-decision-assurance-check": "node scripts/ops-ai-agronomic-decision-assurance-check.mjs"
+    "ops:ai-agronomic-decision-assurance-check": "node scripts/ops-ai-agronomic-decision-assurance-check.mjs",
+    "ops:ai-agronomic-scenario-stress-test-check": "node scripts/ops-ai-agronomic-scenario-stress-test-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
