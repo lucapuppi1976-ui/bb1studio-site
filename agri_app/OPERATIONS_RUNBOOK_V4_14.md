@@ -1475,3 +1475,25 @@ Il check verifica engine, route, pannelli UI/admin, README, safety dry-run, asse
 ### Safety
 
 Il modulo resta locale, redatto e manuale: providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true, localMemoryOnly=true, localQualityOnly=true.
+## V10.1 — AI Field Autopilot Simulation Control Room
+
+### Scope
+
+V10.1 aggiunge una control room simulativa locale per coordinare scouting, rischio campo, readiness interventi, memory quality, knowledge vault e command board.
+
+- endpoint ops protetto `/api/ops/ai-field-autopilot-control-room-dry-run`;
+- engine locale `aiFieldAutopilotControlRoom.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- command candidates solo simulativi;
+- hard-stop su task, interventi, esecuzione, provider, persistenza, prescrizioni e dosaggi.
+
+### Check
+
+```txt
+ops:ai-field-autopilot-control-room-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
