@@ -1497,3 +1497,25 @@ ops:ai-field-autopilot-control-room-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V10.2 — AI Crop-Specific Expert Protocol Builder
+
+### Scope
+
+V10.2 aggiunge un builder locale dry-run per protocolli agronomici expert specifici per coltura.
+
+- endpoint ops protetto `/api/ops/ai-crop-protocol-builder-dry-run`;
+- engine locale `aiCropProtocolBuilder.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- evidence gates, conflict register e manual review board;
+- hard-stop su provider, persistenza, task, interventi, esecuzione, prescrizioni e dosaggi.
+
+### Check
+
+```txt
+ops:ai-crop-protocol-builder-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
