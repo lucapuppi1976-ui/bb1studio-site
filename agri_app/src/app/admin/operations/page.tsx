@@ -47,6 +47,7 @@ import OperationsAiFarmDigitalTwinReadiness from "./OperationsAiFarmDigitalTwinR
 import OperationsAiClimateWaterStrategy from "./OperationsAiClimateWaterStrategy";
 import OperationsAiPestDiseaseOutbreakSentinel from "./OperationsAiPestDiseaseOutbreakSentinel";
 import OperationsAiSoilNutrientStrategy from "./OperationsAiSoilNutrientStrategy";
+import OperationsAiPhenologyYieldRisk from "./OperationsAiPhenologyYieldRisk";
 
 const sections = [
   {
@@ -284,6 +285,8 @@ export default function AdminOperationsPage() {
       <OperationsAiPestDiseaseOutbreakSentinel />
 
       <OperationsAiSoilNutrientStrategy />
+
+      <OperationsAiPhenologyYieldRisk />
 </main>
   );
 }

@@ -41,6 +41,7 @@ import FarmDigitalTwinReadinessPanel from "./FarmDigitalTwinReadinessPanel";
 import ClimateWaterStrategyPanel from "./ClimateWaterStrategyPanel";
 import PestDiseaseOutbreakSentinelPanel from "./PestDiseaseOutbreakSentinelPanel";
 import SoilNutrientStrategyPanel from "./SoilNutrientStrategyPanel";
+import PhenologyYieldRiskPanel from "./PhenologyYieldRiskPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -113,6 +114,8 @@ export default function AiPhotoDiagnosisPage() {
       <PestDiseaseOutbreakSentinelPanel />
 
       <SoilNutrientStrategyPanel />
+
+      <PhenologyYieldRiskPanel />
 </main>
   );
 }
