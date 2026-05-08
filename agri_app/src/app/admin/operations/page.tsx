@@ -43,6 +43,7 @@ import OperationsAiKnowledgeVaultGovernance from "./OperationsAiKnowledgeVaultGo
 import OperationsAiFieldAutopilotControlRoom from "./OperationsAiFieldAutopilotControlRoom";
 import OperationsAiCropProtocolBuilder from "./OperationsAiCropProtocolBuilder";
 import OperationsAiAgronomicBoardPack from "./OperationsAiAgronomicBoardPack";
+import OperationsAiFarmDigitalTwinReadiness from "./OperationsAiFarmDigitalTwinReadiness";
 
 const sections = [
   {
@@ -272,6 +273,8 @@ export default function AdminOperationsPage() {
       <OperationsAiCropProtocolBuilder />
 
       <OperationsAiAgronomicBoardPack />
+
+      <OperationsAiFarmDigitalTwinReadiness />
 </main>
   );
 }
