@@ -49,6 +49,7 @@ import AgronomicCompliancePassportPanel from "./AgronomicCompliancePassportPanel
 import AgronomicDecisionAssurancePanel from "./AgronomicDecisionAssurancePanel";
 import AgronomicScenarioStressTestPanel from "./AgronomicScenarioStressTestPanel";
 import AgronomicImprovementScorecardPanel from "./AgronomicImprovementScorecardPanel";
+import ProviderActivationFirewallPanel from "./ProviderActivationFirewallPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -137,6 +138,8 @@ export default function AiPhotoDiagnosisPage() {
       <AgronomicScenarioStressTestPanel />
 
       <AgronomicImprovementScorecardPanel />
+
+      <ProviderActivationFirewallPanel />
 </main>
   );
 }
