@@ -1446,3 +1446,32 @@ Regole:
 - nessuna prescrizione prodotto;
 - nessun dosaggio;
 - human review obbligatoria.
+
+## V10.0 — AI Agronomic Knowledge Vault & Expert Playbook Governance
+
+### Scope
+
+V10.0 aggiunge un vault locale dry-run per la governance della conoscenza agronomica premium:
+
+- playbook expert versionati;
+- regole di applicabilità per coltura, caso, stagione, rischio, evidenza e compliance;
+- soglie evidenziali con blocker;
+- conflict register tra playbook;
+- approval queue manuale;
+- snapshot governance redatto;
+- rollback plan;
+- endpoint ops protetto `/api/ops/ai-knowledge-vault-dry-run`.
+
+### Check
+
+Script dedicato:
+
+```txt
+ops:ai-knowledge-vault-check
+```
+
+Il check verifica engine, route, pannelli UI/admin, README, safety dry-run, assenza di provider call, assenza di storage client, assenza di accessi DB e integrazione nei check operativi principali.
+
+### Safety
+
+Il modulo resta locale, redatto e manuale: providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true, localMemoryOnly=true, localQualityOnly=true.
