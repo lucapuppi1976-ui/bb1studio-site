@@ -1563,3 +1563,25 @@ ops:ai-farm-digital-twin-readiness-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V10.5 — AI Climate Resilience & Water Strategy Simulator
+
+### Scope
+
+V10.5 aggiunge un simulatore locale dry-run per resilienza climatica e strategia idrica.
+
+- endpoint ops protetto `/api/ops/ai-climate-water-strategy-dry-run`;
+- engine locale `aiClimateWaterStrategy.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- climate risk zones, water strategy scenarios, readiness lanes, evidence gaps e governance stops;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, prescrizioni e dosaggi.
+
+### Check
+
+```txt
+ops:ai-climate-water-strategy-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
