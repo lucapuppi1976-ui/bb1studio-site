@@ -52,6 +52,7 @@ import OperationsAiHarvestQualityReadiness from "./OperationsAiHarvestQualityRea
 import OperationsAiAgronomicControlTower from "./OperationsAiAgronomicControlTower";
 import OperationsAiAgronomicExplainabilityLedger from "./OperationsAiAgronomicExplainabilityLedger";
 import OperationsAiAgronomicCompliancePassport from "./OperationsAiAgronomicCompliancePassport";
+import OperationsAiAgronomicDecisionAssurance from "./OperationsAiAgronomicDecisionAssurance";
 
 const sections = [
   {
@@ -299,6 +300,8 @@ export default function AdminOperationsPage() {
       <OperationsAiAgronomicExplainabilityLedger />
 
       <OperationsAiAgronomicCompliancePassport />
+
+      <OperationsAiAgronomicDecisionAssurance />
 </main>
   );
 }
