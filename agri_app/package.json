@@ -78,7 +78,8 @@
     "ops:ai-agronomic-board-pack-check": "node scripts/ops-ai-agronomic-board-pack-check.mjs",
     "ops:ai-farm-digital-twin-readiness-check": "node scripts/ops-ai-farm-digital-twin-readiness-check.mjs",
     "ops:ai-climate-water-strategy-check": "node scripts/ops-ai-climate-water-strategy-check.mjs",
-    "ops:ai-pest-disease-outbreak-sentinel-check": "node scripts/ops-ai-pest-disease-outbreak-sentinel-check.mjs"
+    "ops:ai-pest-disease-outbreak-sentinel-check": "node scripts/ops-ai-pest-disease-outbreak-sentinel-check.mjs",
+    "ops:ai-soil-nutrient-strategy-check": "node scripts/ops-ai-soil-nutrient-strategy-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

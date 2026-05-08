@@ -1607,3 +1607,25 @@ ops:ai-pest-disease-outbreak-sentinel-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V10.7 — AI Soil Health & Nutrient Balance Strategy Simulator
+
+### Scope
+
+V10.7 aggiunge un simulatore locale dry-run per soil health e nutrient balance.
+
+- endpoint ops protetto `/api/ops/ai-soil-nutrient-strategy-dry-run`;
+- engine locale `aiSoilNutrientStrategy.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- soil zones, nutrient signals, sampling lanes, evidence gaps e governance stops;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, prescrizioni prodotto, raccomandazioni fertilizzanti e dosaggi.
+
+### Check
+
+```txt
+ops:ai-soil-nutrient-strategy-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
