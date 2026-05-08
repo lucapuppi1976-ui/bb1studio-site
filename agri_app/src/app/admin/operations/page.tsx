@@ -49,6 +49,7 @@ import OperationsAiPestDiseaseOutbreakSentinel from "./OperationsAiPestDiseaseOu
 import OperationsAiSoilNutrientStrategy from "./OperationsAiSoilNutrientStrategy";
 import OperationsAiPhenologyYieldRisk from "./OperationsAiPhenologyYieldRisk";
 import OperationsAiHarvestQualityReadiness from "./OperationsAiHarvestQualityReadiness";
+import OperationsAiAgronomicControlTower from "./OperationsAiAgronomicControlTower";
 
 const sections = [
   {
@@ -290,6 +291,8 @@ export default function AdminOperationsPage() {
       <OperationsAiPhenologyYieldRisk />
 
       <OperationsAiHarvestQualityReadiness />
+
+      <OperationsAiAgronomicControlTower />
 </main>
   );
 }
