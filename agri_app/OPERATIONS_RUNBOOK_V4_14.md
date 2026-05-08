@@ -1585,3 +1585,25 @@ ops:ai-climate-water-strategy-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V10.6 — AI Pest & Disease Outbreak Sentinel & Biosecurity Simulator
+
+### Scope
+
+V10.6 aggiunge un simulatore locale dry-run per early warning fitopatologico e biosecurity.
+
+- endpoint ops protetto `/api/ops/ai-pest-disease-outbreak-sentinel-dry-run`;
+- engine locale `aiPestDiseaseOutbreakSentinel.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- outbreak risk zones, pressure signals, surveillance lanes, evidence gaps e biosecurity stops;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, alert pubblici, prescrizioni e dosaggi.
+
+### Check
+
+```txt
+ops:ai-pest-disease-outbreak-sentinel-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

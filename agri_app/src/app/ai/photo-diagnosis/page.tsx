@@ -39,6 +39,7 @@ import CropProtocolBuilderPanel from "./CropProtocolBuilderPanel";
 import AgronomicBoardPackPanel from "./AgronomicBoardPackPanel";
 import FarmDigitalTwinReadinessPanel from "./FarmDigitalTwinReadinessPanel";
 import ClimateWaterStrategyPanel from "./ClimateWaterStrategyPanel";
+import PestDiseaseOutbreakSentinelPanel from "./PestDiseaseOutbreakSentinelPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -107,6 +108,8 @@ export default function AiPhotoDiagnosisPage() {
       <FarmDigitalTwinReadinessPanel />
 
       <ClimateWaterStrategyPanel />
+
+      <PestDiseaseOutbreakSentinelPanel />
 </main>
   );
 }
