@@ -82,7 +82,8 @@
     "ops:ai-soil-nutrient-strategy-check": "node scripts/ops-ai-soil-nutrient-strategy-check.mjs",
     "ops:ai-phenology-yield-risk-check": "node scripts/ops-ai-phenology-yield-risk-check.mjs",
     "ops:ai-harvest-quality-readiness-check": "node scripts/ops-ai-harvest-quality-readiness-check.mjs",
-    "ops:ai-agronomic-control-tower-check": "node scripts/ops-ai-agronomic-control-tower-check.mjs"
+    "ops:ai-agronomic-control-tower-check": "node scripts/ops-ai-agronomic-control-tower-check.mjs",
+    "ops:ai-agronomic-explainability-ledger-check": "node scripts/ops-ai-agronomic-explainability-ledger-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
