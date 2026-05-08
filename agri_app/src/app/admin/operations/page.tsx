@@ -45,6 +45,7 @@ import OperationsAiCropProtocolBuilder from "./OperationsAiCropProtocolBuilder";
 import OperationsAiAgronomicBoardPack from "./OperationsAiAgronomicBoardPack";
 import OperationsAiFarmDigitalTwinReadiness from "./OperationsAiFarmDigitalTwinReadiness";
 import OperationsAiClimateWaterStrategy from "./OperationsAiClimateWaterStrategy";
+import OperationsAiPestDiseaseOutbreakSentinel from "./OperationsAiPestDiseaseOutbreakSentinel";
 
 const sections = [
   {
@@ -278,6 +279,8 @@ export default function AdminOperationsPage() {
       <OperationsAiFarmDigitalTwinReadiness />
 
       <OperationsAiClimateWaterStrategy />
+
+      <OperationsAiPestDiseaseOutbreakSentinel />
 </main>
   );
 }
