@@ -42,6 +42,7 @@ import OperationsAiMemoryQualityGuard from "./OperationsAiMemoryQualityGuard";
 import OperationsAiKnowledgeVaultGovernance from "./OperationsAiKnowledgeVaultGovernance";
 import OperationsAiFieldAutopilotControlRoom from "./OperationsAiFieldAutopilotControlRoom";
 import OperationsAiCropProtocolBuilder from "./OperationsAiCropProtocolBuilder";
+import OperationsAiAgronomicBoardPack from "./OperationsAiAgronomicBoardPack";
 
 const sections = [
   {
@@ -269,6 +270,8 @@ export default function AdminOperationsPage() {
       <OperationsAiFieldAutopilotControlRoom />
 
       <OperationsAiCropProtocolBuilder />
+
+      <OperationsAiAgronomicBoardPack />
 </main>
   );
 }

@@ -1519,3 +1519,25 @@ ops:ai-crop-protocol-builder-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V10.3 — AI Agronomic Board Pack & Executive Decision Center
+
+### Scope
+
+V10.3 aggiunge un Executive Decision Center locale dry-run per creare board pack agronomici redatti.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-board-pack-dry-run`;
+- engine locale `aiAgronomicBoardPack.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- decision cards, risk register, ROI proxy e governance checklist;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, prescrizioni e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-board-pack-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
