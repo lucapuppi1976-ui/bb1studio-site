@@ -1541,3 +1541,25 @@ ops:ai-agronomic-board-pack-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V10.4 — AI Farm Digital Twin Readiness Simulator
+
+### Scope
+
+V10.4 aggiunge un simulatore locale dry-run di digital twin aziendale.
+
+- endpoint ops protetto `/api/ops/ai-farm-digital-twin-readiness-dry-run`;
+- engine locale `aiFarmDigitalTwinReadiness.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- field nodes, case pressure, scenario sandbox, readiness gaps e governance stops;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, prescrizioni e dosaggi.
+
+### Check
+
+```txt
+ops:ai-farm-digital-twin-readiness-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

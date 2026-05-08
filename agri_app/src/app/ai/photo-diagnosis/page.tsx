@@ -37,6 +37,7 @@ import KnowledgeVaultGovernancePanel from "./KnowledgeVaultGovernancePanel";
 import FieldAutopilotControlRoomPanel from "./FieldAutopilotControlRoomPanel";
 import CropProtocolBuilderPanel from "./CropProtocolBuilderPanel";
 import AgronomicBoardPackPanel from "./AgronomicBoardPackPanel";
+import FarmDigitalTwinReadinessPanel from "./FarmDigitalTwinReadinessPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -101,6 +102,8 @@ export default function AiPhotoDiagnosisPage() {
       <CropProtocolBuilderPanel />
 
       <AgronomicBoardPackPanel />
+
+      <FarmDigitalTwinReadinessPanel />
 </main>
   );
 }
