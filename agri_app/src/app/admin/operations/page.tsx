@@ -41,6 +41,7 @@ import OperationsAiMemoryPromotionGovernance from "./OperationsAiMemoryPromotion
 import OperationsAiMemoryQualityGuard from "./OperationsAiMemoryQualityGuard";
 import OperationsAiKnowledgeVaultGovernance from "./OperationsAiKnowledgeVaultGovernance";
 import OperationsAiFieldAutopilotControlRoom from "./OperationsAiFieldAutopilotControlRoom";
+import OperationsAiCropProtocolBuilder from "./OperationsAiCropProtocolBuilder";
 
 const sections = [
   {
@@ -266,6 +267,8 @@ export default function AdminOperationsPage() {
       <OperationsAiKnowledgeVaultGovernance />
 
       <OperationsAiFieldAutopilotControlRoom />
+
+      <OperationsAiCropProtocolBuilder />
 </main>
   );
 }

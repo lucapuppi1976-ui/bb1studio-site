@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V10_2_CROP_PROTOCOL_BUILDER_CHECK: esegue il check V10.2 prima dei controlli operativi aggregati.
+const __agriCropProtocolRunV102 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-crop-protocol-builder-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriCropProtocolRunV102();
+
 // AGRI_V10_1_FIELD_AUTOPILOT_CONTROL_ROOM_CHECK: esegue il check V10.1 prima dei controlli operativi aggregati.
 const __agriAutopilotRunV101 = async () => {
   const { spawnSync } = await import("node:child_process");
