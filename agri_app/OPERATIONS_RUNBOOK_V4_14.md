@@ -1695,3 +1695,25 @@ ops:ai-agronomic-control-tower-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V11.1 — AI Agronomic Explainability Ledger & Traceability Kernel
+
+### Scope
+
+V11.1 aggiunge un ledger locale dry-run per explainability, traceability e audit agronomico.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-explainability-ledger-dry-run`;
+- engine locale `aiAgronomicExplainabilityLedger.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- source nodes, evidence contribution map, reasoning trace, uncertainty register, counterfactual review, reviewer questions e audit ledger;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, alert, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-explainability-ledger-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
