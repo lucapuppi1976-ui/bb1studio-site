@@ -45,6 +45,7 @@ import PhenologyYieldRiskPanel from "./PhenologyYieldRiskPanel";
 import HarvestQualityReadinessPanel from "./HarvestQualityReadinessPanel";
 import AgronomicControlTowerPanel from "./AgronomicControlTowerPanel";
 import AgronomicExplainabilityLedgerPanel from "./AgronomicExplainabilityLedgerPanel";
+import AgronomicCompliancePassportPanel from "./AgronomicCompliancePassportPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -125,6 +126,8 @@ export default function AiPhotoDiagnosisPage() {
       <AgronomicControlTowerPanel />
 
       <AgronomicExplainabilityLedgerPanel />
+
+      <AgronomicCompliancePassportPanel />
 </main>
   );
 }

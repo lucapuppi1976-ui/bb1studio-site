@@ -1717,3 +1717,25 @@ ops:ai-agronomic-explainability-ledger-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V11.2 — AI Agronomic Compliance Passport & Certification Readiness Kernel
+
+### Scope
+
+V11.2 aggiunge un passport locale dry-run per compliance agronomica, audit readiness e certification readiness.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-compliance-passport-dry-run`;
+- engine locale `aiAgronomicCompliancePassport.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- source nodes, requirement matrix, audit trail, certification readiness, traceability gaps, reviewer checklist ed export sections;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-compliance-passport-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
