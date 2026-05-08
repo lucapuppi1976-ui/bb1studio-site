@@ -72,7 +72,8 @@
     "ops:ai-case-outcome-learning-check": "node scripts/ops-ai-case-outcome-learning-check.mjs",
     "ops:ai-memory-promotion-check": "node scripts/ops-ai-memory-promotion-check.mjs",
     "ops:ai-memory-quality-guard-check": "node scripts/ops-ai-memory-quality-guard-check.mjs",
-    "ops:ai-knowledge-vault-check": "node scripts/ops-ai-knowledge-vault-check.mjs"
+    "ops:ai-knowledge-vault-check": "node scripts/ops-ai-knowledge-vault-check.mjs",
+    "ops:ai-field-autopilot-control-room-check": "node scripts/ops-ai-field-autopilot-control-room-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

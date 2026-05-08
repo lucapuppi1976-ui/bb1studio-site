@@ -34,6 +34,7 @@ import CaseOutcomeLearningPanel from "./CaseOutcomeLearningPanel";
 import MemoryPromotionGovernancePanel from "./MemoryPromotionGovernancePanel";
 import MemoryQualityGuardPanel from "./MemoryQualityGuardPanel";
 import KnowledgeVaultGovernancePanel from "./KnowledgeVaultGovernancePanel";
+import FieldAutopilotControlRoomPanel from "./FieldAutopilotControlRoomPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -92,6 +93,8 @@ export default function AiPhotoDiagnosisPage() {
       <MemoryQualityGuardPanel />
 
       <KnowledgeVaultGovernancePanel />
+
+      <FieldAutopilotControlRoomPanel />
 </main>
   );
 }
