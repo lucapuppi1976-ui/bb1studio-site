@@ -58,6 +58,7 @@ import OperationsAiAgronomicImprovementScorecard from "./OperationsAiAgronomicIm
 import OperationsAiProviderActivationFirewall from "./OperationsAiProviderActivationFirewall";
 import OperationsAiProviderRequestSandbox from "./OperationsAiProviderRequestSandbox";
 import OperationsAiProviderResponseFirewall from "./OperationsAiProviderResponseFirewall";
+import OperationsAiProviderShadowEvaluation from "./OperationsAiProviderShadowEvaluation";
 
 const sections = [
   {
@@ -317,6 +318,8 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderRequestSandbox />
 
       <OperationsAiProviderResponseFirewall />
+
+      <OperationsAiProviderShadowEvaluation />
 </main>
   );
 }

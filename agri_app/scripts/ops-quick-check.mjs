@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V12_3_PROVIDER_SHADOW_EVALUATION_CHECK: esegue il check V12.3 prima dei controlli operativi aggregati.
+const __agriProviderShadowEvaluationRunV123 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-provider-shadow-evaluation-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriProviderShadowEvaluationRunV123();
+
 // AGRI_V12_2_PROVIDER_RESPONSE_FIREWALL_CHECK: esegue il check V12.2 prima dei controlli operativi aggregati.
 const __agriProviderResponseFirewallRunV122 = async () => {
   const { spawnSync } = await import("node:child_process");
