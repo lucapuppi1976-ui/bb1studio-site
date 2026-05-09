@@ -51,6 +51,7 @@ import AgronomicScenarioStressTestPanel from "./AgronomicScenarioStressTestPanel
 import AgronomicImprovementScorecardPanel from "./AgronomicImprovementScorecardPanel";
 import ProviderActivationFirewallPanel from "./ProviderActivationFirewallPanel";
 import ProviderRequestSandboxPanel from "./ProviderRequestSandboxPanel";
+import ProviderResponseFirewallPanel from "./ProviderResponseFirewallPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -143,6 +144,8 @@ export default function AiPhotoDiagnosisPage() {
       <ProviderActivationFirewallPanel />
 
       <ProviderRequestSandboxPanel />
+
+      <ProviderResponseFirewallPanel />
 </main>
   );
 }
