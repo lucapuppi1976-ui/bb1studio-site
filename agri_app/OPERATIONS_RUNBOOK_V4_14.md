@@ -1893,3 +1893,25 @@ ops:ai-provider-shadow-evaluation-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V12.4 — AI Provider Pilot Readiness Board & Canary Rollout Simulator
+
+### Scope
+
+V12.4 aggiunge un simulatore locale dry-run per provider pilot readiness e canary rollout governance senza attivare provider reali.
+
+- endpoint ops protetto `/api/ops/ai-provider-canary-rollout-dry-run`;
+- engine locale `aiProviderCanaryRollout.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- source nodes, canary stages, acceptance criteria, kill-switch drills, pilot approval board, rollback governance e risk register;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-provider-canary-rollout-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

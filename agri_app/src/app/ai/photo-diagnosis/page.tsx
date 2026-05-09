@@ -53,6 +53,7 @@ import ProviderActivationFirewallPanel from "./ProviderActivationFirewallPanel";
 import ProviderRequestSandboxPanel from "./ProviderRequestSandboxPanel";
 import ProviderResponseFirewallPanel from "./ProviderResponseFirewallPanel";
 import ProviderShadowEvaluationPanel from "./ProviderShadowEvaluationPanel";
+import ProviderCanaryRolloutPanel from "./ProviderCanaryRolloutPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -149,6 +150,8 @@ export default function AiPhotoDiagnosisPage() {
       <ProviderResponseFirewallPanel />
 
       <ProviderShadowEvaluationPanel />
+
+      <ProviderCanaryRolloutPanel />
 </main>
   );
 }

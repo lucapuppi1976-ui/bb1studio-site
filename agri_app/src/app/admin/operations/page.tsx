@@ -59,6 +59,7 @@ import OperationsAiProviderActivationFirewall from "./OperationsAiProviderActiva
 import OperationsAiProviderRequestSandbox from "./OperationsAiProviderRequestSandbox";
 import OperationsAiProviderResponseFirewall from "./OperationsAiProviderResponseFirewall";
 import OperationsAiProviderShadowEvaluation from "./OperationsAiProviderShadowEvaluation";
+import OperationsAiProviderCanaryRollout from "./OperationsAiProviderCanaryRollout";
 
 const sections = [
   {
@@ -320,6 +321,8 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderResponseFirewall />
 
       <OperationsAiProviderShadowEvaluation />
+
+      <OperationsAiProviderCanaryRollout />
 </main>
   );
 }
