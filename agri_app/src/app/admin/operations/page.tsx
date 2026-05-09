@@ -56,6 +56,7 @@ import OperationsAiAgronomicDecisionAssurance from "./OperationsAiAgronomicDecis
 import OperationsAiAgronomicScenarioStressTest from "./OperationsAiAgronomicScenarioStressTest";
 import OperationsAiAgronomicImprovementScorecard from "./OperationsAiAgronomicImprovementScorecard";
 import OperationsAiProviderActivationFirewall from "./OperationsAiProviderActivationFirewall";
+import OperationsAiProviderRequestSandbox from "./OperationsAiProviderRequestSandbox";
 
 const sections = [
   {
@@ -311,6 +312,8 @@ export default function AdminOperationsPage() {
       <OperationsAiAgronomicImprovementScorecard />
 
       <OperationsAiProviderActivationFirewall />
+
+      <OperationsAiProviderRequestSandbox />
 </main>
   );
 }
