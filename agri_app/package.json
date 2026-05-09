@@ -88,7 +88,8 @@
     "ops:ai-agronomic-decision-assurance-check": "node scripts/ops-ai-agronomic-decision-assurance-check.mjs",
     "ops:ai-agronomic-scenario-stress-test-check": "node scripts/ops-ai-agronomic-scenario-stress-test-check.mjs",
     "ops:ai-agronomic-improvement-scorecard-check": "node scripts/ops-ai-agronomic-improvement-scorecard-check.mjs",
-    "ops:ai-provider-activation-firewall-check": "node scripts/ops-ai-provider-activation-firewall-check.mjs"
+    "ops:ai-provider-activation-firewall-check": "node scripts/ops-ai-provider-activation-firewall-check.mjs",
+    "ops:ai-provider-request-sandbox-check": "node scripts/ops-ai-provider-request-sandbox-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
