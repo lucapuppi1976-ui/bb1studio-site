@@ -68,6 +68,7 @@ import OperationsAiHumanReviewMissionControl from "./OperationsAiHumanReviewMiss
 import OperationsAiReviewerConsensusCalibration from "./OperationsAiReviewerConsensusCalibration";
 import OperationsAiEvidenceIntegrityCustody from "./OperationsAiEvidenceIntegrityCustody";
 import OperationsAiReviewerRationaleLedger from "./OperationsAiReviewerRationaleLedger";
+import OperationsAiHumanReviewBoardPack from "./OperationsAiHumanReviewBoardPack";
 
 const sections = [
   {
@@ -347,6 +348,8 @@ export default function AdminOperationsPage() {
       <OperationsAiEvidenceIntegrityCustody />
 
       <OperationsAiReviewerRationaleLedger />
+
+      <OperationsAiHumanReviewBoardPack />
 </main>
   );
 }

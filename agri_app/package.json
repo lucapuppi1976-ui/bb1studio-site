@@ -100,7 +100,8 @@
     "ops:ai-human-review-mission-control-check": "node scripts/ops-ai-human-review-mission-control-check.mjs",
     "ops:ai-reviewer-consensus-calibration-check": "node scripts/ops-ai-reviewer-consensus-calibration-check.mjs",
     "ops:ai-evidence-integrity-custody-check": "node scripts/ops-ai-evidence-integrity-custody-check.mjs",
-    "ops:ai-reviewer-rationale-ledger-check": "node scripts/ops-ai-reviewer-rationale-ledger-check.mjs"
+    "ops:ai-reviewer-rationale-ledger-check": "node scripts/ops-ai-reviewer-rationale-ledger-check.mjs",
+    "ops:ai-human-review-board-pack-check": "node scripts/ops-ai-human-review-board-pack-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
