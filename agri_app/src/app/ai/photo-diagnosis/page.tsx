@@ -56,6 +56,7 @@ import ProviderShadowEvaluationPanel from "./ProviderShadowEvaluationPanel";
 import ProviderCanaryRolloutPanel from "./ProviderCanaryRolloutPanel";
 import ProviderObservabilityDrillPanel from "./ProviderObservabilityDrillPanel";
 import ProviderSafeEnablementGatePanel from "./ProviderSafeEnablementGatePanel";
+import ProviderRuntimeAdapterContractPanel from "./ProviderRuntimeAdapterContractPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -158,6 +159,8 @@ export default function AiPhotoDiagnosisPage() {
       <ProviderObservabilityDrillPanel />
 
       <ProviderSafeEnablementGatePanel />
+
+      <ProviderRuntimeAdapterContractPanel />
 </main>
   );
 }
