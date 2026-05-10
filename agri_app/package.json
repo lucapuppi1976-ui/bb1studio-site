@@ -98,7 +98,8 @@
     "ops:ai-provider-runtime-adapter-contract-check": "node scripts/ops-ai-provider-runtime-adapter-contract-check.mjs",
     "ops:ai-provider-final-readiness-audit-check": "node scripts/ops-ai-provider-final-readiness-audit-check.mjs",
     "ops:ai-human-review-mission-control-check": "node scripts/ops-ai-human-review-mission-control-check.mjs",
-    "ops:ai-reviewer-consensus-calibration-check": "node scripts/ops-ai-reviewer-consensus-calibration-check.mjs"
+    "ops:ai-reviewer-consensus-calibration-check": "node scripts/ops-ai-reviewer-consensus-calibration-check.mjs",
+    "ops:ai-evidence-integrity-custody-check": "node scripts/ops-ai-evidence-integrity-custody-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
