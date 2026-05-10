@@ -2069,3 +2069,25 @@ ops:ai-evidence-integrity-custody-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V13.3 — AI Reviewer Rationale Ledger & Evidence-to-Decision Traceability Matrix
+
+### Scope
+
+V13.3 aggiunge un modulo locale dry-run per rationale ledger, evidence-to-decision traceability, decision hold reasons e audit replay.
+
+- endpoint ops protetto `/api/ops/ai-reviewer-rationale-ledger-dry-run`;
+- engine locale `aiReviewerRationaleLedger.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- evidence decision trace, reviewer rationale ledger, decision hold reasons, traceability gates, dissent links, audit replay, escalation board e rationale signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-reviewer-rationale-ledger-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
