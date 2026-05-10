@@ -66,6 +66,7 @@ import OperationsAiProviderRuntimeAdapterContract from "./OperationsAiProviderRu
 import OperationsAiProviderFinalReadinessAudit from "./OperationsAiProviderFinalReadinessAudit";
 import OperationsAiHumanReviewMissionControl from "./OperationsAiHumanReviewMissionControl";
 import OperationsAiReviewerConsensusCalibration from "./OperationsAiReviewerConsensusCalibration";
+import OperationsAiEvidenceIntegrityCustody from "./OperationsAiEvidenceIntegrityCustody";
 
 const sections = [
   {
@@ -341,6 +342,8 @@ export default function AdminOperationsPage() {
       <OperationsAiHumanReviewMissionControl />
 
       <OperationsAiReviewerConsensusCalibration />
+
+      <OperationsAiEvidenceIntegrityCustody />
 </main>
   );
 }

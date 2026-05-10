@@ -60,6 +60,7 @@ import ProviderRuntimeAdapterContractPanel from "./ProviderRuntimeAdapterContrac
 import ProviderFinalReadinessAuditPanel from "./ProviderFinalReadinessAuditPanel";
 import HumanReviewMissionControlPanel from "./HumanReviewMissionControlPanel";
 import ReviewerConsensusCalibrationPanel from "./ReviewerConsensusCalibrationPanel";
+import EvidenceIntegrityCustodyPanel from "./EvidenceIntegrityCustodyPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -170,6 +171,8 @@ export default function AiPhotoDiagnosisPage() {
       <HumanReviewMissionControlPanel />
 
       <ReviewerConsensusCalibrationPanel />
+
+      <EvidenceIntegrityCustodyPanel />
 </main>
   );
 }
