@@ -1981,3 +1981,25 @@ ops:ai-provider-runtime-adapter-contract-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V12.9 — AI Provider Final Readiness Audit Pack & Activation Freeze Ledger
+
+### Scope
+
+V12.9 aggiunge un audit pack locale dry-run per chiusura fase provider readiness e activation freeze governance senza attivare provider reali.
+
+- endpoint ops protetto `/api/ops/ai-provider-final-readiness-audit-dry-run`;
+- engine locale `aiProviderFinalReadinessAudit.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- source nodes, final audit dossier, activation freeze ledger, executive board checklist, non-activation evidence, release freeze gates, residual hold register e rollback certification;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-provider-final-readiness-audit-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
