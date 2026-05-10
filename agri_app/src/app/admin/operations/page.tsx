@@ -64,6 +64,7 @@ import OperationsAiProviderObservabilityDrill from "./OperationsAiProviderObserv
 import OperationsAiProviderSafeEnablementGate from "./OperationsAiProviderSafeEnablementGate";
 import OperationsAiProviderRuntimeAdapterContract from "./OperationsAiProviderRuntimeAdapterContract";
 import OperationsAiProviderFinalReadinessAudit from "./OperationsAiProviderFinalReadinessAudit";
+import OperationsAiHumanReviewMissionControl from "./OperationsAiHumanReviewMissionControl";
 
 const sections = [
   {
@@ -335,6 +336,8 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderRuntimeAdapterContract />
 
       <OperationsAiProviderFinalReadinessAudit />
+
+      <OperationsAiHumanReviewMissionControl />
 </main>
   );
 }
