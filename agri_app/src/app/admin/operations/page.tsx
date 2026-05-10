@@ -62,6 +62,7 @@ import OperationsAiProviderShadowEvaluation from "./OperationsAiProviderShadowEv
 import OperationsAiProviderCanaryRollout from "./OperationsAiProviderCanaryRollout";
 import OperationsAiProviderObservabilityDrill from "./OperationsAiProviderObservabilityDrill";
 import OperationsAiProviderSafeEnablementGate from "./OperationsAiProviderSafeEnablementGate";
+import OperationsAiProviderRuntimeAdapterContract from "./OperationsAiProviderRuntimeAdapterContract";
 
 const sections = [
   {
@@ -329,6 +330,8 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderObservabilityDrill />
 
       <OperationsAiProviderSafeEnablementGate />
+
+      <OperationsAiProviderRuntimeAdapterContract />
 </main>
   );
 }
