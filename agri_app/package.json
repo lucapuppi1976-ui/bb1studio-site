@@ -95,7 +95,8 @@
     "ops:ai-provider-canary-rollout-check": "node scripts/ops-ai-provider-canary-rollout-check.mjs",
     "ops:ai-provider-observability-drill-check": "node scripts/ops-ai-provider-observability-drill-check.mjs",
     "ops:ai-provider-safe-enablement-gate-check": "node scripts/ops-ai-provider-safe-enablement-gate-check.mjs",
-    "ops:ai-provider-runtime-adapter-contract-check": "node scripts/ops-ai-provider-runtime-adapter-contract-check.mjs"
+    "ops:ai-provider-runtime-adapter-contract-check": "node scripts/ops-ai-provider-runtime-adapter-contract-check.mjs",
+    "ops:ai-provider-final-readiness-audit-check": "node scripts/ops-ai-provider-final-readiness-audit-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

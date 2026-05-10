@@ -57,6 +57,7 @@ import ProviderCanaryRolloutPanel from "./ProviderCanaryRolloutPanel";
 import ProviderObservabilityDrillPanel from "./ProviderObservabilityDrillPanel";
 import ProviderSafeEnablementGatePanel from "./ProviderSafeEnablementGatePanel";
 import ProviderRuntimeAdapterContractPanel from "./ProviderRuntimeAdapterContractPanel";
+import ProviderFinalReadinessAuditPanel from "./ProviderFinalReadinessAuditPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -161,6 +162,8 @@ export default function AiPhotoDiagnosisPage() {
       <ProviderSafeEnablementGatePanel />
 
       <ProviderRuntimeAdapterContractPanel />
+
+      <ProviderFinalReadinessAuditPanel />
 </main>
   );
 }
