@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V12_7_PROVIDER_SAFE_ENABLEMENT_GATE_CHECK: esegue il check V12.7 prima dei controlli operativi aggregati.
+const __agriProviderSafeEnablementGateRunV127 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-provider-safe-enablement-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriProviderSafeEnablementGateRunV127();
+
 // AGRI_V12_5_PROVIDER_OBSERVABILITY_DRILL_CHECK: esegue il check V12.5 prima dei controlli operativi aggregati.
 const __agriProviderObservabilityDrillRunV125 = async () => {
   const { spawnSync } = await import("node:child_process");
