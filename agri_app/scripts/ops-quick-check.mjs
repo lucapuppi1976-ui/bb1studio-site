@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V13_1_REVIEWER_CONSENSUS_CALIBRATION_CHECK: esegue il check V13.1 prima dei controlli operativi aggregati.
+const __agriReviewerConsensusCalibrationRunV131 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-reviewer-consensus-calibration-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriReviewerConsensusCalibrationRunV131();
+
 // AGRI_V13_0_HUMAN_REVIEW_MISSION_CONTROL_CHECK: esegue il check V13.0 prima dei controlli operativi aggregati.
 const __agriHumanReviewMissionControlRunV130 = async () => {
   const { spawnSync } = await import("node:child_process");

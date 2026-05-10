@@ -59,6 +59,7 @@ import ProviderSafeEnablementGatePanel from "./ProviderSafeEnablementGatePanel";
 import ProviderRuntimeAdapterContractPanel from "./ProviderRuntimeAdapterContractPanel";
 import ProviderFinalReadinessAuditPanel from "./ProviderFinalReadinessAuditPanel";
 import HumanReviewMissionControlPanel from "./HumanReviewMissionControlPanel";
+import ReviewerConsensusCalibrationPanel from "./ReviewerConsensusCalibrationPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -167,6 +168,8 @@ export default function AiPhotoDiagnosisPage() {
       <ProviderFinalReadinessAuditPanel />
 
       <HumanReviewMissionControlPanel />
+
+      <ReviewerConsensusCalibrationPanel />
 </main>
   );
 }
