@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V13_3_REVIEWER_RATIONALE_LEDGER_CHECK: esegue il check V13.3 prima dei controlli operativi aggregati.
+const __agriReviewerRationaleLedgerRunV133 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-reviewer-rationale-ledger-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriReviewerRationaleLedgerRunV133();
+
 // AGRI_V13_2_EVIDENCE_INTEGRITY_CUSTODY_CHECK: esegue il check V13.2 prima dei controlli operativi aggregati.
 const __agriEvidenceIntegrityCustodyRunV132 = async () => {
   const { spawnSync } = await import("node:child_process");
