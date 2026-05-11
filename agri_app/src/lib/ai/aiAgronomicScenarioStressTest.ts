@@ -1,22 +1,26 @@
-export type ScenarioStressMode = "dry-run" | "war-room-review";
+export type AgronomicScenarioStressMode = "dry-run" | "stress-board-review";
 
-export type ScenarioSeverity = "info" | "watch" | "elevated" | "critical";
+export type AgronomicScenarioStressSeverity = "info" | "watch" | "elevated" | "critical";
 
-export type ScenarioPriority = "low" | "medium" | "high" | "urgent";
+export type AgronomicScenarioStressPriority = "low" | "medium" | "high" | "urgent";
 
-export type ScenarioReadinessBand = "blocked" | "simulation-ready" | "review-ready" | "war-room-ready";
+export type AgronomicScenarioStressReadinessBand =
+  | "blocked"
+  | "simulation-ready"
+  | "review-ready"
+  | "stress-test-ready";
 
-export type ScenarioLane =
-  | "weather-shock"
-  | "biosecurity-shock"
-  | "water-stress"
-  | "soil-shift"
-  | "harvest-disruption"
-  | "governance-failure"
-  | "evidence-failure"
-  | "board-escalation";
+export type AgronomicScenarioStressLane =
+  | "scenario-stress"
+  | "failure-mode"
+  | "fragility-map"
+  | "contingency-hold"
+  | "non-execution"
+  | "strategy-resilience"
+  | "audit-replay"
+  | "human-signoff";
 
-export interface AgronomicScenarioStressTestGuardrail {
+export interface AgronomicScenarioStressGuardrail {
   providerAiReady: false;
   persistenceReady: false;
   memoryPersistenceReady: false;
@@ -53,120 +57,167 @@ export interface AgronomicScenarioStressTestGuardrail {
   memoryPromotionPerformed: false;
   memoryQualityWritePerformed: false;
   scenarioStressTestReady: true;
-  resilienceWarRoomReady: true;
-  failureModeReviewReady: true;
-  rollbackPlaybookReady: true;
+  failureModeSandboxReady: true;
+  nonExecutionEnvelopeReady: true;
+  humanStressSignoffReady: true;
 }
 
-export interface AgronomicScenarioStressTestInput {
-  activeCaseCount?: number;
-  pendingDecisionCount?: number;
-  highConcernFieldCount?: number;
-  openEvidenceGapCount?: number;
-  controlTowerScore?: number;
-  explainabilityLedgerScore?: number;
-  compliancePassportScore?: number;
-  decisionAssuranceScore?: number;
-  climateWaterScore?: number;
-  biosecurityScore?: number;
-  soilNutrientScore?: number;
-  phenologyScore?: number;
-  harvestQualityScore?: number;
-  reviewerConfidenceScore?: number;
-  reviewerRole?: string;
+export interface AgronomicScenarioStressInput {
+  stressScenarioCount?: number;
+  failureModeCount?: number;
+  fragilitySignalCount?: number;
+  contingencyHoldCount?: number;
+  unresolvedStressQuestionCount?: number;
+  decisionSimulationScore?: number;
+  evidenceIntegrityScore?: number;
+  rationaleLedgerScore?: number;
+  qualityAssuranceScore?: number;
+  complianceAttestationScore?: number;
+  stressRubricScore?: number;
+  resilienceConfidenceScore?: number;
+  strategyLeadRole?: string;
 }
 
-export interface StressScenarioNode {
+export interface AgronomicScenarioStressSourceNode {
   id: string;
-  lane: ScenarioLane;
+  lane: AgronomicScenarioStressLane;
   title: string;
   sourceVersion: string;
-  pressureScore: number;
-  resilienceScore: number;
-  severity: ScenarioSeverity;
-  priority: ScenarioPriority;
+  readinessScore: number;
+  confidenceScore: number;
+  severity: AgronomicScenarioStressSeverity;
+  priority: AgronomicScenarioStressPriority;
   reviewerFocus: string;
   blockers: string[];
 }
 
+export interface ScenarioStressCase {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  stressScore: number;
+  severity: AgronomicScenarioStressSeverity;
+  stressQuestion: string;
+  safeUse: string;
+  blockedOutcome: string;
+}
+
 export interface FailureModeItem {
   id: string;
-  scenarioNodeId: string;
   label: string;
-  severity: ScenarioSeverity;
-  likelihoodProxy: number;
-  impactProxy: number;
-  earlyWarning: string;
-  manualContainmentReview: string;
+  lane: AgronomicScenarioStressLane;
+  failurePressureScore: number;
+  priority: AgronomicScenarioStressPriority;
+  failureQuestion: string;
+  reviewerAction: string;
+  blockedOutcome: string;
 }
 
-export interface WarRoomDrillCard {
-  id: string;
-  title: string;
-  priority: ScenarioPriority;
-  status: "blocked" | "review-only" | "war-room-review";
-  linkedScenarioIds: string[];
-  reviewerQuestion: string;
-  allowedOutcome: string;
-  disallowedOutcome: string;
-  evidenceNeeded: string[];
-}
-
-export interface ResilienceGate {
+export interface FragilityMapItem {
   id: string;
   label: string;
-  lane: ScenarioLane;
-  passed: boolean;
-  score: number;
-  severity: ScenarioSeverity;
-  reviewer: string;
-  reason: string;
-  hardStop: string;
-}
-
-export interface RollbackPlaybookItem {
-  id: string;
-  label: string;
-  priority: ScenarioPriority;
-  trigger: string;
-  manualRollbackAction: string;
-  blockedAction: string;
-}
-
-export interface StressEvidenceChainItem {
-  id: string;
-  sequence: number;
-  label: string;
-  sourceIds: string[];
-  chainConfidenceScore: number;
-  reviewerCheck: string;
-  missingEvidence: string[];
-}
-
-export interface StressTestGap {
-  id: string;
-  label: string;
-  lane: ScenarioLane;
-  severity: ScenarioSeverity;
-  reason: string;
+  lane: AgronomicScenarioStressLane;
+  fragilityScore: number;
+  severity: AgronomicScenarioStressSeverity;
+  fragilityReason: string;
   manualResolution: string;
 }
 
-export interface AgronomicScenarioStressTestReport {
+export interface ContingencyHoldItem {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  priority: AgronomicScenarioStressPriority;
+  severity: AgronomicScenarioStressSeverity;
+  holdReason: string;
+  manualResolution: string;
+  blocksStressClosure: boolean;
+}
+
+export interface NonExecutionEnvelopeItem {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  freezeEnforced: true;
+  severity: AgronomicScenarioStressSeverity;
+  envelopeReason: string;
+  blockedOutcome: string;
+  reviewer: string;
+}
+
+export interface StressGateItem {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  passed: boolean;
+  score: number;
+  severity: AgronomicScenarioStressSeverity;
+  reviewer: string;
+  requiredEvidence: string[];
+  hardStop: string;
+}
+
+export interface ResilienceStrategyPackItem {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  packReady: boolean;
+  readinessScore: number;
+  reviewerCheck: string;
+  includedSections: string[];
+  blockedSections: string[];
+}
+
+export interface StressAuditReplayItem {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  replayReady: boolean;
+  replayScore: number;
+  severity: AgronomicScenarioStressSeverity;
+  replayQuestion: string;
+  manualResolution: string;
+}
+
+export interface StressSignoffItem {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  signoffReady: boolean;
+  reviewer: string;
+  requiredEvidence: string[];
+  safeOutcome: string;
+}
+
+export interface StressRiskItem {
+  id: string;
+  label: string;
+  lane: AgronomicScenarioStressLane;
+  severity: AgronomicScenarioStressSeverity;
+  reason: string;
+  manualResolution: string;
+  blocksStressBoard: boolean;
+}
+
+export interface AgronomicScenarioStressReport {
   generatedAt: string;
-  mode: ScenarioStressMode;
-  context: Required<AgronomicScenarioStressTestInput>;
-  readiness: AgronomicScenarioStressTestGuardrail;
+  mode: AgronomicScenarioStressMode;
+  context: Required<AgronomicScenarioStressInput>;
+  readiness: AgronomicScenarioStressGuardrail;
   stressTestScore: number;
-  stressTestStatus: ScenarioReadinessBand;
-  overallSeverity: ScenarioSeverity;
-  scenarioNodes: StressScenarioNode[];
-  failureModes: FailureModeItem[];
-  warRoomDrills: WarRoomDrillCard[];
-  resilienceGates: ResilienceGate[];
-  rollbackPlaybook: RollbackPlaybookItem[];
-  stressEvidenceChain: StressEvidenceChainItem[];
-  stressTestGaps: StressTestGap[];
+  stressTestStatus: AgronomicScenarioStressReadinessBand;
+  overallSeverity: AgronomicScenarioStressSeverity;
+  sourceNodes: AgronomicScenarioStressSourceNode[];
+  scenarioStressCases: ScenarioStressCase[];
+  failureModeSandbox: FailureModeItem[];
+  fragilityMap: FragilityMapItem[];
+  contingencyHolds: ContingencyHoldItem[];
+  nonExecutionEnvelope: NonExecutionEnvelopeItem[];
+  stressGateMatrix: StressGateItem[];
+  resilienceStrategyPack: ResilienceStrategyPackItem[];
+  auditReplay: StressAuditReplayItem[];
+  stressSignoff: StressSignoffItem[];
+  stressRiskRegister: StressRiskItem[];
   redactedExportBundle: {
     exportId: string;
     includesFieldIdentifiers: false;
@@ -181,7 +232,7 @@ export interface AgronomicScenarioStressTestReport {
   safetySummary: string[];
 }
 
-export const AGRONOMIC_SCENARIO_STRESS_TEST_READINESS: AgronomicScenarioStressTestGuardrail = {
+export const AGRONOMIC_SCENARIO_STRESS_READINESS: AgronomicScenarioStressGuardrail = {
   providerAiReady: false,
   persistenceReady: false,
   memoryPersistenceReady: false,
@@ -218,42 +269,33 @@ export const AGRONOMIC_SCENARIO_STRESS_TEST_READINESS: AgronomicScenarioStressTe
   memoryPromotionPerformed: false,
   memoryQualityWritePerformed: false,
   scenarioStressTestReady: true,
-  resilienceWarRoomReady: true,
-  failureModeReviewReady: true,
-  rollbackPlaybookReady: true,
+  failureModeSandboxReady: true,
+  nonExecutionEnvelopeReady: true,
+  humanStressSignoffReady: true,
 };
 
-const severityWeight: Record<ScenarioSeverity, number> = {
-  info: 4,
-  watch: 11,
-  elevated: 21,
-  critical: 34,
-};
-
-const priorityWeight: Record<ScenarioPriority, number> = {
+const priorityWeight: Record<AgronomicScenarioStressPriority, number> = {
   low: 4,
   medium: 9,
   high: 16,
   urgent: 24,
 };
 
-function normalizeInput(input: AgronomicScenarioStressTestInput): Required<AgronomicScenarioStressTestInput> {
+function normalizeInput(input: AgronomicScenarioStressInput): Required<AgronomicScenarioStressInput> {
   return {
-    activeCaseCount: input.activeCaseCount ?? 9,
-    pendingDecisionCount: input.pendingDecisionCount ?? 5,
-    highConcernFieldCount: input.highConcernFieldCount ?? 4,
-    openEvidenceGapCount: input.openEvidenceGapCount ?? 6,
-    controlTowerScore: input.controlTowerScore ?? 72,
-    explainabilityLedgerScore: input.explainabilityLedgerScore ?? 74,
-    compliancePassportScore: input.compliancePassportScore ?? 70,
-    decisionAssuranceScore: input.decisionAssuranceScore ?? 68,
-    climateWaterScore: input.climateWaterScore ?? 73,
-    biosecurityScore: input.biosecurityScore ?? 76,
-    soilNutrientScore: input.soilNutrientScore ?? 72,
-    phenologyScore: input.phenologyScore ?? 69,
-    harvestQualityScore: input.harvestQualityScore ?? 71,
-    reviewerConfidenceScore: input.reviewerConfidenceScore ?? 73,
-    reviewerRole: input.reviewerRole ?? "scenario stress test reviewer",
+    stressScenarioCount: input.stressScenarioCount ?? 7,
+    failureModeCount: input.failureModeCount ?? 6,
+    fragilitySignalCount: input.fragilitySignalCount ?? 6,
+    contingencyHoldCount: input.contingencyHoldCount ?? 5,
+    unresolvedStressQuestionCount: input.unresolvedStressQuestionCount ?? 5,
+    decisionSimulationScore: input.decisionSimulationScore ?? 72,
+    evidenceIntegrityScore: input.evidenceIntegrityScore ?? 73,
+    rationaleLedgerScore: input.rationaleLedgerScore ?? 71,
+    qualityAssuranceScore: input.qualityAssuranceScore ?? 72,
+    complianceAttestationScore: input.complianceAttestationScore ?? 72,
+    stressRubricScore: input.stressRubricScore ?? 71,
+    resilienceConfidenceScore: input.resilienceConfidenceScore ?? 72,
+    strategyLeadRole: input.strategyLeadRole ?? "agronomic stress board lead",
   };
 }
 
@@ -261,257 +303,393 @@ function clampScore(value: number): number {
   return Math.max(0, Math.min(100, Math.round(value)));
 }
 
-function severityFromConcern(score: number): ScenarioSeverity {
+function severityFromConcern(score: number): AgronomicScenarioStressSeverity {
   if (score >= 82) return "critical";
   if (score >= 64) return "elevated";
   if (score >= 42) return "watch";
   return "info";
 }
 
-function priorityFromSeverity(severity: ScenarioSeverity): ScenarioPriority {
+function priorityFromSeverity(severity: AgronomicScenarioStressSeverity): AgronomicScenarioStressPriority {
   if (severity === "critical") return "urgent";
   if (severity === "elevated") return "high";
   if (severity === "watch") return "medium";
   return "low";
 }
 
-function bandFromScore(score: number, blockerCount: number): ScenarioReadinessBand {
+function bandFromScore(score: number, blockerCount: number): AgronomicScenarioStressReadinessBand {
   if (blockerCount > 2 || score < 54) return "blocked";
-  if (score >= 84 && blockerCount === 0) return "war-room-ready";
+  if (score >= 84 && blockerCount === 0) return "stress-test-ready";
   if (score >= 72) return "review-ready";
   return "simulation-ready";
 }
 
-function buildScenarioNode(
+function buildSourceNode(
   id: string,
-  lane: ScenarioLane,
+  lane: AgronomicScenarioStressLane,
   title: string,
   sourceVersion: string,
-  moduleScore: number,
-  pressureBase: number,
+  readinessBase: number,
+  confidenceBase: number,
+  pressure: number,
   reviewerFocus: string,
-): StressScenarioNode {
-  const pressureScore = clampScore(pressureBase + (100 - moduleScore) / 2);
-  const resilienceScore = clampScore(moduleScore - pressureBase / 2);
-  const severity = severityFromConcern(pressureScore);
+): AgronomicScenarioStressSourceNode {
+  const readinessScore = clampScore(readinessBase - pressure);
+  const confidenceScore = clampScore(confidenceBase - pressure / 2);
+  const concernScore = clampScore(100 - readinessScore + pressure);
+  const severity = severityFromConcern(concernScore);
 
   return {
     id,
     lane,
     title,
     sourceVersion,
-    pressureScore,
-    resilienceScore,
+    readinessScore,
+    confidenceScore,
     severity,
     priority: priorityFromSeverity(severity),
     reviewerFocus,
     blockers:
-      resilienceScore < 62 || severity === "critical"
-        ? ["Scenario resilience below review threshold.", "Human reviewer must inspect failure mode and containment plan."]
+      readinessScore < 62 || confidenceScore < 62 || severity === "critical"
+        ? [
+            "Agronomic scenario stress test is below board threshold.",
+            "Stress board must resolve failure modes, fragility signals and contingency holds.",
+          ]
         : [],
   };
 }
 
-function buildScenarioNodes(context: Required<AgronomicScenarioStressTestInput>): StressScenarioNode[] {
-  const evidencePressure = context.openEvidenceGapCount * 4;
-  const decisionPressure = context.pendingDecisionCount * 3;
-  const fieldPressure = context.highConcernFieldCount * 4;
+function buildSourceNodes(context: Required<AgronomicScenarioStressInput>): AgronomicScenarioStressSourceNode[] {
+  const failurePressure = context.failureModeCount * 4;
+  const fragilityPressure = context.fragilitySignalCount * 4;
+  const holdPressure = context.contingencyHoldCount * 5;
+  const questionPressure = context.unresolvedStressQuestionCount * 4;
 
   return [
-    buildScenarioNode(
-      "AST_NODE_001",
-      "weather-shock",
-      "Extreme weather exposure drill",
-      "V10.5",
-      context.climateWaterScore,
-      fieldPressure + decisionPressure,
-      "Review climate and water stress overlap before any field planning discussion.",
+    buildSourceNode(
+      "ASST_NODE_001",
+      "scenario-stress",
+      "Decision simulation input",
+      "V14.0",
+      context.decisionSimulationScore,
+      context.resilienceConfidenceScore,
+      questionPressure,
+      "Stress-test the V14.0 strategy scenarios without actionability.",
     ),
-    buildScenarioNode(
-      "AST_NODE_002",
-      "biosecurity-shock",
-      "Pest and disease escalation drill",
-      "V10.6",
-      context.biosecurityScore,
-      context.activeCaseCount * 3,
-      "Review biosecurity escalation without public alerts or regulated instructions.",
+    buildSourceNode(
+      "ASST_NODE_002",
+      "fragility-map",
+      "Evidence integrity input",
+      "V13.2",
+      context.evidenceIntegrityScore,
+      context.resilienceConfidenceScore,
+      fragilityPressure,
+      "Map evidence fragility into stress board review.",
     ),
-    buildScenarioNode(
-      "AST_NODE_003",
-      "water-stress",
-      "Water shortage response drill",
-      "V10.5",
-      context.climateWaterScore,
-      evidencePressure / 2 + fieldPressure,
-      "Review irrigation readiness and evidence gaps as manual topics only.",
+    buildSourceNode(
+      "ASST_NODE_003",
+      "failure-mode",
+      "Rationale ledger input",
+      "V13.3",
+      context.rationaleLedgerScore,
+      context.resilienceConfidenceScore,
+      failurePressure,
+      "Stress-test rationale gaps and failure modes.",
     ),
-    buildScenarioNode(
-      "AST_NODE_004",
-      "soil-shift",
-      "Soil health degradation drill",
-      "V10.7",
-      context.soilNutrientScore,
-      evidencePressure / 2,
-      "Review soil nutrient and sampling constraints without product or dosage outputs.",
+    buildSourceNode(
+      "ASST_NODE_004",
+      "strategy-resilience",
+      "Quality assurance input",
+      "V13.5",
+      context.qualityAssuranceScore,
+      context.stressRubricScore,
+      questionPressure,
+      "Use QA findings to calibrate strategy resilience.",
     ),
-    buildScenarioNode(
-      "AST_NODE_005",
-      "harvest-disruption",
-      "Harvest quality disruption drill",
-      "V10.9",
-      context.harvestQualityScore,
-      decisionPressure + fieldPressure,
-      "Review storage, logistics and quality pressure before harvest board discussion.",
+    buildSourceNode(
+      "ASST_NODE_005",
+      "non-execution",
+      "Compliance attestation input",
+      "V13.6",
+      context.complianceAttestationScore,
+      context.stressRubricScore,
+      holdPressure,
+      "Carry compliance attestation into non-execution envelope.",
     ),
-    buildScenarioNode(
-      "AST_NODE_006",
-      "governance-failure",
-      "Governance gate failure drill",
-      "V11.3",
-      context.decisionAssuranceScore,
-      evidencePressure + decisionPressure,
-      "Review assurance gates, signoff board and dissent register.",
+    buildSourceNode(
+      "ASST_NODE_006",
+      "contingency-hold",
+      "Failure mode sandbox",
+      "V14.1",
+      context.stressRubricScore,
+      context.resilienceConfidenceScore,
+      failurePressure + holdPressure / 2,
+      "Review contingency holds without creating follow-up work.",
     ),
-    buildScenarioNode(
-      "AST_NODE_007",
-      "evidence-failure",
-      "Evidence chain failure drill",
-      "V11.1",
-      context.explainabilityLedgerScore,
-      evidencePressure + context.openEvidenceGapCount,
-      "Review traceability and uncertainty before scenario acceptance.",
+    buildSourceNode(
+      "ASST_NODE_007",
+      "audit-replay",
+      "Stress audit replay",
+      "V14.1",
+      context.resilienceConfidenceScore,
+      context.stressRubricScore,
+      context.stressScenarioCount * 3,
+      "Replay stress board reasoning manually.",
     ),
-    buildScenarioNode(
-      "AST_NODE_008",
-      "board-escalation",
-      "Executive escalation drill",
-      "V11.2",
-      context.compliancePassportScore,
-      decisionPressure + context.pendingDecisionCount,
-      "Prepare a redacted board drill packet without formal approval.",
+    buildSourceNode(
+      "ASST_NODE_008",
+      "human-signoff",
+      "Stress board signoff",
+      "V14.1",
+      context.resilienceConfidenceScore,
+      context.resilienceConfidenceScore,
+      questionPressure,
+      "Confirm stress test signoff remains manual.",
     ),
   ];
 }
 
-function buildFailureModes(scenarioNodes: StressScenarioNode[]): FailureModeItem[] {
-  return scenarioNodes.map((node, index) => ({
-    id: `AST_FAILURE_${String(index + 1).padStart(3, "0")}`,
-    scenarioNodeId: node.id,
-    label: `${node.title} failure mode`,
-    severity: node.severity,
-    likelihoodProxy: clampScore(node.pressureScore + index * 2),
-    impactProxy: clampScore(100 - node.resilienceScore + severityWeight[node.severity]),
-    earlyWarning: "Escalating pressure and incomplete review context require human attention.",
-    manualContainmentReview: "Reviewer prepares a containment discussion only; no work is created.",
-  }));
-}
-
-function buildWarRoomDrills(
-  context: Required<AgronomicScenarioStressTestInput>,
-  scenarioNodes: StressScenarioNode[],
-): WarRoomDrillCard[] {
-  const urgentNodes = scenarioNodes.filter((node) => node.priority === "urgent");
-  const blockedNodes = scenarioNodes.filter((node) => node.blockers.length > 0);
-
+function buildScenarioStressCases(context: Required<AgronomicScenarioStressInput>): ScenarioStressCase[] {
   return [
     {
-      id: "AST_DRILL_001",
-      title: "Evidence first response drill",
-      priority: context.openEvidenceGapCount >= 6 ? "urgent" : "high",
-      status: context.openEvidenceGapCount >= 6 ? "blocked" : "war-room-review",
-      linkedScenarioIds: ["AST_NODE_006", "AST_NODE_007", "AST_NODE_008"],
-      reviewerQuestion: "Which missing evidence prevents reliable stress test interpretation?",
-      allowedOutcome: "Manual evidence review agenda only.",
-      disallowedOutcome: "No evidence write, task creation or automated dispatch.",
-      evidenceNeeded: ["Evidence chain", "Explainability ledger", "Compliance passport"],
+      id: "ASST_CASE_001",
+      label: "Worst-case evidence weakness",
+      lane: "scenario-stress",
+      stressScore: clampScore(context.evidenceIntegrityScore - context.fragilitySignalCount * 3),
+      severity: severityFromConcern(context.fragilitySignalCount * 12),
+      stressQuestion: "What happens to the strategy if evidence strength is lower than expected?",
+      safeUse: "Manual stress discussion only.",
+      blockedOutcome: "No evidence request, task or field mission.",
     },
     {
-      id: "AST_DRILL_002",
-      title: "High concern field triage drill",
-      priority: context.highConcernFieldCount >= 4 ? "urgent" : "high",
-      status: "review-only",
-      linkedScenarioIds: ["AST_NODE_001", "AST_NODE_002", "AST_NODE_003"],
-      reviewerQuestion: "Which high concern fields need human review first?",
-      allowedOutcome: "Manual review sequence only.",
-      disallowedOutcome: "No operational task, alert or intervention.",
-      evidenceNeeded: ["Control tower module nodes", "Climate water score", "Biosecurity score"],
+      id: "ASST_CASE_002",
+      label: "Reviewer disagreement reopens",
+      lane: "scenario-stress",
+      stressScore: clampScore(context.rationaleLedgerScore - context.failureModeCount * 2),
+      severity: severityFromConcern(context.failureModeCount * 10),
+      stressQuestion: "What if reviewer rationale diverges during board review?",
+      safeUse: "Manual rationale stress note only.",
+      blockedOutcome: "No automatic escalation or approval.",
     },
     {
-      id: "AST_DRILL_003",
-      title: "Governance failure recovery drill",
-      priority: blockedNodes.length > 2 ? "urgent" : "high",
-      status: blockedNodes.length > 2 ? "blocked" : "war-room-review",
-      linkedScenarioIds: blockedNodes.map((node) => node.id),
-      reviewerQuestion: "Which scenario blockers prevent war room readiness?",
-      allowedOutcome: "Manual governance review only.",
-      disallowedOutcome: "No approval, execution or public sharing.",
-      evidenceNeeded: blockedNodes.map((node) => node.reviewerFocus),
-    },
-    {
-      id: "AST_DRILL_004",
-      title: "Executive pressure briefing drill",
-      priority: urgentNodes.length > 0 ? "high" : "medium",
-      status: "review-only",
-      linkedScenarioIds: scenarioNodes.map((node) => node.id),
-      reviewerQuestion: "Can the current stress test be summarized safely for board review?",
-      allowedOutcome: "Redacted board drill packet only.",
-      disallowedOutcome: "No forecast, certification claim or operational decision.",
-      evidenceNeeded: ["War room drills", "Failure modes", "Rollback playbook", "Safety gates"],
+      id: "ASST_CASE_003",
+      label: "Compliance hold dominates strategy",
+      lane: "non-execution",
+      stressScore: clampScore(context.complianceAttestationScore - context.contingencyHoldCount * 3),
+      severity: "critical",
+      stressQuestion: "What if compliance holds override all strategy options?",
+      safeUse: "Manual non-execution discussion only.",
+      blockedOutcome: "No operational order, product output or dosage output.",
     },
   ];
 }
 
-function buildResilienceGates(
-  context: Required<AgronomicScenarioStressTestInput>,
-  scenarioNodes: StressScenarioNode[],
-): ResilienceGate[] {
-  const blockedNodeCount = scenarioNodes.filter((node) => node.blockers.length > 0).length;
+function buildFailureModeSandbox(context: Required<AgronomicScenarioStressInput>): FailureModeItem[] {
+  return [
+    {
+      id: "ASST_FAILURE_001",
+      label: "Evidence ambiguity failure mode",
+      lane: "failure-mode",
+      failurePressureScore: clampScore(context.fragilitySignalCount * 14),
+      priority: context.fragilitySignalCount >= 6 ? "urgent" : "high",
+      failureQuestion: "Could ambiguity make the strategy misleading?",
+      reviewerAction: "Keep ambiguity as explicit board caveat.",
+      blockedOutcome: "No diagnostic finalization.",
+    },
+    {
+      id: "ASST_FAILURE_002",
+      label: "Rationale incompleteness failure mode",
+      lane: "failure-mode",
+      failurePressureScore: clampScore(context.failureModeCount * 13),
+      priority: context.failureModeCount >= 6 ? "urgent" : "high",
+      failureQuestion: "Could missing rationale weaken the option matrix?",
+      reviewerAction: "Route to manual rationale review.",
+      blockedOutcome: "No strategy recommendation.",
+    },
+    {
+      id: "ASST_FAILURE_003",
+      label: "Non-execution breach failure mode",
+      lane: "non-execution",
+      failurePressureScore: clampScore(context.contingencyHoldCount * 16),
+      priority: "urgent",
+      failureQuestion: "Could any scenario be misread as actionable?",
+      reviewerAction: "Tighten non-execution language.",
+      blockedOutcome: "No task, intervention, dispatch, product, dosage or forecast.",
+    },
+  ];
+}
 
-  const gates = [
+function buildFragilityMap(context: Required<AgronomicScenarioStressInput>): FragilityMapItem[] {
+  return [
     {
-      id: "AST_GATE_001",
-      label: "Scenario evidence is reviewable",
-      lane: "evidence-failure" as ScenarioLane,
-      score: context.explainabilityLedgerScore - context.openEvidenceGapCount * 4,
-      reviewer: "evidence quality reviewer",
-      reason: "Scenario interpretation depends on complete evidence chain.",
-      hardStop: "Do not accept stress test while evidence gaps dominate.",
+      id: "ASST_FRAGILITY_001",
+      label: "Evidence chain fragility",
+      lane: "fragility-map",
+      fragilityScore: clampScore(context.fragilitySignalCount * 14),
+      severity: severityFromConcern(context.fragilitySignalCount * 12),
+      fragilityReason: "Evidence chain remains vulnerable to interpretation gaps.",
+      manualResolution: "Keep scenario language conditional and manual.",
     },
     {
-      id: "AST_GATE_002",
-      label: "Decision assurance is reviewable",
-      lane: "governance-failure" as ScenarioLane,
-      score: context.decisionAssuranceScore - context.pendingDecisionCount * 4,
-      reviewer: "decision assurance reviewer",
-      reason: "War room packet must remain signoff gated.",
-      hardStop: "Do not turn war room drills into approvals.",
+      id: "ASST_FRAGILITY_002",
+      label: "Reviewer confidence fragility",
+      lane: "fragility-map",
+      fragilityScore: clampScore(100 - context.resilienceConfidenceScore + context.unresolvedStressQuestionCount * 5),
+      severity: severityFromConcern(100 - context.resilienceConfidenceScore + context.unresolvedStressQuestionCount * 6),
+      fragilityReason: "Reviewer confidence may not support strategy closure.",
+      manualResolution: "Require human stress board signoff.",
     },
     {
-      id: "AST_GATE_003",
-      label: "Compliance packet is reviewable",
-      lane: "board-escalation" as ScenarioLane,
-      score: context.compliancePassportScore,
-      reviewer: "compliance reviewer",
-      reason: "Board escalation requires redacted and manual compliance context.",
-      hardStop: "Do not create formal compliance claims.",
+      id: "ASST_FRAGILITY_003",
+      label: "Strategy communication fragility",
+      lane: "strategy-resilience",
+      fragilityScore: clampScore(context.unresolvedStressQuestionCount * 13),
+      severity: severityFromConcern(context.unresolvedStressQuestionCount * 11),
+      fragilityReason: "Strategy wording may be interpreted as a recommendation.",
+      manualResolution: "Use non-actionable board language only.",
+    },
+  ];
+}
+
+function buildContingencyHolds(context: Required<AgronomicScenarioStressInput>): ContingencyHoldItem[] {
+  return [
+    {
+      id: "ASST_HOLD_001",
+      label: "Evidence fragility hold",
+      lane: "contingency-hold",
+      priority: context.fragilitySignalCount >= 6 ? "urgent" : "high",
+      severity: context.fragilitySignalCount >= 6 ? "critical" : "elevated",
+      holdReason: `${context.fragilitySignalCount} fragility signals require manual review.`,
+      manualResolution: "Resolve or carry forward as board caveat.",
+      blocksStressClosure: context.fragilitySignalCount >= 7,
     },
     {
-      id: "AST_GATE_004",
-      label: "Scenario blockers are within tolerance",
-      lane: "safety-gates" as ScenarioLane,
-      score: 100 - blockedNodeCount * 18,
-      reviewer: context.reviewerRole,
-      reason: `${blockedNodeCount} scenario nodes currently require review.`,
-      hardStop: "Resolve blocked scenarios before war room ready state.",
+      id: "ASST_HOLD_002",
+      label: "Failure mode hold",
+      lane: "failure-mode",
+      priority: context.failureModeCount >= 6 ? "urgent" : "high",
+      severity: context.failureModeCount >= 6 ? "critical" : "elevated",
+      holdReason: `${context.failureModeCount} failure modes require stress board review.`,
+      manualResolution: "Review failure modes manually.",
+      blocksStressClosure: context.failureModeCount >= 6,
+    },
+    {
+      id: "ASST_HOLD_003",
+      label: "Non-execution hold",
+      lane: "non-execution",
+      priority: "urgent",
+      severity: "critical",
+      holdReason: `${context.contingencyHoldCount} contingency holds require non-execution protection.`,
+      manualResolution: "Keep all scenario outputs non-actionable.",
+      blocksStressClosure: false,
+    },
+  ];
+}
+
+function buildNonExecutionEnvelope(): NonExecutionEnvelopeItem[] {
+  return [
+    {
+      id: "ASST_ENVELOPE_001",
+      label: "Provider output envelope",
+      lane: "non-execution",
+      freezeEnforced: true,
+      severity: "critical",
+      envelopeReason: "Scenario stress test cannot call or use provider output.",
+      blockedOutcome: "No provider call or automatic decision.",
+      reviewer: "safety reviewer",
+    },
+    {
+      id: "ASST_ENVELOPE_002",
+      label: "Operational action envelope",
+      lane: "non-execution",
+      freezeEnforced: true,
+      severity: "critical",
+      envelopeReason: "Scenario stress test cannot create or dispatch agronomic work.",
+      blockedOutcome: "No task, intervention, scheduling or execution.",
+      reviewer: "operations reviewer",
+    },
+    {
+      id: "ASST_ENVELOPE_003",
+      label: "Prescriptive output envelope",
+      lane: "non-execution",
+      freezeEnforced: true,
+      severity: "critical",
+      envelopeReason: "Scenario stress test cannot generate product, dosage or production guidance.",
+      blockedOutcome: "No product prescription, dosage advice or production forecast.",
+      reviewer: "agronomic safety reviewer",
+    },
+  ];
+}
+
+function buildStressGateMatrix(
+  context: Required<AgronomicScenarioStressInput>,
+  sourceNodes: AgronomicScenarioStressSourceNode[],
+): StressGateItem[] {
+  const blockedSourceCount = sourceNodes.filter((node) => node.blockers.length > 0).length;
+
+  const rows = [
+    {
+      id: "ASST_GATE_001",
+      label: "Failure modes are explicit enough",
+      lane: "failure-mode" as AgronomicScenarioStressLane,
+      score: context.stressRubricScore - context.failureModeCount * 4,
+      reviewer: "failure mode reviewer",
+      requiredEvidence: ["failure mode sandbox", "rationale ledger", "strategy simulation"],
+      hardStop: "Do not close stress board if failure modes remain unclear.",
+    },
+    {
+      id: "ASST_GATE_002",
+      label: "Fragility map is explicit enough",
+      lane: "fragility-map" as AgronomicScenarioStressLane,
+      score: context.resilienceConfidenceScore - context.fragilitySignalCount * 3,
+      reviewer: "fragility reviewer",
+      requiredEvidence: ["fragility map", "evidence integrity", "QA board"],
+      hardStop: "Do not present scenario pack without fragility language.",
+    },
+    {
+      id: "ASST_GATE_003",
+      label: "Contingency holds are controlled",
+      lane: "contingency-hold" as AgronomicScenarioStressLane,
+      score: 100 - context.contingencyHoldCount * 10,
+      reviewer: context.strategyLeadRole,
+      requiredEvidence: ["contingency holds", "non-execution envelope", "human signoff"],
+      hardStop: "Do not bypass contingency holds.",
+    },
+    {
+      id: "ASST_GATE_004",
+      label: "Non-execution envelope is enforced",
+      lane: "non-execution" as AgronomicScenarioStressLane,
+      score: 100,
+      reviewer: "safety reviewer",
+      requiredEvidence: ["non-execution envelope", "guardrails"],
+      hardStop: "No operational output is allowed.",
+    },
+    {
+      id: "ASST_GATE_005",
+      label: "Audit replay is reviewable",
+      lane: "audit-replay" as AgronomicScenarioStressLane,
+      score: context.resilienceConfidenceScore - context.unresolvedStressQuestionCount * 3,
+      reviewer: "stress audit reviewer",
+      requiredEvidence: ["audit replay", "source nodes", "stress cases"],
+      hardStop: "Do not close stress test if replay path is unclear.",
+    },
+    {
+      id: "ASST_GATE_006",
+      label: "Source blockers are within tolerance",
+      lane: "human-signoff" as AgronomicScenarioStressLane,
+      score: 100 - blockedSourceCount * 18,
+      reviewer: "operations reviewer",
+      requiredEvidence: sourceNodes.map((node) => node.title),
+      hardStop: "Resolve source blockers before stress-test-ready state.",
     },
   ];
 
-  return gates.map((gate) => {
-    const score = clampScore(gate.score);
+  return rows.map((row) => {
+    const score = clampScore(row.score);
     const severity = severityFromConcern(100 - score);
 
     return {
-      ...gate,
+      ...row,
       score,
       severity,
       passed: score >= 70,
@@ -519,205 +697,293 @@ function buildResilienceGates(
   });
 }
 
-function buildRollbackPlaybook(
-  scenarioNodes: StressScenarioNode[],
-  gates: ResilienceGate[],
-): RollbackPlaybookItem[] {
-  const blockedScenarios = scenarioNodes.filter((node) => node.blockers.length > 0);
-  const failedGates = gates.filter((gate) => !gate.passed);
-
+function buildResilienceStrategyPack(context: Required<AgronomicScenarioStressInput>): ResilienceStrategyPackItem[] {
   return [
     {
-      id: "AST_ROLLBACK_001",
-      label: "Return to evidence review",
-      priority: failedGates.length > 0 ? "urgent" : "high",
-      trigger: "Any failed resilience gate or dominant evidence gap.",
-      manualRollbackAction: "Send packet back to evidence and explainability review.",
-      blockedAction: "Do not store, approve or execute a scenario.",
+      id: "ASST_PACK_001",
+      label: "Scenario stress pack",
+      lane: "strategy-resilience",
+      packReady: context.stressRubricScore >= 70,
+      readinessScore: clampScore(context.stressRubricScore),
+      reviewerCheck: "Confirm stress pack contains only board review language.",
+      includedSections: ["stress cases", "failure modes", "fragility map"],
+      blockedSections: ["operational instruction", "field dispatch", "provider material"],
     },
     {
-      id: "AST_ROLLBACK_002",
-      label: "Hold board escalation",
-      priority: blockedScenarios.length > 2 ? "urgent" : "high",
-      trigger: "Multiple blocked scenario nodes or unresolved assurance gaps.",
-      manualRollbackAction: "Hold executive packet until human reviewer resolves blockers.",
-      blockedAction: "Do not produce board approval, forecast or public output.",
+      id: "ASST_PACK_002",
+      label: "Non-execution envelope pack",
+      lane: "non-execution",
+      packReady: true,
+      readinessScore: 100,
+      reviewerCheck: "Confirm every stress case carries non-execution protection.",
+      includedSections: ["blocked outcomes", "guardrails", "manual signoff markers"],
+      blockedSections: ["task creation", "intervention creation", "execution path"],
     },
     {
-      id: "AST_ROLLBACK_003",
-      label: "Freeze operational interpretation",
-      priority: "high",
-      trigger: "Any reviewer identifies the drill as operationally ambiguous.",
-      manualRollbackAction: "Keep scenario as a review drill only.",
-      blockedAction: "Do not create tasks, work orders, interventions or dispatches.",
+      id: "ASST_PACK_003",
+      label: "Resilience board signoff pack",
+      lane: "human-signoff",
+      packReady: context.failureModeCount < 7,
+      readinessScore: clampScore(100 - context.failureModeCount * 10),
+      reviewerCheck: "Confirm resilience signoff remains a manual board note only.",
+      includedSections: ["human signoff", "stress gates", "risk register"],
+      blockedSections: ["stored approval", "public share", "product or dosage output"],
     },
   ];
 }
 
-function buildStressEvidenceChain(
-  context: Required<AgronomicScenarioStressTestInput>,
-  scenarioNodes: StressScenarioNode[],
-): StressEvidenceChainItem[] {
+function buildAuditReplay(context: Required<AgronomicScenarioStressInput>): StressAuditReplayItem[] {
   return [
     {
-      id: "AST_CHAIN_001",
-      sequence: 1,
-      label: "Control tower context",
-      sourceIds: ["AST_NODE_006", "AST_NODE_008"],
-      chainConfidenceScore: context.controlTowerScore,
-      reviewerCheck: "Confirm command cards remain review prompts.",
-      missingEvidence: context.openEvidenceGapCount > 4 ? ["Control tower evidence gap note"] : [],
+      id: "ASST_REPLAY_001",
+      label: "Decision simulation replay",
+      lane: "audit-replay",
+      replayReady: context.decisionSimulationScore >= 70,
+      replayScore: clampScore(context.decisionSimulationScore),
+      severity: severityFromConcern(100 - context.decisionSimulationScore + context.unresolvedStressQuestionCount * 4),
+      replayQuestion: "Can V14.0 decision simulation be replayed for stress test context?",
+      manualResolution: "Attach decision simulation replay note.",
     },
     {
-      id: "AST_CHAIN_002",
-      sequence: 2,
-      label: "Explainability and compliance context",
-      sourceIds: ["AST_NODE_007", "AST_NODE_008"],
-      chainConfidenceScore: clampScore((context.explainabilityLedgerScore + context.compliancePassportScore) / 2),
-      reviewerCheck: "Confirm traceability and compliance readiness.",
-      missingEvidence: context.openEvidenceGapCount > 0 ? ["Traceability acceptance note"] : [],
+      id: "ASST_REPLAY_002",
+      label: "Evidence and rationale replay",
+      lane: "audit-replay",
+      replayReady: context.evidenceIntegrityScore >= 70 && context.rationaleLedgerScore >= 70,
+      replayScore: clampScore((context.evidenceIntegrityScore + context.rationaleLedgerScore) / 2),
+      severity: severityFromConcern(100 - context.evidenceIntegrityScore + context.fragilitySignalCount * 4),
+      replayQuestion: "Can evidence and rationale fragility be replayed manually?",
+      manualResolution: "Attach evidence and rationale replay note.",
     },
     {
-      id: "AST_CHAIN_003",
-      sequence: 3,
-      label: "Assurance and signoff context",
-      sourceIds: ["AST_NODE_006"],
-      chainConfidenceScore: context.decisionAssuranceScore,
-      reviewerCheck: "Confirm human signoff is still required.",
-      missingEvidence: context.pendingDecisionCount > 0 ? ["Decision assurance signoff note"] : [],
+      id: "ASST_REPLAY_003",
+      label: "QA and compliance replay",
+      lane: "audit-replay",
+      replayReady: context.qualityAssuranceScore >= 70 && context.complianceAttestationScore >= 70,
+      replayScore: clampScore((context.qualityAssuranceScore + context.complianceAttestationScore) / 2),
+      severity: severityFromConcern(100 - context.complianceAttestationScore + context.contingencyHoldCount * 5),
+      replayQuestion: "Can QA and compliance be replayed for non-execution assurance?",
+      manualResolution: "Attach QA and compliance replay note.",
     },
-    {
-      id: "AST_CHAIN_004",
-      sequence: 4,
-      label: "Scenario pressure context",
-      sourceIds: scenarioNodes.filter((node) => node.priority === "urgent" || node.priority === "high").map((node) => node.id),
-      chainConfidenceScore: context.reviewerConfidenceScore,
-      reviewerCheck: "Confirm stress test remains non operational.",
-      missingEvidence: ["Reviewer acceptance note"],
-    },
-  ].map((item) => ({
-    ...item,
-    chainConfidenceScore: clampScore(item.chainConfidenceScore),
-  }));
+  ];
 }
 
-function buildStressTestGaps(
-  context: Required<AgronomicScenarioStressTestInput>,
-  scenarioNodes: StressScenarioNode[],
-  gates: ResilienceGate[],
-): StressTestGap[] {
-  const gaps: StressTestGap[] = [];
+function buildStressSignoff(
+  context: Required<AgronomicScenarioStressInput>,
+  gates: StressGateItem[],
+): StressSignoffItem[] {
+  return [
+    {
+      id: "ASST_SIGNOFF_001",
+      label: "Failure mode signoff",
+      lane: "human-signoff",
+      signoffReady: context.failureModeCount < 7,
+      reviewer: "failure mode reviewer",
+      requiredEvidence: ["failure mode sandbox", "fragility map", "stress gates"],
+      safeOutcome: "Manual failure mode signoff only.",
+    },
+    {
+      id: "ASST_SIGNOFF_002",
+      label: "Non-execution signoff",
+      lane: "human-signoff",
+      signoffReady: true,
+      reviewer: "safety reviewer",
+      requiredEvidence: ["non-execution envelope", "guardrails"],
+      safeOutcome: "Manual non-execution signoff only.",
+    },
+    {
+      id: "ASST_SIGNOFF_003",
+      label: "Stress board signoff",
+      lane: "human-signoff",
+      signoffReady: gates.every((gate) => gate.passed),
+      reviewer: context.strategyLeadRole,
+      requiredEvidence: gates.map((gate) => gate.label),
+      safeOutcome: "Manual stress board signoff packet only.",
+    },
+  ];
+}
 
-  if (context.openEvidenceGapCount > 0) {
-    gaps.push({
-      id: "AST_GAP_001",
-      label: "Open evidence gaps",
-      lane: "evidence-failure",
-      severity: context.openEvidenceGapCount >= 6 ? "critical" : "elevated",
-      reason: `${context.openEvidenceGapCount} evidence gaps remain unresolved.`,
-      manualResolution: "Close, downgrade or explicitly accept evidence gaps through human review.",
+function buildRiskRegister(
+  context: Required<AgronomicScenarioStressInput>,
+  sourceNodes: AgronomicScenarioStressSourceNode[],
+  gates: StressGateItem[],
+  holds: ContingencyHoldItem[],
+  signoff: StressSignoffItem[],
+): StressRiskItem[] {
+  const risks: StressRiskItem[] = [];
+
+  if (context.failureModeCount > 0) {
+    risks.push({
+      id: "ASST_RISK_001",
+      label: "Failure modes require review",
+      lane: "failure-mode",
+      severity: context.failureModeCount >= 6 ? "critical" : "elevated",
+      reason: `${context.failureModeCount} failure modes require board review.`,
+      manualResolution: "Review failure modes manually before stress board closure.",
+      blocksStressBoard: context.failureModeCount >= 6,
     });
   }
 
-  scenarioNodes
+  if (context.fragilitySignalCount > 0) {
+    risks.push({
+      id: "ASST_RISK_002",
+      label: "Fragility signals remain high",
+      lane: "fragility-map",
+      severity: context.fragilitySignalCount >= 6 ? "critical" : "elevated",
+      reason: `${context.fragilitySignalCount} fragility signals require explicit language.`,
+      manualResolution: "Document fragility explicitly in stress pack.",
+      blocksStressBoard: context.fragilitySignalCount >= 7,
+    });
+  }
+
+  sourceNodes
     .filter((node) => node.blockers.length > 0)
     .forEach((node, index) => {
-      gaps.push({
-        id: `AST_NODE_GAP_${String(index + 1).padStart(3, "0")}`,
+      risks.push({
+        id: `ASST_SOURCE_RISK_${String(index + 1).padStart(3, "0")}`,
         label: `${node.title} blocker`,
         lane: node.lane,
         severity: node.severity,
         reason: node.blockers.join(" "),
         manualResolution: node.reviewerFocus,
+        blocksStressBoard: node.severity === "critical",
       });
     });
 
   gates
     .filter((gate) => !gate.passed)
     .forEach((gate, index) => {
-      gaps.push({
-        id: `AST_GATE_GAP_${String(index + 1).padStart(3, "0")}`,
+      risks.push({
+        id: `ASST_GATE_RISK_${String(index + 1).padStart(3, "0")}`,
         label: gate.label,
         lane: gate.lane,
         severity: gate.severity,
-        reason: gate.reason,
+        reason: `Stress gate score is ${gate.score}/100.`,
         manualResolution: gate.hardStop,
+        blocksStressBoard: gate.severity === "critical" || gate.score < 60,
       });
     });
 
-  return gaps;
+  holds
+    .filter((item) => item.blocksStressClosure)
+    .forEach((item, index) => {
+      risks.push({
+        id: `ASST_HOLD_RISK_${String(index + 1).padStart(3, "0")}`,
+        label: item.label,
+        lane: item.lane,
+        severity: item.severity,
+        reason: item.holdReason,
+        manualResolution: item.manualResolution,
+        blocksStressBoard: true,
+      });
+    });
+
+  signoff
+    .filter((item) => !item.signoffReady)
+    .forEach((item, index) => {
+      risks.push({
+        id: `ASST_SIGNOFF_RISK_${String(index + 1).padStart(3, "0")}`,
+        label: item.label,
+        lane: item.lane,
+        severity: "elevated",
+        reason: "Stress signoff is not ready in fixture.",
+        manualResolution: item.safeOutcome,
+        blocksStressBoard: true,
+      });
+    });
+
+  return risks;
 }
 
 export function buildAiAgronomicScenarioStressTestReport(
-  input: AgronomicScenarioStressTestInput = {},
-): AgronomicScenarioStressTestReport {
+  input: AgronomicScenarioStressInput = {},
+): AgronomicScenarioStressReport {
   const context = normalizeInput(input);
-  const scenarioNodes = buildScenarioNodes(context);
-  const failureModes = buildFailureModes(scenarioNodes);
-  const warRoomDrills = buildWarRoomDrills(context, scenarioNodes);
-  const resilienceGates = buildResilienceGates(context, scenarioNodes);
-  const rollbackPlaybook = buildRollbackPlaybook(scenarioNodes, resilienceGates);
-  const stressEvidenceChain = buildStressEvidenceChain(context, scenarioNodes);
-  const stressTestGaps = buildStressTestGaps(context, scenarioNodes, resilienceGates);
+  const sourceNodes = buildSourceNodes(context);
+  const scenarioStressCases = buildScenarioStressCases(context);
+  const failureModeSandbox = buildFailureModeSandbox(context);
+  const fragilityMap = buildFragilityMap(context);
+  const contingencyHolds = buildContingencyHolds(context);
+  const nonExecutionEnvelope = buildNonExecutionEnvelope();
+  const stressGateMatrix = buildStressGateMatrix(context, sourceNodes);
+  const resilienceStrategyPack = buildResilienceStrategyPack(context);
+  const auditReplay = buildAuditReplay(context);
+  const stressSignoff = buildStressSignoff(context, stressGateMatrix);
+  const stressRiskRegister = buildRiskRegister(
+    context,
+    sourceNodes,
+    stressGateMatrix,
+    contingencyHolds,
+    stressSignoff,
+  );
+
+  const sourceAverage =
+    sourceNodes.reduce((sum, node) => sum + node.readinessScore + node.confidenceScore, 0) /
+    Math.max(1, sourceNodes.length * 2);
 
   const scenarioAverage =
-    scenarioNodes.reduce((sum, node) => sum + node.resilienceScore + (100 - node.pressureScore), 0) /
-    Math.max(1, scenarioNodes.length * 2);
+    scenarioStressCases.reduce((sum, item) => sum + item.stressScore, 0) /
+    Math.max(1, scenarioStressCases.length);
+
+  const failureAverage =
+    failureModeSandbox.reduce((sum, item) => sum + (100 - item.failurePressureScore), 0) /
+    Math.max(1, failureModeSandbox.length);
 
   const gateAverage =
-    resilienceGates.reduce((sum, gate) => sum + gate.score, 0) / Math.max(1, resilienceGates.length);
+    stressGateMatrix.reduce((sum, gate) => sum + gate.score, 0) /
+    Math.max(1, stressGateMatrix.length);
 
-  const chainAverage =
-    stressEvidenceChain.reduce((sum, item) => sum + item.chainConfidenceScore, 0) /
-    Math.max(1, stressEvidenceChain.length);
-
-  const gapPenalty = stressTestGaps.filter((gap) => gap.severity === "critical").length * 10;
-  const drillPressure =
-    warRoomDrills.reduce((sum, drill) => sum + priorityWeight[drill.priority], 0) /
-    Math.max(1, warRoomDrills.length * 3);
+  const riskPenalty = stressRiskRegister.filter((item) => item.blocksStressBoard).length * 10;
+  const failurePressure =
+    failureModeSandbox.reduce((sum, item) => sum + priorityWeight[item.priority], 0) /
+    Math.max(1, failureModeSandbox.length * 3);
 
   const stressTestScore = clampScore(
-    scenarioAverage / 3 +
-      gateAverage / 3 +
-      chainAverage / 3 +
-      drillPressure -
-      gapPenalty -
-      context.openEvidenceGapCount -
-      context.pendingDecisionCount,
+    sourceAverage / 4 +
+      scenarioAverage / 4 +
+      failureAverage / 4 +
+      gateAverage / 4 +
+      failurePressure -
+      riskPenalty -
+      context.failureModeCount -
+      context.fragilitySignalCount,
   );
 
   const overallSeverity = severityFromConcern(
     clampScore(
-      context.activeCaseCount * 5 +
-        context.highConcernFieldCount * 7 +
-        context.openEvidenceGapCount * 7 +
-        context.pendingDecisionCount * 5 +
-        resilienceGates.filter((gate) => !gate.passed).length * 9,
+      context.stressScenarioCount * 3 +
+        context.failureModeCount * 8 +
+        context.fragilitySignalCount * 8 +
+        context.contingencyHoldCount * 8 +
+        context.unresolvedStressQuestionCount * 6,
     ),
   );
 
   const stressTestStatus = bandFromScore(
     stressTestScore,
-    stressTestGaps.filter((gap) => gap.severity === "critical").length,
+    stressRiskRegister.filter((item) => item.severity === "critical").length,
   );
 
   return {
     generatedAt: new Date().toISOString(),
     mode: "dry-run",
     context,
-    readiness: AGRONOMIC_SCENARIO_STRESS_TEST_READINESS,
+    readiness: AGRONOMIC_SCENARIO_STRESS_READINESS,
     stressTestScore,
     stressTestStatus,
     overallSeverity,
-    scenarioNodes,
-    failureModes,
-    warRoomDrills,
-    resilienceGates,
-    rollbackPlaybook,
-    stressEvidenceChain,
-    stressTestGaps,
+    sourceNodes,
+    scenarioStressCases,
+    failureModeSandbox,
+    fragilityMap,
+    contingencyHolds,
+    nonExecutionEnvelope,
+    stressGateMatrix,
+    resilienceStrategyPack,
+    auditReplay,
+    stressSignoff,
+    stressRiskRegister,
     redactedExportBundle: {
-      exportId: "agronomic_scenario_stress_test_v11_4_redacted_dry_run",
+      exportId: "agronomic_scenario_stress_test_v14_1_redacted_dry_run",
       includesFieldIdentifiers: false,
       includesPrivateNotes: false,
       includesProviderPayloads: false,
@@ -727,24 +993,28 @@ export function buildAiAgronomicScenarioStressTestReport(
       includesDosageGuidance: false,
       sections: [
         "context",
-        "scenario nodes",
-        "failure modes",
-        "war room drills",
-        "resilience gates",
-        "rollback playbook",
-        "stress evidence chain",
-        "stress test gaps",
+        "source nodes",
+        "scenario stress cases",
+        "failure mode sandbox",
+        "fragility map",
+        "contingency holds",
+        "non-execution envelope",
+        "stress gate matrix",
+        "resilience strategy pack",
+        "audit replay",
+        "stress signoff",
+        "stress risk register",
         "safety summary",
       ],
     },
     safetySummary: [
-      "Scenario stress test is local dry-run only.",
+      "Agronomic scenario stress test is local dry-run only.",
       "No provider call, persistence, memory write, task creation, intervention creation or execution is performed.",
       "No product recommendation, dosage advice, public sharing, formal approval or production forecast is produced.",
-      "War room drills and rollback playbook are review aids only.",
-      "Every scenario remains behind human review and resilience gates.",
+      "Failure modes, fragility map and resilience pack are review concepts only.",
+      "Every stress-test conclusion remains behind human review, non-execution envelope and manual signoff.",
     ],
   };
 }
 
-export const aiAgronomicScenarioStressTestVersion = "V11.4";
+export const aiAgronomicScenarioStressTestVersion = "V14.1";

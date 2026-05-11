@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   buildAiAgronomicScenarioStressTestReport,
-  type AgronomicScenarioStressTestInput,
+  type AgronomicScenarioStressInput,
 } from "@/lib/ai/aiAgronomicScenarioStressTest";
 
 export const dynamic = "force-dynamic";
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const body = (await request.json().catch(() => ({}))) as AgronomicScenarioStressTestInput;
+  const body = (await request.json().catch(() => ({}))) as AgronomicScenarioStressInput;
   const report = buildAiAgronomicScenarioStressTestReport(body);
 
   return NextResponse.json({
