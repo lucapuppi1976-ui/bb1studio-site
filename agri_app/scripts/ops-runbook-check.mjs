@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V13_6_HUMAN_REVIEW_COMPLIANCE_ATTESTATION_CHECK: esegue il check V13.6 prima dei controlli operativi aggregati.
+const __agriHumanReviewComplianceAttestationRunV136 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-human-review-compliance-attestation-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriHumanReviewComplianceAttestationRunV136();
+
 // AGRI_V13_5_HUMAN_REVIEW_QUALITY_ASSURANCE_CHECK: esegue il check V13.5 prima dei controlli operativi aggregati.
 const __agriHumanReviewQualityAssuranceRunV135 = async () => {
   const { spawnSync } = await import("node:child_process");
