@@ -2157,3 +2157,25 @@ ops:ai-human-review-compliance-attestation-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V14.0 — AI Agronomic Decision Simulation Board & Non-Execution Strategy Pack
+
+### Scope
+
+V14.0 apre la fase V14 con un modulo locale dry-run per simulazione decisionale agronomica post-review e non-execution strategy pack.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-decision-simulation-board-dry-run`;
+- engine locale `aiAgronomicDecisionSimulationBoard.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- decision simulation board, option scenario matrix, agronomic uncertainty map, non-execution certificate, strategy gate matrix, board strategy pack, audit replay e strategy signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-decision-simulation-board-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

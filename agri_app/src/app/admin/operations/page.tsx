@@ -71,6 +71,7 @@ import OperationsAiReviewerRationaleLedger from "./OperationsAiReviewerRationale
 import OperationsAiHumanReviewBoardPack from "./OperationsAiHumanReviewBoardPack";
 import OperationsAiHumanReviewQualityAssurance from "./OperationsAiHumanReviewQualityAssurance";
 import OperationsAiHumanReviewComplianceAttestation from "./OperationsAiHumanReviewComplianceAttestation";
+import OperationsAiAgronomicDecisionSimulationBoard from "./OperationsAiAgronomicDecisionSimulationBoard";
 
 const sections = [
   {
@@ -356,6 +357,8 @@ export default function AdminOperationsPage() {
       <OperationsAiHumanReviewQualityAssurance />
 
       <OperationsAiHumanReviewComplianceAttestation />
+
+      <OperationsAiAgronomicDecisionSimulationBoard />
 </main>
   );
 }
