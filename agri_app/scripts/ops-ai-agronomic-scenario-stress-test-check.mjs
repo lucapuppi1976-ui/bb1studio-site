@@ -36,7 +36,7 @@ const files = {
   route: "src/app/api/ops/ai-agronomic-scenario-stress-test-dry-run/route.ts",
   ui: "src/app/ai/photo-diagnosis/AgronomicScenarioStressTestPanel.tsx",
   admin: "src/app/admin/operations/OperationsAiAgronomicScenarioStressTest.tsx",
-  readme: "AI_AGRONOMIC_SCENARIO_STRESS_TEST_V11_4.md",
+  readme: "AI_AGRONOMIC_SCENARIO_STRESS_TEST_V14_1.md",
   pkg: "package.json",
   runbook: "OPERATIONS_RUNBOOK_V4_14.md",
 };
@@ -51,15 +51,14 @@ const runbook = readFile(files.runbook);
 
 requireText("engine", engine, "buildAiAgronomicScenarioStressTestReport");
 requireText("engine", engine, "aiAgronomicScenarioStressTestVersion");
-requireText("engine", engine, "AgronomicScenarioStressTestReport");
-requireText("engine", engine, "StressScenarioNode");
+requireText("engine", engine, "AgronomicScenarioStressReport");
+requireText("engine", engine, "ScenarioStressCase");
 requireText("engine", engine, "FailureModeItem");
-requireText("engine", engine, "WarRoomDrillCard");
-requireText("engine", engine, "RollbackPlaybookItem");
+requireText("engine", engine, "NonExecutionEnvelopeItem");
 requireText("engine", engine, "scenarioStressTestReady: true");
-requireText("engine", engine, "resilienceWarRoomReady: true");
-requireText("engine", engine, "failureModeReviewReady: true");
-requireText("engine", engine, "rollbackPlaybookReady: true");
+requireText("engine", engine, "failureModeSandboxReady: true");
+requireText("engine", engine, "nonExecutionEnvelopeReady: true");
+requireText("engine", engine, "humanStressSignoffReady: true");
 
 requireText("route", route, "export async function GET");
 requireText("route", route, "export async function POST");
@@ -68,14 +67,14 @@ requireText("route", route, "Accesso non consentito.");
 requireText("route", route, "/api/ops/ai-agronomic-scenario-stress-test-dry-run");
 
 requireText("ui", ui, "AgronomicScenarioStressTestPanel");
-requireText("ui", ui, "Agronomic Scenario Stress Test & Resilience War Room");
+requireText("ui", ui, "Agronomic Scenario Stress Test & Failure Mode Sandbox");
 
 requireText("admin", admin, "OperationsAiAgronomicScenarioStressTest");
 requireText("admin", admin, "/api/ops/ai-agronomic-scenario-stress-test-dry-run");
 
-requireText("readme", readme, "AI Agronomic Scenario Stress Test & Resilience War Room");
+requireText("readme", readme, "AI Agronomic Scenario Stress Test & Failure Mode Sandbox");
 requireText("package", pkg, "ops:ai-agronomic-scenario-stress-test-check");
-requireText("runbook", runbook, "V11.4");
+requireText("runbook", runbook, "V14.1");
 requireText("runbook", runbook, "ops:ai-agronomic-scenario-stress-test-check");
 
 const falseFlags = [
@@ -180,13 +179,13 @@ for (const supportScript of [
   "scripts/ops-quick-coverage-check.mjs",
 ]) {
   const content = readFile(supportScript);
-  requireText(supportScript, content, "AGRI_V11_4_AGRONOMIC_SCENARIO_STRESS_TEST_CHECK");
+  requireText(supportScript, content, "AGRI_V14_1_AGRONOMIC_SCENARIO_STRESS_TEST_CHECK");
 }
 
 const summary = {
   ok: failures.length === 0,
   check: "ops-ai-agronomic-scenario-stress-test-check",
-  version: "V11.4",
+  version: "V14.1",
   totalFailures: failures.length,
   failures,
 };

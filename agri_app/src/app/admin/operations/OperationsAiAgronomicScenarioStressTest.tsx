@@ -2,21 +2,19 @@ import { buildAiAgronomicScenarioStressTestReport } from "@/lib/ai/aiAgronomicSc
 
 export default function OperationsAiAgronomicScenarioStressTest() {
   const report = buildAiAgronomicScenarioStressTestReport({
-    activeCaseCount: 9,
-    pendingDecisionCount: 5,
-    highConcernFieldCount: 4,
-    openEvidenceGapCount: 6,
-    controlTowerScore: 72,
-    explainabilityLedgerScore: 74,
-    compliancePassportScore: 70,
-    decisionAssuranceScore: 68,
-    climateWaterScore: 73,
-    biosecurityScore: 76,
-    soilNutrientScore: 72,
-    phenologyScore: 69,
-    harvestQualityScore: 71,
-    reviewerConfidenceScore: 73,
-    reviewerRole: "operations scenario stress test reviewer",
+    stressScenarioCount: 7,
+    failureModeCount: 6,
+    fragilitySignalCount: 6,
+    contingencyHoldCount: 5,
+    unresolvedStressQuestionCount: 5,
+    decisionSimulationScore: 72,
+    evidenceIntegrityScore: 73,
+    rationaleLedgerScore: 71,
+    qualityAssuranceScore: 72,
+    complianceAttestationScore: 72,
+    stressRubricScore: 71,
+    resilienceConfidenceScore: 72,
+    strategyLeadRole: "operations agronomic stress board lead",
   });
 
   return (
@@ -24,14 +22,14 @@ export default function OperationsAiAgronomicScenarioStressTest() {
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-700">
-            Operations · V11.4
+            Operations · V14.1
           </p>
           <h2 className="mt-2 text-xl font-bold text-slate-950">
             AI Agronomic Scenario Stress Test
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-            Pannello operativo per controllare scenario nodes, failure modes, resilience gates,
-            war room drills, rollback playbook, evidence chain e hard-stop safety.
+            Pannello operativo per scenario stress cases, failure mode sandbox,
+            fragility map, contingency holds, non-execution envelope, stress gates e signoff umano.
           </p>
         </div>
 
@@ -57,13 +55,13 @@ export default function OperationsAiAgronomicScenarioStressTest() {
           <p className="mt-2 text-xl font-bold text-slate-950">{report.overallSeverity}</p>
         </div>
         <div className="rounded-2xl bg-slate-50 p-4">
-          <p className="text-xs uppercase tracking-wide text-slate-500">Failure modes</p>
-          <p className="mt-2 text-2xl font-bold text-slate-950">{report.failureModes.length}</p>
+          <p className="text-xs uppercase tracking-wide text-slate-500">Risks</p>
+          <p className="mt-2 text-2xl font-bold text-slate-950">{report.stressRiskRegister.length}</p>
         </div>
         <div className="rounded-2xl bg-slate-50 p-4">
-          <p className="text-xs uppercase tracking-wide text-slate-500">Execution</p>
+          <p className="text-xs uppercase tracking-wide text-slate-500">Provider</p>
           <p className="mt-2 text-2xl font-bold text-slate-950">
-            {report.readiness.automaticExecutionAllowed ? "ON" : "OFF"}
+            {report.readiness.providerCalled ? "ON" : "OFF"}
           </p>
         </div>
       </div>
@@ -71,17 +69,17 @@ export default function OperationsAiAgronomicScenarioStressTest() {
       <div className="mt-5 grid gap-4 lg:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 p-4">
           <h3 className="text-sm font-bold uppercase tracking-wide text-slate-700">
-            Resilience gates
+            Resilience strategy pack
           </h3>
           <div className="mt-3 space-y-3">
-            {report.resilienceGates.map((gate) => (
-              <div key={gate.id} className="rounded-xl bg-slate-50 p-4">
-                <p className="text-sm font-semibold text-slate-950">{gate.label}</p>
+            {report.resilienceStrategyPack.map((item) => (
+              <div key={item.id} className="rounded-xl bg-slate-50 p-4">
+                <p className="text-sm font-semibold text-slate-950">{item.label}</p>
                 <p className="mt-1 text-xs text-slate-500">
-                  {gate.lane} · {gate.severity} · {gate.passed ? "passed" : "review"}
+                  {item.lane} · {item.packReady ? "ready" : "review"} · {item.readinessScore}/100
                 </p>
                 <p className="mt-2 text-xs font-medium text-emerald-700">
-                  {gate.hardStop}
+                  {item.reviewerCheck}
                 </p>
               </div>
             ))}
@@ -94,6 +92,7 @@ export default function OperationsAiAgronomicScenarioStressTest() {
           </h3>
           <ul className="mt-3 space-y-2 text-sm text-slate-700">
             <li>Provider AI: {report.readiness.providerAiReady ? "ready" : "locked"}</li>
+            <li>Provider called: {report.readiness.providerCalled ? "yes" : "no"}</li>
             <li>Persistence: {report.readiness.persistenceReady ? "ready" : "locked"}</li>
             <li>Memory persistence: {report.readiness.memoryPersistenceAllowed ? "allowed" : "locked"}</li>
             <li>Task creation: {report.readiness.automaticTaskCreationAllowed ? "allowed" : "locked"}</li>
@@ -101,7 +100,6 @@ export default function OperationsAiAgronomicScenarioStressTest() {
             <li>Automatic execution: {report.readiness.automaticExecutionAllowed ? "allowed" : "locked"}</li>
             <li>Product prescription: {report.readiness.productPrescriptionAllowed ? "allowed" : "locked"}</li>
             <li>Dosage advice: {report.readiness.dosageAdviceAllowed ? "allowed" : "locked"}</li>
-            <li>Public share: {report.readiness.publicShareAllowed ? "allowed" : "locked"}</li>
           </ul>
         </div>
       </div>

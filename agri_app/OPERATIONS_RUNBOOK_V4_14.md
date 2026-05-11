@@ -2179,3 +2179,25 @@ ops:ai-agronomic-decision-simulation-board-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V14.1 — AI Agronomic Scenario Stress Test & Failure Mode Sandbox
+
+### Scope
+
+V14.1 aggiunge un modulo locale dry-run per stress test degli scenari agronomici non esecutivi, failure mode sandbox e resilience strategy pack.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-scenario-stress-test-dry-run`;
+- engine locale `aiAgronomicScenarioStressTest.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- scenario stress cases, failure mode sandbox, fragility map, contingency holds, non-execution envelope, stress gate matrix, resilience strategy pack, audit replay e stress signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-scenario-stress-test-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
