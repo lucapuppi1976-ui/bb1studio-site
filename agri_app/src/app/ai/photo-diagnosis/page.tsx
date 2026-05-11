@@ -63,6 +63,7 @@ import ReviewerConsensusCalibrationPanel from "./ReviewerConsensusCalibrationPan
 import EvidenceIntegrityCustodyPanel from "./EvidenceIntegrityCustodyPanel";
 import ReviewerRationaleLedgerPanel from "./ReviewerRationaleLedgerPanel";
 import HumanReviewBoardPackPanel from "./HumanReviewBoardPackPanel";
+import HumanReviewQualityAssurancePanel from "./HumanReviewQualityAssurancePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -179,6 +180,8 @@ export default function AiPhotoDiagnosisPage() {
       <ReviewerRationaleLedgerPanel />
 
       <HumanReviewBoardPackPanel />
+
+      <HumanReviewQualityAssurancePanel />
 </main>
   );
 }

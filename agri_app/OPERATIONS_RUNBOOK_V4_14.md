@@ -2113,3 +2113,25 @@ ops:ai-human-review-board-pack-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V13.5 — AI Human Review Quality Assurance & Peer Calibration Audit
+
+### Scope
+
+V13.5 aggiunge un modulo locale dry-run per quality assurance della revisione umana, peer calibration, rubric quality e QA signoff.
+
+- endpoint ops protetto `/api/ops/ai-human-review-quality-assurance-dry-run`;
+- engine locale `aiHumanReviewQualityAssurance.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- peer calibration board, rubric quality matrix, reviewer drift watch, QA gate matrix, QA exception register, decision freeze certificate, audit replay e QA signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-human-review-quality-assurance-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
