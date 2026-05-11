@@ -104,7 +104,8 @@
     "ops:ai-human-review-board-pack-check": "node scripts/ops-ai-human-review-board-pack-check.mjs",
     "ops:ai-human-review-quality-assurance-check": "node scripts/ops-ai-human-review-quality-assurance-check.mjs",
     "ops:ai-human-review-compliance-attestation-check": "node scripts/ops-ai-human-review-compliance-attestation-check.mjs",
-    "ops:ai-agronomic-decision-simulation-board-check": "node scripts/ops-ai-agronomic-decision-simulation-board-check.mjs"
+    "ops:ai-agronomic-decision-simulation-board-check": "node scripts/ops-ai-agronomic-decision-simulation-board-check.mjs",
+    "ops:ai-agronomic-strategy-portfolio-comparator-check": "node scripts/ops-ai-agronomic-strategy-portfolio-comparator-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

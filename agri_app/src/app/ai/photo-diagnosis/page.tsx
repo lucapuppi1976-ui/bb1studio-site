@@ -66,6 +66,7 @@ import HumanReviewBoardPackPanel from "./HumanReviewBoardPackPanel";
 import HumanReviewQualityAssurancePanel from "./HumanReviewQualityAssurancePanel";
 import HumanReviewComplianceAttestationPanel from "./HumanReviewComplianceAttestationPanel";
 import AgronomicDecisionSimulationBoardPanel from "./AgronomicDecisionSimulationBoardPanel";
+import AgronomicStrategyPortfolioComparatorPanel from "./AgronomicStrategyPortfolioComparatorPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -188,6 +189,8 @@ export default function AiPhotoDiagnosisPage() {
       <HumanReviewComplianceAttestationPanel />
 
       <AgronomicDecisionSimulationBoardPanel />
+
+      <AgronomicStrategyPortfolioComparatorPanel />
 </main>
   );
 }

@@ -72,6 +72,7 @@ import OperationsAiHumanReviewBoardPack from "./OperationsAiHumanReviewBoardPack
 import OperationsAiHumanReviewQualityAssurance from "./OperationsAiHumanReviewQualityAssurance";
 import OperationsAiHumanReviewComplianceAttestation from "./OperationsAiHumanReviewComplianceAttestation";
 import OperationsAiAgronomicDecisionSimulationBoard from "./OperationsAiAgronomicDecisionSimulationBoard";
+import OperationsAiAgronomicStrategyPortfolioComparator from "./OperationsAiAgronomicStrategyPortfolioComparator";
 
 const sections = [
   {
@@ -359,6 +360,8 @@ export default function AdminOperationsPage() {
       <OperationsAiHumanReviewComplianceAttestation />
 
       <OperationsAiAgronomicDecisionSimulationBoard />
+
+      <OperationsAiAgronomicStrategyPortfolioComparator />
 </main>
   );
 }
