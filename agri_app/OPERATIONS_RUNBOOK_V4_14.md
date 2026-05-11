@@ -2201,3 +2201,25 @@ ops:ai-agronomic-scenario-stress-test-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V14.2 — AI Agronomic Strategy Portfolio Comparator & Trade-Off Board
+
+### Scope
+
+V14.2 aggiunge un modulo locale dry-run per confronto di portafogli strategici agronomici, trade-off board e option ranking non esecutivo.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-strategy-portfolio-comparator-dry-run`;
+- engine locale `aiAgronomicStrategyPortfolioComparator.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- strategy portfolio options, tradeoff board, option ranking matrix, uncertainty budget, non-execution boundary, portfolio gate matrix, board portfolio pack, audit replay e portfolio signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-strategy-portfolio-comparator-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
