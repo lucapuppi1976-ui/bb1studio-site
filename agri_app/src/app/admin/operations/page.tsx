@@ -70,6 +70,7 @@ import OperationsAiEvidenceIntegrityCustody from "./OperationsAiEvidenceIntegrit
 import OperationsAiReviewerRationaleLedger from "./OperationsAiReviewerRationaleLedger";
 import OperationsAiHumanReviewBoardPack from "./OperationsAiHumanReviewBoardPack";
 import OperationsAiHumanReviewQualityAssurance from "./OperationsAiHumanReviewQualityAssurance";
+import OperationsAiHumanReviewComplianceAttestation from "./OperationsAiHumanReviewComplianceAttestation";
 
 const sections = [
   {
@@ -353,6 +354,8 @@ export default function AdminOperationsPage() {
       <OperationsAiHumanReviewBoardPack />
 
       <OperationsAiHumanReviewQualityAssurance />
+
+      <OperationsAiHumanReviewComplianceAttestation />
 </main>
   );
 }

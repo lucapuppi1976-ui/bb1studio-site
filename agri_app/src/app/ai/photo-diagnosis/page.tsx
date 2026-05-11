@@ -64,6 +64,7 @@ import EvidenceIntegrityCustodyPanel from "./EvidenceIntegrityCustodyPanel";
 import ReviewerRationaleLedgerPanel from "./ReviewerRationaleLedgerPanel";
 import HumanReviewBoardPackPanel from "./HumanReviewBoardPackPanel";
 import HumanReviewQualityAssurancePanel from "./HumanReviewQualityAssurancePanel";
+import HumanReviewComplianceAttestationPanel from "./HumanReviewComplianceAttestationPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -182,6 +183,8 @@ export default function AiPhotoDiagnosisPage() {
       <HumanReviewBoardPackPanel />
 
       <HumanReviewQualityAssurancePanel />
+
+      <HumanReviewComplianceAttestationPanel />
 </main>
   );
 }
