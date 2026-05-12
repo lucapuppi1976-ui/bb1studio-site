@@ -81,6 +81,7 @@ import OperationsAiProviderRuntimeStagingGateway from "./OperationsAiProviderRun
 import OperationsAiCasePersistenceMigrationPlan from "./OperationsAiCasePersistenceMigrationPlan";
 import OperationsAiPersistentHumanReviewWorkflow from "./OperationsAiPersistentHumanReviewWorkflow";
 import OperationsAiProviderStagingShadowRun from "./OperationsAiProviderStagingShadowRun";
+import OperationsAiMigrationRehearsalStorageGate from "./OperationsAiMigrationRehearsalStorageGate";
 
 const sections = [
   {
@@ -386,6 +387,8 @@ export default function AdminOperationsPage() {
       <OperationsAiPersistentHumanReviewWorkflow />
 
       <OperationsAiProviderStagingShadowRun />
+
+      <OperationsAiMigrationRehearsalStorageGate />
 </main>
   );
 }
