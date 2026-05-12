@@ -76,6 +76,7 @@ import OperationsAiAgronomicStrategyPortfolioComparator from "./OperationsAiAgro
 import OperationsAiAgronomicSensitivityRobustness from "./OperationsAiAgronomicSensitivityRobustness";
 import OperationsAiAgronomicGovernanceFreeze from "./OperationsAiAgronomicGovernanceFreeze";
 import OperationsAiAgronomicExecutiveDossier from "./OperationsAiAgronomicExecutiveDossier";
+import OperationsAiOnlineOperationalReadiness from "./OperationsAiOnlineOperationalReadiness";
 
 const sections = [
   {
@@ -371,6 +372,8 @@ export default function AdminOperationsPage() {
       <OperationsAiAgronomicGovernanceFreeze />
 
       <OperationsAiAgronomicExecutiveDossier />
+
+      <OperationsAiOnlineOperationalReadiness />
 </main>
   );
 }

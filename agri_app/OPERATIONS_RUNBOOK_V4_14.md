@@ -2289,3 +2289,29 @@ ops:ai-agronomic-executive-dossier-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.0 — Online Operational Readiness & Provider Activation Plan
+
+### Scope
+
+V15.0 apre la fase di readiness operativa online. La versione non abilita provider AI reali, persistenza AI, memoria persistente, automazioni, task, interventi o esecuzione.
+
+- endpoint ops protetto `/api/ops/ai-online-operational-readiness-dry-run`;
+- engine locale `aiOnlineOperationalReadiness.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- provider activation plan, environment readiness matrix, data migration plan, human review workflow plan, access control plan, cost/rate limit plan, rollback and kill-switch plan, beta go/no-go board, readiness gates e board pack;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-online-operational-readiness-check
+```
+
+### Stato
+
+Online controllato dry-run consentito. AI operativa reale non ancora consentita.
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
