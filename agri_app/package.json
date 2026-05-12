@@ -109,7 +109,8 @@
     "ops:ai-agronomic-sensitivity-robustness-check": "node scripts/ops-ai-agronomic-sensitivity-robustness-check.mjs",
     "ops:ai-agronomic-governance-freeze-check": "node scripts/ops-ai-agronomic-governance-freeze-check.mjs",
     "ops:ai-agronomic-executive-dossier-check": "node scripts/ops-ai-agronomic-executive-dossier-check.mjs",
-    "ops:ai-online-operational-readiness-check": "node scripts/ops-ai-online-operational-readiness-check.mjs"
+    "ops:ai-online-operational-readiness-check": "node scripts/ops-ai-online-operational-readiness-check.mjs",
+    "ops:ai-provider-runtime-staging-gateway-check": "node scripts/ops-ai-provider-runtime-staging-gateway-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
