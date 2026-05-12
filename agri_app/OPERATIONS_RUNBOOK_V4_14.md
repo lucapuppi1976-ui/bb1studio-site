@@ -2267,3 +2267,25 @@ ops:ai-agronomic-governance-freeze-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V14.5 — AI Agronomic Executive Board Dossier & Non-Operational Strategy Narrative
+
+### Scope
+
+V14.5 aggiunge un modulo locale dry-run per executive board dossier agronomico, strategy narrative freeze e non-operational certificate.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-executive-dossier-dry-run`;
+- engine locale `aiAgronomicExecutiveDossier.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- executive dossier board, strategy narrative freeze, board signal summary, decision boundary summary, human signoff agenda, non-operational certificate, executive gate matrix, executive board pack, audit replay e executive signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-executive-dossier-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
