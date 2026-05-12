@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V15_2_CASE_PERSISTENCE_MIGRATION_PLAN_CHECK: esegue il check V15.2 prima dei controlli operativi aggregati.
+const __agriCasePersistenceMigrationPlanRunV152 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-case-persistence-migration-plan-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriCasePersistenceMigrationPlanRunV152();
+
 // AGRI_V15_1_PROVIDER_RUNTIME_STAGING_GATEWAY_CHECK: esegue il check V15.1 prima dei controlli operativi aggregati.
 const __agriProviderRuntimeStagingGatewayRunV151 = async () => {
   const { spawnSync } = await import("node:child_process");
