@@ -2475,3 +2475,29 @@ Conversione manuale pronta solo come dry-run preview. Creazione task/interventi 
 ### Safety
 
 providerAiReady=false, providerCalled=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, manualConversionPerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.7 — AI Provider Staging Activation Gate & Production Runtime Lock
+
+### Scope
+
+V15.7 aggiunge un modulo locale dry-run per progettare il gate di attivazione staging provider e mantenere bloccato il runtime produttivo.
+
+- endpoint ops protetto `/api/ops/ai-provider-staging-activation-gate-dry-run`;
+- engine locale `aiProviderStagingActivationGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- runtime boundary plan, staging switch plan, provider registry plan, budget gate plan, canary boundary plan, failure stop plan, production runtime lock, go/no-go board, activation gates e board pack;
+- nessuna chiamata provider esterna, nessuna attivazione staging reale, nessun runtime produttivo, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-provider-staging-activation-gate-check
+```
+
+### Stato
+
+Gate di attivazione staging pronto solo come dry-run design. Provider reale, staging runtime e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, providerActivationAllowed=false, providerStagingActivationAllowed=false, productionRuntimeAllowed=false, providerRegistryWriteAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
