@@ -2341,3 +2341,29 @@ Gateway provider disponibile solo come staging design dry-run. Nessuna chiamata 
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, providerCallAllowed=false, providerCallPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.2 — AI Case Persistence Migration Plan & Storage Safety Blueprint
+
+### Scope
+
+V15.2 aggiunge un modulo locale dry-run per progettare la futura persistenza dei casi AI e il piano migration/storage safety.
+
+- endpoint ops protetto `/api/ops/ai-case-persistence-migration-plan-dry-run`;
+- engine locale `aiCasePersistenceMigrationPlan.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- entity blueprint, migration plan, backup/restore plan, photo retention plan, audit chain plan, review record plan, storage gates e board pack;
+- nessuna modifica Prisma schema, nessuna migration execution, nessuna scrittura AI persistente, nessuna memoria persistente, nessuna automazione, nessun task/intervento.
+
+### Check
+
+```txt
+ops:ai-case-persistence-migration-plan-check
+```
+
+### Stato
+
+Blueprint persistenza AI pronto solo in dry-run. Persistenza AI reale ancora no-go.
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, casePersistenceActivationAllowed=false, casePersistencePerformed=false, migrationExecutionAllowed=false, migrationExecutionPerformed=false, schemaWriteAllowed=false, schemaWritePerformed=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

@@ -72,6 +72,7 @@ import AgronomicGovernanceFreezePanel from "./AgronomicGovernanceFreezePanel";
 import AgronomicExecutiveDossierPanel from "./AgronomicExecutiveDossierPanel";
 import OnlineOperationalReadinessPanel from "./OnlineOperationalReadinessPanel";
 import ProviderRuntimeStagingGatewayPanel from "./ProviderRuntimeStagingGatewayPanel";
+import CasePersistenceMigrationPlanPanel from "./CasePersistenceMigrationPlanPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -206,6 +207,8 @@ export default function AiPhotoDiagnosisPage() {
       <OnlineOperationalReadinessPanel />
 
       <ProviderRuntimeStagingGatewayPanel />
+
+      <CasePersistenceMigrationPlanPanel />
 </main>
   );
 }
