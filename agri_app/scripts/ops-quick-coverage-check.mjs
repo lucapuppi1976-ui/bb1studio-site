@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V15_1_PROVIDER_RUNTIME_STAGING_GATEWAY_CHECK: esegue il check V15.1 prima dei controlli operativi aggregati.
+const __agriProviderRuntimeStagingGatewayRunV151 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-provider-runtime-staging-gateway-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriProviderRuntimeStagingGatewayRunV151();
+
 // AGRI_V15_0_ONLINE_OPERATIONAL_READINESS_CHECK: esegue il check V15.0 prima dei controlli operativi aggregati.
 const __agriOnlineOperationalReadinessRunV150 = async () => {
   const { spawnSync } = await import("node:child_process");

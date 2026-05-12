@@ -2315,3 +2315,29 @@ Online controllato dry-run consentito. AI operativa reale non ancora consentita.
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.1 — AI Provider Runtime Staging Gateway & Contract Hardening
+
+### Scope
+
+V15.1 aggiunge un modulo locale dry-run per provider runtime staging gateway, request envelope, response contract hardening, schema guard, budget guard e fallback plan.
+
+- endpoint ops protetto `/api/ops/ai-provider-runtime-staging-gateway-dry-run`;
+- engine locale `aiProviderRuntimeStagingGateway.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- gateway design plan, request envelope plan, response contract hardening, schema guard plan, provider budget guard, fallback plan, dry-run case matrix, staging gateway gates e board pack;
+- hard-stop su provider reale, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-provider-runtime-staging-gateway-check
+```
+
+### Stato
+
+Gateway provider disponibile solo come staging design dry-run. Nessuna chiamata provider reale.
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, providerCallAllowed=false, providerCallPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

@@ -71,6 +71,7 @@ import AgronomicSensitivityRobustnessPanel from "./AgronomicSensitivityRobustnes
 import AgronomicGovernanceFreezePanel from "./AgronomicGovernanceFreezePanel";
 import AgronomicExecutiveDossierPanel from "./AgronomicExecutiveDossierPanel";
 import OnlineOperationalReadinessPanel from "./OnlineOperationalReadinessPanel";
+import ProviderRuntimeStagingGatewayPanel from "./ProviderRuntimeStagingGatewayPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -203,6 +204,8 @@ export default function AiPhotoDiagnosisPage() {
       <AgronomicExecutiveDossierPanel />
 
       <OnlineOperationalReadinessPanel />
+
+      <ProviderRuntimeStagingGatewayPanel />
 </main>
   );
 }
