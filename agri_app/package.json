@@ -114,7 +114,8 @@
     "ops:ai-case-persistence-migration-plan-check": "node scripts/ops-ai-case-persistence-migration-plan-check.mjs",
     "ops:ai-persistent-human-review-workflow-check": "node scripts/ops-ai-persistent-human-review-workflow-check.mjs",
     "ops:ai-provider-staging-shadow-run-check": "node scripts/ops-ai-provider-staging-shadow-run-check.mjs",
-    "ops:ai-migration-rehearsal-storage-gate-check": "node scripts/ops-ai-migration-rehearsal-storage-gate-check.mjs"
+    "ops:ai-migration-rehearsal-storage-gate-check": "node scripts/ops-ai-migration-rehearsal-storage-gate-check.mjs",
+    "ops:ai-manual-conversion-rehearsal-check": "node scripts/ops-ai-manual-conversion-rehearsal-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

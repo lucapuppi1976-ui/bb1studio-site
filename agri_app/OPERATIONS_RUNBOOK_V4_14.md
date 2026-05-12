@@ -2449,3 +2449,29 @@ Rehearsal migration/storage pronto solo in dry-run. Migration reale e storage AI
 ### Safety
 
 providerAiReady=false, providerCalled=false, persistenceReady=false, casePersistenceActivationAllowed=false, casePersistencePerformed=false, migrationExecutionAllowed=false, migrationExecutionPerformed=false, schemaWriteAllowed=false, schemaWritePerformed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.6 — AI Manual Conversion Rehearsal & No-Execution Work Preview
+
+### Scope
+
+V15.6 aggiunge un modulo locale dry-run per progettare conversion preview e rehearsal manuale AI-to-work senza creazione reale di task o interventi.
+
+- endpoint ops protetto `/api/ops/ai-manual-conversion-rehearsal-dry-run`;
+- engine locale `aiManualConversionRehearsal.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- conversion preview plan, reviewer checklist, conversion blockers, work package drafts, correction path plan, non-execution certificate, go/no-go board, conversion gates e board pack;
+- nessuna creazione task/intervento, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-manual-conversion-rehearsal-check
+```
+
+### Stato
+
+Conversione manuale pronta solo come dry-run preview. Creazione task/interventi reale ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, manualConversionPerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

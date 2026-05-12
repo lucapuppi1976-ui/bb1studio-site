@@ -76,6 +76,7 @@ import CasePersistenceMigrationPlanPanel from "./CasePersistenceMigrationPlanPan
 import PersistentHumanReviewWorkflowPanel from "./PersistentHumanReviewWorkflowPanel";
 import ProviderStagingShadowRunPanel from "./ProviderStagingShadowRunPanel";
 import MigrationRehearsalStorageGatePanel from "./MigrationRehearsalStorageGatePanel";
+import ManualConversionRehearsalPanel from "./ManualConversionRehearsalPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -218,6 +219,8 @@ export default function AiPhotoDiagnosisPage() {
       <ProviderStagingShadowRunPanel />
 
       <MigrationRehearsalStorageGatePanel />
+
+      <ManualConversionRehearsalPanel />
 </main>
   );
 }
