@@ -74,6 +74,7 @@ import OnlineOperationalReadinessPanel from "./OnlineOperationalReadinessPanel";
 import ProviderRuntimeStagingGatewayPanel from "./ProviderRuntimeStagingGatewayPanel";
 import CasePersistenceMigrationPlanPanel from "./CasePersistenceMigrationPlanPanel";
 import PersistentHumanReviewWorkflowPanel from "./PersistentHumanReviewWorkflowPanel";
+import ProviderStagingShadowRunPanel from "./ProviderStagingShadowRunPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -212,6 +213,8 @@ export default function AiPhotoDiagnosisPage() {
       <CasePersistenceMigrationPlanPanel />
 
       <PersistentHumanReviewWorkflowPanel />
+
+      <ProviderStagingShadowRunPanel />
 </main>
   );
 }

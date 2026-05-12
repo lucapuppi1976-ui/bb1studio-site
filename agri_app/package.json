@@ -112,7 +112,8 @@
     "ops:ai-online-operational-readiness-check": "node scripts/ops-ai-online-operational-readiness-check.mjs",
     "ops:ai-provider-runtime-staging-gateway-check": "node scripts/ops-ai-provider-runtime-staging-gateway-check.mjs",
     "ops:ai-case-persistence-migration-plan-check": "node scripts/ops-ai-case-persistence-migration-plan-check.mjs",
-    "ops:ai-persistent-human-review-workflow-check": "node scripts/ops-ai-persistent-human-review-workflow-check.mjs"
+    "ops:ai-persistent-human-review-workflow-check": "node scripts/ops-ai-persistent-human-review-workflow-check.mjs",
+    "ops:ai-provider-staging-shadow-run-check": "node scripts/ops-ai-provider-staging-shadow-run-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

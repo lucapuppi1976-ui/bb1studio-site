@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V15_4_PROVIDER_STAGING_SHADOW_RUN_CHECK: esegue il check V15.4 prima dei controlli operativi aggregati.
+const __agriProviderStagingShadowRunV154 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-provider-staging-shadow-run-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriProviderStagingShadowRunV154();
+
 // AGRI_V15_3_PERSISTENT_HUMAN_REVIEW_WORKFLOW_CHECK: esegue il check V15.3 prima dei controlli operativi aggregati.
 const __agriPersistentHumanReviewWorkflowRunV153 = async () => {
   const { spawnSync } = await import("node:child_process");

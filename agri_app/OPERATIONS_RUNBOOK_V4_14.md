@@ -2397,3 +2397,29 @@ Workflow umano persistente pronto solo in dry-run. Persistenza review e conversi
 ### Safety
 
 providerAiReady=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, reviewPersistencePerformed=false, manualConversionAllowed=false, manualConversionPerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.4 — AI Provider Staging Shadow Run & Non-Production Evaluation Drill
+
+### Scope
+
+V15.4 aggiunge un modulo locale dry-run per shadow run provider non produttivo.
+
+- endpoint ops protetto `/api/ops/ai-provider-staging-shadow-run-dry-run`;
+- engine locale `aiProviderStagingShadowRun.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- shadow scenarios, envelope simulation plan, contract validation matrix, budget simulation plan, fallback drill plan, shadow evaluation matrix, non-production boundary, shadow run gates e board pack;
+- nessuna chiamata provider esterna, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-provider-staging-shadow-run-check
+```
+
+### Stato
+
+Shadow run provider pronto solo in dry-run non produttivo. Provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, providerCallAllowed=false, providerCallPerformed=false, shadowRunExternalCallAllowed=false, shadowRunExternalCallPerformed=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
