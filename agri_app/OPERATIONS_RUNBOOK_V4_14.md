@@ -2223,3 +2223,25 @@ ops:ai-agronomic-strategy-portfolio-comparator-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V14.3 — AI Agronomic Sensitivity Map & Robustness Boundary Board
+
+### Scope
+
+V14.3 aggiunge un modulo locale dry-run per sensitivity map, perturbation matrix e robustness boundary degli scenari agronomici non esecutivi.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-sensitivity-robustness-dry-run`;
+- engine locale `aiAgronomicSensitivityRobustness.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- sensitivity drivers, perturbation matrix, robustness boundaries, fragile assumption register, uncertainty levers, non-execution boundary, robustness gate matrix, robustness board pack, audit replay e robustness signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-sensitivity-robustness-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
