@@ -79,6 +79,7 @@ import OperationsAiAgronomicExecutiveDossier from "./OperationsAiAgronomicExecut
 import OperationsAiOnlineOperationalReadiness from "./OperationsAiOnlineOperationalReadiness";
 import OperationsAiProviderRuntimeStagingGateway from "./OperationsAiProviderRuntimeStagingGateway";
 import OperationsAiCasePersistenceMigrationPlan from "./OperationsAiCasePersistenceMigrationPlan";
+import OperationsAiPersistentHumanReviewWorkflow from "./OperationsAiPersistentHumanReviewWorkflow";
 
 const sections = [
   {
@@ -380,6 +381,8 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderRuntimeStagingGateway />
 
       <OperationsAiCasePersistenceMigrationPlan />
+
+      <OperationsAiPersistentHumanReviewWorkflow />
 </main>
   );
 }

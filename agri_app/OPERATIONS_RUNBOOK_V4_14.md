@@ -2367,3 +2367,33 @@ Blueprint persistenza AI pronto solo in dry-run. Persistenza AI reale ancora no-
 ### Safety
 
 providerAiReady=false, persistenceReady=false, casePersistenceActivationAllowed=false, casePersistencePerformed=false, migrationExecutionAllowed=false, migrationExecutionPerformed=false, schemaWriteAllowed=false, schemaWritePerformed=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.3 — AI Persistent Human Review Workflow & Manual Conversion Gate Design
+
+### Scope
+
+V15.3 aggiunge un modulo locale dry-run per workflow umano persistente e gate di conversione manuale AI-to-work.
+
+- endpoint ops protetto `/api/ops/ai-persistent-human-review-workflow-dry-run`;
+- engine locale `aiPersistentHumanReviewWorkflow.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- review state machine, reviewer ownership plan, reason requirement plan, audit trail design, manual conversion gate plan, correction path plan, review go/no-go board, review workflow gates e board pack;
+- nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-persistent-human-review-workflow-check
+```
+
+### Stati review progettati
+
+DRAFT, PROVIDER_STAGING_HOLD, REVIEW_REQUIRED, REVIEW_IN_PROGRESS, APPROVED_FOR_MANUAL_CONVERSION, REJECTED, ARCHIVED.
+
+### Stato
+
+Workflow umano persistente pronto solo in dry-run. Persistenza review e conversione reale ancora no-go.
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, reviewPersistencePerformed=false, manualConversionAllowed=false, manualConversionPerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
