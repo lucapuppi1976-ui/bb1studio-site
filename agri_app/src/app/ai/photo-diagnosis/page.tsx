@@ -77,6 +77,7 @@ import PersistentHumanReviewWorkflowPanel from "./PersistentHumanReviewWorkflowP
 import ProviderStagingShadowRunPanel from "./ProviderStagingShadowRunPanel";
 import MigrationRehearsalStorageGatePanel from "./MigrationRehearsalStorageGatePanel";
 import ManualConversionRehearsalPanel from "./ManualConversionRehearsalPanel";
+import ProviderStagingActivationGatePanel from "./ProviderStagingActivationGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -221,6 +222,8 @@ export default function AiPhotoDiagnosisPage() {
       <MigrationRehearsalStorageGatePanel />
 
       <ManualConversionRehearsalPanel />
+
+      <ProviderStagingActivationGatePanel />
 </main>
   );
 }
