@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V15_3_PERSISTENT_HUMAN_REVIEW_WORKFLOW_CHECK: esegue il check V15.3 prima dei controlli operativi aggregati.
+const __agriPersistentHumanReviewWorkflowRunV153 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-persistent-human-review-workflow-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriPersistentHumanReviewWorkflowRunV153();
+
 // AGRI_V15_2_CASE_PERSISTENCE_MIGRATION_PLAN_CHECK: esegue il check V15.2 prima dei controlli operativi aggregati.
 const __agriCasePersistenceMigrationPlanRunV152 = async () => {
   const { spawnSync } = await import("node:child_process");

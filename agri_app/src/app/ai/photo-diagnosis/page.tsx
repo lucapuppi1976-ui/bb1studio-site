@@ -73,6 +73,7 @@ import AgronomicExecutiveDossierPanel from "./AgronomicExecutiveDossierPanel";
 import OnlineOperationalReadinessPanel from "./OnlineOperationalReadinessPanel";
 import ProviderRuntimeStagingGatewayPanel from "./ProviderRuntimeStagingGatewayPanel";
 import CasePersistenceMigrationPlanPanel from "./CasePersistenceMigrationPlanPanel";
+import PersistentHumanReviewWorkflowPanel from "./PersistentHumanReviewWorkflowPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -209,6 +210,8 @@ export default function AiPhotoDiagnosisPage() {
       <ProviderRuntimeStagingGatewayPanel />
 
       <CasePersistenceMigrationPlanPanel />
+
+      <PersistentHumanReviewWorkflowPanel />
 </main>
   );
 }
