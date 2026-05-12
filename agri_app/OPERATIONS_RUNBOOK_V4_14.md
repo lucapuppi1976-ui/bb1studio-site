@@ -2245,3 +2245,25 @@ ops:ai-agronomic-sensitivity-robustness-check
 ### Safety
 
 providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V14.4 — AI Agronomic Governance Freeze & Strategy Signoff Registry
+
+### Scope
+
+V14.4 aggiunge un modulo locale dry-run per governance freeze della strategia agronomica simulata, registry di signoff e actionability trap board.
+
+- endpoint ops protetto `/api/ops/ai-agronomic-governance-freeze-dry-run`;
+- engine locale `aiAgronomicGovernanceFreeze.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- governance freeze board, signoff registry, actionability trap board, scenario closure map, decision boundary ledger, non-execution certificate, governance gate matrix, governance board pack, audit replay e governance signoff;
+- hard-stop su provider, persistenza, memoria, task, interventi, esecuzione, claim formali, forecast produttivi, prescrizioni prodotto e dosaggi.
+
+### Check
+
+```txt
+ops:ai-agronomic-governance-freeze-check
+```
+
+### Safety
+
+providerAiReady=false, persistenceReady=false, memoryPersistenceReady=false, automaticTaskCreationReady=false, automaticInterventionCreationReady=false, automaticExecutionReady=false, providerCalled=false, persistencePerformed=false, memoryPersistencePerformed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, publicSharePerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
