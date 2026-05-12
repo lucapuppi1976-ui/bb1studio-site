@@ -2423,3 +2423,29 @@ Shadow run provider pronto solo in dry-run non produttivo. Provider reale e prod
 ### Safety
 
 providerAiReady=false, providerCalled=false, providerCallAllowed=false, providerCallPerformed=false, shadowRunExternalCallAllowed=false, shadowRunExternalCallPerformed=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.5 — AI Migration Rehearsal & Storage Gate Validation in Staging
+
+### Scope
+
+V15.5 aggiunge un modulo locale dry-run per rehearsal di migrazione e validazione storage gate in staging.
+
+- endpoint ops protetto `/api/ops/ai-migration-rehearsal-storage-gate-dry-run`;
+- engine locale `aiMigrationRehearsalStorageGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- rehearsal plan, schema diff review, backup/restore drill, storage gate validation, retention validation, audit event rehearsal, rollback board, rehearsal gates e board pack;
+- nessuna modifica Prisma schema, nessuna migration execution, nessuna scrittura AI persistente, nessuna persistenza review, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-migration-rehearsal-storage-gate-check
+```
+
+### Stato
+
+Rehearsal migration/storage pronto solo in dry-run. Migration reale e storage AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, persistenceReady=false, casePersistenceActivationAllowed=false, casePersistencePerformed=false, migrationExecutionAllowed=false, migrationExecutionPerformed=false, schemaWriteAllowed=false, schemaWritePerformed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
