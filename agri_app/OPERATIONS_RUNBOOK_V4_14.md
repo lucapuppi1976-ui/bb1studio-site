@@ -2553,3 +2553,29 @@ Board beta controllata pronta solo come dry-run design. Beta reale e produzione 
 ### Safety
 
 providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, controlledBetaPerformed=false, productionRuntimeAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.0 — AI Controlled Production Beta Launch Gate & Zero-Activation Cutover Plan
+
+### Scope
+
+V16.0 aggiunge un modulo locale dry-run per gate di lancio beta controllata e zero-activation cutover plan.
+
+- endpoint ops protetto `/api/ops/ai-controlled-production-beta-gate-dry-run`;
+- engine locale `aiControlledProductionBetaGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- launch cutover plan, provider runtime locks, storage runtime locks, review runtime locks, conversion runtime locks, observability tower, rollback tower, go/no-go board, launch gates e board pack;
+- nessuna beta reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-controlled-production-beta-gate-check
+```
+
+### Stato
+
+Launch gate beta controllata pronto solo come dry-run design. Beta reale, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, productionBetaPerformed=false, zeroActivationMode=true, productionRuntimeAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
