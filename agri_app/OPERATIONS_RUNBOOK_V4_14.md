@@ -2683,3 +2683,29 @@ Staged provider runtime beta pronto solo come dry-run design. Provider reale, ru
 ### Safety
 
 providerAiReady=false, providerCalled=false, providerRuntimeBetaAllowed=false, providerRuntimeBetaPerformed=false, explicitActivationApprovalAllowed=false, explicitActivationApprovalPerformed=false, productionRuntimeAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.5 — AI Runtime Incident Response Board & Provider Failure Drill
+
+### Scope
+
+V16.5 aggiunge un modulo locale dry-run per runtime incident response board e provider failure drill.
+
+- endpoint ops protetto `/api/ops/ai-runtime-incident-response-board-dry-run`;
+- engine locale `aiRuntimeIncidentResponseBoard.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- incident intake plan, provider failure drill, response routing plan, rollback action cards, operator communication plan, anomaly replay plan, incident no-go board, incident gates e board pack;
+- nessun incident response reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza incidenti, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-runtime-incident-response-board-check
+```
+
+### Stato
+
+Runtime incident response board pronta solo come dry-run design. Incident response reale, provider reale, incident write e notifiche ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, incidentResponseAllowed=false, incidentResponsePerformed=false, providerFailureDrillAllowed=false, runtimeIncidentWriteAllowed=false, incidentNotificationAllowed=false, providerRuntimeBetaAllowed=false, productionRuntimeAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
