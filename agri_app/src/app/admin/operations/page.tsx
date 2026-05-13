@@ -88,6 +88,7 @@ import OperationsAiStorageRehearsalBoard from "./OperationsAiStorageRehearsalBoa
 import OperationsAiControlledBetaReadinessBoard from "./OperationsAiControlledBetaReadinessBoard";
 import OperationsAiControlledProductionBetaGate from "./OperationsAiControlledProductionBetaGate";
 import OperationsAiPostBetaObservabilityRollback from "./OperationsAiPostBetaObservabilityRollback";
+import OperationsAiOperationalAuditPackage from "./OperationsAiOperationalAuditPackage";
 
 const sections = [
   {
@@ -407,6 +408,8 @@ export default function AdminOperationsPage() {
       <OperationsAiControlledProductionBetaGate />
 
       <OperationsAiPostBetaObservabilityRollback />
+
+      <OperationsAiOperationalAuditPackage />
 </main>
   );
 }

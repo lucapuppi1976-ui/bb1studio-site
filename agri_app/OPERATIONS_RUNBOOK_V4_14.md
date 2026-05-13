@@ -2605,3 +2605,29 @@ Hardening post-beta pronto solo come dry-run design. Runtime reale, provider rea
 ### Safety
 
 providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, zeroActivationMode=true, productionRuntimeAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.2 — AI Operational Audit Package & Compliance Export Hardening
+
+### Scope
+
+V16.2 aggiunge un modulo locale dry-run per operational audit package e compliance export hardening.
+
+- endpoint ops protetto `/api/ops/ai-operational-audit-package-dry-run`;
+- engine locale `aiOperationalAuditPackage.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- audit trail package, compliance export packet, redaction board, reviewer evidence pack, immutable evidence design, runtime lock evidence, export no-go board, audit package gates e board pack;
+- nessun compliance export reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-operational-audit-package-check
+```
+
+### Stato
+
+Operational audit package pronto solo come dry-run design. Compliance export reale, runtime reale, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, zeroActivationMode=true, productionRuntimeAllowed=false, complianceExportAllowed=false, complianceExportPerformed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
