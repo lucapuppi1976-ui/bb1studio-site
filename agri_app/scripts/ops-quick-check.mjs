@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V15_8_STORAGE_REHEARSAL_BOARD_CHECK: esegue il check V15.8 prima dei controlli operativi aggregati.
+const __agriStorageRehearsalBoardV158 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-storage-rehearsal-board-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriStorageRehearsalBoardV158();
+
 // AGRI_V15_7_PROVIDER_STAGING_ACTIVATION_GATE_CHECK: esegue il check V15.7 prima dei controlli operativi aggregati.
 const __agriProviderStagingActivationGateV157 = async () => {
   const { spawnSync } = await import("node:child_process");

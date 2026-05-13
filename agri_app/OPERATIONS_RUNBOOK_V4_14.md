@@ -2501,3 +2501,29 @@ Gate di attivazione staging pronto solo come dry-run design. Provider reale, sta
 ### Safety
 
 providerAiReady=false, providerCalled=false, providerActivationAllowed=false, providerStagingActivationAllowed=false, productionRuntimeAllowed=false, providerRegistryWriteAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V15.8 — AI Storage Rehearsal Board & Live Migration Execution Lock
+
+### Scope
+
+V15.8 aggiunge un modulo locale dry-run per storage rehearsal board e live migration execution lock.
+
+- endpoint ops protetto `/api/ops/ai-storage-rehearsal-board-dry-run`;
+- engine locale `aiStorageRehearsalBoard.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- storage blueprint, staging rehearsal plan, restore validation plan, retention control plan, audit replay plan, live migration lock, storage safety board, go/no-go board, storage gates e board pack;
+- nessuna modifica Prisma schema, nessuna migration execution, nessuna scrittura AI persistente, nessuna persistenza review, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-storage-rehearsal-board-check
+```
+
+### Stato
+
+Storage rehearsal board pronta solo come dry-run design. Live migration, schema write e storage AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, storageActivationPerformed=false, liveMigrationExecutionAllowed=false, liveMigrationExecutionPerformed=false, migrationExecutionAllowed=false, schemaWriteAllowed=false, schemaWritePerformed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

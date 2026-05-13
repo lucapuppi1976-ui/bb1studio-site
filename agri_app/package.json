@@ -116,7 +116,8 @@
     "ops:ai-provider-staging-shadow-run-check": "node scripts/ops-ai-provider-staging-shadow-run-check.mjs",
     "ops:ai-migration-rehearsal-storage-gate-check": "node scripts/ops-ai-migration-rehearsal-storage-gate-check.mjs",
     "ops:ai-manual-conversion-rehearsal-check": "node scripts/ops-ai-manual-conversion-rehearsal-check.mjs",
-    "ops:ai-provider-staging-activation-gate-check": "node scripts/ops-ai-provider-staging-activation-gate-check.mjs"
+    "ops:ai-provider-staging-activation-gate-check": "node scripts/ops-ai-provider-staging-activation-gate-check.mjs",
+    "ops:ai-storage-rehearsal-board-check": "node scripts/ops-ai-storage-rehearsal-board-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
