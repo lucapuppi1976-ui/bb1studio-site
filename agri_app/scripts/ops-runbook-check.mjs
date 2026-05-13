@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V16_4_STAGED_PROVIDER_RUNTIME_BETA_CHECK: esegue il check V16.4 prima dei controlli operativi aggregati.
+const __agriStagedProviderRuntimeBetaV164 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-staged-provider-runtime-beta-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriStagedProviderRuntimeBetaV164();
+
 // AGRI_V16_3_HUMAN_SUPERVISED_OPERATIONS_COCKPIT_CHECK: esegue il check V16.3 prima dei controlli operativi aggregati.
 const __agriHumanSupervisedOperationsCockpitV163 = async () => {
   const { spawnSync } = await import("node:child_process");

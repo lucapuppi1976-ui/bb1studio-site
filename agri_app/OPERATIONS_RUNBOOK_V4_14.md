@@ -2657,3 +2657,29 @@ Cockpit umano-supervisionato pronto solo come dry-run design. Dispatch reale, ru
 ### Safety
 
 providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, zeroActivationMode=true, productionRuntimeAllowed=false, complianceExportAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.4 — AI Staged Provider Runtime Beta Gate & Explicit Activation Approval Lock
+
+### Scope
+
+V16.4 aggiunge un modulo locale dry-run per staged provider runtime beta gate e explicit activation approval lock.
+
+- endpoint ops protetto `/api/ops/ai-staged-provider-runtime-beta-dry-run`;
+- engine locale `aiStagedProviderRuntimeBeta.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- runtime allowlist, provider contract plan, budget window plan, canary scope plan, runtime stop plan, reviewer approval board, production runtime locks, go/no-go board e runtime beta gates;
+- nessun provider runtime reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-staged-provider-runtime-beta-check
+```
+
+### Stato
+
+Staged provider runtime beta pronto solo come dry-run design. Provider reale, runtime reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, providerRuntimeBetaAllowed=false, providerRuntimeBetaPerformed=false, explicitActivationApprovalAllowed=false, explicitActivationApprovalPerformed=false, productionRuntimeAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
