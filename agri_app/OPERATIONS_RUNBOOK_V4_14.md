@@ -2631,3 +2631,29 @@ Operational audit package pronto solo come dry-run design. Compliance export rea
 ### Safety
 
 providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, zeroActivationMode=true, productionRuntimeAllowed=false, complianceExportAllowed=false, complianceExportPerformed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.3 — AI Human-Supervised Agronomic Operations Cockpit & Manual Dispatch Readiness
+
+### Scope
+
+V16.3 aggiunge un modulo locale dry-run per cockpit operativo umano-supervisionato e manual dispatch readiness.
+
+- endpoint ops protetto `/api/ops/ai-human-supervised-operations-cockpit-dry-run`;
+- engine locale `aiHumanSupervisedOperationsCockpit.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- operator board, manual dispatch readiness, reviewer queue, escalation path plan, safety boundary, operational evidence pack, execution no-go board, cockpit gates e board pack;
+- nessun dispatch reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-human-supervised-operations-cockpit-check
+```
+
+### Stato
+
+Cockpit umano-supervisionato pronto solo come dry-run design. Dispatch reale, runtime reale, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, zeroActivationMode=true, productionRuntimeAllowed=false, complianceExportAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
