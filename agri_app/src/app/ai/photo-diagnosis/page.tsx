@@ -82,6 +82,7 @@ import StorageRehearsalBoardPanel from "./StorageRehearsalBoardPanel";
 import ControlledBetaReadinessBoardPanel from "./ControlledBetaReadinessBoardPanel";
 import ControlledProductionBetaGatePanel from "./ControlledProductionBetaGatePanel";
 import PostBetaObservabilityRollbackPanel from "./PostBetaObservabilityRollbackPanel";
+import OperationalAuditPackagePanel from "./OperationalAuditPackagePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -236,6 +237,8 @@ export default function AiPhotoDiagnosisPage() {
       <ControlledProductionBetaGatePanel />
 
       <PostBetaObservabilityRollbackPanel />
+
+      <OperationalAuditPackagePanel />
 </main>
   );
 }

@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V16_2_OPERATIONAL_AUDIT_PACKAGE_CHECK: esegue il check V16.2 prima dei controlli operativi aggregati.
+const __agriOperationalAuditPackageV162 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-operational-audit-package-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriOperationalAuditPackageV162();
+
 // AGRI_V16_1_POST_BETA_OBSERVABILITY_ROLLBACK_CHECK: esegue il check V16.1 prima dei controlli operativi aggregati.
 const __agriPostBetaObservabilityRollbackV161 = async () => {
   const { spawnSync } = await import("node:child_process");
