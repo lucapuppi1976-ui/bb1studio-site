@@ -123,7 +123,8 @@
     "ops:ai-post-beta-observability-rollback-check": "node scripts/ops-ai-post-beta-observability-rollback-check.mjs",
     "ops:ai-operational-audit-package-check": "node scripts/ops-ai-operational-audit-package-check.mjs",
     "ops:ai-human-supervised-operations-cockpit-check": "node scripts/ops-ai-human-supervised-operations-cockpit-check.mjs",
-    "ops:ai-staged-provider-runtime-beta-check": "node scripts/ops-ai-staged-provider-runtime-beta-check.mjs"
+    "ops:ai-staged-provider-runtime-beta-check": "node scripts/ops-ai-staged-provider-runtime-beta-check.mjs",
+    "ops:ai-runtime-incident-response-board-check": "node scripts/ops-ai-runtime-incident-response-board-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

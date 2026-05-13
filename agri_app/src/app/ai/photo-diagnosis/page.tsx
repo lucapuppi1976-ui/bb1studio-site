@@ -85,6 +85,7 @@ import PostBetaObservabilityRollbackPanel from "./PostBetaObservabilityRollbackP
 import OperationalAuditPackagePanel from "./OperationalAuditPackagePanel";
 import HumanSupervisedOperationsCockpitPanel from "./HumanSupervisedOperationsCockpitPanel";
 import StagedProviderRuntimeBetaPanel from "./StagedProviderRuntimeBetaPanel";
+import RuntimeIncidentResponseBoardPanel from "./RuntimeIncidentResponseBoardPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -245,6 +246,8 @@ export default function AiPhotoDiagnosisPage() {
       <HumanSupervisedOperationsCockpitPanel />
 
       <StagedProviderRuntimeBetaPanel />
+
+      <RuntimeIncidentResponseBoardPanel />
 </main>
   );
 }
