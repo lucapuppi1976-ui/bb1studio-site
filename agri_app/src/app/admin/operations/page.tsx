@@ -92,6 +92,7 @@ import OperationsAiOperationalAuditPackage from "./OperationsAiOperationalAuditP
 import OperationsAiHumanSupervisedOperationsCockpit from "./OperationsAiHumanSupervisedOperationsCockpit";
 import OperationsAiStagedProviderRuntimeBeta from "./OperationsAiStagedProviderRuntimeBeta";
 import OperationsAiRuntimeIncidentResponseBoard from "./OperationsAiRuntimeIncidentResponseBoard";
+import OperationsAiComplianceExportActivationGate from "./OperationsAiComplianceExportActivationGate";
 
 const sections = [
   {
@@ -419,6 +420,8 @@ export default function AdminOperationsPage() {
       <OperationsAiStagedProviderRuntimeBeta />
 
       <OperationsAiRuntimeIncidentResponseBoard />
+
+      <OperationsAiComplianceExportActivationGate />
 </main>
   );
 }

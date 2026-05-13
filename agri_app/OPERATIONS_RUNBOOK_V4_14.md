@@ -2709,3 +2709,29 @@ Runtime incident response board pronta solo come dry-run design. Incident respon
 ### Safety
 
 providerAiReady=false, providerCalled=false, incidentResponseAllowed=false, incidentResponsePerformed=false, providerFailureDrillAllowed=false, runtimeIncidentWriteAllowed=false, incidentNotificationAllowed=false, providerRuntimeBetaAllowed=false, productionRuntimeAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.6 — AI Compliance Export Activation Gate & Privacy Redaction Approval Lock
+
+### Scope
+
+V16.6 aggiunge un modulo locale dry-run per compliance export activation gate e privacy redaction approval lock.
+
+- endpoint ops protetto `/api/ops/ai-compliance-export-activation-gate-dry-run`;
+- engine locale `aiComplianceExportActivationGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- export activation gate, privacy redaction approval, legal review locks, reviewer attestation board, export scope plan, audit evidence locks, publication no-go board e export gate checks;
+- nessun export reale, nessuna pubblicazione, nessun file write, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-compliance-export-activation-gate-check
+```
+
+### Stato
+
+Compliance export activation gate pronto solo come dry-run design. Export reale, pubblicazione, file write, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, complianceExportActivationAllowed=false, complianceExportActivationPerformed=false, exportFileWriteAllowed=false, exportPublicationAllowed=false, publicShareAllowed=false, privacyRedactionApprovalAllowed=false, legalReviewApprovalAllowed=false, productionRuntimeAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

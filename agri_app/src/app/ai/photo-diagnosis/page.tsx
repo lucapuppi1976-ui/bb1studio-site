@@ -86,6 +86,7 @@ import OperationalAuditPackagePanel from "./OperationalAuditPackagePanel";
 import HumanSupervisedOperationsCockpitPanel from "./HumanSupervisedOperationsCockpitPanel";
 import StagedProviderRuntimeBetaPanel from "./StagedProviderRuntimeBetaPanel";
 import RuntimeIncidentResponseBoardPanel from "./RuntimeIncidentResponseBoardPanel";
+import ComplianceExportActivationGatePanel from "./ComplianceExportActivationGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -248,6 +249,8 @@ export default function AiPhotoDiagnosisPage() {
       <StagedProviderRuntimeBetaPanel />
 
       <RuntimeIncidentResponseBoardPanel />
+
+      <ComplianceExportActivationGatePanel />
 </main>
   );
 }
