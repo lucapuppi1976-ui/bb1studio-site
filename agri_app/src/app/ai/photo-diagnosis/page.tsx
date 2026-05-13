@@ -80,6 +80,7 @@ import ManualConversionRehearsalPanel from "./ManualConversionRehearsalPanel";
 import ProviderStagingActivationGatePanel from "./ProviderStagingActivationGatePanel";
 import StorageRehearsalBoardPanel from "./StorageRehearsalBoardPanel";
 import ControlledBetaReadinessBoardPanel from "./ControlledBetaReadinessBoardPanel";
+import ControlledProductionBetaGatePanel from "./ControlledProductionBetaGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -230,6 +231,8 @@ export default function AiPhotoDiagnosisPage() {
       <StorageRehearsalBoardPanel />
 
       <ControlledBetaReadinessBoardPanel />
+
+      <ControlledProductionBetaGatePanel />
 </main>
   );
 }
