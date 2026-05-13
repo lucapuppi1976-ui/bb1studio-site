@@ -2579,3 +2579,29 @@ Launch gate beta controllata pronto solo come dry-run design. Beta reale, provid
 ### Safety
 
 providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, productionBetaPerformed=false, zeroActivationMode=true, productionRuntimeAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.1 — AI Post-Beta Observability & Rollback Hardening Drill
+
+### Scope
+
+V16.1 aggiunge un modulo locale dry-run per hardening post-beta di osservabilità e rollback.
+
+- endpoint ops protetto `/api/ops/ai-post-beta-observability-rollback-dry-run`;
+- engine locale `aiPostBetaObservabilityRollback.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- incident signal plan, rollback tower hardening, kill-switch drill plan, reviewer audit plan, anomaly board, fallback route plan, runtime lock hardening, go/no-go board, hardening gates e board pack;
+- nessun runtime reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-post-beta-observability-rollback-check
+```
+
+### Stato
+
+Hardening post-beta pronto solo come dry-run design. Runtime reale, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, controlledBetaAllowed=false, productionBetaAllowed=false, zeroActivationMode=true, productionRuntimeAllowed=false, persistenceReady=false, casePersistenceActivationAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
