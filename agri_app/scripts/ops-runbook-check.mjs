@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V16_7_MANUAL_DISPATCH_ACTIVATION_GATE_CHECK: esegue il check V16.7 prima dei controlli operativi aggregati.
+const __agriManualDispatchActivationGateV167 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-manual-dispatch-activation-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriManualDispatchActivationGateV167();
+
 // AGRI_V16_6_COMPLIANCE_EXPORT_ACTIVATION_GATE_CHECK: esegue il check V16.6 prima dei controlli operativi aggregati.
 const __agriComplianceExportActivationGateV166 = async () => {
   const { spawnSync } = await import("node:child_process");

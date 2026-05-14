@@ -2735,3 +2735,29 @@ Compliance export activation gate pronto solo come dry-run design. Export reale,
 ### Safety
 
 providerAiReady=false, providerCalled=false, complianceExportActivationAllowed=false, complianceExportActivationPerformed=false, exportFileWriteAllowed=false, exportPublicationAllowed=false, publicShareAllowed=false, privacyRedactionApprovalAllowed=false, legalReviewApprovalAllowed=false, productionRuntimeAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualConversionAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.7 — AI Manual Dispatch Activation Gate & Operational Approval Lock
+
+### Scope
+
+V16.7 aggiunge un modulo locale dry-run per manual dispatch activation gate e operational approval lock.
+
+- endpoint ops protetto `/api/ops/ai-manual-dispatch-activation-gate-dry-run`;
+- engine locale `aiManualDispatchActivationGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- dispatch activation gate, operator approval board, agronomic safety checklist, work conversion boundary, reviewer signoff board, rollback dispatch plan, dispatch no-go board e dispatch gate checks;
+- nessun dispatch reale, nessun ticket write, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-manual-dispatch-activation-gate-check
+```
+
+### Stato
+
+Manual dispatch activation gate pronto solo come dry-run design. Dispatch reale, ticket write, task, interventi, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, manualDispatchActivationAllowed=false, manualDispatchActivationPerformed=false, operationalApprovalAllowed=false, dispatchTicketWriteAllowed=false, workOrderDispatchAllowed=false, dispatchNotificationAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
