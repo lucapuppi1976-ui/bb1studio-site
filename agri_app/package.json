@@ -127,7 +127,8 @@
     "ops:ai-runtime-incident-response-board-check": "node scripts/ops-ai-runtime-incident-response-board-check.mjs",
     "ops:ai-compliance-export-activation-gate-check": "node scripts/ops-ai-compliance-export-activation-gate-check.mjs",
     "ops:ai-manual-dispatch-activation-gate-check": "node scripts/ops-ai-manual-dispatch-activation-gate-check.mjs",
-    "ops:ai-provider-runtime-canary-execution-check": "node scripts/ops-ai-provider-runtime-canary-execution-check.mjs"
+    "ops:ai-provider-runtime-canary-execution-check": "node scripts/ops-ai-provider-runtime-canary-execution-check.mjs",
+    "ops:ai-runtime-incident-handling-activation-gate-check": "node scripts/ops-ai-runtime-incident-handling-activation-gate-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
