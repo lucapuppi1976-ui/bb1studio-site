@@ -2761,3 +2761,29 @@ Manual dispatch activation gate pronto solo come dry-run design. Dispatch reale,
 ### Safety
 
 providerAiReady=false, providerCalled=false, manualDispatchActivationAllowed=false, manualDispatchActivationPerformed=false, operationalApprovalAllowed=false, dispatchTicketWriteAllowed=false, workOrderDispatchAllowed=false, dispatchNotificationAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.8 — AI Provider Runtime Canary Execution Gate & Zero-Call Execution Lock
+
+### Scope
+
+V16.8 aggiunge un modulo locale dry-run per provider runtime canary execution gate e zero-call execution lock.
+
+- endpoint ops protetto `/api/ops/ai-provider-runtime-canary-execution-dry-run`;
+- engine locale `aiProviderRuntimeCanaryExecution.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- canary execution gate, provider zero-call locks, canary case criteria, budget envelope, reviewer canary approval, provider result boundary, canary stop plan e canary no-go board;
+- nessun provider canary reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza risultato canary, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-provider-runtime-canary-execution-check
+```
+
+### Stato
+
+Provider runtime canary execution gate pronto solo come dry-run design. Canary reale, provider call, result persistence, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, providerRuntimeCanaryAllowed=false, providerRuntimeCanaryPerformed=false, providerCanaryCallAllowed=false, providerCanaryCallPerformed=false, canaryExecutionAllowed=false, canaryExecutionPerformed=false, canaryResultPersistenceAllowed=false, canaryResultPersistencePerformed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

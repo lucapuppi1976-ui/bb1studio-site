@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V16_8_PROVIDER_RUNTIME_CANARY_EXECUTION_CHECK: esegue il check V16.8 prima dei controlli operativi aggregati.
+const __agriProviderRuntimeCanaryExecutionV168 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-provider-runtime-canary-execution-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriProviderRuntimeCanaryExecutionV168();
+
 // AGRI_V16_7_MANUAL_DISPATCH_ACTIVATION_GATE_CHECK: esegue il check V16.7 prima dei controlli operativi aggregati.
 const __agriManualDispatchActivationGateV167 = async () => {
   const { spawnSync } = await import("node:child_process");

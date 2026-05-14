@@ -88,6 +88,7 @@ import StagedProviderRuntimeBetaPanel from "./StagedProviderRuntimeBetaPanel";
 import RuntimeIncidentResponseBoardPanel from "./RuntimeIncidentResponseBoardPanel";
 import ComplianceExportActivationGatePanel from "./ComplianceExportActivationGatePanel";
 import ManualDispatchActivationGatePanel from "./ManualDispatchActivationGatePanel";
+import ProviderRuntimeCanaryExecutionPanel from "./ProviderRuntimeCanaryExecutionPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -254,6 +255,8 @@ export default function AiPhotoDiagnosisPage() {
       <ComplianceExportActivationGatePanel />
 
       <ManualDispatchActivationGatePanel />
+
+      <ProviderRuntimeCanaryExecutionPanel />
 </main>
   );
 }
