@@ -2891,3 +2891,29 @@ Provider canary call execution gate pronto solo come dry-run design. Provider ca
 ### Safety
 
 providerAiReady=false, providerCalled=false, providerCanaryCallExecutionAllowed=false, explicitProviderApprovalAllowed=false, providerRequestSendAllowed=false, providerResultReviewAllowed=false, canaryResultPersistenceAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.3 — AI Incident Handling Write Path Gate & Incident Governance Approval Lock
+
+### Scope
+
+V17.3 aggiunge un modulo locale dry-run per incident handling write path gate e incident governance approval lock.
+
+- endpoint ops protetto `/api/ops/ai-incident-handling-write-path-gate-dry-run`;
+- engine locale `aiIncidentHandlingWritePathGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- incident write path gate, incident governance approval lock, incident record boundary, escalation write boundary, closure write boundary, notification boundary, rollback incident write plan e incident write no-go board;
+- nessuna scrittura incidente reale, nessuna escalation, nessuna closure, nessuna notifica, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-incident-handling-write-path-gate-check
+```
+
+### Stato
+
+Incident handling write path gate pronto solo come dry-run design. Incident write reale, escalation write, closure write, notifiche, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, incidentHandlingWritePathAllowed=false, incidentGovernanceApprovalAllowed=false, incidentRecordWriteAllowed=false, incidentEscalationWriteAllowed=false, incidentClosureWriteAllowed=false, incidentNotificationAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
