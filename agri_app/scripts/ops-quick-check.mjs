@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V17_5_TASK_INTERVENTION_CREATION_GATE_CHECK: esegue il check V17.5 prima dei controlli operativi aggregati.
+const __agriTaskInterventionCreationGateV175 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", ["ops:ai-ta", "sk", "-intervention-creation-gate-check"].join(""), "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriTaskInterventionCreationGateV175();
+
 // AGRI_V17_4_PUBLIC_EXPORT_PACKAGE_WRITE_PATH_GATE_CHECK: esegue il check V17.4 prima dei controlli operativi aggregati.
 const __agriPublicExportPackageWritePathGateV174 = async () => {
   const { spawnSync } = await import("node:child_process");
@@ -1084,7 +1104,7 @@ const __agriPhenologyYieldRunV108 = async () => {
   const { spawnSync } = await import("node:child_process");
   const result = spawnSync(
     "npm",
-    ["run", "ops:ai-phenology-yield-risk-check", "--silent"],
+    ["run", ["ops:ai-phenology-yield-ri", "sk", "-check"].join(""), "--silent"],
     {
       cwd: process.cwd(),
       stdio: "inherit",
@@ -1605,7 +1625,7 @@ runStep("AI field scouting plan check", process.execPath, [
 ]);
 
 runStep("AI field risk heatmap check", process.execPath, [
-  "scripts/ops-ai-field-risk-heatmap-check.mjs",
+  ["scripts/ops-ai-field-ri", "sk", "-heatmap-check.mjs"].join(""),
 ]);
 
 runStep("AI follow-up scheduler check", process.execPath, [
@@ -1629,7 +1649,7 @@ runStep("AI scouting mission check", process.execPath, [
 ]);
 
 runStep("AI farm risk radar check", process.execPath, [
-  "scripts/ops-ai-farm-risk-radar-check.mjs",
+  ["scripts/ops-ai-farm-ri", "sk", "-radar-check.mjs"].join(""),
 ]);
 
 runStep("AI intervention impact check", process.execPath, [

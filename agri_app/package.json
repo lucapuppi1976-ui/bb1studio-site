@@ -133,7 +133,8 @@
     "ops:ai-manual-dispatch-write-path-gate-check": "node scripts/ops-ai-manual-dispatch-write-path-gate-check.mjs",
     "ops:ai-provider-canary-call-execution-gate-check": "node scripts/ops-ai-provider-canary-call-execution-gate-check.mjs",
     "ops:ai-incident-handling-write-path-gate-check": "node scripts/ops-ai-incident-handling-write-path-gate-check.mjs",
-    "ops:ai-public-export-package-write-path-gate-check": "node scripts/ops-ai-public-export-package-write-path-gate-check.mjs"
+    "ops:ai-public-export-package-write-path-gate-check": "node scripts/ops-ai-public-export-package-write-path-gate-check.mjs",
+    "ops:ai-task-intervention-creation-gate-check": "node scripts/ops-ai-task-intervention-creation-gate-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

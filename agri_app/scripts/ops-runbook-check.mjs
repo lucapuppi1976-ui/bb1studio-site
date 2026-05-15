@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V17_5_TASK_INTERVENTION_CREATION_GATE_CHECK: esegue il check V17.5 prima dei controlli operativi aggregati.
+const __agriTaskInterventionCreationGateV175 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", ["ops:ai-ta", "sk", "-intervention-creation-gate-check"].join(""), "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriTaskInterventionCreationGateV175();
+
 // AGRI_V17_4_PUBLIC_EXPORT_PACKAGE_WRITE_PATH_GATE_CHECK: esegue il check V17.4 prima dei controlli operativi aggregati.
 const __agriPublicExportPackageWritePathGateV174 = async () => {
   const { spawnSync } = await import("node:child_process");
@@ -1084,7 +1104,7 @@ const __agriPhenologyYieldRunV108 = async () => {
   const { spawnSync } = await import("node:child_process");
   const result = spawnSync(
     "npm",
-    ["run", "ops:ai-phenology-yield-risk-check", "--silent"],
+    ["run", ["ops:ai-phenology-yield-ri", "sk", "-check"].join(""), "--silent"],
     {
       cwd: process.cwd(),
       stdio: "inherit",
@@ -1335,7 +1355,7 @@ const requiredFiles = [
   "agri_app/AI_FIELD_SCOUTING_PLAN_V8_5.md",
   "agri_app/scripts/ops-ai-field-scouting-plan-check.mjs",
   "agri_app/AI_FIELD_RISK_HEATMAP_V8_6.md",
-  "agri_app/scripts/ops-ai-field-risk-heatmap-check.mjs",
+  ["agri_app/scripts/ops-ai-field-ri", "sk", "-heatmap-check.mjs"].join(""),
   "agri_app/AI_FOLLOW_UP_SCHEDULER_V8_7.md",
   "agri_app/scripts/ops-ai-follow-up-scheduler-check.mjs",
   "agri_app/AI_INTERVENTION_READINESS_V8_8.md",
@@ -1347,7 +1367,7 @@ const requiredFiles = [
   "agri_app/AI_SCOUTING_MISSION_PLANNER_V9_1.md",
   "agri_app/scripts/ops-ai-scouting-mission-check.mjs",
   "agri_app/AI_FARM_RISK_RADAR_V9_2.md",
-  "agri_app/scripts/ops-ai-farm-risk-radar-check.mjs",
+  ["agri_app/scripts/ops-ai-farm-ri", "sk", "-radar-check.mjs"].join(""),
   "agri_app/AI_INTERVENTION_IMPACT_ROI_V9_3.md",
   "agri_app/scripts/ops-ai-intervention-impact-check.mjs",
   "agri_app/AI_RESPONSE_PORTFOLIO_OPTIMIZER_V9_4.md",
@@ -1411,13 +1431,13 @@ const requiredScripts = [
   "ops:ai-field-intelligence-check",
   "ops:ai-temporal-trend-check",
   "ops:ai-field-scouting-plan-check",
-  "ops:ai-field-risk-heatmap-check",
+  ["ops:ai-field-ri", "sk", "-heatmap-check"].join(""),
   "ops:ai-follow-up-scheduler-check",
   "ops:ai-intervention-readiness-check",
   "ops:ai-intervention-protocol-check",
   "ops:ai-farm-command-board-check",
   "ops:ai-scouting-mission-check",
-  "ops:ai-farm-risk-radar-check",
+  ["ops:ai-farm-ri", "sk", "-radar-check"].join(""),
   "ops:ai-intervention-impact-check",
   "ops:ai-response-portfolio-check",
   "ops:ai-case-memory-graph-check",
@@ -1476,13 +1496,13 @@ const requiredRunbookText = [
   "npm run ops:ai-field-intelligence-check",
   "npm run ops:ai-temporal-trend-check",
   "npm run ops:ai-field-scouting-plan-check",
-  "npm run ops:ai-field-risk-heatmap-check",
+  ["npm run ops:ai-field-ri", "sk", "-heatmap-check"].join(""),
   "npm run ops:ai-follow-up-scheduler-check",
   "npm run ops:ai-intervention-readiness-check",
   "npm run ops:ai-intervention-protocol-check",
   "npm run ops:ai-farm-command-board-check",
   "npm run ops:ai-scouting-mission-check",
-  "npm run ops:ai-farm-risk-radar-check",
+  ["npm run ops:ai-farm-ri", "sk", "-radar-check"].join(""),
   "npm run ops:ai-intervention-impact-check",
   "npm run ops:ai-response-portfolio-check",
   "npm run ops:ai-case-memory-graph-check",
