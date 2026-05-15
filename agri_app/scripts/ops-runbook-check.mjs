@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V17_3_INCIDENT_HANDLING_WRITE_PATH_GATE_CHECK: esegue il check V17.3 prima dei controlli operativi aggregati.
+const __agriIncidentHandlingWritePathGateV173 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-incident-handling-write-path-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriIncidentHandlingWritePathGateV173();
+
 // AGRI_V17_2_PROVIDER_CANARY_CALL_EXECUTION_GATE_CHECK: esegue il check V17.2 prima dei controlli operativi aggregati.
 const __agriProviderCanaryCallExecutionGateV172 = async () => {
   const { spawnSync } = await import("node:child_process");
