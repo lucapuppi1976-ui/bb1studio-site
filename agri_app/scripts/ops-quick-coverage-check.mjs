@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V17_6_PROVIDER_CALL_EXECUTION_GATE_CHECK: esegue il check V17.6 prima dei controlli operativi aggregati.
+const __agriProviderCallExecutionGateV176 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-provider-call-execution-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriProviderCallExecutionGateV176();
+
 
 // AGRI_V17_5_DYNAMIC_RISK_COVERAGE_ALIAS:
 // permette al coverage checker di trovare in ops-quick-check i path composti
