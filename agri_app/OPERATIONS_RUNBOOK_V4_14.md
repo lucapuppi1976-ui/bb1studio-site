@@ -2995,3 +2995,29 @@ Provider call execution gate pronto solo come dry-run design. Provider call real
 ### Safety
 
 providerAiReady=false, providerCalled=false, providerCallExecutionAllowed=false, providerRequestDispatchAllowed=false, providerResponseIntakeAllowed=false, providerResponseReviewAllowed=false, providerResultPersistenceAllowed=false, explicitProviderApprovalAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.7 — AI Incident Record Write Gate & Incident Governance Final Approval Lock
+
+### Scope
+
+V17.7 aggiunge un modulo locale dry-run per incident record write gate e incident governance final approval lock.
+
+- endpoint ops protetto `/api/ops/ai-incident-record-write-gate-dry-run`;
+- engine locale `aiIncidentRecordWriteGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- incident record write gate, governance final approval lock, timeline write boundary, audit write boundary, retention boundary, closure eligibility board, rollback record plan e record write no-go board;
+- nessuna scrittura incidente reale, nessun timeline write, nessun audit write, nessuna retention write, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-incident-record-write-gate-check
+```
+
+### Stato
+
+Incident record write gate pronto solo come dry-run design. Record write reale, timeline write, audit write, retention write, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, incidentRecordWriteAllowed=false, incidentTimelineWriteAllowed=false, incidentAuditWriteAllowed=false, incidentRetentionWriteAllowed=false, incidentClosureEligibilityWriteAllowed=false, incidentGovernanceFinalApprovalAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
