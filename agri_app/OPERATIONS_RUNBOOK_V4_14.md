@@ -2813,3 +2813,29 @@ Runtime incident handling activation gate pronto solo come dry-run design. Incid
 ### Safety
 
 providerAiReady=false, providerCalled=false, incidentHandlingAllowed=false, incidentHandlingPerformed=false, incidentWriteAllowed=false, incidentEscalationAllowed=false, incidentClosureAllowed=false, incidentNotificationAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.0 — AI Public Compliance Export Publication Gate & Legal Privacy Final Approval Lock
+
+### Scope
+
+V17.0 aggiunge un modulo locale dry-run per public compliance export publication gate e legal/privacy final approval lock.
+
+- endpoint ops protetto `/api/ops/ai-public-compliance-export-publication-gate-dry-run`;
+- engine locale `aiPublicComplianceExportPublicationGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- publication gate, legal final approval board, privacy final approval board, publication scope plan, redaction attestation board, export file boundary, takedown rollback plan e publication no-go board;
+- nessun export pubblico reale, nessuna pubblicazione, nessun package write, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-public-compliance-export-publication-gate-check
+```
+
+### Stato
+
+Public compliance export publication gate pronto solo come dry-run design. Pubblicazione reale, package write, public share, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, publicComplianceExportPublicationAllowed=false, publicComplianceExportPublicationPerformed=false, legalFinalApprovalAllowed=false, privacyFinalApprovalAllowed=false, publicationPackageWriteAllowed=false, publicationTakedownAllowed=false, publicShareAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

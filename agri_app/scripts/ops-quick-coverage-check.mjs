@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V17_0_PUBLIC_COMPLIANCE_EXPORT_PUBLICATION_GATE_CHECK: esegue il check V17.0 prima dei controlli operativi aggregati.
+const __agriPublicComplianceExportPublicationGateV170 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-public-compliance-export-publication-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriPublicComplianceExportPublicationGateV170();
+
 // AGRI_V16_9_RUNTIME_INCIDENT_HANDLING_ACTIVATION_GATE_CHECK: esegue il check V16.9 prima dei controlli operativi aggregati.
 const __agriRuntimeIncidentHandlingActivationGateV169 = async () => {
   const { spawnSync } = await import("node:child_process");
