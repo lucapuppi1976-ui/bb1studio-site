@@ -3021,3 +3021,29 @@ Incident record write gate pronto solo come dry-run design. Record write reale, 
 ### Safety
 
 providerAiReady=false, providerCalled=false, incidentRecordWriteAllowed=false, incidentTimelineWriteAllowed=false, incidentAuditWriteAllowed=false, incidentRetentionWriteAllowed=false, incidentClosureEligibilityWriteAllowed=false, incidentGovernanceFinalApprovalAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.8 — AI Public Export Artifact Write Gate & Legal Privacy Final Artifact Approval Lock
+
+### Scope
+
+V17.8 aggiunge un modulo locale dry-run per public export artifact write gate e legal/privacy final artifact approval lock.
+
+- endpoint ops protetto `/api/ops/ai-public-export-artifact-write-gate-dry-run`;
+- engine locale `aiPublicExportArtifactWriteGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- artifact write gate, legal privacy final artifact approval lock, manifest write boundary, checksum write boundary, archive write boundary, access-control boundary, rollback artifact plan e artifact write no-go board;
+- nessuna scrittura artifact reale, nessun manifest write, nessun checksum write, nessun archive write, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-public-export-artifact-write-gate-check
+```
+
+### Stato
+
+Public export artifact write gate pronto solo come dry-run design. Artifact write reale, manifest write, checksum write, archive write, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, publicExportArtifactWriteAllowed=false, publicExportManifestWriteAllowed=false, publicExportChecksumWriteAllowed=false, publicExportArchiveWriteAllowed=false, publicExportAccessControlWriteAllowed=false, publicExportArtifactFinalApprovalAllowed=false, legalFinalApprovalAllowed=false, privacyFinalApprovalAllowed=false, publicShareAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

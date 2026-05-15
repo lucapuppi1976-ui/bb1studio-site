@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V17_8_PUBLIC_EXPORT_ARTIFACT_WRITE_GATE_CHECK: esegue il check V17.8 prima dei controlli operativi aggregati.
+const __agriPublicExportArtifactWriteGateV178 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-public-export-artifact-write-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriPublicExportArtifactWriteGateV178();
+
 // AGRI_V17_7_INCIDENT_RECORD_WRITE_GATE_CHECK: esegue il check V17.7 prima dei controlli operativi aggregati.
 const __agriIncidentRecordWriteGateV177 = async () => {
   const { spawnSync } = await import("node:child_process");
