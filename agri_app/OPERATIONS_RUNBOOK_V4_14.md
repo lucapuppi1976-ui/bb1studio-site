@@ -2969,3 +2969,29 @@ Task/intervention creation gate pronto solo come dry-run design. Creazione reale
 ### Safety
 
 providerAiReady=false, providerCalled=false, taskInterventionCreationAllowed=false, taskCreated=false, interventionCreated=false, taskRecordWriteAllowed=false, interventionRecordWriteAllowed=false, workOrderMaterializationAllowed=false, operationWriteApprovalAllowed=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.6 — AI Provider Call Execution Gate & Explicit Provider Approval Runtime Lock
+
+### Scope
+
+V17.6 aggiunge un modulo locale dry-run per provider call execution gate e explicit provider approval runtime lock.
+
+- endpoint ops protetto `/api/ops/ai-provider-call-execution-gate-dry-run`;
+- engine locale `aiProviderCallExecutionGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- provider call execution gate, explicit provider approval runtime lock, request dispatch boundary, response intake boundary, budget runtime boundary, reviewer approval evidence, rollback provider call plan e provider call no-go board;
+- nessuna chiamata provider reale, nessun request dispatch, nessun response intake, nessuna produzione AI, nessuna persistenza risultato, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-provider-call-execution-gate-check
+```
+
+### Stato
+
+Provider call execution gate pronto solo come dry-run design. Provider call reale, request dispatch, response intake, result persistence, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, providerCallExecutionAllowed=false, providerRequestDispatchAllowed=false, providerResponseIntakeAllowed=false, providerResponseReviewAllowed=false, providerResultPersistenceAllowed=false, explicitProviderApprovalAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

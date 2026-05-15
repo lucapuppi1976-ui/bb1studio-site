@@ -96,6 +96,7 @@ import ProviderCanaryCallExecutionGatePanel from "./ProviderCanaryCallExecutionG
 import IncidentHandlingWritePathGatePanel from "./IncidentHandlingWritePathGatePanel";
 import PublicExportPackageWritePathGatePanel from "./PublicExportPackageWritePathGatePanel";
 import TaskInterventionCreationGatePanel from "./TaskInterventionCreationGatePanel";
+import ProviderCallExecutionGatePanel from "./ProviderCallExecutionGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -278,6 +279,8 @@ export default function AiPhotoDiagnosisPage() {
       <PublicExportPackageWritePathGatePanel />
 
       <TaskInterventionCreationGatePanel />
+
+      <ProviderCallExecutionGatePanel />
 </main>
   );
 }
