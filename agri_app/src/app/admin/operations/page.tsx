@@ -101,6 +101,7 @@ import OperationsAiManualDispatchWritePathGate from "./OperationsAiManualDispatc
 import OperationsAiProviderCanaryCallExecutionGate from "./OperationsAiProviderCanaryCallExecutionGate";
 import OperationsAiIncidentHandlingWritePathGate from "./OperationsAiIncidentHandlingWritePathGate";
 import OperationsAiPublicExportPackageWritePathGate from "./OperationsAiPublicExportPackageWritePathGate";
+import OperationsAiTaskInterventionCreationGate from "./OperationsAiTaskInterventionCreationGate";
 
 const sections = [
   {
@@ -446,6 +447,8 @@ export default function AdminOperationsPage() {
       <OperationsAiIncidentHandlingWritePathGate />
 
       <OperationsAiPublicExportPackageWritePathGate />
+
+      <OperationsAiTaskInterventionCreationGate />
 </main>
   );
 }

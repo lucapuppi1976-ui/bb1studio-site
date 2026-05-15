@@ -2943,3 +2943,29 @@ Public export package write path gate pronto solo come dry-run design. Package w
 ### Safety
 
 providerAiReady=false, providerCalled=false, publicExportPackageWriteAllowed=false, publicExportPackageWritePerformed=false, publicExportArtifactWriteAllowed=false, publicationPackageWriteAllowed=false, exportRetentionWriteAllowed=false, exportAccessControlWriteAllowed=false, legalFinalApprovalAllowed=false, privacyFinalApprovalAllowed=false, publicShareAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.5 — AI Task & Intervention Creation Gate & Operational Write Approval Lock
+
+### Scope
+
+V17.5 aggiunge un modulo locale dry-run per task/intervention creation gate e operational write approval lock.
+
+- endpoint ops protetto `/api/ops/ai-task-intervention-creation-gate-dry-run`;
+- engine locale `aiTaskInterventionCreationGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- creation gate, operational write approval lock, task creation boundary, intervention creation boundary, work order materialization boundary, safety execution boundary, rollback creation plan e creation no-go board;
+- nessuna creazione task/intervento reale, nessun record write, nessuna materializzazione work order, nessuna notifica, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-task-intervention-creation-gate-check
+```
+
+### Stato
+
+Task/intervention creation gate pronto solo come dry-run design. Creazione reale task/interventi, work order materialization, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, taskInterventionCreationAllowed=false, taskCreated=false, interventionCreated=false, taskRecordWriteAllowed=false, interventionRecordWriteAllowed=false, workOrderMaterializationAllowed=false, operationWriteApprovalAllowed=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
