@@ -2787,3 +2787,29 @@ Provider runtime canary execution gate pronto solo come dry-run design. Canary r
 ### Safety
 
 providerAiReady=false, providerCalled=false, providerRuntimeCanaryAllowed=false, providerRuntimeCanaryPerformed=false, providerCanaryCallAllowed=false, providerCanaryCallPerformed=false, canaryExecutionAllowed=false, canaryExecutionPerformed=false, canaryResultPersistenceAllowed=false, canaryResultPersistencePerformed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V16.9 — AI Runtime Incident Handling Activation Gate & Incident Write Approval Lock
+
+### Scope
+
+V16.9 aggiunge un modulo locale dry-run per runtime incident handling activation gate e incident write approval lock.
+
+- endpoint ops protetto `/api/ops/ai-runtime-incident-handling-activation-gate-dry-run`;
+- engine locale `aiRuntimeIncidentHandlingActivationGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- incident handling gate, incident write approval lock, operator notification boundary, incident escalation board, provider incident boundary, rollback incident plan, incident closure checklist e incident no-go board;
+- nessun incident handling reale, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza incidenti, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-runtime-incident-handling-activation-gate-check
+```
+
+### Stato
+
+Runtime incident handling activation gate pronto solo come dry-run design. Incident handling reale, incident write, escalation, closure, notifiche, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, incidentHandlingAllowed=false, incidentHandlingPerformed=false, incidentWriteAllowed=false, incidentEscalationAllowed=false, incidentClosureAllowed=false, incidentNotificationAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

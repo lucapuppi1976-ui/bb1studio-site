@@ -1,4 +1,24 @@
 #!/usr/bin/env node
+// AGRI_V16_9_RUNTIME_INCIDENT_HANDLING_ACTIVATION_GATE_CHECK: esegue il check V16.9 prima dei controlli operativi aggregati.
+const __agriRuntimeIncidentHandlingActivationGateV169 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-runtime-incident-handling-activation-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriRuntimeIncidentHandlingActivationGateV169();
+
 // AGRI_V16_8_PROVIDER_RUNTIME_CANARY_EXECUTION_CHECK: esegue il check V16.8 prima dei controlli operativi aggregati.
 const __agriProviderRuntimeCanaryExecutionV168 = async () => {
   const { spawnSync } = await import("node:child_process");
