@@ -92,6 +92,7 @@ import ProviderRuntimeCanaryExecutionPanel from "./ProviderRuntimeCanaryExecutio
 import RuntimeIncidentHandlingActivationGatePanel from "./RuntimeIncidentHandlingActivationGatePanel";
 import PublicComplianceExportPublicationGatePanel from "./PublicComplianceExportPublicationGatePanel";
 import ManualDispatchWritePathGatePanel from "./ManualDispatchWritePathGatePanel";
+import ProviderCanaryCallExecutionGatePanel from "./ProviderCanaryCallExecutionGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -266,6 +267,8 @@ export default function AiPhotoDiagnosisPage() {
       <PublicComplianceExportPublicationGatePanel />
 
       <ManualDispatchWritePathGatePanel />
+
+      <ProviderCanaryCallExecutionGatePanel />
 </main>
   );
 }
