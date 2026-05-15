@@ -2839,3 +2839,29 @@ Public compliance export publication gate pronto solo come dry-run design. Pubbl
 ### Safety
 
 providerAiReady=false, providerCalled=false, publicComplianceExportPublicationAllowed=false, publicComplianceExportPublicationPerformed=false, legalFinalApprovalAllowed=false, privacyFinalApprovalAllowed=false, publicationPackageWriteAllowed=false, publicationTakedownAllowed=false, publicShareAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.1 — AI Manual Dispatch Write Path Gate & Task/Intervention Creation Approval Lock
+
+### Scope
+
+V17.1 aggiunge un modulo locale dry-run per manual dispatch write path gate e task/intervention creation approval lock.
+
+- endpoint ops protetto `/api/ops/ai-manual-dispatch-write-path-gate-dry-run`;
+- engine locale `aiManualDispatchWritePathGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- dispatch write path gate, task write approval lock, intervention write approval lock, work order boundary, operator write attestation, rollback write plan e write no-go board;
+- nessun write path reale, nessun ticket write, nessun task, nessun intervento, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-manual-dispatch-write-path-gate-check
+```
+
+### Stato
+
+Manual dispatch write path gate pronto solo come dry-run design. Write path reale, ticket write, task, interventi, work order persistence, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, manualDispatchWritePathAllowed=false, dispatchDraftWriteAllowed=false, dispatchTicketWriteAllowed=false, workOrderDispatchAllowed=false, taskWriteApprovalAllowed=false, interventionWriteApprovalAllowed=false, workOrderPersistenceAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
