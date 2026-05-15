@@ -137,7 +137,8 @@
     "ops:ai-task-intervention-creation-gate-check": "node scripts/ops-ai-task-intervention-creation-gate-check.mjs",
     "ops:ai-provider-call-execution-gate-check": "node scripts/ops-ai-provider-call-execution-gate-check.mjs",
     "ops:ai-incident-record-write-gate-check": "node scripts/ops-ai-incident-record-write-gate-check.mjs",
-    "ops:ai-public-export-artifact-write-gate-check": "node scripts/ops-ai-public-export-artifact-write-gate-check.mjs"
+    "ops:ai-public-export-artifact-write-gate-check": "node scripts/ops-ai-public-export-artifact-write-gate-check.mjs",
+    "ops:ai-operational-execution-gate-check": "node scripts/ops-ai-operational-execution-gate-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
