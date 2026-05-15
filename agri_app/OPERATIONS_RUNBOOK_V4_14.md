@@ -2917,3 +2917,29 @@ Incident handling write path gate pronto solo come dry-run design. Incident writ
 ### Safety
 
 providerAiReady=false, providerCalled=false, incidentHandlingWritePathAllowed=false, incidentGovernanceApprovalAllowed=false, incidentRecordWriteAllowed=false, incidentEscalationWriteAllowed=false, incidentClosureWriteAllowed=false, incidentNotificationAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.4 — AI Public Export Package Write Path Gate & Legal Privacy Write Approval Lock
+
+### Scope
+
+V17.4 aggiunge un modulo locale dry-run per public export package write path gate e legal/privacy write approval lock.
+
+- endpoint ops protetto `/api/ops/ai-public-export-package-write-path-gate-dry-run`;
+- engine locale `aiPublicExportPackageWritePathGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- package write gate, legal privacy write approval lock, export artifact boundary, publication package boundary, retention board, access control board, rollback package plan e package write no-go board;
+- nessun package write reale, nessun artifact write, nessun public share, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-public-export-package-write-path-gate-check
+```
+
+### Stato
+
+Public export package write path gate pronto solo come dry-run design. Package write reale, artifact write, public share, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, publicExportPackageWriteAllowed=false, publicExportPackageWritePerformed=false, publicExportArtifactWriteAllowed=false, publicationPackageWriteAllowed=false, exportRetentionWriteAllowed=false, exportAccessControlWriteAllowed=false, legalFinalApprovalAllowed=false, privacyFinalApprovalAllowed=false, publicShareAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
