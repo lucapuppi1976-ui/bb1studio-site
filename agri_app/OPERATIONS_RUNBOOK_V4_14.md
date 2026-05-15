@@ -3047,3 +3047,29 @@ Public export artifact write gate pronto solo come dry-run design. Artifact writ
 ### Safety
 
 providerAiReady=false, providerCalled=false, publicExportArtifactWriteAllowed=false, publicExportManifestWriteAllowed=false, publicExportChecksumWriteAllowed=false, publicExportArchiveWriteAllowed=false, publicExportAccessControlWriteAllowed=false, publicExportArtifactFinalApprovalAllowed=false, legalFinalApprovalAllowed=false, privacyFinalApprovalAllowed=false, publicShareAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.9 — AI Operational Execution Gate & Explicit Human Approval Lock
+
+### Scope
+
+V17.9 aggiunge un modulo locale dry-run per operational execution gate e explicit human approval lock.
+
+- endpoint ops protetto `/api/ops/ai-operational-execution-gate-dry-run`;
+- engine locale `aiOperationalExecutionGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- operational execution gate, explicit human approval lock, execution preflight boundary, execution command boundary, execution notification boundary, emergency stop board, rollback execution plan e execution no-go board;
+- nessuna esecuzione reale, nessun command dispatch, nessuna notifica, nessuna chiamata provider esterna, nessuna produzione AI, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-operational-execution-gate-check
+```
+
+### Stato
+
+Operational execution gate pronto solo come dry-run design. Esecuzione reale, command dispatch, notification, emergency stop runtime, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, operationalExecutionAllowed=false, operationalExecutionPerformed=false, executionPreflightAllowed=false, executionCommandAllowed=false, executionNotificationAllowed=false, emergencyStopConfigured=false, humanExecutionApprovalAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionAllowed=false, automaticExecutionPerformed=false, productPrescriptionAllowed=false, dosageAdviceAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

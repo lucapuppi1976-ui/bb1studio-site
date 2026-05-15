@@ -1,4 +1,26 @@
 #!/usr/bin/env node
+// AGRI_V17_9_OPERATIONAL_EXECUTION_GATE_CHECK: esegue il check V17.9 prima dei controlli operativi aggregati.
+// AGRI_V17_9_OPERATIONAL_EXECUTION_GATE_PATH: scripts/ops-ai-operational-execution-gate-check.mjs
+// AGRI_V17_9_OPERATIONAL_EXECUTION_GATE_ALIAS: ops:ai-operational-execution-gate-check
+const __agriOperationalExecutionGateV179 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-operational-execution-gate-check", "--silent"],
+    {
+      cwd: process.cwd(),
+      stdio: "inherit",
+      shell: process.platform === "win32",
+    },
+  );
+
+  if ((result.status ?? 0) !== 0) {
+    process.exit(result.status ?? 1);
+  }
+};
+
+await __agriOperationalExecutionGateV179();
+
 // AGRI_V17_8_PUBLIC_EXPORT_ARTIFACT_WRITE_GATE_CHECK: esegue il check V17.8 prima dei controlli operativi aggregati.
 const __agriPublicExportArtifactWriteGateV178 = async () => {
   const { spawnSync } = await import("node:child_process");
