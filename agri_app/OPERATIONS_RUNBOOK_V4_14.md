@@ -2865,3 +2865,29 @@ Manual dispatch write path gate pronto solo come dry-run design. Write path real
 ### Safety
 
 providerAiReady=false, providerCalled=false, manualDispatchWritePathAllowed=false, dispatchDraftWriteAllowed=false, dispatchTicketWriteAllowed=false, workOrderDispatchAllowed=false, taskWriteApprovalAllowed=false, interventionWriteApprovalAllowed=false, workOrderPersistenceAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V17.2 — AI Provider Canary Call Execution Gate & Explicit Provider Approval Lock
+
+### Scope
+
+V17.2 aggiunge un modulo locale dry-run per provider canary call execution gate e explicit provider approval lock.
+
+- endpoint ops protetto `/api/ops/ai-provider-canary-call-execution-gate-dry-run`;
+- engine locale `aiProviderCanaryCallExecutionGate.ts`;
+- pannello UI in `/ai/photo-diagnosis`;
+- pannello Admin Operations;
+- provider call gate, explicit provider approval lock, provider request boundary, budget envelope, reviewer provider approval, provider result boundary, rollback provider call plan e provider call no-go board;
+- nessuna chiamata provider reale, nessun request send, nessuna produzione AI, nessuna persistenza risultato, nessuna persistenza review, nessuna scrittura AI persistente, nessuna modifica Prisma schema, nessuna migration execution, nessuna creazione task/intervento, nessuna automazione.
+
+### Check
+
+```txt
+ops:ai-provider-canary-call-execution-gate-check
+```
+
+### Stato
+
+Provider canary call execution gate pronto solo come dry-run design. Provider call reale, request send, result review, result persistence, provider reale e produzione AI ancora no-go.
+
+### Safety
+
+providerAiReady=false, providerCalled=false, providerCanaryCallExecutionAllowed=false, explicitProviderApprovalAllowed=false, providerRequestSendAllowed=false, providerResultReviewAllowed=false, canaryResultPersistenceAllowed=false, providerCallAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionPerformed=false, productPrescriptionPerformed=false, dosageAdvicePerformed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.

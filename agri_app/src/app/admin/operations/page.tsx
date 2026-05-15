@@ -98,6 +98,7 @@ import OperationsAiProviderRuntimeCanaryExecution from "./OperationsAiProviderRu
 import OperationsAiRuntimeIncidentHandlingActivationGate from "./OperationsAiRuntimeIncidentHandlingActivationGate";
 import OperationsAiPublicComplianceExportPublicationGate from "./OperationsAiPublicComplianceExportPublicationGate";
 import OperationsAiManualDispatchWritePathGate from "./OperationsAiManualDispatchWritePathGate";
+import OperationsAiProviderCanaryCallExecutionGate from "./OperationsAiProviderCanaryCallExecutionGate";
 
 const sections = [
   {
@@ -437,6 +438,8 @@ export default function AdminOperationsPage() {
       <OperationsAiPublicComplianceExportPublicationGate />
 
       <OperationsAiManualDispatchWritePathGate />
+
+      <OperationsAiProviderCanaryCallExecutionGate />
 </main>
   );
 }
