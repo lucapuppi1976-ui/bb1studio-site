@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_1_INCIDENT_RECORD_PERSISTENCE_GOVERNANCE_CHECK: esegue il check V18.1 prima dei controlli operativi aggregati.
+// AGRI_V18_1_INCIDENT_RECORD_PERSISTENCE_GOVERNANCE_PATH: scripts/ops-ai-incident-record-persistence-governance-check.mjs
+// AGRI_V18_1_INCIDENT_RECORD_PERSISTENCE_GOVERNANCE_ALIAS: ops:ai-incident-record-persistence-governance-check
+const __agriIncidentRecordPersistenceGovernanceV181 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-incident-record-persistence-governance-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriIncidentRecordPersistenceGovernanceV181();
+
 // AGRI_V18_0_ONLINE_CONTROLLED_OPERATIONS_MONITOR_CHECK: esegue il check V18.0 prima dei controlli operativi aggregati.
 // AGRI_V18_0_ONLINE_CONTROLLED_OPERATIONS_MONITOR_PATH: scripts/ops-ai-online-controlled-operations-monitor-check.mjs
 // AGRI_V18_0_ONLINE_CONTROLLED_OPERATIONS_MONITOR_ALIAS: ops:ai-online-controlled-operations-monitor-check
