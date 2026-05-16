@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_9_LIVE_UAT_LAUNCH_GATE_CHECK: esegue il check V18.9 prima dei controlli operativi aggregati.
+// AGRI_V18_9_LIVE_UAT_LAUNCH_GATE_PATH: scripts/ops-ai-live-uat-launch-gate-check.mjs
+// AGRI_V18_9_LIVE_UAT_LAUNCH_GATE_ALIAS: ops:ai-live-uat-launch-gate-check
+const __agriLiveUatLaunchGateV189 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-live-uat-launch-gate-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriLiveUatLaunchGateV189();
+
 // AGRI_V18_8_UAT_FEEDBACK_BUG_EVIDENCE_SESSION_CHECK: esegue il check V18.8 prima dei controlli operativi aggregati.
 // AGRI_V18_8_UAT_FEEDBACK_BUG_EVIDENCE_SESSION_PATH: scripts/ops-ai-uat-feedback-bug-evidence-session-check.mjs
 // AGRI_V18_8_UAT_FEEDBACK_BUG_EVIDENCE_SESSION_ALIAS: ops:ai-uat-feedback-bug-evidence-session-check

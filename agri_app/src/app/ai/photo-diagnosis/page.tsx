@@ -109,6 +109,7 @@ import UatTesterAccessProvisioningPanel from "./UatTesterAccessProvisioningPanel
 import UxNavigationHardeningPanel from "./UxNavigationHardeningPanel";
 import MultilingualUxTranslationCoveragePanel from "./MultilingualUxTranslationCoveragePanel";
 import UatFeedbackBugEvidenceSessionPanel from "./UatFeedbackBugEvidenceSessionPanel";
+import LiveUatLaunchGatePanel from "./LiveUatLaunchGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -317,6 +318,8 @@ export default function AiPhotoDiagnosisPage() {
       <MultilingualUxTranslationCoveragePanel />
 
       <UatFeedbackBugEvidenceSessionPanel />
+
+      <LiveUatLaunchGatePanel />
 </main>
   );
 }
