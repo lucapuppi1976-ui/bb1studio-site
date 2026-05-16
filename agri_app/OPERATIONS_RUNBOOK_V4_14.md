@@ -3113,3 +3113,23 @@ ops:ai-incident-record-persistence-governance-check
 ### Stato
 
 APP online in controlled dry-run. Incident record persistence resta no-go.
+## V18.2 — Online Live UAT Test Matrix & Evidence Capture Board
+
+### Scope
+
+V18.2 aggiunge una matrice per testing live online controllato e raccolta evidenze UAT.
+
+- endpoint ops protetto /api/ops/ai-online-live-uat-test-matrix-dry-run;
+- engine locale aiOnlineLiveUatTestMatrix.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- test matrix, evidence capture, route coverage, protected endpoint coverage, bug triage, pass/fail criteria e rollback decision;
+- nessuna AI live, nessun provider call, nessuna persistenza AI, nessuna memoria DB, nessun task/intervento, nessuna execution, nessun public export write, nessun incident write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-online-live-uat-test-matrix-check
+
+### Stato
+
+Testing live controllato tracciabile. AI live, scritture operative, execution reale, public export write e incident write restano no-go.
