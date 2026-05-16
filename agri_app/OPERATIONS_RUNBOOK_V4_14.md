@@ -3213,3 +3213,25 @@ ops:ai-ux-navigation-hardening-check
 ### Stato
 
 UX e navigazione più leggibili per tester e reviewer. Nessuna attivazione reale viene introdotta.
+## V18.7 — Multilingual UX Completion & Translation Coverage Gate
+
+### Scope
+
+V18.7 aggiunge un gate dry-run per copertura multilingua UX, dizionario testi, fallback policy, language switcher readiness, onboarding i18n, admin i18n e audit hardcoded text.
+
+- endpoint ops protetto /api/ops/ai-multilingual-ux-translation-coverage-dry-run;
+- engine locale aiMultilingualUxTranslationCoverage.ts;
+- catalogo lingue agriAppLanguages.ts;
+- dizionario UX agriAppUxDictionary.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- lingue UAT: it, en, es, fr, de, pt;
+- nessuna registrazione pubblica, nessuna scrittura account, nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-multilingual-ux-translation-coverage-check
+
+### Stato
+
+Readiness multilingua tracciabile. Lingue e dizionario UX pronti per revisione UAT; nessuna attivazione reale viene introdotta.

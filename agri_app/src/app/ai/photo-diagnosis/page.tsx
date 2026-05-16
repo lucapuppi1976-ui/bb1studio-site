@@ -107,6 +107,7 @@ import OperationalExecutionUatReadinessPanel from "./OperationalExecutionUatRead
 import ProviderRuntimeUatReadinessPanel from "./ProviderRuntimeUatReadinessPanel";
 import UatTesterAccessProvisioningPanel from "./UatTesterAccessProvisioningPanel";
 import UxNavigationHardeningPanel from "./UxNavigationHardeningPanel";
+import MultilingualUxTranslationCoveragePanel from "./MultilingualUxTranslationCoveragePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -311,6 +312,8 @@ export default function AiPhotoDiagnosisPage() {
       <UatTesterAccessProvisioningPanel />
 
       <UxNavigationHardeningPanel />
+
+      <MultilingualUxTranslationCoveragePanel />
 </main>
   );
 }

@@ -145,7 +145,8 @@
     "ops:ai-operational-execution-uat-readiness-check": "node scripts/ops-ai-operational-execution-uat-readiness-check.mjs",
     "ops:ai-provider-runtime-uat-readiness-check": "node scripts/ops-ai-provider-runtime-uat-readiness-check.mjs",
     "ops:ai-uat-tester-access-provisioning-check": "node scripts/ops-ai-uat-tester-access-provisioning-check.mjs",
-    "ops:ai-ux-navigation-hardening-check": "node scripts/ops-ai-ux-navigation-hardening-check.mjs"
+    "ops:ai-ux-navigation-hardening-check": "node scripts/ops-ai-ux-navigation-hardening-check.mjs",
+    "ops:ai-multilingual-ux-translation-coverage-check": "node scripts/ops-ai-multilingual-ux-translation-coverage-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
