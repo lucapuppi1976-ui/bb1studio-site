@@ -3193,3 +3193,23 @@ ops:ai-uat-tester-access-provisioning-check
 ### Stato
 
 UAT tester access provisioning pronto come dry-run. Inviti e account reali restano no-go fino a gate dedicato.
+## V18.6 — UX Simplification, Navigation Polish & User Journey Hardening
+
+### Scope
+
+V18.6 aggiunge board dry-run per semplificazione UX, navigazione, percorsi tester/reviewer, leggibilità admin, mobile readiness e messaggi di stato.
+
+- endpoint ops protetto /api/ops/ai-ux-navigation-hardening-dry-run;
+- engine locale aiUxNavigationHardening.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- entry experience, navigation polish, user journey, admin readability, mobile readiness, state messages e dry-run clarity;
+- nessuna registrazione pubblica, nessuna scrittura account, nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-ux-navigation-hardening-check
+
+### Stato
+
+UX e navigazione più leggibili per tester e reviewer. Nessuna attivazione reale viene introdotta.

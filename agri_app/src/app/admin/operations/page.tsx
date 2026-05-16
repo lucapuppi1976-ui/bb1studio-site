@@ -112,6 +112,7 @@ import OperationsAiOnlineLiveUatTestMatrix from "./OperationsAiOnlineLiveUatTest
 import OperationsAiOperationalExecutionUatReadiness from "./OperationsAiOperationalExecutionUatReadiness";
 import OperationsAiProviderRuntimeUatReadiness from "./OperationsAiProviderRuntimeUatReadiness";
 import OperationsAiUatTesterAccessProvisioning from "./OperationsAiUatTesterAccessProvisioning";
+import OperationsAiUxNavigationHardening from "./OperationsAiUxNavigationHardening";
 
 const sections = [
   {
@@ -479,6 +480,8 @@ export default function AdminOperationsPage() {
       <OperationsAiProviderRuntimeUatReadiness />
 
       <OperationsAiUatTesterAccessProvisioning />
+
+      <OperationsAiUxNavigationHardening />
 </main>
   );
 }
