@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_7_MULTILINGUAL_UX_TRANSLATION_COVERAGE_CHECK: esegue il check V18.7 prima dei controlli operativi aggregati.
+// AGRI_V18_7_MULTILINGUAL_UX_TRANSLATION_COVERAGE_PATH: scripts/ops-ai-multilingual-ux-translation-coverage-check.mjs
+// AGRI_V18_7_MULTILINGUAL_UX_TRANSLATION_COVERAGE_ALIAS: ops:ai-multilingual-ux-translation-coverage-check
+const __agriMultilingualUxTranslationCoverageV187 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-multilingual-ux-translation-coverage-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriMultilingualUxTranslationCoverageV187();
+
 // AGRI_V18_6_UX_NAVIGATION_HARDENING_CHECK: esegue il check V18.6 prima dei controlli operativi aggregati.
 // AGRI_V18_6_UX_NAVIGATION_HARDENING_PATH: scripts/ops-ai-ux-navigation-hardening-check.mjs
 // AGRI_V18_6_UX_NAVIGATION_HARDENING_ALIAS: ops:ai-ux-navigation-hardening-check

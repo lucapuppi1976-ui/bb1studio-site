@@ -113,6 +113,7 @@ import OperationsAiOperationalExecutionUatReadiness from "./OperationsAiOperatio
 import OperationsAiProviderRuntimeUatReadiness from "./OperationsAiProviderRuntimeUatReadiness";
 import OperationsAiUatTesterAccessProvisioning from "./OperationsAiUatTesterAccessProvisioning";
 import OperationsAiUxNavigationHardening from "./OperationsAiUxNavigationHardening";
+import OperationsAiMultilingualUxTranslationCoverage from "./OperationsAiMultilingualUxTranslationCoverage";
 
 const sections = [
   {
@@ -482,6 +483,8 @@ export default function AdminOperationsPage() {
       <OperationsAiUatTesterAccessProvisioning />
 
       <OperationsAiUxNavigationHardening />
+
+      <OperationsAiMultilingualUxTranslationCoverage />
 </main>
   );
 }
