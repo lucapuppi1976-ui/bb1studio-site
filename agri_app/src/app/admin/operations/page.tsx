@@ -117,6 +117,7 @@ import OperationsAiMultilingualUxTranslationCoverage from "./OperationsAiMultili
 import OperationsAiUatFeedbackBugEvidenceSession from "./OperationsAiUatFeedbackBugEvidenceSession";
 import OperationsAiLiveUatLaunchGate from "./OperationsAiLiveUatLaunchGate";
 import OperationsAiTesterAccountActivationGate from "./OperationsAiTesterAccountActivationGate";
+import OperationsAiAuthUserSchemaReadiness from "./OperationsAiAuthUserSchemaReadiness";
 
 const sections = [
   {
@@ -494,6 +495,8 @@ export default function AdminOperationsPage() {
       <OperationsAiLiveUatLaunchGate />
 
       <OperationsAiTesterAccountActivationGate />
+
+      <OperationsAiAuthUserSchemaReadiness />
 </main>
   );
 }
