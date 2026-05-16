@@ -3133,3 +3133,23 @@ ops:ai-online-live-uat-test-matrix-check
 ### Stato
 
 Testing live controllato tracciabile. AI live, scritture operative, execution reale, public export write e incident write restano no-go.
+## V18.3 — Operational Execution UAT Readiness & Emergency Stop Proof Board
+
+### Scope
+
+V18.3 aggiunge board dry-run per execution UAT readiness, human approval proof, emergency stop proof, command boundary e rollback decision.
+
+- endpoint ops protetto /api/ops/ai-operational-execution-uat-readiness-dry-run;
+- engine locale aiOperationalExecutionUatReadiness.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- human approval proof, emergency stop proof, command boundary, dry-run execution scenarios, rollback decision e no-go board;
+- nessuna execution reale, nessun command dispatch, nessuna notifica, nessun provider call, nessuna persistenza AI, nessuna memoria DB, nessun task/intervento, nessun public export write, nessun incident write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-operational-execution-uat-readiness-check
+
+### Stato
+
+Execution UAT readiness tracciabile. Execution reale, command dispatch e notification restano no-go.

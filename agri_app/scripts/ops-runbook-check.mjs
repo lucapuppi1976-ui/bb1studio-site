@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_3_OPERATIONAL_EXECUTION_UAT_READINESS_CHECK: esegue il check V18.3 prima dei controlli operativi aggregati.
+// AGRI_V18_3_OPERATIONAL_EXECUTION_UAT_READINESS_PATH: scripts/ops-ai-operational-execution-uat-readiness-check.mjs
+// AGRI_V18_3_OPERATIONAL_EXECUTION_UAT_READINESS_ALIAS: ops:ai-operational-execution-uat-readiness-check
+const __agriOperationalExecutionUatReadinessV183 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-operational-execution-uat-readiness-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriOperationalExecutionUatReadinessV183();
+
 // AGRI_V18_2_ONLINE_LIVE_UAT_TEST_MATRIX_CHECK: esegue il check V18.2 prima dei controlli operativi aggregati.
 // AGRI_V18_2_ONLINE_LIVE_UAT_TEST_MATRIX_PATH: scripts/ops-ai-online-live-uat-test-matrix-check.mjs
 // AGRI_V18_2_ONLINE_LIVE_UAT_TEST_MATRIX_ALIAS: ops:ai-online-live-uat-test-matrix-check
