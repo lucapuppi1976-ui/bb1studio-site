@@ -3093,3 +3093,23 @@ ops:ai-online-controlled-operations-monitor-check
 ### Stato
 
 APP online in controlled dry-run. AI live, scritture operative, execution reale, public export write e incident write restano no-go.
+## V18.1 — AI Incident Record Persistence Governance Monitor & Final Approval Evidence Vault
+
+### Scope
+
+V18.1 aggiunge un monitor dry-run per governance della futura persistenza dei record incidente.
+
+- endpoint ops protetto /api/ops/ai-incident-record-persistence-governance-dry-run;
+- engine locale aiIncidentRecordPersistenceGovernance.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- approval evidence board, persistence boundary, evidence vault, rollback readiness e no-go board;
+- nessuna persistenza reale, nessun provider call, nessun task/intervento, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-incident-record-persistence-governance-check
+
+### Stato
+
+APP online in controlled dry-run. Incident record persistence resta no-go.

@@ -107,6 +107,7 @@ import OperationsAiIncidentRecordWriteGate from "./OperationsAiIncidentRecordWri
 import OperationsAiPublicExportArtifactWriteGate from "./OperationsAiPublicExportArtifactWriteGate";
 import OperationsAiOperationalExecutionGate from "./OperationsAiOperationalExecutionGate";
 import OperationsAiOnlineControlledOperationsMonitor from "./OperationsAiOnlineControlledOperationsMonitor";
+import OperationsAiIncidentRecordPersistenceGovernance from "./OperationsAiIncidentRecordPersistenceGovernance";
 
 const sections = [
   {
@@ -464,6 +465,8 @@ export default function AdminOperationsPage() {
       <OperationsAiOperationalExecutionGate />
 
       <OperationsAiOnlineControlledOperationsMonitor />
+
+      <OperationsAiIncidentRecordPersistenceGovernance />
 </main>
   );
 }
