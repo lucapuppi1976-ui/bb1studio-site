@@ -104,6 +104,7 @@ import OnlineControlledOperationsMonitorPanel from "./OnlineControlledOperations
 import IncidentRecordPersistenceGovernancePanel from "./IncidentRecordPersistenceGovernancePanel";
 import OnlineLiveUatTestMatrixPanel from "./OnlineLiveUatTestMatrixPanel";
 import OperationalExecutionUatReadinessPanel from "./OperationalExecutionUatReadinessPanel";
+import ProviderRuntimeUatReadinessPanel from "./ProviderRuntimeUatReadinessPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -302,6 +303,8 @@ export default function AiPhotoDiagnosisPage() {
       <OnlineLiveUatTestMatrixPanel />
 
       <OperationalExecutionUatReadinessPanel />
+
+      <ProviderRuntimeUatReadinessPanel />
 </main>
   );
 }
