@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V19_0_TESTER_ACCOUNT_ACTIVATION_GATE_CHECK: esegue il check V19.0 prima dei controlli operativi aggregati.
+// AGRI_V19_0_TESTER_ACCOUNT_ACTIVATION_GATE_PATH: scripts/ops-ai-tester-account-activation-gate-check.mjs
+// AGRI_V19_0_TESTER_ACCOUNT_ACTIVATION_GATE_ALIAS: ops:ai-tester-account-activation-gate-check
+const __agriTesterAccountActivationGateV190 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-tester-account-activation-gate-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterAccountActivationGateV190();
+
 // AGRI_V18_9_LIVE_UAT_LAUNCH_GATE_CHECK: esegue il check V18.9 prima dei controlli operativi aggregati.
 // AGRI_V18_9_LIVE_UAT_LAUNCH_GATE_PATH: scripts/ops-ai-live-uat-launch-gate-check.mjs
 // AGRI_V18_9_LIVE_UAT_LAUNCH_GATE_ALIAS: ops:ai-live-uat-launch-gate-check

@@ -148,7 +148,8 @@
     "ops:ai-ux-navigation-hardening-check": "node scripts/ops-ai-ux-navigation-hardening-check.mjs",
     "ops:ai-multilingual-ux-translation-coverage-check": "node scripts/ops-ai-multilingual-ux-translation-coverage-check.mjs",
     "ops:ai-uat-feedback-bug-evidence-session-check": "node scripts/ops-ai-uat-feedback-bug-evidence-session-check.mjs",
-    "ops:ai-live-uat-launch-gate-check": "node scripts/ops-ai-live-uat-launch-gate-check.mjs"
+    "ops:ai-live-uat-launch-gate-check": "node scripts/ops-ai-live-uat-launch-gate-check.mjs",
+    "ops:ai-tester-account-activation-gate-check": "node scripts/ops-ai-tester-account-activation-gate-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
