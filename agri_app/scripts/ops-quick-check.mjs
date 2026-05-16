@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_2_ONLINE_LIVE_UAT_TEST_MATRIX_CHECK: esegue il check V18.2 prima dei controlli operativi aggregati.
+// AGRI_V18_2_ONLINE_LIVE_UAT_TEST_MATRIX_PATH: scripts/ops-ai-online-live-uat-test-matrix-check.mjs
+// AGRI_V18_2_ONLINE_LIVE_UAT_TEST_MATRIX_ALIAS: ops:ai-online-live-uat-test-matrix-check
+const __agriOnlineLiveUatTestMatrixV182 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-online-live-uat-test-matrix-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriOnlineLiveUatTestMatrixV182();
+
 // AGRI_V18_1_INCIDENT_RECORD_PERSISTENCE_GOVERNANCE_CHECK: esegue il check V18.1 prima dei controlli operativi aggregati.
 // AGRI_V18_1_INCIDENT_RECORD_PERSISTENCE_GOVERNANCE_PATH: scripts/ops-ai-incident-record-persistence-governance-check.mjs
 // AGRI_V18_1_INCIDENT_RECORD_PERSISTENCE_GOVERNANCE_ALIAS: ops:ai-incident-record-persistence-governance-check
