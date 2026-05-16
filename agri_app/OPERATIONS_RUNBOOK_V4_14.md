@@ -3153,3 +3153,23 @@ ops:ai-operational-execution-uat-readiness-check
 ### Stato
 
 Execution UAT readiness tracciabile. Execution reale, command dispatch e notification restano no-go.
+## V18.4 — Provider Runtime UAT Readiness & Explicit Provider Approval Proof Board
+
+### Scope
+
+V18.4 aggiunge board dry-run per provider runtime UAT readiness, explicit provider approval proof, request boundary, response boundary e rollback proof.
+
+- endpoint ops protetto /api/ops/ai-provider-runtime-uat-readiness-dry-run;
+- engine locale aiProviderRuntimeUatReadiness.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- provider approval proof, request boundary, response boundary, rollback proof, provider no-go board e pass/fail criteria;
+- nessuna provider call reale, nessuna response intake, nessuna result persistence, nessuna AI live, nessun task/intervento, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-provider-runtime-uat-readiness-check
+
+### Stato
+
+Provider runtime UAT readiness tracciabile. Provider runtime, request dispatch, response intake e result persistence restano no-go.

@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_4_PROVIDER_RUNTIME_UAT_READINESS_CHECK: esegue il check V18.4 prima dei controlli operativi aggregati.
+// AGRI_V18_4_PROVIDER_RUNTIME_UAT_READINESS_PATH: scripts/ops-ai-provider-runtime-uat-readiness-check.mjs
+// AGRI_V18_4_PROVIDER_RUNTIME_UAT_READINESS_ALIAS: ops:ai-provider-runtime-uat-readiness-check
+const __agriProviderRuntimeUatReadinessV184 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-provider-runtime-uat-readiness-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriProviderRuntimeUatReadinessV184();
+
 // AGRI_V18_3_OPERATIONAL_EXECUTION_UAT_READINESS_CHECK: esegue il check V18.3 prima dei controlli operativi aggregati.
 // AGRI_V18_3_OPERATIONAL_EXECUTION_UAT_READINESS_PATH: scripts/ops-ai-operational-execution-uat-readiness-check.mjs
 // AGRI_V18_3_OPERATIONAL_EXECUTION_UAT_READINESS_ALIAS: ops:ai-operational-execution-uat-readiness-check
