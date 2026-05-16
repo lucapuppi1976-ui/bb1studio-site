@@ -3279,3 +3279,28 @@ ops:ai-live-uat-launch-gate-check
 ### Stato
 
 Live UAT launch gate pronto come dry-run. Il lancio con tester reali resta soggetto a revisione umana e gate dedicato.
+
+## V19.0 — Invite-Only Tester Account Activation Gate & Manual Provisioning Readiness
+
+### Scope
+
+V19.0 aggiunge un gate dry-run per preparare attivazione account tester invite-only e provisioning manuale.
+
+- endpoint ops protetto /api/ops/ai-tester-account-activation-gate-dry-run;
+- engine locale aiTesterAccountActivationGate.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- activation approval board, role assignment board, language assignment board, manual provisioning checklist, revocation board e no-go board;
+- nessuna creazione account reale;
+- nessun invio inviti reale;
+- nessuna scrittura ruoli o lingua;
+- nessuna registrazione pubblica;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-tester-account-activation-gate-check
+
+### Stato
+
+Account tester ancora non creati. V19.0 prepara il gate per una futura attivazione manuale e controllata.
