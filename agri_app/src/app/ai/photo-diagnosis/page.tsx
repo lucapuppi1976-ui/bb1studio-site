@@ -112,6 +112,7 @@ import UatFeedbackBugEvidenceSessionPanel from "./UatFeedbackBugEvidenceSessionP
 import LiveUatLaunchGatePanel from "./LiveUatLaunchGatePanel";
 import TesterAccountActivationGatePanel from "./TesterAccountActivationGatePanel";
 import AuthUserSchemaReadinessPanel from "./AuthUserSchemaReadinessPanel";
+import TesterProvisioningAdapterPanel from "./TesterProvisioningAdapterPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -326,6 +327,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterAccountActivationGatePanel />
 
       <AuthUserSchemaReadinessPanel />
+
+      <TesterProvisioningAdapterPanel />
 </main>
   );
 }

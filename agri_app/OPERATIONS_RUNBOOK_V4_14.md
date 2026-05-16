@@ -3330,3 +3330,30 @@ ops:ai-auth-user-schema-readiness-check
 ### Stato
 
 Readiness auth/schema tracciabile. La creazione account tester resta no-go fino a gate dedicato.
+
+## V19.2 — Invite-Only Tester Provisioning Adapter Contract & Dry-Run Creation Rehearsal
+
+### Scope
+
+V19.2 aggiunge un adapter contract dry-run per preparare la creazione account tester invite-only senza scrivere utenti reali.
+
+- endpoint ops protetto /api/ops/ai-tester-provisioning-adapter-dry-run;
+- engine locale aiTesterProvisioningAdapter.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- adapter contract, schema mapping draft, manual creation rehearsal, admin checklist, no-write verification e no-go board;
+- nessuna creazione account reale;
+- nessun invio inviti reale;
+- nessuna scrittura ruoli o lingua;
+- nessuna registrazione pubblica;
+- nessuna modifica Prisma schema;
+- nessuna migration execution;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:ai-tester-provisioning-adapter-check
+
+### Stato
+
+Adapter provisioning pronto come dry-run. La creazione reale degli account tester resta no-go fino a gate successivo.
