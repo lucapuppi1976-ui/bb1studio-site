@@ -3073,3 +3073,23 @@ Operational execution gate pronto solo come dry-run design. Esecuzione reale, co
 ### Safety
 
 providerAiReady=false, providerCalled=false, operationalExecutionAllowed=false, operationalExecutionPerformed=false, executionPreflightAllowed=false, executionCommandAllowed=false, executionNotificationAllowed=false, emergencyStopConfigured=false, humanExecutionApprovalAllowed=false, taskCreated=false, interventionCreated=false, automaticExecutionAllowed=false, automaticExecutionPerformed=false, productPrescriptionAllowed=false, dosageAdviceAllowed=false, storageActivationAllowed=false, reviewPersistenceAllowed=false, publicShareAllowed=false, manualDispatchOnly=true, humanReviewRequired=true, localAnalysisOnly=true, redactedOutputOnly=true.
+## V18.0 — Online Controlled Operations Monitor & Dry-Run Production Watchtower
+
+### Scope
+
+V18.0 aggiunge online controlled operations monitor e dry-run production watchtower post go-live.
+
+- endpoint ops protetto /api/ops/ai-online-controlled-operations-monitor-dry-run;
+- engine locale aiOnlineControlledOperationsMonitor.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- watchtower signals, protected endpoint board, daily ops checklist, rollback readiness board, AI guardrail observations, live route observations e go-live evidence pack;
+- nessuna AI live, nessun provider call, nessuna persistenza AI, nessuna memoria DB, nessun task/intervento, nessuna execution, nessun public export write, nessun incident write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-online-controlled-operations-monitor-check
+
+### Stato
+
+APP online in controlled dry-run. AI live, scritture operative, execution reale, public export write e incident write restano no-go.

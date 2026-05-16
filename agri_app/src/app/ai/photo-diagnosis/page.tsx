@@ -100,6 +100,7 @@ import ProviderCallExecutionGatePanel from "./ProviderCallExecutionGatePanel";
 import IncidentRecordWriteGatePanel from "./IncidentRecordWriteGatePanel";
 import PublicExportArtifactWriteGatePanel from "./PublicExportArtifactWriteGatePanel";
 import OperationalExecutionGatePanel from "./OperationalExecutionGatePanel";
+import OnlineControlledOperationsMonitorPanel from "./OnlineControlledOperationsMonitorPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -290,6 +291,8 @@ export default function AiPhotoDiagnosisPage() {
       <PublicExportArtifactWriteGatePanel />
 
       <OperationalExecutionGatePanel />
+
+      <OnlineControlledOperationsMonitorPanel />
 </main>
   );
 }

@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_0_ONLINE_CONTROLLED_OPERATIONS_MONITOR_CHECK: esegue il check V18.0 prima dei controlli operativi aggregati.
+// AGRI_V18_0_ONLINE_CONTROLLED_OPERATIONS_MONITOR_PATH: scripts/ops-ai-online-controlled-operations-monitor-check.mjs
+// AGRI_V18_0_ONLINE_CONTROLLED_OPERATIONS_MONITOR_ALIAS: ops:ai-online-controlled-operations-monitor-check
+const __agriOnlineControlledOperationsMonitorV180 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-online-controlled-operations-monitor-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriOnlineControlledOperationsMonitorV180();
+
 // AGRI_V17_9_OPERATIONAL_EXECUTION_GATE_CHECK: esegue il check V17.9 prima dei controlli operativi aggregati.
 // AGRI_V17_9_OPERATIONAL_EXECUTION_GATE_PATH: scripts/ops-ai-operational-execution-gate-check.mjs
 // AGRI_V17_9_OPERATIONAL_EXECUTION_GATE_ALIAS: ops:ai-operational-execution-gate-check
