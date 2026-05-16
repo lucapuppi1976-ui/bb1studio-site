@@ -3235,3 +3235,25 @@ ops:ai-multilingual-ux-translation-coverage-check
 ### Stato
 
 Readiness multilingua tracciabile. Lingue e dizionario UX pronti per revisione UAT; nessuna attivazione reale viene introdotta.
+
+## V18.8 — UAT Feedback, Bug Triage & Evidence Session Board
+
+### Scope
+
+V18.8 aggiunge board dry-run per feedback UAT, bug triage, evidence capture, pass/fail review, reviewer decision e rollback gate.
+
+- endpoint ops protetto /api/ops/ai-uat-feedback-bug-evidence-session-dry-run;
+- engine locale aiUatFeedbackBugEvidenceSession.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- session feedback board, bug triage board, evidence capture board, pass/fail review board, reviewer decision board e rollback gate;
+- nessuna scrittura feedback, bug, evidenze o sessioni;
+- nessuna registrazione pubblica, nessuna scrittura account, nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-uat-feedback-bug-evidence-session-check
+
+### Stato
+
+Sessioni UAT tracciabili come dry-run. Feedback, bug, evidenze e sessioni restano no-write fino a gate dedicato.

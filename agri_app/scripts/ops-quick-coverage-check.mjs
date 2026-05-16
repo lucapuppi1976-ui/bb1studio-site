@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_8_UAT_FEEDBACK_BUG_EVIDENCE_SESSION_CHECK: esegue il check V18.8 prima dei controlli operativi aggregati.
+// AGRI_V18_8_UAT_FEEDBACK_BUG_EVIDENCE_SESSION_PATH: scripts/ops-ai-uat-feedback-bug-evidence-session-check.mjs
+// AGRI_V18_8_UAT_FEEDBACK_BUG_EVIDENCE_SESSION_ALIAS: ops:ai-uat-feedback-bug-evidence-session-check
+const __agriUatFeedbackBugEvidenceSessionV188 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-uat-feedback-bug-evidence-session-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriUatFeedbackBugEvidenceSessionV188();
+
 // AGRI_V18_7_MULTILINGUAL_UX_TRANSLATION_COVERAGE_CHECK: esegue il check V18.7 prima dei controlli operativi aggregati.
 // AGRI_V18_7_MULTILINGUAL_UX_TRANSLATION_COVERAGE_PATH: scripts/ops-ai-multilingual-ux-translation-coverage-check.mjs
 // AGRI_V18_7_MULTILINGUAL_UX_TRANSLATION_COVERAGE_ALIAS: ops:ai-multilingual-ux-translation-coverage-check
