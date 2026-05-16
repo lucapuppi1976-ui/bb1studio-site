@@ -3304,3 +3304,29 @@ ops:ai-tester-account-activation-gate-check
 ### Stato
 
 Account tester ancora non creati. V19.0 prepara il gate per una futura attivazione manuale e controllata.
+
+## V19.1 — Auth/User Schema Readiness Audit & Invite-Only Account Creation Plan
+
+### Scope
+
+V19.1 aggiunge un audit dry-run per verificare readiness auth, schema utente, ruoli, lingua preferita, inviti, revoca e piano account tester.
+
+- endpoint ops protetto /api/ops/ai-auth-user-schema-readiness-dry-run;
+- engine locale aiAuthUserSchemaReadiness.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- auth readiness board, user schema readiness, role/language fields, invite creation plan, revocation plan e no-go board;
+- nessuna creazione account reale;
+- nessun invio inviti reale;
+- nessuna modifica schema Prisma;
+- nessuna migration execution;
+- nessuna registrazione pubblica;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:ai-auth-user-schema-readiness-check
+
+### Stato
+
+Readiness auth/schema tracciabile. La creazione account tester resta no-go fino a gate dedicato.

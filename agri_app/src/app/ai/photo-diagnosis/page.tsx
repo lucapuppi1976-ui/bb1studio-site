@@ -111,6 +111,7 @@ import MultilingualUxTranslationCoveragePanel from "./MultilingualUxTranslationC
 import UatFeedbackBugEvidenceSessionPanel from "./UatFeedbackBugEvidenceSessionPanel";
 import LiveUatLaunchGatePanel from "./LiveUatLaunchGatePanel";
 import TesterAccountActivationGatePanel from "./TesterAccountActivationGatePanel";
+import AuthUserSchemaReadinessPanel from "./AuthUserSchemaReadinessPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -323,6 +324,8 @@ export default function AiPhotoDiagnosisPage() {
       <LiveUatLaunchGatePanel />
 
       <TesterAccountActivationGatePanel />
+
+      <AuthUserSchemaReadinessPanel />
 </main>
   );
 }

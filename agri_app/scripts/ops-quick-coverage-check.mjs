@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V19_1_AUTH_USER_SCHEMA_READINESS_CHECK: esegue il check V19.1 prima dei controlli operativi aggregati.
+// AGRI_V19_1_AUTH_USER_SCHEMA_READINESS_PATH: scripts/ops-ai-auth-user-schema-readiness-check.mjs
+// AGRI_V19_1_AUTH_USER_SCHEMA_READINESS_ALIAS: ops:ai-auth-user-schema-readiness-check
+const __agriAuthUserSchemaReadinessV191 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-auth-user-schema-readiness-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriAuthUserSchemaReadinessV191();
+
 // AGRI_V19_0_TESTER_ACCOUNT_ACTIVATION_GATE_CHECK: esegue il check V19.0 prima dei controlli operativi aggregati.
 // AGRI_V19_0_TESTER_ACCOUNT_ACTIVATION_GATE_PATH: scripts/ops-ai-tester-account-activation-gate-check.mjs
 // AGRI_V19_0_TESTER_ACCOUNT_ACTIVATION_GATE_ALIAS: ops:ai-tester-account-activation-gate-check
