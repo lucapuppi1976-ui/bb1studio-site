@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V18_6_UX_NAVIGATION_HARDENING_CHECK: esegue il check V18.6 prima dei controlli operativi aggregati.
+// AGRI_V18_6_UX_NAVIGATION_HARDENING_PATH: scripts/ops-ai-ux-navigation-hardening-check.mjs
+// AGRI_V18_6_UX_NAVIGATION_HARDENING_ALIAS: ops:ai-ux-navigation-hardening-check
+const __agriUxNavigationHardeningV186 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-ux-navigation-hardening-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriUxNavigationHardeningV186();
+
 // AGRI_V18_5_UAT_TESTER_ACCESS_PROVISIONING_CHECK: esegue il check V18.5 prima dei controlli operativi aggregati.
 // AGRI_V18_5_UAT_TESTER_ACCESS_PROVISIONING_PATH: scripts/ops-ai-uat-tester-access-provisioning-check.mjs
 // AGRI_V18_5_UAT_TESTER_ACCESS_PROVISIONING_ALIAS: ops:ai-uat-tester-access-provisioning-check
