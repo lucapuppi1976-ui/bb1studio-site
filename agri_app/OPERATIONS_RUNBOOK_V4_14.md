@@ -3357,3 +3357,28 @@ ops:ai-tester-provisioning-adapter-check
 ### Stato
 
 Adapter provisioning pronto come dry-run. La creazione reale degli account tester resta no-go fino a gate successivo.
+
+## V19.3 — Tester Account Write Path Final Approval Gate & Rollback-Reversible Creation Plan
+
+### Scope
+
+V19.3 aggiunge un gate dry-run per approvazione finale account write path, piano rollback e checklist manuale prima della creazione tester reali.
+
+- endpoint ops protetto /api/ops/ai-tester-account-write-path-final-approval-dry-run;
+- engine locale aiTesterAccountWritePathFinalApproval.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- final approval board, write path boundary, rollback plan, manual creation checklist e no-go board;
+- nessuna creazione account reale;
+- nessun invio inviti reale;
+- nessuna modifica Prisma schema;
+- nessuna migration execution;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:ai-tester-account-write-path-final-approval-check
+
+### Stato
+
+Write path finale pronto come dry-run. La creazione account tester resta no-go fino a release esplicita di scrittura.

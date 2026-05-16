@@ -151,7 +151,8 @@
     "ops:ai-live-uat-launch-gate-check": "node scripts/ops-ai-live-uat-launch-gate-check.mjs",
     "ops:ai-tester-account-activation-gate-check": "node scripts/ops-ai-tester-account-activation-gate-check.mjs",
     "ops:ai-auth-user-schema-readiness-check": "node scripts/ops-ai-auth-user-schema-readiness-check.mjs",
-    "ops:ai-tester-provisioning-adapter-check": "node scripts/ops-ai-tester-provisioning-adapter-check.mjs"
+    "ops:ai-tester-provisioning-adapter-check": "node scripts/ops-ai-tester-provisioning-adapter-check.mjs",
+    "ops:ai-tester-account-write-path-final-approval-check": "node scripts/ops-ai-tester-account-write-path-final-approval-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

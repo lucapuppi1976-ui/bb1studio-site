@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V19_3_TESTER_ACCOUNT_WRITE_PATH_FINAL_APPROVAL_CHECK: esegue il check V19.3 prima dei controlli operativi aggregati.
+// AGRI_V19_3_TESTER_ACCOUNT_WRITE_PATH_FINAL_APPROVAL_PATH: scripts/ops-ai-tester-account-write-path-final-approval-check.mjs
+// AGRI_V19_3_TESTER_ACCOUNT_WRITE_PATH_FINAL_APPROVAL_ALIAS: ops:ai-tester-account-write-path-final-approval-check
+const __agriTesterAccountWritePathFinalApprovalV193 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-tester-account-write-path-final-approval-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterAccountWritePathFinalApprovalV193();
+
 // AGRI_V19_2_TESTER_PROVISIONING_ADAPTER_CHECK: esegue il check V19.2 prima dei controlli operativi aggregati.
 // AGRI_V19_2_TESTER_PROVISIONING_ADAPTER_PATH: scripts/ops-ai-tester-provisioning-adapter-check.mjs
 // AGRI_V19_2_TESTER_PROVISIONING_ADAPTER_ALIAS: ops:ai-tester-provisioning-adapter-check
