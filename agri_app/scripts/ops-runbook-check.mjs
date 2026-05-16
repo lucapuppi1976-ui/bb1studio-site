@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V19_2_TESTER_PROVISIONING_ADAPTER_CHECK: esegue il check V19.2 prima dei controlli operativi aggregati.
+// AGRI_V19_2_TESTER_PROVISIONING_ADAPTER_PATH: scripts/ops-ai-tester-provisioning-adapter-check.mjs
+// AGRI_V19_2_TESTER_PROVISIONING_ADAPTER_ALIAS: ops:ai-tester-provisioning-adapter-check
+const __agriTesterProvisioningAdapterV192 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-tester-provisioning-adapter-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterProvisioningAdapterV192();
+
 // AGRI_V19_1_AUTH_USER_SCHEMA_READINESS_CHECK: esegue il check V19.1 prima dei controlli operativi aggregati.
 // AGRI_V19_1_AUTH_USER_SCHEMA_READINESS_PATH: scripts/ops-ai-auth-user-schema-readiness-check.mjs
 // AGRI_V19_1_AUTH_USER_SCHEMA_READINESS_ALIAS: ops:ai-auth-user-schema-readiness-check
