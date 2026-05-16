@@ -109,6 +109,7 @@ import OperationsAiOperationalExecutionGate from "./OperationsAiOperationalExecu
 import OperationsAiOnlineControlledOperationsMonitor from "./OperationsAiOnlineControlledOperationsMonitor";
 import OperationsAiIncidentRecordPersistenceGovernance from "./OperationsAiIncidentRecordPersistenceGovernance";
 import OperationsAiOnlineLiveUatTestMatrix from "./OperationsAiOnlineLiveUatTestMatrix";
+import OperationsAiOperationalExecutionUatReadiness from "./OperationsAiOperationalExecutionUatReadiness";
 
 const sections = [
   {
@@ -470,6 +471,8 @@ export default function AdminOperationsPage() {
       <OperationsAiIncidentRecordPersistenceGovernance />
 
       <OperationsAiOnlineLiveUatTestMatrix />
+
+      <OperationsAiOperationalExecutionUatReadiness />
 </main>
   );
 }
