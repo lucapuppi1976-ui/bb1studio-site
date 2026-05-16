@@ -3257,3 +3257,25 @@ ops:ai-uat-feedback-bug-evidence-session-check
 ### Stato
 
 Sessioni UAT tracciabili come dry-run. Feedback, bug, evidenze e sessioni restano no-write fino a gate dedicato.
+
+## V18.9 — Live UAT Launch Gate & Tester Readiness Audit
+
+### Scope
+
+V18.9 aggiunge un gate dry-run per readiness finale del Live UAT con tester reali.
+
+- endpoint ops protetto /api/ops/ai-live-uat-launch-gate-dry-run;
+- engine locale aiLiveUatLaunchGate.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- tester readiness audit, access gate, multilingual gate, UX gate, feedback board gate, protected route gate, launch checklist e rollback gate;
+- nessun invito reale, nessuna scrittura account, nessuna persistenza feedback/bug/evidenze/sessioni;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-live-uat-launch-gate-check
+
+### Stato
+
+Live UAT launch gate pronto come dry-run. Il lancio con tester reali resta soggetto a revisione umana e gate dedicato.
