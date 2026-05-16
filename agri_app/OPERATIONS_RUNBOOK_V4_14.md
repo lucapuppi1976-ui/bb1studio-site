@@ -3173,3 +3173,23 @@ ops:ai-provider-runtime-uat-readiness-check
 ### Stato
 
 Provider runtime UAT readiness tracciabile. Provider runtime, request dispatch, response intake e result persistence restano no-go.
+## V18.5 — UAT Tester Access Provisioning & Role-Based Onboarding
+
+### Scope
+
+V18.5 aggiunge governance dry-run per tester UAT, ruoli, lingua preferita, onboarding e inviti controllati.
+
+- endpoint ops protetto /api/ops/ai-uat-tester-access-provisioning-dry-run;
+- engine locale aiUatTesterAccessProvisioning.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- tester roster draft, role matrix, invite readiness, language preference, onboarding checklist, access policy e revocation plan;
+- nessuna registrazione pubblica, nessuna scrittura account, nessun invio inviti, nessuna AI live, nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write, nessuna modifica Prisma schema, nessuna migration execution.
+
+### Check
+
+ops:ai-uat-tester-access-provisioning-check
+
+### Stato
+
+UAT tester access provisioning pronto come dry-run. Inviti e account reali restano no-go fino a gate dedicato.

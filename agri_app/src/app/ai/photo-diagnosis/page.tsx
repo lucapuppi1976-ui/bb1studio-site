@@ -105,6 +105,7 @@ import IncidentRecordPersistenceGovernancePanel from "./IncidentRecordPersistenc
 import OnlineLiveUatTestMatrixPanel from "./OnlineLiveUatTestMatrixPanel";
 import OperationalExecutionUatReadinessPanel from "./OperationalExecutionUatReadinessPanel";
 import ProviderRuntimeUatReadinessPanel from "./ProviderRuntimeUatReadinessPanel";
+import UatTesterAccessProvisioningPanel from "./UatTesterAccessProvisioningPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -305,6 +306,8 @@ export default function AiPhotoDiagnosisPage() {
       <OperationalExecutionUatReadinessPanel />
 
       <ProviderRuntimeUatReadinessPanel />
+
+      <UatTesterAccessProvisioningPanel />
 </main>
   );
 }
