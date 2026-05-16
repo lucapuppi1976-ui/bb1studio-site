@@ -113,6 +113,7 @@ import LiveUatLaunchGatePanel from "./LiveUatLaunchGatePanel";
 import TesterAccountActivationGatePanel from "./TesterAccountActivationGatePanel";
 import AuthUserSchemaReadinessPanel from "./AuthUserSchemaReadinessPanel";
 import TesterProvisioningAdapterPanel from "./TesterProvisioningAdapterPanel";
+import TesterAccountWritePathFinalApprovalPanel from "./TesterAccountWritePathFinalApprovalPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -329,6 +330,8 @@ export default function AiPhotoDiagnosisPage() {
       <AuthUserSchemaReadinessPanel />
 
       <TesterProvisioningAdapterPanel />
+
+      <TesterAccountWritePathFinalApprovalPanel />
 </main>
   );
 }

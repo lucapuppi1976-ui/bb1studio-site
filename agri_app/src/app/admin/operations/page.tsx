@@ -119,6 +119,7 @@ import OperationsAiLiveUatLaunchGate from "./OperationsAiLiveUatLaunchGate";
 import OperationsAiTesterAccountActivationGate from "./OperationsAiTesterAccountActivationGate";
 import OperationsAiAuthUserSchemaReadiness from "./OperationsAiAuthUserSchemaReadiness";
 import OperationsAiTesterProvisioningAdapter from "./OperationsAiTesterProvisioningAdapter";
+import OperationsAiTesterAccountWritePathFinalApproval from "./OperationsAiTesterAccountWritePathFinalApproval";
 
 const sections = [
   {
@@ -500,6 +501,8 @@ export default function AdminOperationsPage() {
       <OperationsAiAuthUserSchemaReadiness />
 
       <OperationsAiTesterProvisioningAdapter />
+
+      <OperationsAiTesterAccountWritePathFinalApproval />
 </main>
   );
 }
