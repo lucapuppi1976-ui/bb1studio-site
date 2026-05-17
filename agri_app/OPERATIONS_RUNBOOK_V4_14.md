@@ -3382,3 +3382,29 @@ ops:ai-tester-account-write-path-final-approval-check
 ### Stato
 
 Write path finale pronto come dry-run. La creazione account tester resta no-go fino a release esplicita di scrittura.
+
+## V19.4 — Tester Account Creation Schema Discovery & Write-Compatibility Gate
+
+### Scope
+
+V19.4 aggiunge un gate dry-run per verificare compatibilità schema/auth prima della creazione reale degli account tester.
+
+- endpoint ops protetto /api/ops/ai-tester-account-creation-compatibility-dry-run;
+- engine locale aiTesterAccountCreationCompatibility.ts;
+- discovery schema Prisma non distruttiva;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- schema compatibility board, auth model board, role/language field board, write readiness board, no-go board;
+- nessuna creazione account reale;
+- nessun invio inviti reale;
+- nessuna modifica Prisma schema;
+- nessuna migration execution;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:ai-tester-account-creation-compatibility-check
+
+### Stato
+
+Compatibilità account tester tracciabile. La creazione reale resta no-go fino a release esplicita di scrittura.

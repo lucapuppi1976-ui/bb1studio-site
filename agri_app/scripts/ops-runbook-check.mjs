@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V19_4_TESTER_ACCOUNT_CREATION_COMPATIBILITY_CHECK: esegue il check V19.4 prima dei controlli operativi aggregati.
+// AGRI_V19_4_TESTER_ACCOUNT_CREATION_COMPATIBILITY_PATH: scripts/ops-ai-tester-account-creation-compatibility-check.mjs
+// AGRI_V19_4_TESTER_ACCOUNT_CREATION_COMPATIBILITY_ALIAS: ops:ai-tester-account-creation-compatibility-check
+const __agriTesterAccountCreationCompatibilityV194 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:ai-tester-account-creation-compatibility-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterAccountCreationCompatibilityV194();
+
 // AGRI_V19_3_TESTER_ACCOUNT_WRITE_PATH_FINAL_APPROVAL_CHECK: esegue il check V19.3 prima dei controlli operativi aggregati.
 // AGRI_V19_3_TESTER_ACCOUNT_WRITE_PATH_FINAL_APPROVAL_PATH: scripts/ops-ai-tester-account-write-path-final-approval-check.mjs
 // AGRI_V19_3_TESTER_ACCOUNT_WRITE_PATH_FINAL_APPROVAL_ALIAS: ops:ai-tester-account-write-path-final-approval-check
