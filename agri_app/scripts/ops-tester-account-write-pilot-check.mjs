@@ -71,6 +71,9 @@ for (const fragment of [
   "dryRun !== false",
   "writePerformed: false",
   "writePerformed: true",
+  "mapTesterPilotRoleToDbRole",
+  "OPERATOR",
+  "dbRoleWritten",
   "/api/ops/tester-account-write-pilot",
 ]) requireText("route", route, fragment);
 

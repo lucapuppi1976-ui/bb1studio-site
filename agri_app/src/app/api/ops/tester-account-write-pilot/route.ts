@@ -68,6 +68,19 @@ function pickLanguageField(fields: Set<string>): string | null {
   return null;
 }
 
+
+function mapTesterPilotRoleToDbRole(role: TesterAccountRole): string {
+  // V19.8F: lo schema corrente espone User.role come enum UserRole con valori SUPER_ADMIN / OPERATOR.
+  // I ruoli UAT restano semantici lato app, ma il pilot DB scrive il valore sicuro OPERATOR.
+  switch (role) {
+    case "uat_reviewer":
+    case "uat_operator":
+    case "uat_observer":
+    default:
+      return "OPERATOR";
+  }
+}
+
 function isValidEmail(email: string): boolean {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
 }
@@ -219,32 +232,55 @@ export async function POST(request: NextRequest) {
   }
 
   if (roleField) {
-    createData[roleField] = body.tester?.role ?? "uat_observer";
+    createData[roleField] = mapTesterPilotRoleToDbRole(body.tester?.role ?? "uat_observer");
   }
 
   if (languageField) {
     createData[languageField] = body.tester?.preferredLanguage ?? "it";
   }
 
-  const created = await userDelegate.create({
-    data: createData,
-    select: fields.has("id")
-      ? {
-          id: true,
-          email: true,
-        }
-      : {
-          email: true,
-        },
-  });
+  try {
+    const created = await userDelegate.create({
+      data: createData,
+      select: fields.has("id")
+        ? {
+            id: true,
+            email: true,
+          }
+        : {
+            email: true,
+          },
+    });
 
-  return NextResponse.json({
-    ok: true,
-    endpoint: "/api/ops/tester-account-write-pilot",
-    mode: "single-tester-write-pilot",
-    writePerformed: true,
-    redactedEmail: redactedEmail(email),
-    created,
-    report,
-  });
+    return NextResponse.json({
+      ok: true,
+      endpoint: "/api/ops/tester-account-write-pilot",
+      mode: "single-tester-write-pilot",
+      writePerformed: true,
+      redactedEmail: redactedEmail(email),
+      created,
+      dbRoleWritten: roleField ? createData[roleField] : null,
+      languageWritten: languageField ? createData[languageField] : null,
+      report,
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown tester account write error.";
+
+    return NextResponse.json(
+      {
+        ok: false,
+        endpoint: "/api/ops/tester-account-write-pilot",
+        mode: "write-error",
+        writePerformed: false,
+        redactedEmail: redactedEmail(email),
+        error: message,
+        attemptedDataKeys: Object.keys(createData),
+        roleField,
+        languageField,
+        dbRoleAttempted: roleField ? createData[roleField] : null,
+        report,
+      },
+      { status: 500 },
+    );
+  }
 }

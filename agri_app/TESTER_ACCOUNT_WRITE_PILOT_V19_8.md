@@ -46,3 +46,10 @@ npm run ops:tester-account-write-pilot-check
 ## Decisione
 
 V19.8 non crea utenti durante deploy/verifica. La creazione reale è opzionale, manuale, protetta e separata.
+
+## V19.8F — Role enum-safe patch
+
+Lo schema corrente usa `User.role` come enum `UserRole` con valori compatibili `SUPER_ADMIN` e `OPERATOR`.
+Il pilot continua ad accettare ruoli UAT semantici (`uat_observer`, `uat_operator`, `uat_reviewer`), ma la write path reale mappa questi ruoli al valore DB sicuro `OPERATOR`.
+
+La lingua resta nel payload/report se il campo lingua non è presente nello schema.
