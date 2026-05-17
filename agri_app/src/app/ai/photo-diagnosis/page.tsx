@@ -115,6 +115,7 @@ import AuthUserSchemaReadinessPanel from "./AuthUserSchemaReadinessPanel";
 import TesterProvisioningAdapterPanel from "./TesterProvisioningAdapterPanel";
 import TesterAccountWritePathFinalApprovalPanel from "./TesterAccountWritePathFinalApprovalPanel";
 import TesterAccountCreationCompatibilityPanel from "./TesterAccountCreationCompatibilityPanel";
+import TesterAccountWritePathStagingPanel from "./TesterAccountWritePathStagingPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -335,6 +336,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterAccountWritePathFinalApprovalPanel />
 
       <TesterAccountCreationCompatibilityPanel />
+
+      <TesterAccountWritePathStagingPanel />
 </main>
   );
 }
