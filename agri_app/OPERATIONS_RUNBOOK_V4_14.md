@@ -3512,3 +3512,29 @@ ops:tester-account-write-pilot-check
 ### Stato
 
 Write pilot disponibile ma disattivato di default. Nessun account viene creato durante deploy o verifiche.
+
+## V19.9 — Tester Account Access Verification & Login/Onboarding Gate
+
+### Scope
+
+V19.9 verifica read-only l'accesso dell'account tester creato dal pilot V19.8.
+
+- endpoint ops protetto /api/ops/tester-account-access-verification-dry-run;
+- engine non-AI locale testerAccountAccessVerification.ts;
+- route read-only con Prisma find/count;
+- verifica presenza account, ruolo, emailVerified, passwordHash, account OAuth, sessioni;
+- decisione ACCESS_CANDIDATE / AUTH_SETUP_REQUIRED / ONBOARDING_REVIEW_REQUIRED / NO_GO;
+- nessuna creazione account;
+- nessun invio inviti;
+- nessuna registrazione pubblica;
+- nessuna modifica Prisma schema;
+- nessuna migration execution;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-account-access-verification-check
+
+### Stato
+
+Verifica accesso tester pronta. Nessuna scrittura account viene eseguita.
