@@ -3408,3 +3408,29 @@ ops:ai-tester-account-creation-compatibility-check
 ### Stato
 
 Compatibilità account tester tracciabile. La creazione reale resta no-go fino a release esplicita di scrittura.
+
+## V19.5 — Tester Account Write Path Staging & Disabled-by-Default Admin Adapter
+
+### Scope
+
+V19.5 aggiunge uno staging adapter no-write per futura creazione account tester invite-only.
+
+- endpoint ops protetto /api/ops/ai-tester-account-write-path-staging-dry-run;
+- engine locale aiTesterAccountWritePathStaging.ts;
+- request preview;
+- admin adapter disattivato per default;
+- rollback plan;
+- no-go board;
+- nessuna creazione account reale;
+- nessun invio inviti reale;
+- nessuna modifica Prisma schema;
+- nessuna migration execution;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:ai-tester-account-write-path-staging-check
+
+### Stato
+
+Write path account tester predisposta ma disattivata. La creazione reale resta no-go fino a release esplicita.
