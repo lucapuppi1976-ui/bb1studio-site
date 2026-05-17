@@ -3565,3 +3565,29 @@ ops:tester-login-method-setup-gate-check
 ### Stato
 
 Metodo login candidato selezionabile. Nessuna scrittura auth viene eseguita.
+
+## V20.1 — Protected Tester Password Setup Pilot
+
+### Scope
+
+V20.1 introduce un endpoint protetto per impostare passwordHash sul tester pilota già esistente.
+
+- endpoint ops protetto /api/ops/tester-password-setup-pilot;
+- engine non-AI locale testerPasswordSetupPilot.ts;
+- route dry-run di default;
+- password write reale solo con CRON_SECRET, server env dedicate e conferma esplicita;
+- nessuna creazione account;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessun OAuth link;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-password-setup-pilot-check
+
+### Stato
+
+Password setup disponibile ma disattivato di default. Nessuna password viene scritta durante deploy o verifiche.
