@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V19_8_TESTER_ACCOUNT_WRITE_PILOT_CHECK: esegue il check V19.8 prima dei controlli operativi aggregati.
+// AGRI_V19_8_TESTER_ACCOUNT_WRITE_PILOT_PATH: scripts/ops-tester-account-write-pilot-check.mjs
+// AGRI_V19_8_TESTER_ACCOUNT_WRITE_PILOT_ALIAS: ops:tester-account-write-pilot-check
+const __agriTesterAccountWritePilotV198 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-account-write-pilot-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterAccountWritePilotV198();
+
 // AGRI_V19_7_TESTER_ACCOUNT_CREATION_READINESS_AUDIT_CHECK: esegue il check V19.7 prima dei controlli operativi aggregati.
 // AGRI_V19_7_TESTER_ACCOUNT_CREATION_READINESS_AUDIT_PATH: scripts/ops-tester-account-creation-readiness-audit-check.mjs
 // AGRI_V19_7_TESTER_ACCOUNT_CREATION_READINESS_AUDIT_ALIAS: ops:tester-account-creation-readiness-audit-check

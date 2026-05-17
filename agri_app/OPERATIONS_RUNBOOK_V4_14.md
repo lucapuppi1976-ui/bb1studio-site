@@ -3487,3 +3487,28 @@ ops:tester-account-creation-readiness-audit-check
 ### Stato
 
 Readiness finale tracciabile. La scrittura account resta bloccata fino a release esplicita successiva.
+
+## V19.8 — Protected Tester Account Write Pilot & Single-Tester Creation Endpoint
+
+### Scope
+
+V19.8 introduce un endpoint protetto per il primo single-tester account write pilot.
+
+- endpoint ops protetto /api/ops/tester-account-write-pilot;
+- engine non-AI locale testerAccountWritePilot.ts;
+- route dry-run di default;
+- write reale solo con CRON_SECRET, server env dedicati e conferma esplicita;
+- massimo un tester per pilot;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica Prisma schema;
+- nessuna migration execution;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-account-write-pilot-check
+
+### Stato
+
+Write pilot disponibile ma disattivato di default. Nessun account viene creato durante deploy o verifiche.
