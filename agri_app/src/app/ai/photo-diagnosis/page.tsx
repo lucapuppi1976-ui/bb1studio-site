@@ -117,6 +117,7 @@ import TesterAccountWritePathFinalApprovalPanel from "./TesterAccountWritePathFi
 import TesterAccountCreationCompatibilityPanel from "./TesterAccountCreationCompatibilityPanel";
 import TesterAccountWritePathStagingPanel from "./TesterAccountWritePathStagingPanel";
 import TesterAccountProvisioningWriteIntentPanel from "./TesterAccountProvisioningWriteIntentPanel";
+import TesterAccountCreationReadinessAuditPanel from "./TesterAccountCreationReadinessAuditPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -341,6 +342,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterAccountWritePathStagingPanel />
 
       <TesterAccountProvisioningWriteIntentPanel />
+
+      <TesterAccountCreationReadinessAuditPanel />
 </main>
   );
 }
