@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V19_6_TESTER_ACCOUNT_PROVISIONING_WRITE_INTENT_CHECK: esegue il check V19.6 prima dei controlli operativi aggregati.
+// AGRI_V19_6_TESTER_ACCOUNT_PROVISIONING_WRITE_INTENT_PATH: scripts/ops-tester-account-provisioning-write-intent-check.mjs
+// AGRI_V19_6_TESTER_ACCOUNT_PROVISIONING_WRITE_INTENT_ALIAS: ops:tester-account-provisioning-write-intent-check
+const __agriTesterAccountProvisioningWriteIntentV196 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-account-provisioning-write-intent-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterAccountProvisioningWriteIntentV196();
+
 // AGRI_V19_5_TESTER_ACCOUNT_WRITE_PATH_STAGING_CHECK: esegue il check V19.5 prima dei controlli operativi aggregati.
 // AGRI_V19_5_TESTER_ACCOUNT_WRITE_PATH_STAGING_PATH: scripts/ops-ai-tester-account-write-path-staging-check.mjs
 // AGRI_V19_5_TESTER_ACCOUNT_WRITE_PATH_STAGING_ALIAS: ops:ai-tester-account-write-path-staging-check

@@ -3434,3 +3434,29 @@ ops:ai-tester-account-write-path-staging-check
 ### Stato
 
 Write path account tester predisposta ma disattivata. La creazione reale resta no-go fino a release esplicita.
+
+## V19.6 — Tester Account Provisioning Write-Intent Lock & Non-AI Ops Boundary
+
+### Scope
+
+V19.6 separa il provisioning tester dal perimetro AI e aggiunge un gate ops no-write per futura creazione account tester.
+
+- endpoint ops protetto /api/ops/tester-account-provisioning-write-intent-dry-run;
+- engine non-AI locale testerAccountProvisioningWriteIntent.ts;
+- pannello UI in /ai/photo-diagnosis;
+- pannello Admin Operations;
+- write intent lock, non-AI ops boundary, admin approval, request preview, rollback checklist e no-go board;
+- nessuna creazione account reale;
+- nessun invio inviti reale;
+- nessuna registrazione pubblica;
+- nessuna modifica Prisma schema;
+- nessuna migration execution;
+- nessun provider call, nessuna persistenza AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-account-provisioning-write-intent-check
+
+### Stato
+
+Provisioning tester isolato dal perimetro AI. La scrittura account resta bloccata fino a release esplicita.
