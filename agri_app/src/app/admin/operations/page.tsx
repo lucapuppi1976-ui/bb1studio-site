@@ -123,6 +123,7 @@ import OperationsAiTesterAccountWritePathFinalApproval from "./OperationsAiTeste
 import OperationsAiTesterAccountCreationCompatibility from "./OperationsAiTesterAccountCreationCompatibility";
 import OperationsAiTesterAccountWritePathStaging from "./OperationsAiTesterAccountWritePathStaging";
 import OperationsTesterAccountProvisioningWriteIntent from "./OperationsTesterAccountProvisioningWriteIntent";
+import OperationsTesterAccountCreationReadinessAudit from "./OperationsTesterAccountCreationReadinessAudit";
 
 const sections = [
   {
@@ -512,6 +513,8 @@ export default function AdminOperationsPage() {
       <OperationsAiTesterAccountWritePathStaging />
 
       <OperationsTesterAccountProvisioningWriteIntent />
+
+      <OperationsTesterAccountCreationReadinessAudit />
 </main>
   );
 }
