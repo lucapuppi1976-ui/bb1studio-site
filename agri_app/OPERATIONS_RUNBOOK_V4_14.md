@@ -3538,3 +3538,30 @@ ops:tester-account-access-verification-check
 ### Stato
 
 Verifica accesso tester pronta. Nessuna scrittura account viene eseguita.
+
+## V20.0 — Tester Login Method Setup Gate
+
+### Scope
+
+V20.0 sceglie il metodo di login più sicuro per il tester pilota già creato.
+
+- endpoint ops protetto /api/ops/tester-login-method-setup-gate-dry-run;
+- engine non-AI locale testerLoginMethodSetupGate.ts;
+- discovery read-only di passwordHash, OAuth account, sessione, NextAuth, credentials, magic link e provider email;
+- decisione PASSWORD_SETUP_CANDIDATE / MAGIC_LINK_CANDIDATE / OAUTH_LINK_CANDIDATE / AUTH_IMPLEMENTATION_REVIEW_REQUIRED / NO_GO;
+- nessuna password impostata;
+- nessuna email inviata;
+- nessun OAuth link scritto;
+- nessuna registrazione pubblica;
+- nessuna creazione account;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-login-method-setup-gate-check
+
+### Stato
+
+Metodo login candidato selezionabile. Nessuna scrittura auth viene eseguita.

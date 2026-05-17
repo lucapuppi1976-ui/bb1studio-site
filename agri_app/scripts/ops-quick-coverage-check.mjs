@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V20_0_TESTER_LOGIN_METHOD_SETUP_GATE_CHECK: esegue il check V20.0 prima dei controlli operativi aggregati.
+// AGRI_V20_0_TESTER_LOGIN_METHOD_SETUP_GATE_PATH: scripts/ops-tester-login-method-setup-gate-check.mjs
+// AGRI_V20_0_TESTER_LOGIN_METHOD_SETUP_GATE_ALIAS: ops:tester-login-method-setup-gate-check
+const __agriTesterLoginMethodSetupGateV200 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-login-method-setup-gate-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterLoginMethodSetupGateV200();
+
 // AGRI_V19_9_TESTER_ACCOUNT_ACCESS_VERIFICATION_CHECK: esegue il check V19.9 prima dei controlli operativi aggregati.
 // AGRI_V19_9_TESTER_ACCOUNT_ACCESS_VERIFICATION_PATH: scripts/ops-tester-account-access-verification-check.mjs
 // AGRI_V19_9_TESTER_ACCOUNT_ACCESS_VERIFICATION_ALIAS: ops:tester-account-access-verification-check

@@ -126,6 +126,7 @@ import OperationsTesterAccountProvisioningWriteIntent from "./OperationsTesterAc
 import OperationsTesterAccountCreationReadinessAudit from "./OperationsTesterAccountCreationReadinessAudit";
 import OperationsTesterAccountWritePilot from "./OperationsTesterAccountWritePilot";
 import OperationsTesterAccountAccessVerification from "./OperationsTesterAccountAccessVerification";
+import OperationsTesterLoginMethodSetupGate from "./OperationsTesterLoginMethodSetupGate";
 
 const sections = [
   {
@@ -521,6 +522,8 @@ export default function AdminOperationsPage() {
       <OperationsTesterAccountWritePilot />
 
       <OperationsTesterAccountAccessVerification />
+
+      <OperationsTesterLoginMethodSetupGate />
 </main>
   );
 }

@@ -120,6 +120,7 @@ import TesterAccountProvisioningWriteIntentPanel from "./TesterAccountProvisioni
 import TesterAccountCreationReadinessAuditPanel from "./TesterAccountCreationReadinessAuditPanel";
 import TesterAccountWritePilotPanel from "./TesterAccountWritePilotPanel";
 import TesterAccountAccessVerificationPanel from "./TesterAccountAccessVerificationPanel";
+import TesterLoginMethodSetupGatePanel from "./TesterLoginMethodSetupGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -350,6 +351,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterAccountWritePilotPanel />
 
       <TesterAccountAccessVerificationPanel />
+
+      <TesterLoginMethodSetupGatePanel />
 </main>
   );
 }
