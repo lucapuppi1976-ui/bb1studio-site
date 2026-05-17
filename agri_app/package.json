@@ -158,7 +158,8 @@
     "ops:tester-account-provisioning-write-intent-check": "node scripts/ops-tester-account-provisioning-write-intent-check.mjs",
     "ops:tester-account-creation-readiness-audit-check": "node scripts/ops-tester-account-creation-readiness-audit-check.mjs",
     "ops:tester-account-write-pilot-check": "node scripts/ops-tester-account-write-pilot-check.mjs",
-    "ops:tester-account-access-verification-check": "node scripts/ops-tester-account-access-verification-check.mjs"
+    "ops:tester-account-access-verification-check": "node scripts/ops-tester-account-access-verification-check.mjs",
+    "ops:tester-login-method-setup-gate-check": "node scripts/ops-tester-login-method-setup-gate-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
