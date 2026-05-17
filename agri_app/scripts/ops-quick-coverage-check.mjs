@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V20_1_TESTER_PASSWORD_SETUP_PILOT_CHECK: esegue il check V20.1 prima dei controlli operativi aggregati.
+// AGRI_V20_1_TESTER_PASSWORD_SETUP_PILOT_PATH: scripts/ops-tester-password-setup-pilot-check.mjs
+// AGRI_V20_1_TESTER_PASSWORD_SETUP_PILOT_ALIAS: ops:tester-password-setup-pilot-check
+const __agriTesterPasswordSetupPilotV201 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-password-setup-pilot-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterPasswordSetupPilotV201();
+
 // AGRI_V20_0_TESTER_LOGIN_METHOD_SETUP_GATE_CHECK: esegue il check V20.0 prima dei controlli operativi aggregati.
 // AGRI_V20_0_TESTER_LOGIN_METHOD_SETUP_GATE_PATH: scripts/ops-tester-login-method-setup-gate-check.mjs
 // AGRI_V20_0_TESTER_LOGIN_METHOD_SETUP_GATE_ALIAS: ops:tester-login-method-setup-gate-check
