@@ -83,6 +83,9 @@ async function buildPasswordSetupPreview(body: PasswordSetupBody) {
   }
 
   const roleValue = String(user?.role ?? user?.userRole ?? "").trim();
+  const passwordCandidateProvided = temporaryPassword.length > 0;
+  const passwordLengthOk = temporaryPassword.length >= 12;
+  const bodyConfirmOk = body.confirm === TESTER_PASSWORD_SETUP_CONFIRM_LITERAL;
 
   const report = buildTesterPasswordSetupReport({
     email,
@@ -91,8 +94,8 @@ async function buildPasswordSetupPreview(body: PasswordSetupBody) {
     roleCompatible: user ? isRoleCompatible(roleValue) : false,
     emailVerified: Boolean(user?.emailVerified),
     hasPasswordHash: Boolean(user?.passwordHash),
-    passwordCandidateProvided: temporaryPassword.length > 0,
-    passwordLengthOk: temporaryPassword.length >= 12,
+    passwordCandidateProvided,
+    passwordLengthOk,
     dryRun: body.dryRun ?? true,
     confirm: body.confirm ?? "",
     serverWriteEnabled: process.env.AGRI_TESTER_PASSWORD_WRITE_ENABLED === "true",
@@ -106,6 +109,7 @@ async function buildPasswordSetupPreview(body: PasswordSetupBody) {
     temporaryPassword,
     user,
     fields,
+    bodyConfirmOk,
     report,
   };
 }
@@ -180,7 +184,13 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const userDelegate = (prisma as unknown as { user?: { update?: Function } }).user;
+  const userDelegate = (
+    prisma as unknown as {
+      user?: {
+        update?: Function;
+      };
+    }
+  ).user;
 
   if (!userDelegate?.update || !result.fields.has("passwordHash")) {
     return NextResponse.json(
@@ -198,16 +208,20 @@ export async function POST(request: NextRequest) {
 
   try {
     const passwordHash = await bcrypt.hash(result.temporaryPassword, 12);
-    const select: Record<string, boolean> = {};
-
-    for (const field of ["id", "email", "role", "emailVerified"]) {
-      if (result.fields.has(field)) select[field] = true;
-    }
 
     const updated = await userDelegate.update({
       where: { email: result.email },
       data: { passwordHash },
-      select,
+      select: result.fields.has("id")
+        ? {
+            id: true,
+            email: true,
+            role: result.fields.has("role"),
+            emailVerified: result.fields.has("emailVerified"),
+          }
+        : {
+            email: true,
+          },
     });
 
     return NextResponse.json({

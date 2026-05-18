@@ -90,6 +90,28 @@ requireText("package", pkg, "ops:tester-password-setup-pilot-check");
 requireText("runbook", runbook, "V20.1");
 requireText("runbook", runbook, "ops:tester-password-setup-pilot-check");
 
+for (const [label, content] of [["engine", engine], ["ui", ui], ["admin", admin]]) {
+  for (const fragment of [
+    ["fe", "tch("].join(""),
+    ["OPENAI", "_API_KEY"].join(""),
+    ["ANTHROPIC", "_API_KEY"].join(""),
+    ["GEMINI", "_API_KEY"].join(""),
+    ["GOOGLE", "_API_KEY"].join(""),
+    ["local", "Storage"].join(""),
+    ["session", "Storage"].join(""),
+    ["prisma", "."].join(""),
+    ["db", "."].join(""),
+  ]) forbidText(label, content, fragment);
+}
+
+for (const fragment of [
+  ["OPENAI", "_API_KEY"].join(""),
+  ["ANTHROPIC", "_API_KEY"].join(""),
+  ["GEMINI", "_API_KEY"].join(""),
+  ["GOOGLE", "_API_KEY"].join(""),
+  ["s", "k-"].join(""),
+]) forbidText("route AI safety", route, fragment);
+
 for (const supportScript of ["scripts/ops-runbook-check.mjs", "scripts/ops-quick-check.mjs", "scripts/ops-quick-coverage-check.mjs"]) {
   const content = readFile(supportScript);
   requireText(supportScript, content, "AGRI_V20_1_TESTER_PASSWORD_SETUP_PILOT_CHECK");

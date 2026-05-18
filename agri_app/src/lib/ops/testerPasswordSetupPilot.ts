@@ -327,7 +327,6 @@ export function buildTesterPasswordSetupReport(input: TesterPasswordSetupInput =
   );
 
   const hasBlocking = findings.some((item) => item.blocksPasswordSetup);
-
   const setupStatus: TesterPasswordSetupStatus = hasBlocking
     ? "blocked"
     : writeArmed
