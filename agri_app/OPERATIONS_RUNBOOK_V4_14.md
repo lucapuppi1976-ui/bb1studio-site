@@ -3591,3 +3591,29 @@ ops:tester-password-setup-pilot-check
 ### Stato
 
 Password setup disponibile ma disattivato di default. Nessuna password viene scritta durante deploy o verifiche.
+
+## V20.2 — Tester Login Session Verification & Manual Onboarding UAT Gate
+
+### Scope
+
+V20.2 formalizza il primo gate UAT manuale dopo login tester funzionante.
+
+- endpoint ops protetto /api/ops/tester-login-session-onboarding-uat-gate-dry-run;
+- engine non-AI locale testerLoginSessionOnboardingUatGate.ts;
+- route read-only con Prisma find/count;
+- verifica account, role, passwordHash, session evidence, login osservato, onboarding, route protetta, fallback lingua e logout;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-login-session-onboarding-uat-gate-check
+
+### Stato
+
+Manual onboarding UAT gate pronto. Nessuna scrittura viene eseguita.
