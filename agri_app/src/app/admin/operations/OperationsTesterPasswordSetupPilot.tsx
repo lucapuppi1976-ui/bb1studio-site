@@ -14,6 +14,35 @@ export default function OperationsTesterPasswordSetupPilot() {
       <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
         Endpoint protetto per impostare passwordHash sul tester esistente. Nessun account viene creato.
       </p>
+
+      <div className="mt-5 grid gap-4 md:grid-cols-5">
+        <div className="rounded-2xl bg-slate-50 p-4">
+          <p className="text-xs uppercase tracking-wide text-slate-500">Decision</p>
+          <p className="mt-2 text-xl font-bold text-slate-950">{report.decision}</p>
+        </div>
+        <div className="rounded-2xl bg-slate-50 p-4">
+          <p className="text-xs uppercase tracking-wide text-slate-500">Score</p>
+          <p className="mt-2 text-2xl font-bold text-slate-950">{report.setupScore}</p>
+        </div>
+        <div className="rounded-2xl bg-slate-50 p-4">
+          <p className="text-xs uppercase tracking-wide text-slate-500">Account create</p>
+          <p className="mt-2 text-xl font-bold text-slate-950">
+            {report.readiness.accountCreateAllowed ? "YES" : "NO"}
+          </p>
+        </div>
+        <div className="rounded-2xl bg-slate-50 p-4">
+          <p className="text-xs uppercase tracking-wide text-slate-500">Public signup</p>
+          <p className="mt-2 text-xl font-bold text-slate-950">
+            {report.readiness.publicSignupAllowed ? "YES" : "NO"}
+          </p>
+        </div>
+        <div className="rounded-2xl bg-slate-50 p-4">
+          <p className="text-xs uppercase tracking-wide text-slate-500">AI provider</p>
+          <p className="mt-2 text-xl font-bold text-slate-950">
+            {report.readiness.providerCalled ? "YES" : "NO"}
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
