@@ -123,6 +123,7 @@ import TesterAccountAccessVerificationPanel from "./TesterAccountAccessVerificat
 import TesterLoginMethodSetupGatePanel from "./TesterLoginMethodSetupGatePanel";
 import TesterPasswordSetupPilotPanel from "./TesterPasswordSetupPilotPanel";
 import TesterLoginSessionOnboardingUatGatePanel from "./TesterLoginSessionOnboardingUatGatePanel";
+import TesterManualUatScenarioPackPanel from "./TesterManualUatScenarioPackPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -359,6 +360,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterPasswordSetupPilotPanel />
 
       <TesterLoginSessionOnboardingUatGatePanel />
+
+      <TesterManualUatScenarioPackPanel />
 </main>
   );
 }

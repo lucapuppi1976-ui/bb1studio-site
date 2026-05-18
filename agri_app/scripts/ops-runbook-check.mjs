@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V20_3_TESTER_MANUAL_UAT_SCENARIO_PACK_CHECK: esegue il check V20.3 prima dei controlli operativi aggregati.
+// AGRI_V20_3_TESTER_MANUAL_UAT_SCENARIO_PACK_PATH: scripts/ops-tester-manual-uat-scenario-pack-check.mjs
+// AGRI_V20_3_TESTER_MANUAL_UAT_SCENARIO_PACK_ALIAS: ops:tester-manual-uat-scenario-pack-check
+const __agriTesterManualUatScenarioPackV203 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-manual-uat-scenario-pack-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterManualUatScenarioPackV203();
+
 // AGRI_V20_2_TESTER_LOGIN_SESSION_ONBOARDING_UAT_GATE_CHECK: esegue il check V20.2 prima dei controlli operativi aggregati.
 // AGRI_V20_2_TESTER_LOGIN_SESSION_ONBOARDING_UAT_GATE_PATH: scripts/ops-tester-login-session-onboarding-uat-gate-check.mjs
 // AGRI_V20_2_TESTER_LOGIN_SESSION_ONBOARDING_UAT_GATE_ALIAS: ops:tester-login-session-onboarding-uat-gate-check
