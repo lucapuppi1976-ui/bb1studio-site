@@ -161,7 +161,8 @@
     "ops:tester-account-access-verification-check": "node scripts/ops-tester-account-access-verification-check.mjs",
     "ops:tester-login-method-setup-gate-check": "node scripts/ops-tester-login-method-setup-gate-check.mjs",
     "ops:tester-password-setup-pilot-check": "node scripts/ops-tester-password-setup-pilot-check.mjs",
-    "ops:tester-login-session-onboarding-uat-gate-check": "node scripts/ops-tester-login-session-onboarding-uat-gate-check.mjs"
+    "ops:tester-login-session-onboarding-uat-gate-check": "node scripts/ops-tester-login-session-onboarding-uat-gate-check.mjs",
+    "ops:tester-manual-uat-scenario-pack-check": "node scripts/ops-tester-manual-uat-scenario-pack-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

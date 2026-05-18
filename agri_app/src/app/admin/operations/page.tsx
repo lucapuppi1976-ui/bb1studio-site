@@ -129,6 +129,7 @@ import OperationsTesterAccountAccessVerification from "./OperationsTesterAccount
 import OperationsTesterLoginMethodSetupGate from "./OperationsTesterLoginMethodSetupGate";
 import OperationsTesterPasswordSetupPilot from "./OperationsTesterPasswordSetupPilot";
 import OperationsTesterLoginSessionOnboardingUatGate from "./OperationsTesterLoginSessionOnboardingUatGate";
+import OperationsTesterManualUatScenarioPack from "./OperationsTesterManualUatScenarioPack";
 
 const sections = [
   {
@@ -530,6 +531,8 @@ export default function AdminOperationsPage() {
       <OperationsTesterPasswordSetupPilot />
 
       <OperationsTesterLoginSessionOnboardingUatGate />
+
+      <OperationsTesterManualUatScenarioPack />
 </main>
   );
 }

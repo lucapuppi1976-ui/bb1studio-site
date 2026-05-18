@@ -3617,3 +3617,31 @@ ops:tester-login-session-onboarding-uat-gate-check
 ### Stato
 
 Manual onboarding UAT gate pronto. Nessuna scrittura viene eseguita.
+
+## V20.3 — First Manual UAT Scenario Pack & Evidence Checklist
+
+### Scope
+
+V20.3 definisce il primo scenario pack UAT manuale per il tester pilota.
+
+- endpoint ops protetto /api/ops/tester-manual-uat-scenario-pack-dry-run;
+- engine non-AI locale testerManualUatScenarioPack.ts;
+- route read-only con Prisma findUnique;
+- scenario pack: login, landing, navigation, mobile, photo diagnosis, operations read-only e logout;
+- evidence checklist manuale;
+- nessuna persistenza evidenze;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-manual-uat-scenario-pack-check
+
+### Stato
+
+Primo scenario pack UAT manuale pronto. Nessuna scrittura viene eseguita.
