@@ -3645,3 +3645,32 @@ ops:tester-manual-uat-scenario-pack-check
 ### Stato
 
 Primo scenario pack UAT manuale pronto. Nessuna scrittura viene eseguita.
+
+## V20.4 — First Manual UAT Execution Report & Issue Triage Board
+
+### Scope
+
+V20.4 formalizza il report del primo UAT manuale e la issue triage board.
+
+- endpoint ops protetto /api/ops/tester-manual-uat-execution-report-dry-run;
+- engine non-AI locale testerManualUatExecutionReport.ts;
+- route read-only con Prisma findUnique;
+- riepilogo scenari pass/fail/blocked;
+- triage issue critical/major/minor/usability/localization/performance;
+- decisione EXPAND_TESTER_POOL_READY / CONTINUE_SINGLE_TESTER_UAT / FIX_BEFORE_CONTINUE / NO_GO;
+- nessuna persistenza report, issue o evidenze;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-manual-uat-execution-report-check
+
+### Stato
+
+Execution report e issue triage board pronti in modalità dry-run/read-only.

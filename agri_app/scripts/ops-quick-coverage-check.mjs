@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V20_4_TESTER_MANUAL_UAT_EXECUTION_REPORT_CHECK: esegue il check V20.4 prima dei controlli operativi aggregati.
+// AGRI_V20_4_TESTER_MANUAL_UAT_EXECUTION_REPORT_PATH: scripts/ops-tester-manual-uat-execution-report-check.mjs
+// AGRI_V20_4_TESTER_MANUAL_UAT_EXECUTION_REPORT_ALIAS: ops:tester-manual-uat-execution-report-check
+const __agriTesterManualUatExecutionReportV204 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-manual-uat-execution-report-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterManualUatExecutionReportV204();
+
 // AGRI_V20_3_TESTER_MANUAL_UAT_SCENARIO_PACK_CHECK: esegue il check V20.3 prima dei controlli operativi aggregati.
 // AGRI_V20_3_TESTER_MANUAL_UAT_SCENARIO_PACK_PATH: scripts/ops-tester-manual-uat-scenario-pack-check.mjs
 // AGRI_V20_3_TESTER_MANUAL_UAT_SCENARIO_PACK_ALIAS: ops:tester-manual-uat-scenario-pack-check
