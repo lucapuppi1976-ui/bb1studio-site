@@ -3702,3 +3702,31 @@ ops:tester-extended-single-tester-uat-coverage-check
 ### Stato
 
 Extended single tester UAT coverage pronta in modalità dry-run/read-only.
+
+## V20.6 — UAT Fix Sprint Board & Retest Gate
+
+### Scope
+
+V20.6 formalizza fix sprint board e retest gate dopo UAT.
+
+- endpoint ops protetto /api/ops/tester-uat-fix-sprint-retest-gate-dry-run;
+- engine non-AI locale testerUatFixSprintRetestGate.ts;
+- route read-only con Prisma findUnique;
+- board fix sprint, owners, retest plan, retest evidence e summary;
+- decisione FIXES_CLEARED_READY_FOR_EXPANSION / CONTINUE_RETEST / FIX_SPRINT_REQUIRED / FIX_BEFORE_CONTINUE / NO_GO;
+- nessuna persistenza fix, issue o evidenze;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-uat-fix-sprint-retest-gate-check
+
+### Stato
+
+Fix sprint/retest gate pronto in modalità dry-run/read-only.
