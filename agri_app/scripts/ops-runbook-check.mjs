@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V20_7_TESTER_SECOND_TESTER_POOL_EXPANSION_GATE_CHECK: esegue il check V20.7 prima dei controlli operativi aggregati.
+// AGRI_V20_7_TESTER_SECOND_TESTER_POOL_EXPANSION_GATE_PATH: scripts/ops-tester-second-tester-pool-expansion-gate-check.mjs
+// AGRI_V20_7_TESTER_SECOND_TESTER_POOL_EXPANSION_GATE_ALIAS: ops:tester-second-tester-pool-expansion-gate-check
+const __agriTesterSecondTesterPoolExpansionGateV207 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-second-tester-pool-expansion-gate-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterSecondTesterPoolExpansionGateV207();
+
 // AGRI_V20_6_TESTER_UAT_FIX_SPRINT_RETEST_GATE_CHECK: esegue il check V20.6 prima dei controlli operativi aggregati.
 // AGRI_V20_6_TESTER_UAT_FIX_SPRINT_RETEST_GATE_PATH: scripts/ops-tester-uat-fix-sprint-retest-gate-check.mjs
 // AGRI_V20_6_TESTER_UAT_FIX_SPRINT_RETEST_GATE_ALIAS: ops:tester-uat-fix-sprint-retest-gate-check
