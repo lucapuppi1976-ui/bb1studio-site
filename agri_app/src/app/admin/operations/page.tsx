@@ -132,6 +132,7 @@ import OperationsTesterLoginSessionOnboardingUatGate from "./OperationsTesterLog
 import OperationsTesterManualUatScenarioPack from "./OperationsTesterManualUatScenarioPack";
 import OperationsTesterManualUatExecutionReport from "./OperationsTesterManualUatExecutionReport";
 import OperationsTesterExtendedSingleTesterUatCoverage from "./OperationsTesterExtendedSingleTesterUatCoverage";
+import OperationsTesterUatFixSprintRetestGate from "./OperationsTesterUatFixSprintRetestGate";
 
 const sections = [
   {
@@ -539,6 +540,8 @@ export default function AdminOperationsPage() {
       <OperationsTesterManualUatExecutionReport />
 
       <OperationsTesterExtendedSingleTesterUatCoverage />
+
+      <OperationsTesterUatFixSprintRetestGate />
 </main>
   );
 }
