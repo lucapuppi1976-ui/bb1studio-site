@@ -125,6 +125,7 @@ import TesterPasswordSetupPilotPanel from "./TesterPasswordSetupPilotPanel";
 import TesterLoginSessionOnboardingUatGatePanel from "./TesterLoginSessionOnboardingUatGatePanel";
 import TesterManualUatScenarioPackPanel from "./TesterManualUatScenarioPackPanel";
 import TesterManualUatExecutionReportPanel from "./TesterManualUatExecutionReportPanel";
+import TesterExtendedSingleTesterUatCoveragePanel from "./TesterExtendedSingleTesterUatCoveragePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -365,6 +366,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterManualUatScenarioPackPanel />
 
       <TesterManualUatExecutionReportPanel />
+
+      <TesterExtendedSingleTesterUatCoveragePanel />
 </main>
   );
 }

@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V20_5_TESTER_EXTENDED_SINGLE_TESTER_UAT_COVERAGE_CHECK: esegue il check V20.5 prima dei controlli operativi aggregati.
+// AGRI_V20_5_TESTER_EXTENDED_SINGLE_TESTER_UAT_COVERAGE_PATH: scripts/ops-tester-extended-single-tester-uat-coverage-check.mjs
+// AGRI_V20_5_TESTER_EXTENDED_SINGLE_TESTER_UAT_COVERAGE_ALIAS: ops:tester-extended-single-tester-uat-coverage-check
+const __agriTesterExtendedSingleTesterUatCoverageV205 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-extended-single-tester-uat-coverage-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterExtendedSingleTesterUatCoverageV205();
+
 // AGRI_V20_4_TESTER_MANUAL_UAT_EXECUTION_REPORT_CHECK: esegue il check V20.4 prima dei controlli operativi aggregati.
 // AGRI_V20_4_TESTER_MANUAL_UAT_EXECUTION_REPORT_PATH: scripts/ops-tester-manual-uat-execution-report-check.mjs
 // AGRI_V20_4_TESTER_MANUAL_UAT_EXECUTION_REPORT_ALIAS: ops:tester-manual-uat-execution-report-check

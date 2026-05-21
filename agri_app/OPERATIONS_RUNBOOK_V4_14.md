@@ -3674,3 +3674,31 @@ ops:tester-manual-uat-execution-report-check
 ### Stato
 
 Execution report e issue triage board pronti in modalità dry-run/read-only.
+
+## V20.5 — Extended Single Tester UAT Scenario Coverage
+
+### Scope
+
+V20.5 estende la copertura UAT con lo stesso tester pilota prima di decidere il secondo tester.
+
+- endpoint ops protetto /api/ops/tester-extended-single-tester-uat-coverage-dry-run;
+- engine non-AI locale testerExtendedSingleTesterUatCoverage.ts;
+- route read-only con Prisma findUnique;
+- scenari estesi: forms, sessione, role boundary, photo diagnosis edge, operations read-only, responsive/accessibility, error states, browser navigation;
+- triage manuale;
+- nessuna persistenza issue/evidenze;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-extended-single-tester-uat-coverage-check
+
+### Stato
+
+Extended single tester UAT coverage pronta in modalità dry-run/read-only.

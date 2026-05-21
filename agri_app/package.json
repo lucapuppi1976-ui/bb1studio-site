@@ -163,7 +163,8 @@
     "ops:tester-password-setup-pilot-check": "node scripts/ops-tester-password-setup-pilot-check.mjs",
     "ops:tester-login-session-onboarding-uat-gate-check": "node scripts/ops-tester-login-session-onboarding-uat-gate-check.mjs",
     "ops:tester-manual-uat-scenario-pack-check": "node scripts/ops-tester-manual-uat-scenario-pack-check.mjs",
-    "ops:tester-manual-uat-execution-report-check": "node scripts/ops-tester-manual-uat-execution-report-check.mjs"
+    "ops:tester-manual-uat-execution-report-check": "node scripts/ops-tester-manual-uat-execution-report-check.mjs",
+    "ops:tester-extended-single-tester-uat-coverage-check": "node scripts/ops-tester-extended-single-tester-uat-coverage-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
