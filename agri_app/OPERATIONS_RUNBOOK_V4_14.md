@@ -3730,3 +3730,31 @@ ops:tester-uat-fix-sprint-retest-gate-check
 ### Stato
 
 Fix sprint/retest gate pronto in modalità dry-run/read-only.
+
+## V20.7 — Controlled Second Tester Pool Expansion Gate
+
+### Scope
+
+V20.7 prepara l'espansione controllata verso un secondo tester UAT.
+
+- endpoint ops protetto /api/ops/tester-second-tester-pool-expansion-gate-dry-run;
+- engine non-AI locale testerSecondTesterPoolExpansionGate.ts;
+- route read-only con Prisma findUnique;
+- verifica primo tester, candidato secondo tester, candidate readiness, onboarding, access scope, language fallback e safety;
+- decisione SECOND_TESTER_WRITE_PILOT_READY / SECOND_TESTER_ACCESS_REVIEW_READY / CANDIDATE_SELECTION_INCOMPLETE / FIX_BEFORE_EXPANSION / NO_GO;
+- nessuna persistenza candidate/evidenze;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-second-tester-pool-expansion-gate-check
+
+### Stato
+
+Second tester expansion gate pronto in modalità dry-run/read-only.

@@ -133,6 +133,7 @@ import OperationsTesterManualUatScenarioPack from "./OperationsTesterManualUatSc
 import OperationsTesterManualUatExecutionReport from "./OperationsTesterManualUatExecutionReport";
 import OperationsTesterExtendedSingleTesterUatCoverage from "./OperationsTesterExtendedSingleTesterUatCoverage";
 import OperationsTesterUatFixSprintRetestGate from "./OperationsTesterUatFixSprintRetestGate";
+import OperationsTesterSecondTesterPoolExpansionGate from "./OperationsTesterSecondTesterPoolExpansionGate";
 
 const sections = [
   {
@@ -542,6 +543,8 @@ export default function AdminOperationsPage() {
       <OperationsTesterExtendedSingleTesterUatCoverage />
 
       <OperationsTesterUatFixSprintRetestGate />
+
+      <OperationsTesterSecondTesterPoolExpansionGate />
 </main>
   );
 }
