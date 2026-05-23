@@ -3786,3 +3786,29 @@ ops:tester-second-tester-access-login-setup-gate-check
 ### Stato
 
 Second tester access/login setup gate pronto in modalità dry-run/read-only.
+
+## V20.9 — Protected Second Tester Account Write Pilot
+
+### Scope
+
+V20.9 introduce un write pilot protetto per creare un solo account secondo tester.
+
+- endpoint ops protetto /api/ops/tester-second-tester-account-write-pilot;
+- engine non-AI locale testerSecondTesterAccountWritePilot.ts;
+- route dry-run di default;
+- real write consentito solo con CRON_SECRET, AGRI_SECOND_TESTER_ACCOUNT_WRITE_ENABLED=true, AGRI_SECOND_TESTER_ACCOUNT_WRITE_CONFIRM=CONFIRM_V20_9_SECOND_TESTER_ACCOUNT_WRITE, body confirm e dryRun=false;
+- crea solo User con role OPERATOR;
+- non scrive passwordHash;
+- non invia email;
+- non apre public signup;
+- non modifica schema;
+- non esegue migration;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-second-tester-account-write-pilot-check
+
+### Stato
+
+Protected second tester account write pilot pronto. Da richiudere subito dopo la singola scrittura reale.
