@@ -3812,3 +3812,29 @@ ops:tester-second-tester-account-write-pilot-check
 ### Stato
 
 Protected second tester account write pilot pronto. Da richiudere subito dopo la singola scrittura reale.
+
+## V21.0 — Protected Second Tester Password Setup Pilot
+
+### Scope
+
+V21.0 introduce un write pilot protetto per impostare passwordHash sul secondo tester già creato.
+
+- endpoint ops protetto /api/ops/tester-second-tester-password-setup-pilot;
+- engine non-AI locale testerSecondTesterPasswordSetupPilot.ts;
+- route dry-run di default;
+- real write consentito solo con CRON_SECRET, AGRI_SECOND_TESTER_PASSWORD_SETUP_ENABLED=true, AGRI_SECOND_TESTER_PASSWORD_SETUP_CONFIRM=CONFIRM_V21_0_SECOND_TESTER_PASSWORD_SETUP, body confirm e dryRun=false;
+- aggiorna solo User.passwordHash;
+- non crea account;
+- non invia email;
+- non apre public signup;
+- non modifica schema;
+- non esegue migration;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-second-tester-password-setup-pilot-check
+
+### Stato
+
+Protected second tester password setup pilot pronto. Da richiudere subito dopo la singola scrittura reale.

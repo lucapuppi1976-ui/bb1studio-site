@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V21_0_TESTER_SECOND_TESTER_PASSWORD_SETUP_PILOT_CHECK: esegue il check V21.0 prima dei controlli operativi aggregati.
+// AGRI_V21_0_TESTER_SECOND_TESTER_PASSWORD_SETUP_PILOT_PATH: scripts/ops-tester-second-tester-password-setup-pilot-check.mjs
+// AGRI_V21_0_TESTER_SECOND_TESTER_PASSWORD_SETUP_PILOT_ALIAS: ops:tester-second-tester-password-setup-pilot-check
+const __agriTesterSecondTesterPasswordSetupPilotV210 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-second-tester-password-setup-pilot-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterSecondTesterPasswordSetupPilotV210();
+
 // AGRI_V20_9_TESTER_SECOND_TESTER_ACCOUNT_WRITE_PILOT_CHECK: esegue il check V20.9 prima dei controlli operativi aggregati.
 // AGRI_V20_9_TESTER_SECOND_TESTER_ACCOUNT_WRITE_PILOT_PATH: scripts/ops-tester-second-tester-account-write-pilot-check.mjs
 // AGRI_V20_9_TESTER_SECOND_TESTER_ACCOUNT_WRITE_PILOT_ALIAS: ops:tester-second-tester-account-write-pilot-check
