@@ -135,6 +135,7 @@ import OperationsTesterExtendedSingleTesterUatCoverage from "./OperationsTesterE
 import OperationsTesterUatFixSprintRetestGate from "./OperationsTesterUatFixSprintRetestGate";
 import OperationsTesterSecondTesterPoolExpansionGate from "./OperationsTesterSecondTesterPoolExpansionGate";
 import OperationsTesterSecondTesterAccessLoginSetupGate from "./OperationsTesterSecondTesterAccessLoginSetupGate";
+import OperationsTesterSecondTesterAccountWritePilot from "./OperationsTesterSecondTesterAccountWritePilot";
 
 const sections = [
   {
@@ -548,6 +549,8 @@ export default function AdminOperationsPage() {
       <OperationsTesterSecondTesterPoolExpansionGate />
 
       <OperationsTesterSecondTesterAccessLoginSetupGate />
+
+      <OperationsTesterSecondTesterAccountWritePilot />
 </main>
   );
 }
