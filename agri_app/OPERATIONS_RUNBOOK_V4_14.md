@@ -3758,3 +3758,31 @@ ops:tester-second-tester-pool-expansion-gate-check
 ### Stato
 
 Second tester expansion gate pronto in modalità dry-run/read-only.
+
+## V20.8 — Second Tester Access Verification & Login Setup Gate
+
+### Scope
+
+V20.8 verifica accesso e setup login del secondo tester in modalità read-only.
+
+- endpoint ops protetto /api/ops/tester-second-tester-access-login-setup-gate-dry-run;
+- engine non-AI locale testerSecondTesterAccessLoginSetupGate.ts;
+- route read-only con Prisma findUnique/count;
+- verifica primo tester, secondo tester, ruolo, passwordHash, OAuth account count, session count e manual login observation;
+- decisione SECOND_TESTER_LOGIN_READY / SECOND_TESTER_LOGIN_OBSERVATION_REQUIRED / SECOND_TESTER_PASSWORD_SETUP_REQUIRED / SECOND_TESTER_ACCOUNT_WRITE_REQUIRED / FIX_BEFORE_LOGIN_SETUP / NO_GO;
+- nessuna persistenza candidate/evidenze;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-second-tester-access-login-setup-gate-check
+
+### Stato
+
+Second tester access/login setup gate pronto in modalità dry-run/read-only.
