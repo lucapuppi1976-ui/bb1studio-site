@@ -3838,3 +3838,31 @@ ops:tester-second-tester-password-setup-pilot-check
 ### Stato
 
 Protected second tester password setup pilot pronto. Da richiudere subito dopo la singola scrittura reale.
+
+## V21.1 — Second Tester Login Session Verification & Manual Onboarding Gate
+
+### Scope
+
+V21.1 verifica login/sessione e onboarding manuale del secondo tester in modalità read-only.
+
+- endpoint ops protetto /api/ops/tester-second-tester-login-session-onboarding-gate-dry-run;
+- engine non-AI locale testerSecondTesterLoginSessionOnboardingGate.ts;
+- route read-only con Prisma findUnique/count;
+- verifica primo tester, secondo tester, ruolo, passwordHash, OAuth account count, session count, login manuale, logout, onboarding, locale fallback, evidence e supporto operatore;
+- decisione SECOND_TESTER_UAT_READY / SECOND_TESTER_LOGIN_OBSERVATION_REQUIRED / SECOND_TESTER_SESSION_REVIEW_REQUIRED / ONBOARDING_EVIDENCE_INCOMPLETE / FIX_BEFORE_UAT / NO_GO;
+- nessuna persistenza evidence/issue;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-second-tester-login-session-onboarding-gate-check
+
+### Stato
+
+Second tester login/session/onboarding gate pronto in modalità dry-run/read-only.
