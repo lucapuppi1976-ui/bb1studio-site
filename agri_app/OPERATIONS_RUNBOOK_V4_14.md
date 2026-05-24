@@ -3866,3 +3866,32 @@ ops:tester-second-tester-login-session-onboarding-gate-check
 ### Stato
 
 Second tester login/session/onboarding gate pronto in modalità dry-run/read-only.
+
+## V21.2 — Second Tester Manual UAT Scenario Pack & Evidence Checklist
+
+### Scope
+
+V21.2 prepara e valida lo scenario pack UAT manuale del secondo tester in modalità read-only.
+
+- endpoint ops protetto /api/ops/tester-second-tester-manual-uat-scenario-pack-dry-run;
+- engine non-AI locale testerSecondTesterManualUatScenarioPack.ts;
+- route read-only con Prisma findUnique/count;
+- verifica accesso primo e secondo tester, passwordHash, scenario coverage, evidence checklist, issue triage e safety;
+- scenario pack: login/landing, navigazione/mobile, photo diagnosis entry, quality gate, evidence bundle, operations read-only, locale fallback, logout;
+- decisione SECOND_TESTER_SCENARIO_PACK_COMPLETE / EVIDENCE_INCOMPLETE / SCENARIO_COVERAGE_INCOMPLETE / FIX_BEFORE_SCENARIO_PACK / NO_GO;
+- nessuna persistenza evidence/issue;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-second-tester-manual-uat-scenario-pack-check
+
+### Stato
+
+Second tester manual UAT scenario pack pronto in modalità dry-run/read-only.
