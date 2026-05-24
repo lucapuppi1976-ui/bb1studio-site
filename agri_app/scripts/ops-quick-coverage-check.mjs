@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V21_2_TESTER_SECOND_TESTER_MANUAL_UAT_SCENARIO_PACK_CHECK: esegue il check V21.2 prima dei controlli operativi aggregati.
+// AGRI_V21_2_TESTER_SECOND_TESTER_MANUAL_UAT_SCENARIO_PACK_PATH: scripts/ops-tester-second-tester-manual-uat-scenario-pack-check.mjs
+// AGRI_V21_2_TESTER_SECOND_TESTER_MANUAL_UAT_SCENARIO_PACK_ALIAS: ops:tester-second-tester-manual-uat-scenario-pack-check
+const __agriTesterSecondTesterManualUatScenarioPackV212 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-second-tester-manual-uat-scenario-pack-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterSecondTesterManualUatScenarioPackV212();
+
 // AGRI_V21_1_TESTER_SECOND_TESTER_LOGIN_SESSION_ONBOARDING_GATE_CHECK: esegue il check V21.1 prima dei controlli operativi aggregati.
 // AGRI_V21_1_TESTER_SECOND_TESTER_LOGIN_SESSION_ONBOARDING_GATE_PATH: scripts/ops-tester-second-tester-login-session-onboarding-gate-check.mjs
 // AGRI_V21_1_TESTER_SECOND_TESTER_LOGIN_SESSION_ONBOARDING_GATE_ALIAS: ops:tester-second-tester-login-session-onboarding-gate-check
