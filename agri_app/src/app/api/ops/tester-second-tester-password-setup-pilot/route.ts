@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import * as bcrypt from "bcryptjs";
 import {
   SECOND_TESTER_PASSWORD_SETUP_CONFIRM,
   buildTesterSecondTesterPasswordSetupPilotReport,
@@ -50,6 +49,25 @@ type UserDelegate = {
 };
 
 const prisma = new PrismaClient();
+
+type PasswordHashModule = {
+  hash?: (password: string, saltOrRounds: number) => Promise<string>;
+  default?: {
+    hash?: (password: string, saltOrRounds: number) => Promise<string>;
+  };
+};
+
+async function createPasswordHash(temporaryPassword: string): Promise<string> {
+  const moduleCandidate = (await import("bcryptjs")) as unknown as PasswordHashModule;
+  const hashFunction = moduleCandidate.hash ?? moduleCandidate.default?.hash;
+
+  if (typeof hashFunction !== "function") {
+    throw new Error("Password hash module not available.");
+  }
+
+  return hashFunction(temporaryPassword, 12);
+}
+
 
 function readBearerToken(request: NextRequest): string {
   const authorization = request.headers.get("authorization") ?? "";
@@ -209,7 +227,7 @@ async function buildSecondTesterPasswordSetup(body: SecondTesterPasswordSetupBod
     } else if (!userFields.has("passwordHash")) {
       writeError = "User.passwordHash field not available.";
     } else {
-      const passwordHash = await bcrypt.hash(temporaryPassword, 12);
+      const passwordHash = await createPasswordHash(temporaryPassword);
 
       updatedUser = await delegate.update({
         where: { email: secondTesterEmail },
