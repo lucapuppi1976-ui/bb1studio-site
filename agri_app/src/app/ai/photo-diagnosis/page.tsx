@@ -130,6 +130,7 @@ import TesterUatFixSprintRetestGatePanel from "./TesterUatFixSprintRetestGatePan
 import TesterSecondTesterPoolExpansionGatePanel from "./TesterSecondTesterPoolExpansionGatePanel";
 import TesterSecondTesterAccessLoginSetupGatePanel from "./TesterSecondTesterAccessLoginSetupGatePanel";
 import TesterSecondTesterAccountWritePilotPanel from "./TesterSecondTesterAccountWritePilotPanel";
+import TesterSecondTesterPasswordSetupPilotPanel from "./TesterSecondTesterPasswordSetupPilotPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -380,6 +381,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterSecondTesterAccessLoginSetupGatePanel />
 
       <TesterSecondTesterAccountWritePilotPanel />
+
+      <TesterSecondTesterPasswordSetupPilotPanel />
 </main>
   );
 }
