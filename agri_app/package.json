@@ -171,7 +171,8 @@
     "ops:tester-second-tester-account-write-pilot-check": "node scripts/ops-tester-second-tester-account-write-pilot-check.mjs",
     "ops:tester-second-tester-password-setup-pilot-check": "node scripts/ops-tester-second-tester-password-setup-pilot-check.mjs",
     "ops:tester-second-tester-login-session-onboarding-gate-check": "node scripts/ops-tester-second-tester-login-session-onboarding-gate-check.mjs",
-    "ops:tester-second-tester-manual-uat-scenario-pack-check": "node scripts/ops-tester-second-tester-manual-uat-scenario-pack-check.mjs"
+    "ops:tester-second-tester-manual-uat-scenario-pack-check": "node scripts/ops-tester-second-tester-manual-uat-scenario-pack-check.mjs",
+    "ops:tester-second-tester-manual-uat-execution-report-check": "node scripts/ops-tester-second-tester-manual-uat-execution-report-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",

@@ -3895,3 +3895,31 @@ ops:tester-second-tester-manual-uat-scenario-pack-check
 ### Stato
 
 Second tester manual UAT scenario pack pronto in modalità dry-run/read-only.
+
+## V21.3 — Second Tester Manual UAT Execution Report & Issue Triage Board
+
+### Scope
+
+V21.3 produce il report di esecuzione UAT manuale del secondo tester in modalità read-only.
+
+- endpoint ops protetto /api/ops/tester-second-tester-manual-uat-execution-report-dry-run;
+- engine non-AI locale testerSecondTesterManualUatExecutionReport.ts;
+- route read-only con Prisma findUnique/count;
+- verifica accesso primo e secondo tester, V21.2 scenario pack, pass/fail/blocked, evidence checklist, issue triage e safety;
+- decisione SECOND_TESTER_UAT_EXECUTION_REPORT_COMPLETE / SECOND_TESTER_RETEST_REQUIRED / FIX_BEFORE_EXPANSION / EVIDENCE_INCOMPLETE / NO_GO;
+- nessuna persistenza evidence/issue;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-second-tester-manual-uat-execution-report-check
+
+### Stato
+
+Second tester manual UAT execution report pronto in modalità dry-run/read-only.

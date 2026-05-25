@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V21_3_TESTER_SECOND_TESTER_MANUAL_UAT_EXECUTION_REPORT_CHECK: esegue il check V21.3 prima dei controlli operativi aggregati.
+// AGRI_V21_3_TESTER_SECOND_TESTER_MANUAL_UAT_EXECUTION_REPORT_PATH: scripts/ops-tester-second-tester-manual-uat-execution-report-check.mjs
+// AGRI_V21_3_TESTER_SECOND_TESTER_MANUAL_UAT_EXECUTION_REPORT_ALIAS: ops:tester-second-tester-manual-uat-execution-report-check
+const __agriTesterSecondTesterManualUatExecutionReportV213 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-second-tester-manual-uat-execution-report-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterSecondTesterManualUatExecutionReportV213();
+
 // AGRI_V21_2_TESTER_SECOND_TESTER_MANUAL_UAT_SCENARIO_PACK_CHECK: esegue il check V21.2 prima dei controlli operativi aggregati.
 // AGRI_V21_2_TESTER_SECOND_TESTER_MANUAL_UAT_SCENARIO_PACK_PATH: scripts/ops-tester-second-tester-manual-uat-scenario-pack-check.mjs
 // AGRI_V21_2_TESTER_SECOND_TESTER_MANUAL_UAT_SCENARIO_PACK_ALIAS: ops:tester-second-tester-manual-uat-scenario-pack-check
