@@ -140,6 +140,7 @@ import OperationsTesterSecondTesterPasswordSetupPilot from "./OperationsTesterSe
 import OperationsTesterSecondTesterLoginSessionOnboardingGate from "./OperationsTesterSecondTesterLoginSessionOnboardingGate";
 import OperationsTesterSecondTesterManualUatScenarioPack from "./OperationsTesterSecondTesterManualUatScenarioPack";
 import OperationsTesterSecondTesterManualUatExecutionReport from "./OperationsTesterSecondTesterManualUatExecutionReport";
+import OperationsTesterDualTesterUatComparativeExpansionGate from "./OperationsTesterDualTesterUatComparativeExpansionGate";
 
 const sections = [
   {
@@ -563,6 +564,8 @@ export default function AdminOperationsPage() {
       <OperationsTesterSecondTesterManualUatScenarioPack />
 
       <OperationsTesterSecondTesterManualUatExecutionReport />
+
+      <OperationsTesterDualTesterUatComparativeExpansionGate />
 </main>
   );
 }

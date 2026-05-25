@@ -3923,3 +3923,31 @@ ops:tester-second-tester-manual-uat-execution-report-check
 ### Stato
 
 Second tester manual UAT execution report pronto in modalità dry-run/read-only.
+
+## V21.4 — Dual Tester UAT Comparative Report & Controlled Expansion Decision Gate
+
+### Scope
+
+V21.4 confronta gli esiti UAT del primo e secondo tester e produce una decisione controllata sull’espansione del pool tester.
+
+- endpoint ops protetto /api/ops/tester-dual-tester-uat-comparative-expansion-gate-dry-run;
+- engine non-AI locale testerDualTesterUatComparativeExpansionGate.ts;
+- route read-only con Prisma findUnique/count;
+- verifica accesso primo e secondo tester, execution report, pass-rate, issue pattern, support capacity, rollback readiness, runbook e human approval;
+- decisione CONTROLLED_EXPANSION_READY / CONTINUE_DUAL_TESTER_UAT / FIX_BEFORE_EXPANSION / EVIDENCE_INCOMPLETE / NO_GO;
+- nessuna persistenza evidence/issue;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-dual-tester-uat-comparative-expansion-gate-check
+
+### Stato
+
+Dual tester comparative report e expansion decision gate pronti in modalità dry-run/read-only.
