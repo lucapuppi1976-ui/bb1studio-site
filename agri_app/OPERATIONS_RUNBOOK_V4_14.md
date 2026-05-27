@@ -3951,3 +3951,31 @@ ops:tester-dual-tester-uat-comparative-expansion-gate-check
 ### Stato
 
 Dual tester comparative report e expansion decision gate pronti in modalità dry-run/read-only.
+
+## V21.5 — Controlled Small-Cohort Tester Expansion Planning Gate
+
+### Scope
+
+V21.5 pianifica una piccola coorte tester controllata dopo la comparativa dual tester.
+
+- endpoint ops protetto /api/ops/tester-controlled-small-cohort-expansion-planning-gate-dry-run;
+- engine non-AI locale testerControlledSmallCohortExpansionPlanningGate.ts;
+- route read-only con Prisma findUnique/count;
+- verifica baseline primo/secondo tester, V21.4, candidate plan, consent, contact verification, language coverage, access scope, onboarding, communication, privacy, schedule, support capacity, rollback, runbook, acceptance criteria e human approval;
+- decisione CONTROLLED_SMALL_COHORT_PLAN_READY / COHORT_PLANNING_INCOMPLETE / CONTINUE_DUAL_TESTER_UAT / FIX_BEFORE_COHORT / NO_GO;
+- nessuna persistenza evidence/issue;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-controlled-small-cohort-expansion-planning-gate-check
+
+### Stato
+
+Controlled small-cohort expansion planning gate pronto in modalità dry-run/read-only.
