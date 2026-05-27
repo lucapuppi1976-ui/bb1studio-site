@@ -3979,3 +3979,31 @@ ops:tester-controlled-small-cohort-expansion-planning-gate-check
 ### Stato
 
 Controlled small-cohort expansion planning gate pronto in modalità dry-run/read-only.
+
+## V21.6 — Small-Cohort Candidate Readiness & Provisioning Gate
+
+### Scope
+
+V21.6 valida readiness candidati e provisioning plan per una piccola coorte controllata.
+
+- endpoint ops protetto /api/ops/tester-small-cohort-candidate-readiness-provisioning-gate-dry-run;
+- engine non-AI locale testerSmallCohortCandidateReadinessProvisioningGate.ts;
+- route read-only con Prisma findUnique;
+- verifica baseline primo/secondo tester, V21.5, email candidati, duplicati, existing users, profili, consenso, contatti, language coverage, access scope, provisioning runbook, account write pilot plan, password setup plan, rollback, support, approval, evidence e safety;
+- decisione PROTECTED_SMALL_COHORT_ACCOUNT_WRITE_PILOT_READY / CANDIDATE_ACCESS_REVIEW_REQUIRED / CANDIDATE_READINESS_INCOMPLETE / FIX_BEFORE_PROVISIONING / NO_GO;
+- nessuna persistenza evidence/issue;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-small-cohort-candidate-readiness-provisioning-gate-check
+
+### Stato
+
+Small-cohort candidate readiness e provisioning gate pronti in modalità dry-run/read-only.

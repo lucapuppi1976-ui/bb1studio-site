@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V21_6_TESTER_SMALL_COHORT_CANDIDATE_READINESS_PROVISIONING_GATE_CHECK: esegue il check V21.6 prima dei controlli operativi aggregati.
+// AGRI_V21_6_TESTER_SMALL_COHORT_CANDIDATE_READINESS_PROVISIONING_GATE_PATH: scripts/ops-tester-small-cohort-candidate-readiness-provisioning-gate-check.mjs
+// AGRI_V21_6_TESTER_SMALL_COHORT_CANDIDATE_READINESS_PROVISIONING_GATE_ALIAS: ops:tester-small-cohort-candidate-readiness-provisioning-gate-check
+const __agriTesterSmallCohortCandidateReadinessProvisioningGateV216 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-small-cohort-candidate-readiness-provisioning-gate-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterSmallCohortCandidateReadinessProvisioningGateV216();
+
 // AGRI_V21_5_TESTER_CONTROLLED_SMALL_COHORT_EXPANSION_PLANNING_GATE_CHECK: esegue il check V21.5 prima dei controlli operativi aggregati.
 // AGRI_V21_5_TESTER_CONTROLLED_SMALL_COHORT_EXPANSION_PLANNING_GATE_PATH: scripts/ops-tester-controlled-small-cohort-expansion-planning-gate-check.mjs
 // AGRI_V21_5_TESTER_CONTROLLED_SMALL_COHORT_EXPANSION_PLANNING_GATE_ALIAS: ops:tester-controlled-small-cohort-expansion-planning-gate-check
