@@ -137,6 +137,7 @@ import TesterSecondTesterManualUatExecutionReportPanel from "./TesterSecondTeste
 import TesterDualTesterUatComparativeExpansionGatePanel from "./TesterDualTesterUatComparativeExpansionGatePanel";
 import TesterControlledSmallCohortExpansionPlanningGatePanel from "./TesterControlledSmallCohortExpansionPlanningGatePanel";
 import TesterSmallCohortCandidateReadinessProvisioningGatePanel from "./TesterSmallCohortCandidateReadinessProvisioningGatePanel";
+import TesterSmallCohortAccountWritePilotPanel from "./TesterSmallCohortAccountWritePilotPanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -401,6 +402,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterControlledSmallCohortExpansionPlanningGatePanel />
 
       <TesterSmallCohortCandidateReadinessProvisioningGatePanel />
+
+      <TesterSmallCohortAccountWritePilotPanel />
 </main>
   );
 }
