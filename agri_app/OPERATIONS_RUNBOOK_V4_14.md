@@ -4007,3 +4007,30 @@ ops:tester-small-cohort-candidate-readiness-provisioning-gate-check
 ### Stato
 
 Small-cohort candidate readiness e provisioning gate pronti in modalità dry-run/read-only.
+
+## V21.7 — Protected Small-Cohort Account Write Pilot
+
+### Scope
+
+V21.7 introduce un write pilot protetto per creare una piccola coorte di account tester.
+
+- endpoint ops protetto /api/ops/tester-small-cohort-account-write-pilot;
+- engine non-AI locale testerSmallCohortAccountWritePilot.ts;
+- route dry-run di default;
+- real write consentito solo con CRON_SECRET, AGRI_SMALL_COHORT_ACCOUNT_WRITE_ENABLED=true, AGRI_SMALL_COHORT_ACCOUNT_WRITE_CONFIRM=CONFIRM_V21_7_SMALL_COHORT_ACCOUNT_WRITE, body confirm e dryRun=false;
+- crea solo User con role OPERATOR;
+- limite coorte: 3-5 account;
+- non scrive passwordHash;
+- non invia email;
+- non apre public signup;
+- non modifica schema;
+- non esegue migration;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-small-cohort-account-write-pilot-check
+
+### Stato
+
+Protected small-cohort account write pilot pronto. Da richiudere subito dopo la scrittura reale.
