@@ -282,20 +282,25 @@ async function buildSmallCohortWritePilot(body: SmallCohortAccountWriteBody) {
           }),
         );
 
-        const transactionRunner = (prisma as unknown as {
-          $transaction?: <T>(operations: Promise<T>[]) => Promise<T[]>;
-        }).$transaction;
+        const transactionClient = prisma as unknown as {
+          $transaction?: (
+            operations: Array<Promise<Record<string, unknown> | null>>,
+          ) => Promise<Array<Record<string, unknown> | null>>;
+        };
 
-        if (transactionRunner) {
-          createdUsers = await transactionRunner.call(prisma, createOperations);
+        if (typeof transactionClient.$transaction === "function") {
+          createdUsers = await transactionClient.$transaction(createOperations);
         } else {
           createdUsers = [];
+
           for (const operation of createOperations) {
             createdUsers.push(await operation);
           }
         }
 
-        writePerformed = createdUsers.length === candidateEmails.length && createdUsers.every(Boolean);
+        writePerformed =
+          createdUsers.length === candidateEmails.length &&
+          createdUsers.every((user) => Boolean(user));
       } catch (error) {
         writeError = error instanceof Error ? error.message : "Unknown cohort account write error.";
       }
