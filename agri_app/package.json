@@ -176,7 +176,8 @@
     "ops:tester-dual-tester-uat-comparative-expansion-gate-check": "node scripts/ops-tester-dual-tester-uat-comparative-expansion-gate-check.mjs",
     "ops:tester-controlled-small-cohort-expansion-planning-gate-check": "node scripts/ops-tester-controlled-small-cohort-expansion-planning-gate-check.mjs",
     "ops:tester-small-cohort-candidate-readiness-provisioning-gate-check": "node scripts/ops-tester-small-cohort-candidate-readiness-provisioning-gate-check.mjs",
-    "ops:tester-small-cohort-account-write-pilot-check": "node scripts/ops-tester-small-cohort-account-write-pilot-check.mjs"
+    "ops:tester-small-cohort-account-write-pilot-check": "node scripts/ops-tester-small-cohort-account-write-pilot-check.mjs",
+    "ops:tester-small-cohort-password-setup-pilot-check": "node scripts/ops-tester-small-cohort-password-setup-pilot-check.mjs"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
