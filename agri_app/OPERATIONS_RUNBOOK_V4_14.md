@@ -4061,3 +4061,31 @@ ops:tester-small-cohort-password-setup-pilot-check
 ### Stato
 
 Protected small-cohort password setup pilot pronto. Da richiudere subito dopo la scrittura reale.
+
+## V21.9 — Small-Cohort Login Session Verification & Manual Onboarding Gate
+
+### Scope
+
+V21.9 verifica login/sessione e onboarding manuale della piccola coorte in modalità read-only.
+
+- endpoint ops protetto /api/ops/tester-small-cohort-login-session-onboarding-gate-dry-run;
+- engine non-AI locale testerSmallCohortLoginSessionOnboardingGate.ts;
+- route read-only con Prisma findUnique/count;
+- verifica baseline primo/secondo tester, V21.8, candidate accounts, role, passwordHash, session count, login manuale, landing, onboarding, navigazione, mobile, locale fallback, logout, evidence e supporto;
+- decisione SMALL_COHORT_UAT_READY / SMALL_COHORT_LOGIN_OBSERVATION_REQUIRED / SMALL_COHORT_SESSION_REVIEW_REQUIRED / ONBOARDING_EVIDENCE_INCOMPLETE / FIX_BEFORE_UAT / NO_GO;
+- nessuna persistenza evidence/issue;
+- nessuna creazione account;
+- nessuna password write;
+- nessun invio email;
+- nessuna registrazione pubblica;
+- nessuna modifica schema;
+- nessuna migration execution;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-small-cohort-login-session-onboarding-gate-check
+
+### Stato
+
+Small-cohort login/session/onboarding gate pronto in modalità dry-run/read-only.
