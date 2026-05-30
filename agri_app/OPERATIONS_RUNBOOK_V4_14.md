@@ -4034,3 +4034,30 @@ ops:tester-small-cohort-account-write-pilot-check
 ### Stato
 
 Protected small-cohort account write pilot pronto. Da richiudere subito dopo la scrittura reale.
+
+## V21.8 — Protected Small-Cohort Password Setup Pilot
+
+### Scope
+
+V21.8 introduce un write pilot protetto per impostare passwordHash sulla piccola coorte già creata.
+
+- endpoint ops protetto /api/ops/tester-small-cohort-password-setup-pilot;
+- engine non-AI locale testerSmallCohortPasswordSetupPilot.ts;
+- route dry-run di default;
+- real write consentito solo con CRON_SECRET, AGRI_SMALL_COHORT_PASSWORD_SETUP_ENABLED=true, AGRI_SMALL_COHORT_PASSWORD_SETUP_CONFIRM=CONFIRM_V21_8_SMALL_COHORT_PASSWORD_SETUP, body confirm e dryRun=false;
+- aggiorna solo User.passwordHash;
+- limite coorte: 3-5 account;
+- non crea account;
+- non invia email;
+- non apre public signup;
+- non modifica schema;
+- non esegue migration;
+- nessun provider AI, nessuna execution, nessun public export write.
+
+### Check
+
+ops:tester-small-cohort-password-setup-pilot-check
+
+### Stato
+
+Protected small-cohort password setup pilot pronto. Da richiudere subito dopo la scrittura reale.

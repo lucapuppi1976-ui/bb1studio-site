@@ -1,4 +1,18 @@
 #!/usr/bin/env node
+// AGRI_V21_8_TESTER_SMALL_COHORT_PASSWORD_SETUP_PILOT_CHECK: esegue il check V21.8 prima dei controlli operativi aggregati.
+// AGRI_V21_8_TESTER_SMALL_COHORT_PASSWORD_SETUP_PILOT_PATH: scripts/ops-tester-small-cohort-password-setup-pilot-check.mjs
+// AGRI_V21_8_TESTER_SMALL_COHORT_PASSWORD_SETUP_PILOT_ALIAS: ops:tester-small-cohort-password-setup-pilot-check
+const __agriTesterSmallCohortPasswordSetupPilotV218 = async () => {
+  const { spawnSync } = await import("node:child_process");
+  const result = spawnSync(
+    "npm",
+    ["run", "ops:tester-small-cohort-password-setup-pilot-check", "--silent"],
+    { cwd: process.cwd(), stdio: "inherit", shell: process.platform === "win32" },
+  );
+  if ((result.status ?? 0) !== 0) process.exit(result.status ?? 1);
+};
+await __agriTesterSmallCohortPasswordSetupPilotV218();
+
 // AGRI_V21_7_TESTER_SMALL_COHORT_ACCOUNT_WRITE_PILOT_CHECK: esegue il check V21.7 prima dei controlli operativi aggregati.
 // AGRI_V21_7_TESTER_SMALL_COHORT_ACCOUNT_WRITE_PILOT_PATH: scripts/ops-tester-small-cohort-account-write-pilot-check.mjs
 // AGRI_V21_7_TESTER_SMALL_COHORT_ACCOUNT_WRITE_PILOT_ALIAS: ops:tester-small-cohort-account-write-pilot-check
