@@ -271,25 +271,26 @@ async function buildSmallCohortWritePilot(body: SmallCohortAccountWriteBody) {
       writeError = "User delegate create not available.";
     } else {
       const createUserDelegate: Required<Pick<UserDelegate, "create">> = {
-        create: delegate.create.bind(delegate),
+        create: delegate.create.bind(delegate) as NonNullable<UserDelegate["create"]>,
+      };
+
+      const createOperations: Array<Promise<Record<string, unknown> | null>> = candidateEmails.map((email, index) =>
+        createUserDelegate.create({
+          data: buildCreateData(email, candidateNames[index] || `UAT Tester ${index + 1}`, userFields),
+          select: selectUserFields(userFields),
+        }),
+      );
+
+      const transactionClient = prisma as unknown as {
+        $transaction?: (
+          operations: Array<Promise<Record<string, unknown> | null>>,
+        ) => Promise<unknown[]>;
       };
 
       try {
-        const createOperations = candidateEmails.map((email, index) =>
-          createUserDelegate.create({
-            data: buildCreateData(email, candidateNames[index] || `UAT Tester ${index + 1}`, userFields),
-            select: selectUserFields(userFields),
-          }),
-        );
-
-        const transactionClient = prisma as unknown as {
-          $transaction?: (
-            operations: Array<Promise<Record<string, unknown> | null>>,
-          ) => Promise<Array<Record<string, unknown> | null>>;
-        };
-
         if (typeof transactionClient.$transaction === "function") {
-          createdUsers = await transactionClient.$transaction(createOperations);
+          const transactionResult = await transactionClient.$transaction(createOperations);
+          createdUsers = transactionResult as Array<Record<string, unknown> | null>;
         } else {
           createdUsers = [];
 
@@ -302,7 +303,10 @@ async function buildSmallCohortWritePilot(body: SmallCohortAccountWriteBody) {
           createdUsers.length === candidateEmails.length &&
           createdUsers.every((user) => Boolean(user));
       } catch (error) {
-        writeError = error instanceof Error ? error.message : "Unknown cohort account write error.";
+        writeError =
+          error instanceof Error
+            ? error.message
+            : "Unknown cohort account write error.";
       }
     }
   }
