@@ -139,6 +139,7 @@ import TesterControlledSmallCohortExpansionPlanningGatePanel from "./TesterContr
 import TesterSmallCohortCandidateReadinessProvisioningGatePanel from "./TesterSmallCohortCandidateReadinessProvisioningGatePanel";
 import TesterSmallCohortAccountWritePilotPanel from "./TesterSmallCohortAccountWritePilotPanel";
 import TesterSmallCohortPasswordSetupPilotPanel from "./TesterSmallCohortPasswordSetupPilotPanel";
+import TesterSmallCohortLoginSessionOnboardingGatePanel from "./TesterSmallCohortLoginSessionOnboardingGatePanel";
 
 export default function AiPhotoDiagnosisPage() {
   return (
@@ -407,6 +408,8 @@ export default function AiPhotoDiagnosisPage() {
       <TesterSmallCohortAccountWritePilotPanel />
 
       <TesterSmallCohortPasswordSetupPilotPanel />
+
+      <TesterSmallCohortLoginSessionOnboardingGatePanel />
 </main>
   );
 }

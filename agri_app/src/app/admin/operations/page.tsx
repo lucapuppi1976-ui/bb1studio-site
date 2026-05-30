@@ -145,6 +145,7 @@ import OperationsTesterControlledSmallCohortExpansionPlanningGate from "./Operat
 import OperationsTesterSmallCohortCandidateReadinessProvisioningGate from "./OperationsTesterSmallCohortCandidateReadinessProvisioningGate";
 import OperationsTesterSmallCohortAccountWritePilot from "./OperationsTesterSmallCohortAccountWritePilot";
 import OperationsTesterSmallCohortPasswordSetupPilot from "./OperationsTesterSmallCohortPasswordSetupPilot";
+import OperationsTesterSmallCohortLoginSessionOnboardingGate from "./OperationsTesterSmallCohortLoginSessionOnboardingGate";
 
 const sections = [
   {
@@ -578,6 +579,8 @@ export default function AdminOperationsPage() {
       <OperationsTesterSmallCohortAccountWritePilot />
 
       <OperationsTesterSmallCohortPasswordSetupPilot />
+
+      <OperationsTesterSmallCohortLoginSessionOnboardingGate />
 </main>
   );
 }
